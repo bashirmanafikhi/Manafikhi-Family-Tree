@@ -1,0 +1,204 @@
+{
+  "main": {
+    "id": "a6c1c5e29aaf25da",
+    "type": "split",
+    "children": [
+      {
+        "id": "6e72dccd25b54dcc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7b126e61a2b6c81b",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "tree.canvas",
+                "viewState": {
+                  "x": -1111.5680442234507,
+                  "y": 623.1438897238684,
+                  "zoom": -1.5991679059542228
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "tree"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fb7a89a3fb0ed681",
+    "type": "split",
+    "children": [
+      {
+        "id": "aa9cb60b70af16bf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ee1072fb6d23626a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "d33d31d916eb5e5f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2cc1c3a85687bd5f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "7cf912ae0c08bce7",
+    "type": "split",
+    "children": [
+      {
+        "id": "2fa7ebf1c14e42a0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6c90dea301c3a9c8",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Welcome.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Welcome"
+            }
+          },
+          {
+            "id": "087e8e6a536f092b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Welcome.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Welcome"
+            }
+          },
+          {
+            "id": "21908ee89763c94d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c4a4e4c54b33d12e",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "7de9d807b2679bd5",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Welcome.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Welcome"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "7b126e61a2b6c81b",
+  "lastOpenFiles": [
+    "tree.canvas",
+    "عبد الناصر.md",
+    "people/mohammad-abdo/طارق.md",
+    "people/mohammad-abdo/محمود.md",
+    "people/mohammad-abdo",
+    "people",
+    "dsadsa.md",
+    "terare.md",
+    "Welcome.md",
+    "شجرة عائلة المنافيخي 1.canvas",
+    "شجرة عائلة المنافيخي.canvas"
+  ]
+}
