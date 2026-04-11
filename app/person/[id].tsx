@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Dimensions, ActivityIndicator } from 'react-native';
+import { View, Text, ScrollView, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useLocalSearchParams, useNavigation } from 'expo-router';
 import { useFamily } from '../../src/context/FamilyContext';
+import { useTheme } from '../../src/context/ThemeContext';
 import { Person } from '../../src/types';
 
 export default function PersonDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const navigation = useNavigation();
   const { persons } = useFamily();
+  const { colors } = useTheme();
   const [person, setPerson] = useState<Person | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -24,7 +26,7 @@ export default function PersonDetailScreen() {
 
   if (!person) {
     return (
-      <View style={styles.loadingContainer}>
+      <View className="flex-1 justify-center items-center" style={{ backgroundColor: colors.background }}>
         <ActivityIndicator size="large" color="#bc6798" />
       </View>
     );
@@ -34,22 +36,20 @@ export default function PersonDetailScreen() {
   const hasMultipleImages = images.length > 1;
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView className="flex-1" style={{ backgroundColor: colors.background }}>
       {hasMultipleImages ? (
-        <View style={styles.imageCarousel}>
+        <View className="w-full aspect-square">
           <Image
             source={{ uri: images[currentImageIndex] }}
-            style={styles.mainImage}
+            className="w-full h-full"
             resizeMode="cover"
           />
-          <View style={styles.imageIndicators}>
+          <View className="flex-row justify-center items-center p-2.5">
             {images.map((_, idx) => (
               <TouchableOpacity
                 key={idx}
-                style={[
-                  styles.indicator,
-                  idx === currentImageIndex && styles.indicatorActive,
-                ]}
+                className="w-2 h-2 rounded-full mx-1"
+                style={{ backgroundColor: idx === currentImageIndex ? '#bc6798' : '#ccc' }}
                 onPress={() => setCurrentImageIndex(idx)}
               />
             ))}
@@ -58,50 +58,54 @@ export default function PersonDetailScreen() {
       ) : images.length === 1 ? (
         <Image
           source={{ uri: images[0] }}
-          style={styles.singleImage}
+          className="w-full aspect-square"
           resizeMode="cover"
         />
       ) : (
-        <View style={styles.placeholderImage}>
-          <Text style={styles.placeholderText}>
+        <View className="w-full aspect-square justify-center items-center" style={{ backgroundColor: colors.surface }}>
+          <Text className="text-7xl">
             {person.gender === 'female' ? '👩' : '👨'}
           </Text>
         </View>
       )}
 
-      <View style={styles.content}>
-        <Text style={styles.name}>{person.name}</Text>
+      <View className="p-4">
+        <Text className="text-2xl font-bold text-center" style={{ color: colors.text }}>
+          {person.name}
+        </Text>
         
         {person.nickname && (
-          <Text style={styles.nickname}>"{person.nickname}"</Text>
+          <Text className="text-lg text-center mt-1 italic" style={{ color: colors.textSecondary }}>
+            "{person.nickname}"
+          </Text>
         )}
 
-        <View style={styles.infoRow}>
+        <View className="flex-row flex-wrap justify-center mt-5 gap-3">
           {person.birthDate && (
-            <View style={styles.infoItem}>
-              <Text style={styles.infoLabel}>تاريخ الميلاد</Text>
-              <Text style={styles.infoValue}>{person.birthDate}</Text>
+            <View className="p-3 rounded-lg min-w-[100]" style={{ backgroundColor: colors.surface }}>
+              <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>تاريخ الميلاد</Text>
+              <Text className="text-base font-semibold" style={{ color: colors.text }}>{person.birthDate}</Text>
             </View>
           )}
           
           {person.deathDate && (
-            <View style={styles.infoItem}>
-              <Text style={styles.infoLabel}>تاريخ الوفاة</Text>
-              <Text style={styles.infoValue}>{person.deathDate}</Text>
+            <View className="p-3 rounded-lg min-w-[100]" style={{ backgroundColor: colors.surface }}>
+              <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>تاريخ الوفاة</Text>
+              <Text className="text-base font-semibold" style={{ color: colors.text }}>{person.deathDate}</Text>
             </View>
           )}
           
           {person.occupation && (
-            <View style={styles.infoItem}>
-              <Text style={styles.infoLabel}>المهنة</Text>
-              <Text style={styles.infoValue}>{person.occupation}</Text>
+            <View className="p-3 rounded-lg min-w-[100]" style={{ backgroundColor: colors.surface }}>
+              <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>المهنة</Text>
+              <Text className="text-base font-semibold" style={{ color: colors.text }}>{person.occupation}</Text>
             </View>
           )}
           
           {person.gender && (
-            <View style={styles.infoItem}>
-              <Text style={styles.infoLabel}>الجنس</Text>
-              <Text style={styles.infoValue}>
+            <View className="p-3 rounded-lg min-w-[100]" style={{ backgroundColor: colors.surface }}>
+              <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>الجنس</Text>
+              <Text className="text-base font-semibold" style={{ color: colors.text }}>
                 {person.gender === 'male' ? 'ذكر' : 'أنثى'}
               </Text>
             </View>
@@ -109,119 +113,12 @@ export default function PersonDetailScreen() {
         </View>
 
         {person.bio && (
-          <View style={styles.bioSection}>
-            <Text style={styles.bioTitle}>السيرة الذاتية</Text>
-            <Text style={styles.bioText}>{person.bio}</Text>
+          <View className="mt-6 p-4 rounded-xl" style={{ backgroundColor: colors.surface }}>
+            <Text className="text-lg font-bold mb-3" style={{ color: colors.text }}>السيرة الذاتية</Text>
+            <Text className="text-base leading-6" style={{ color: colors.textSecondary }}>{person.bio}</Text>
           </View>
         )}
       </View>
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f5f5f5',
-  },
-  imageCarousel: {
-    width: '100%',
-    aspectRatio: 1,
-  },
-  mainImage: {
-    width: '100%',
-    height: '100%',
-  },
-  singleImage: {
-    width: '100%',
-    aspectRatio: 1,
-  },
-  placeholderImage: {
-    width: '100%',
-    aspectRatio: 1,
-    backgroundColor: '#f0f0f0',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  placeholderText: {
-    fontSize: 80,
-  },
-  imageIndicators: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-  },
-  indicator: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: '#ccc',
-    marginHorizontal: 4,
-  },
-  indicatorActive: {
-    backgroundColor: '#bc6798',
-  },
-  content: {
-    padding: 16,
-  },
-  name: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#333',
-    textAlign: 'center',
-  },
-  nickname: {
-    fontSize: 18,
-    color: '#666',
-    textAlign: 'center',
-    marginTop: 4,
-    fontStyle: 'italic',
-  },
-  infoRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    marginTop: 20,
-    gap: 16,
-  },
-  infoItem: {
-    backgroundColor: '#f5f5f5',
-    padding: 12,
-    borderRadius: 8,
-    minWidth: 100,
-  },
-  infoLabel: {
-    fontSize: 12,
-    color: '#666',
-    marginBottom: 4,
-  },
-  infoValue: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#333',
-  },
-  bioSection: {
-    marginTop: 24,
-    padding: 16,
-    backgroundColor: '#f9f9f9',
-    borderRadius: 12,
-  },
-  bioTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 12,
-  },
-  bioText: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#444',
-  },
-});

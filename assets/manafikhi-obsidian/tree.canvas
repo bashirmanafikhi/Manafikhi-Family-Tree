@@ -102,7 +102,8 @@
 		{"id":"ba8d6108f127eb47","type":"text","text":"؟","x":807,"y":-360,"width":250,"height":95,"color":"#bc6798"},
 		{"id":"ef5e9445d7e8425a","type":"text","text":"1 حسناء \n2 تسنيم \n3 مريم \n4 محمد جهاد\n5 فاطمه البتول","x":-2135,"y":984,"width":151,"height":161},
 		{"id":"2ac1892693131249","type":"text","text":"أمال \nأمارة \nعبدالرحمن \nألمئ \nأسيل","x":-1852,"y":974,"width":125,"height":169},
-		{"id":"2cb5bda661eae381","type":"text","text":"1 عائشة\n2 محمود\n3 سدرة\n4 شيماء\n5 يسرى\n6 غنى","x":-2878,"y":743,"width":131,"height":184}
+		{"id":"2cb5bda661eae381","type":"text","text":"1 عائشة\n2 محمود\n3 سدرة\n4 شيماء\n5 يسرى\n6 غنى","x":-2878,"y":743,"width":131,"height":184},
+		{"id":"14ceead9deb1fca2","x":-3372,"y":916,"width":250,"height":324,"type":"text","text":"فاطمه\n محمد\n ذوالكفل \nصباح \nعزيزه\n  رضوان\n عبدالسميع\n  يوسف\n ذنون\n هناء\n وفاء\nعبدالهادي"}
 	],
 	"edges":[
 		{"id":"f77b0a1acec05da3","fromNode":"3931d85717e95901","fromSide":"bottom","toNode":"cb42a2e2fe2b77cd","toSide":"top","color":"#ffffff"},
