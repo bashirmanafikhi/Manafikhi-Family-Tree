@@ -4,24 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "6e72dccd25b54dcc",
+        "id": "14f385ede37f75f7",
         "type": "tabs",
         "children": [
           {
-            "id": "7b126e61a2b6c81b",
+            "id": "619fd2e0afe69346",
             "type": "leaf",
             "state": {
-              "type": "canvas",
-              "state": {
-                "file": "tree.canvas",
-                "viewState": {
-                  "x": -2426.7556161338057,
-                  "y": 593.6205867858408,
-                  "zoom": -0.9325012392875562
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "tree"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -187,7 +180,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "7b126e61a2b6c81b",
+  "active": "619fd2e0afe69346",
   "lastOpenFiles": [
     "tree.canvas",
     "عبد الناصر.md",

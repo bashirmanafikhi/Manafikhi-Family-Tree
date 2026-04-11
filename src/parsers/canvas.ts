@@ -1,11 +1,25 @@
 import { CanvasData, CanvasNode, CanvasEdge } from '../types';
+import * as FileSystem from 'expo-file-system/legacy';
+import { Asset } from 'expo-asset';
 
 let canvasData: CanvasData | null = null;
 
 export async function loadCanvasDataAsync(): Promise<CanvasData | null> {
   try {
-    const response = await fetch('./assets/manafikhi-obsidian/tree.canvas');
-    const text = await response.text();
+    // Use require.context to dynamically find the .canvas file in the obsidian folder
+    // The path is relative to this file: src/parsers/canvas.ts -> ../../assets/manafikhi-obsidian
+    const context = (require as any).context('../../assets/manafikhi-obsidian', false, /\.canvas$/);
+    const canvasFile = context.keys()[0];
+    if (!canvasFile) {
+      throw new Error('No .canvas file found in assets/manafikhi-obsidian');
+    }
+    const canvasReq = context(canvasFile);
+    const asset = Asset.fromModule(canvasReq);
+    await asset.downloadAsync();
+    if (!asset.localUri) {
+      throw new Error('Canvas asset not found');
+    }
+    const text = await FileSystem.readAsStringAsync(asset.localUri);
     canvasData = JSON.parse(text);
     return canvasData;
   } catch (e) {

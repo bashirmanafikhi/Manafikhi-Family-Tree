@@ -25,13 +25,14 @@ export interface CanvasData {
 }
 
 export interface PersonMeta {
-  name: string;
+  name?: string;
   birth_date?: string;
   death_date?: string;
   gender?: 'male' | 'female';
   images?: string[];
   occupation?: string;
   nickname?: string;
+  [key: string]: string | string[] | undefined;
 }
 
 export interface Person {

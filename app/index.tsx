@@ -7,18 +7,13 @@ import { useTheme } from '../src/context/ThemeContext';
 import { CanvasNode } from '../src/types';
 
 const NODE_COLORS: Record<string, string> = {
+  '0': '#777',
   '1': '#bc6798',
   '2': '#9969b0',
   '3': '#7c8cd6',
   '4': '#5b9',
   '5': '#c95',
-  '6': '#e87925',
-  '#bc6798': '#bc6798',
-  '#9969b0': '#9969b0',
-  '#7c8cd6': '#7c8cd6',
-  '#5b9': '#5b9',
-  '#c95': '#c95',
-  '#ffffff': '#f5f5f5',
+  '6': '#e87925'
 };
 
 export default function TreeScreen() {
@@ -155,7 +150,7 @@ export default function TreeScreen() {
     }
     const hasChildren = children.length > 0;
     const isExpanded = expanded.includes(nodeId);
-    const bgColor = NODE_COLORS[node.color || '3'] || '#7c8cd6';
+    const bgColor = NODE_COLORS[node.color || '0'] || NODE_COLORS['0'];
     const name = node.text.split('\n')[0];
     
     const person = getPersonForNode(nodeId);
