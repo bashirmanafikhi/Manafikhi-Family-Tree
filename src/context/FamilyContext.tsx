@@ -44,39 +44,47 @@ export function FamilyProvider({ children }: { children: ReactNode }) {
   function getPersonForNode(nodeId: string): Person | null {
     if (!canvasData) return null;
     
-    const nodeMap = new Map<string, CanvasNode>();
-    canvasData.nodes.forEach(n => nodeMap.set(n.id, n));
+    const node = canvasData.nodes.find(n => n.id === nodeId);
+    if (!node) return null;
+
+    // Priority 1: Direct linking via 'file' property (e.g. "people/51071acea696ccb3.md")
+    // This is the primary method used by the Obsidian plugin.
+    if (node.file) {
+      const personId = node.file
+        .replace(/^people\//, '') // Remove top level 'people/' folder
+        .replace(/\.md$/, '');    // Remove extension
+      
+      const person = persons.find(p => p.id === personId);
+      if (person) return person;
+    }
     
-    const node = nodeMap.get(nodeId);
-    if (!node || node.type !== 'text') return null;
+    // Priority 2: Direct ID match (Fallover for nodes where 'file' prop isn't set yet)
+    // If a person file exists named after the Node ID, use it.
+    const personById = persons.find(p => p.id === node.id);
+    if (personById) return personById;
     
-    const nodeText = node.text.replace(/\n.*/g, '').trim();
-    
-    const person = persons.find(p => 
-      p.name === nodeText || 
-      p.name.includes(nodeText) ||
-      nodeText.includes(p.name)
-    );
-    
-    return person || null;
+    return null;
   }
 
   function getTreeForNode(nodeId: string): TreeNode | null {
     if (!canvasData) return null;
     
-    const nodeMap = new Map<string, CanvasNode>();
-    canvasData.nodes.forEach(n => nodeMap.set(n.id, n));
-    
-    const node = nodeMap.get(nodeId);
+    const node = canvasData.nodes.find(n => n.id === nodeId);
     if (!node) return null;
     
+    const person = getPersonForNode(nodeId);
     const children = getChildNodes(canvasData.edges, nodeId);
     const parents = getParentNodes(canvasData.edges, nodeId);
     
+    // For file nodes, use the person's name if available
+    const displayName = node.type === 'file' 
+      ? (person?.name || node.file?.split('/').pop()?.replace('.md', '') || 'Unknown File')
+      : node.text?.replace(/\n.*/g, '') || 'Unknown';
+
     return {
       id: node.id,
-      personId: getPersonForNode(nodeId)?.id,
-      name: node.text.replace(/\n.*/g, ''),
+      personId: person?.id,
+      name: displayName,
       x: node.x,
       y: node.y,
       width: node.width,
@@ -84,7 +92,7 @@ export function FamilyProvider({ children }: { children: ReactNode }) {
       color: node.color,
       children: [],
       parents: parents,
-      isTextNode: node.type === 'text',
+      isTextNode: node.type === 'text' || node.type === 'file', // Treat both as renderable nodes
     };
   }
 

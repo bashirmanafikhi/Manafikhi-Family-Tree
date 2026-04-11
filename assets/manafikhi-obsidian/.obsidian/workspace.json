@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "14f385ede37f75f7",
+        "id": "950906f5f1c2828c",
         "type": "tabs",
         "children": [
           {
-            "id": "619fd2e0afe69346",
+            "id": "c1cd4f4718236a34",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -74,8 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "7cf912ae0c08bce7",
@@ -180,12 +179,20 @@
       "bases:Create new base": false
     }
   },
-  "active": "619fd2e0afe69346",
+  "active": "c1cd4f4718236a34",
   "lastOpenFiles": [
+    "people/70e179fa85db6c66.md",
+    "Untitled.base",
     "tree.canvas",
-    "عبد الناصر.md",
+    "people/675b66468b37f33e.md",
+    "main.js",
+    "plugins/manafikhi-linker/main.js",
+    "plugins/manafikhi-linker",
+    "plugins",
     "people/mohammad-abdo/طارق.md",
+    "people/mohammad-abdo/محمود 1.md",
     "people/mohammad-abdo/محمود.md",
+    "عبد الناصر.md",
     "people/mohammad-abdo",
     "people",
     "dsadsa.md",

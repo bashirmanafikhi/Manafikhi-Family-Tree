@@ -51,7 +51,7 @@ export function getParentNodes(edges: CanvasEdge[], nodeId: string): string[] {
 }
 
 export function getTextNodes(nodes: CanvasNode[]): CanvasNode[] {
-  return nodes.filter(node => node.type === 'text');
+  return nodes.filter(node => node.type === 'text' || node.type === 'file');
 }
 
 export function getGenerationLevel(y: number): number {

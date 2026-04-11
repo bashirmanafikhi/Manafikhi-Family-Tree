@@ -27,7 +27,7 @@ export default function TreeScreen() {
   const nodeMap = useMemo(() => {
     if (!canvasData) return new Map<string, CanvasNode>();
     const map = new Map<string, CanvasNode>();
-    canvasData.nodes.filter(n => n.type === 'text').forEach(n => map.set(n.id, n));
+    canvasData.nodes.filter(n => n.type === 'text' || n.type === 'file').forEach(n => map.set(n.id, n));
     return map;
   }, [canvasData]);
 
@@ -62,18 +62,20 @@ export default function TreeScreen() {
   const searchResults = useMemo(() => {
     if (!canvasData || !searchQuery.trim()) return { nodesToShow: new Set<string>(), rootIds: [] as string[] };
     const query = searchQuery.toLowerCase();
-    const textNodes = canvasData.nodes.filter(n => n.type === 'text');
+    const textNodes = canvasData.nodes.filter(n => n.type === 'text' || n.type === 'file');
     const allTextNodeIds = new Set(textNodes.map(n => n.id));
-    
+
     const matchingNodeIds = new Set<string>();
     const nodesToShow = new Set<string>();
-    
+
     textNodes.forEach(n => {
-      if (n.text.toLowerCase().includes(query)) {
+      const person = getPersonForNode(n.id);
+      const name = n.type === 'file' ? (person?.name || n.file || '') : n.text;
+      if (name.toLowerCase().includes(query)) {
         matchingNodeIds.add(n.id);
       }
     });
-    
+
     matchingNodeIds.forEach(id => {
       nodesToShow.add(id);
       let parentId = parentMap.get(id);
@@ -82,21 +84,21 @@ export default function TreeScreen() {
         parentId = parentMap.get(parentId);
       }
     });
-    
+
     const rootIds = Array.from(nodesToShow).filter(id => {
       const parentId = parentMap.get(id);
       return !parentId || !nodesToShow.has(parentId);
     });
-    
+
     return { nodesToShow, rootIds };
   }, [canvasData, searchQuery, parentMap]);
 
-  const rootNodeIds = canvasData 
+  const rootNodeIds = canvasData
     ? (() => {
-        const textNodes = canvasData.nodes.filter(n => n.type === 'text');
-        const childIds = new Set(canvasData.edges.map(e => e.toNode));
-        return textNodes.filter(n => !childIds.has(n.id)).map(n => n.id);
-      })()
+      const textNodes = canvasData.nodes.filter(n => n.type === 'text' || n.type === 'file');
+      const childIds = new Set(canvasData.edges.map(e => e.toNode));
+      return textNodes.filter(n => !childIds.has(n.id)).map(n => n.id);
+    })()
     : [];
 
   React.useEffect(() => {
@@ -108,7 +110,7 @@ export default function TreeScreen() {
   const filteredRootNodeIds = searchQuery.trim() ? searchResults.rootIds : rootNodeIds;
 
   const toggleNode = (nodeId: string) => {
-    setExpanded(prev => 
+    setExpanded(prev =>
       prev.includes(nodeId) ? prev.filter(id => id !== nodeId) : [...prev, nodeId]
     );
   };
@@ -143,7 +145,7 @@ export default function TreeScreen() {
   const renderTreeNode = (nodeId: string, level: number, _isLast: boolean, visibleNodes?: Set<string>): ReactNode => {
     const node = nodeMap.get(nodeId);
     if (!node) return null;
-    
+
     let children = edgeMap.get(nodeId) || [];
     if (visibleNodes) {
       children = children.filter(c => visibleNodes.has(c));
@@ -151,27 +153,28 @@ export default function TreeScreen() {
     const hasChildren = children.length > 0;
     const isExpanded = expanded.includes(nodeId);
     const bgColor = NODE_COLORS[node.color || '0'] || NODE_COLORS['0'];
-    const name = node.text.split('\n')[0];
-    
     const person = getPersonForNode(nodeId);
-    
+    const name = node.type === 'file' 
+      ? (person?.name || node.file?.split('/').pop()?.replace('.md', '') || 'Unknown File')
+      : node.text.split('\n')[0];
+
     return (
       <View key={nodeId} className="mb-1">
-        <TouchableOpacity 
+        <TouchableOpacity
           className="flex-row items-center p-3 rounded-lg mb-0.5"
           style={{ backgroundColor: bgColor, marginRight: 10 }}
           onPress={() => hasChildren && toggleNode(nodeId)}
         >
           {person && (
-            <TouchableOpacity 
-              onPress={() => handleNodePress(nodeId)} 
+            <TouchableOpacity
+              onPress={() => handleNodePress(nodeId)}
               className="w-5 h-5 items-center justify-center ml-1.5"
             >
               <Ionicons name="eye" size={16} color="white" />
             </TouchableOpacity>
           )}
-          <Text 
-            className="flex-1 text-sm font-bold text-white text-right" 
+          <Text
+            className="flex-1 text-sm font-bold text-white text-right"
             numberOfLines={1}
           >
             {name}
@@ -189,10 +192,10 @@ export default function TreeScreen() {
             </View>
           )}
         </TouchableOpacity>
-        
+
         {isExpanded && hasChildren && (
-          <View 
-            className="border-r-2 pt-1" 
+          <View
+            className="border-r-2 pt-1"
             style={{ borderColor: '#bc6798', marginRight: 10 }}
           >
             {children.map((childId, idx) => renderTreeNode(childId, level + 1, idx === children.length - 1, visibleNodes))}
@@ -221,7 +224,7 @@ export default function TreeScreen() {
         </View>
       </ScrollView>
 
-      <View className="p-3 pb-8 border-t" style={{ backgroundColor: colors.surface, borderColor: colors.border }}>
+      <View className="p-3 pb-12 border-t" style={{ backgroundColor: colors.surface, borderColor: colors.border }}>
         <TouchableOpacity onPress={() => router.push('/settings')} className="flex-row justify-center items-center py-2">
           <Ionicons name="settings" size={18} color={colors.textSecondary} />
           <Text className="text-sm mr-2" style={{ color: colors.textSecondary }}>الإعدادات</Text>

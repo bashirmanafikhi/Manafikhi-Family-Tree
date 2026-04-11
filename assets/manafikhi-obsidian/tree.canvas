@@ -44,7 +44,7 @@
 		{"id":"f3b7943de0981df4","type":"text","text":"عبد الرحمن","x":-1317,"y":1115,"width":147,"height":60},
 		{"id":"bfb1899347b8be26","type":"text","text":"سدرة","x":-1315,"y":1028,"width":147,"height":60},
 		{"id":"845de4f82cdbc7ae","type":"text","text":"نجوى","x":-1311,"y":951,"width":142,"height":65},
-		{"id":"70e179fa85db6c66","type":"text","text":"نجوى","x":-1649,"y":944,"width":102,"height":60},
+		{"id":"70e179fa85db6c66","type":"text","text":"نجوى","file":"people/70e179fa85db6c66.md","x":-1649,"y":944,"width":102,"height":60},
 		{"id":"464ea9166b99d25a","type":"text","text":"ميرا","x":-1651,"y":1048,"width":102,"height":60},
 		{"id":"450c73e9e6d7fb8f","type":"text","text":"2 محمد","x":-1019,"y":1070,"width":170,"height":60},
 		{"id":"44b7c8b5274b3992","type":"text","text":"3 نجوى","x":-1019,"y":1156,"width":170,"height":60},
@@ -102,13 +102,13 @@
 		{"id":"ba8d6108f127eb47","type":"text","text":"؟","x":807,"y":-360,"width":250,"height":95,"color":"2"},
 		{"id":"ef5e9445d7e8425a","type":"text","text":"1 حسناء \n2 تسنيم \n3 مريم \n4 محمد جهاد\n5 فاطمه البتول","x":-2135,"y":984,"width":151,"height":161},
 		{"id":"2ac1892693131249","type":"text","text":"أمال \nأمارة \nعبدالرحمن \nألمئ \nأسيل","x":-1852,"y":974,"width":125,"height":169},
-		{"id":"14ceead9deb1fca2","type":"text","text":"فاطمه\n محمد\n ذوالكفل \nصباح \nعزيزه\n  رضوان\n عبدالسميع\n  يوسف\n ذنون\n هناء\n وفاء\nعبدالهادي","x":-3724,"y":1004,"width":250,"height":324},
 		{"id":"c47950f053e57415","type":"text","text":"شيماء","x":-3036,"y":810,"width":98,"height":50,"color":"6"},
 		{"id":"b80f77cb3ac183c5","type":"text","text":"سدرة","x":-2918,"y":810,"width":84,"height":50,"color":"6"},
 		{"id":"53a8363f7d29c150","type":"text","text":"محمود","x":-2814,"y":810,"width":105,"height":50,"color":"6"},
 		{"id":"2cb5bda661eae381","type":"text","text":"1 عائشة","x":-2689,"y":810,"width":100,"height":50,"color":"6"},
-		{"id":"e00d55670ec695b2","x":-3252,"y":810,"width":83,"height":50,"color":"6","type":"text","text":"غنى"},
-		{"id":"6293ce5c58d91fb1","type":"text","text":"يسرى","x":-3149,"y":810,"width":93,"height":50,"color":"6"}
+		{"id":"e00d55670ec695b2","type":"text","text":"غنى","x":-3252,"y":810,"width":83,"height":50,"color":"6"},
+		{"id":"6293ce5c58d91fb1","type":"text","text":"يسرى","x":-3149,"y":810,"width":93,"height":50,"color":"6"},
+		{"id":"14ceead9deb1fca2","type":"text","text":"فاطمه\n محمد\n ذوالكفل \nصباح \nعزيزه\n  رضوان\n عبدالسميع\n  يوسف\n ذنون\n هناء\n وفاء\nعبدالهادي","x":-3808,"y":1076,"width":250,"height":324}
 	],
 	"edges":[
 		{"id":"f77b0a1acec05da3","fromNode":"3931d85717e95901","fromSide":"bottom","toNode":"cb42a2e2fe2b77cd","toSide":"top","color":"#ffffff"},

@@ -1,0 +1,10 @@
+{
+  "id": "manafikhi-linker",
+  "name": "Manafikhi Linker",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Links Family Tree Canvas nodes to person files using Node IDs.",
+  "author": "Antigravity",
+  "authorUrl": "https://google.com",
+  "isDesktopOnly": false
+}
