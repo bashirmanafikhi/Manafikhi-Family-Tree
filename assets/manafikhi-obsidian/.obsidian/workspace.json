@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "950906f5f1c2828c",
+        "id": "e6f72fff923c8e81",
         "type": "tabs",
         "children": [
           {
-            "id": "c1cd4f4718236a34",
+            "id": "22eabfe81c17098a",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -179,11 +179,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "c1cd4f4718236a34",
+  "active": "22eabfe81c17098a",
   "lastOpenFiles": [
+    "tree.canvas",
     "people/70e179fa85db6c66.md",
     "Untitled.base",
-    "tree.canvas",
     "people/675b66468b37f33e.md",
     "main.js",
     "plugins/manafikhi-linker/main.js",

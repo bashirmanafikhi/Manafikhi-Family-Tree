@@ -162,41 +162,53 @@ export default function TreeScreen() {
       <View key={nodeId} className="mb-1">
         <TouchableOpacity
           className="flex-row items-center p-3 rounded-lg mb-0.5"
-          style={{ backgroundColor: bgColor, marginRight: 10 }}
+          style={{ 
+            backgroundColor: bgColor, 
+            marginLeft: 10,
+            flexDirection: 'row'
+          }}
           onPress={() => hasChildren && toggleNode(nodeId)}
         >
-          {person && (
-            <TouchableOpacity
-              onPress={() => handleNodePress(nodeId)}
-              className="w-5 h-5 items-center justify-center ml-1.5"
+          <View className="flex-row items-center flex-1">
+            {person && (
+              <TouchableOpacity
+                onPress={() => handleNodePress(nodeId)}
+                className="w-8 h-8 items-center justify-center mr-2 bg-white/10 rounded-full"
+              >
+                <Ionicons name="eye" size={16} color="white" />
+              </TouchableOpacity>
+            )}
+            <Text
+              className="flex-1 text-sm font-bold text-white"
+              numberOfLines={1}
+              style={{ textAlign: 'left' }}
             >
-              <Ionicons name="eye" size={16} color="white" />
-            </TouchableOpacity>
-          )}
-          <Text
-            className="flex-1 text-sm font-bold text-white text-right"
-            numberOfLines={1}
-          >
-            {name}
-          </Text>
-          {hasChildren && (
-            <Text className="text-xs mr-1.5" style={{ color: 'rgba(255,255,255,0.8)' }}>
-              {children.length}
+              {name}
             </Text>
-          )}
-          {hasChildren && (
-            <View className="w-3.5 items-center">
-              <Text className="text-xs text-white">
-                {isExpanded ? '▼' : '◀'}
-              </Text>
-            </View>
-          )}
+          </View>
+
+          <View className="flex-row items-center min-w-[45px] justify-end">
+            {hasChildren && (
+              <>
+                <View className="bg-black/10 rounded-full px-2 py-0.5 mr-2">
+                  <Text className="text-[10px] font-bold text-white">
+                    {children.length}
+                  </Text>
+                </View>
+                <View className="w-3 items-center">
+                  <Text className="text-[10px] text-white/80">
+                    {isExpanded ? '▼' : '◀'}
+                  </Text>
+                </View>
+              </>
+            )}
+          </View>
         </TouchableOpacity>
 
         {isExpanded && hasChildren && (
           <View
-            className="border-r-2 pt-1"
-            style={{ borderColor: '#bc6798', marginRight: 10 }}
+            className="border-l-2 pt-1"
+            style={{ borderColor: '#bc6798', marginLeft: 10 }}
           >
             {children.map((childId, idx) => renderTreeNode(childId, level + 1, idx === children.length - 1, visibleNodes))}
           </View>
