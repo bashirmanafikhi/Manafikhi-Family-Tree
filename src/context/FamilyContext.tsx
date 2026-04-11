@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { CanvasData, Person, FamilyTree, TreeNode, CanvasNode } from '../types';
-import { loadCanvasData, buildNodeMap, getChildNodes, getParentNodes } from '../parsers/canvas';
+import { loadCanvasDataAsync, loadCanvasData, getCanvasData, buildNodeMap, getChildNodes, getParentNodes } from '../parsers/canvas';
 import { loadAllPersons } from '../parsers/markdown';
 
 interface FamilyContextType {
@@ -29,7 +29,7 @@ export function FamilyProvider({ children }: { children: ReactNode }) {
       setIsLoading(true);
       setError(null);
       
-      const canvas = loadCanvasData();
+      const canvas = await loadCanvasDataAsync();
       setCanvasData(canvas);
       
       const personsList = loadAllPersons();
