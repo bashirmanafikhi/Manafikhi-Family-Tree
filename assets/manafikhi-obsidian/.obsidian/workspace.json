@@ -4,24 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "aabb84ead2460bee",
+        "id": "58d3566632416014",
         "type": "tabs",
         "children": [
           {
-            "id": "72d4d4b5801856c6",
+            "id": "5ab92638dfb3ba99",
             "type": "leaf",
             "state": {
-              "type": "canvas",
-              "state": {
-                "file": "tree.canvas",
-                "viewState": {
-                  "x": 419.790477523229,
-                  "y": 2170.832417924429,
-                  "zoom": -1.6666666666666663
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "tree"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -81,8 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 297.5,
-    "collapsed": true
+    "width": 238.5
   },
   "right": {
     "id": "7cf912ae0c08bce7",
@@ -168,8 +160,21 @@
               "icon": "lucide-list",
               "title": "Outline of Welcome"
             }
+          },
+          {
+            "id": "43e4b93f095f248e",
+            "type": "leaf",
+            "state": {
+              "type": "file-properties",
+              "state": {
+                "file": "tree.canvas"
+              },
+              "icon": "lucide-info",
+              "title": "File properties for tree"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -187,9 +192,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "72d4d4b5801856c6",
+  "active": "ee1072fb6d23626a",
   "lastOpenFiles": [
     "tree.canvas",
+    "prompts/رسم شجرة مع الأفرع.md",
+    "dark1.jpg",
+    "prompts",
+    "prompts/رسم شجرة.md",
+    "light-background.jpg",
+    "dark-background.jpg",
+    "ai-generated-black-roses-on-a-black-background-photo.jpg",
+    "background.jpg",
+    "abstract-gradient-blue-light-background-free-vector.jpg",
     "people/776270934bddc40e.md",
     "people/70e179fa85db6c66.md",
     "Untitled.base",

@@ -220,14 +220,19 @@ export default function TreeScreen() {
   return (
     <View className="flex-1" style={{ backgroundColor: colors.background }}>
       <View className="p-3 border-b" style={{ backgroundColor: colors.surface, borderColor: colors.border }}>
-        <TextInput
-          className="p-2.5 rounded-lg text-base"
-          style={{ backgroundColor: colors.card, color: colors.text, textAlign: 'right' }}
-          placeholder="بحث..."
-          placeholderTextColor="#999"
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-        />
+        <View className="flex-row items-center justify-between mb-2">
+          <TextInput
+            className="flex-1 p-2.5 rounded-lg text-base"
+            style={{ backgroundColor: colors.card, color: colors.text, textAlign: 'right' }}
+            placeholder="بحث..."
+            placeholderTextColor="#999"
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+          />
+        </View>
+        <Text className="text-xs" style={{ color: colors.textSecondary }}>
+          {canvasData?.nodes.filter(n => n.type === 'text' || n.type === 'file').length || 0} أعضاء
+        </Text>
       </View>
 
       <ScrollView className="flex-1 p-4">
