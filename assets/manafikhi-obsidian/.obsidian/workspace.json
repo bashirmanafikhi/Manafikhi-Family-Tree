@@ -11,10 +11,17 @@
             "id": "5ab92638dfb3ba99",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
+              "type": "canvas",
+              "state": {
+                "file": "tree.canvas",
+                "viewState": {
+                  "x": -3745.6569373548227,
+                  "y": 3802.3999102383254,
+                  "zoom": -0.9110849191593915
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "tree"
             }
           }
         ]
@@ -192,7 +199,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "ee1072fb6d23626a",
+  "active": "5ab92638dfb3ba99",
   "lastOpenFiles": [
     "tree.canvas",
     "prompts/رسم شجرة مع الأفرع.md",
