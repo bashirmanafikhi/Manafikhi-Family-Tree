@@ -18,13 +18,17 @@
   "nodeStylingFeatureEnabled": true,
   "customNodeStyleAttributes": [],
   "defaultTextNodeColor": 0,
-  "defaultTextNodeStyleAttributes": {},
+  "defaultTextNodeStyleAttributes": {
+    "textAlign": "center"
+  },
   "edgesStylingFeatureEnabled": true,
   "customEdgeStyleAttributes": [],
   "inheritEdgeColorFromNode": false,
   "defaultEdgeColor": 0,
   "defaultEdgeLineDirection": "unidirectional",
-  "defaultEdgeStyleAttributes": {},
+  "defaultEdgeStyleAttributes": {
+    "pathfindingMethod": "square"
+  },
   "edgeStyleUpdateWhileDragging": false,
   "edgeStyleSquarePathRounded": true,
   "edgeStylePathfinderAllowDiagonal": false,

@@ -4,20 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "58d3566632416014",
+        "id": "5786cfca29335c50",
         "type": "tabs",
         "children": [
           {
-            "id": "5ab92638dfb3ba99",
+            "id": "8bd5703ce126c376",
             "type": "leaf",
             "state": {
               "type": "canvas",
               "state": {
                 "file": "tree.canvas",
                 "viewState": {
-                  "x": -3745.6569373548227,
-                  "y": 3802.3999102383254,
-                  "zoom": -0.9110849191593915
+                  "x": -335.0782615133162,
+                  "y": 752.8240518662974,
+                  "zoom": -1.9999999999999998
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -199,13 +199,16 @@
       "bases:Create new base": false
     }
   },
-  "active": "5ab92638dfb3ba99",
+  "active": "8bd5703ce126c376",
   "lastOpenFiles": [
+    "prompts/رسم شجرة.md",
     "tree.canvas",
+    "draft_canvas.canvas",
+    "Untitled.canvas",
+    "prompts/احصائات عدد الأفراد.md",
     "prompts/رسم شجرة مع الأفرع.md",
     "dark1.jpg",
     "prompts",
-    "prompts/رسم شجرة.md",
     "light-background.jpg",
     "dark-background.jpg",
     "ai-generated-black-roses-on-a-black-background-photo.jpg",
