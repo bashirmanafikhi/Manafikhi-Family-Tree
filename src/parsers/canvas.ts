@@ -8,7 +8,7 @@ export async function loadCanvasDataAsync(): Promise<CanvasData | null> {
   try {
     // Use require.context to dynamically find the .canvas file in the obsidian folder
     // The path is relative to this file: src/parsers/canvas.ts -> ../../assets/manafikhi-obsidian
-    const context = (require as any).context('../../assets/manafikhi-obsidian', false, /\.canvas$/);
+    const context = (require as any).context('../../assets/manafikhi-obsidian', false, /tree\.canvas$/);
     const canvasFile = context.keys()[0];
     if (!canvasFile) {
       throw new Error('No .canvas file found in assets/manafikhi-obsidian');

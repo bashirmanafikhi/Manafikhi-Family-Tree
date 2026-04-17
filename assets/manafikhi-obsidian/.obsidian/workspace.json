@@ -4,24 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "5786cfca29335c50",
+        "id": "b0f55e928edcc2a2",
         "type": "tabs",
         "children": [
           {
-            "id": "8bd5703ce126c376",
+            "id": "8f30ee03ba9d46ac",
             "type": "leaf",
             "state": {
-              "type": "canvas",
-              "state": {
-                "file": "tree.canvas",
-                "viewState": {
-                  "x": -335.0782615133162,
-                  "y": 752.8240518662974,
-                  "zoom": -1.9999999999999998
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "tree"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -199,10 +192,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "8bd5703ce126c376",
+  "active": "8f30ee03ba9d46ac",
   "lastOpenFiles": [
-    "prompts/رسم شجرة.md",
     "tree.canvas",
+    "prompts/رسم شجرة.md",
     "draft_canvas.canvas",
     "Untitled.canvas",
     "prompts/احصائات عدد الأفراد.md",
