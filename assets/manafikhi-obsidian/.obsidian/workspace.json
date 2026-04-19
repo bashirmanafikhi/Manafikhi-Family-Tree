@@ -4,17 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "b0f55e928edcc2a2",
+        "id": "6768a0f697ce130e",
         "type": "tabs",
         "children": [
           {
-            "id": "8f30ee03ba9d46ac",
+            "id": "122ec685c24a3578",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
+              "type": "canvas",
+              "state": {
+                "file": "tree.canvas",
+                "viewState": {
+                  "x": -5162.732790462381,
+                  "y": 5858.675950660534,
+                  "zoom": -0.9985183942248064
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "tree"
             }
           }
         ]
@@ -152,13 +159,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Welcome.md",
+                "file": "tree.canvas",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Welcome"
+              "title": "Outline of tree"
             }
           },
           {
@@ -167,19 +174,18 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "tree.canvas"
+                "file": "People_Base.base"
               },
               "icon": "lucide-info",
-              "title": "File properties for tree"
+              "title": "File properties for People_Base"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -192,14 +198,41 @@
       "bases:Create new base": false
     }
   },
-  "active": "8f30ee03ba9d46ac",
+  "active": "122ec685c24a3578",
   "lastOpenFiles": [
-    "tree.canvas",
-    "prompts/رسم شجرة.md",
     "draft_canvas.canvas",
+    "People_Base.base",
     "Untitled.canvas",
-    "prompts/احصائات عدد الأفراد.md",
-    "prompts/رسم شجرة مع الأفرع.md",
+    "people/0a180d76982ace1b.md",
+    "tree.canvas",
+    "people/120022ed6b8d32d8.md",
+    "people/19d0fe9089f07bc3.md",
+    "people/45f9790ae3c23a4b.md",
+    "people/d0f0e8a3455f8d7a.md",
+    "people/b2d00b6eaa301cf1.md",
+    "people/f73fe2f098df6310.md",
+    "people/47b5e46ec20e772d.md",
+    "people/5592fc125c0f0326.md",
+    "people/3b86bae259fa7adc.md",
+    "people/9b6fd302c63dd4a3.md",
+    "people/e2419f497478acd3.md",
+    "people/a61fff0223bee12a.md",
+    "people/00ff8e02ca3a812b.md",
+    "people/06529155d2e5d0b3.md",
+    "people/59a7c79b9651b845.md",
+    "people/15495ea54ab50885.md",
+    "people/10c15800b5b2de2e.md",
+    "people/feb6d4c2e242d784.md",
+    "people/575b293dbe340bbc.md",
+    "people/3b6a2890e9b830e5.md",
+    "people/58e3f46bce8eb7c4.md",
+    "people/0ef5deee661ad130.md",
+    "people/0d5928f0ca1638d6.md",
+    "people/0de92d154c5733fd.md",
+    "people",
+    "Untitled.base",
+    "people/images/2.jpeg",
+    "people/images",
     "dark1.jpg",
     "prompts",
     "light-background.jpg",
@@ -207,23 +240,11 @@
     "ai-generated-black-roses-on-a-black-background-photo.jpg",
     "background.jpg",
     "abstract-gradient-blue-light-background-free-vector.jpg",
-    "people/776270934bddc40e.md",
-    "people/70e179fa85db6c66.md",
-    "Untitled.base",
-    "people/675b66468b37f33e.md",
     "main.js",
     "plugins/manafikhi-linker/main.js",
     "plugins/manafikhi-linker",
     "plugins",
-    "people/mohammad-abdo/طارق.md",
-    "people/mohammad-abdo/محمود 1.md",
-    "people/mohammad-abdo/محمود.md",
-    "عبد الناصر.md",
     "people/mohammad-abdo",
-    "people",
-    "dsadsa.md",
-    "terare.md",
-    "Welcome.md",
     "شجرة عائلة المنافيخي 1.canvas",
     "شجرة عائلة المنافيخي.canvas"
   ]

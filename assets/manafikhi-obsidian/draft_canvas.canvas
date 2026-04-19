@@ -1,164 +1,12 @@
 {
 	"nodes":[
 		{
-			"id":"ea91761cd01de80e",
-			"type":"text",
-			"text":"بكري\n1840",
-			"styleAttributes":{"textAlign":"center"},
-			"x":471,
-			"y":-631,
-			"width":106,
-			"height":84,
-			"color":"1"
-		},
-		{
-			"id":"a21f2f747dbce5ab",
-			"type":"text",
-			"text":"محمد\n1855",
-			"styleAttributes":{"textAlign":"center"},
-			"x":183,
-			"y":-631,
-			"width":113,
-			"height":84,
-			"color":"1"
-		},
-		{
-			"id":"1aa0a3e533ecd36a",
-			"type":"text",
-			"text":"صبحي",
-			"styleAttributes":{"textAlign":"center"},
-			"x":470,
-			"y":-401,
-			"width":108,
-			"height":56,
-			"color":"3"
-		},
-		{
-			"id":"cf9144a397f892b7",
-			"type":"text",
-			"text":"محمود",
-			"styleAttributes":{"textAlign":"center"},
-			"x":470,
-			"y":-516,
-			"width":108,
-			"height":56,
-			"color":"2"
-		},
-		{
-			"id":"0be16f5c211c1644",
-			"type":"text",
-			"text":"محمود\n1880",
-			"styleAttributes":{"textAlign":"center"},
-			"x":179,
-			"y":-516,
-			"width":122,
-			"height":56,
-			"color":"2"
-		},
-		{
-			"id":"e633712caf39f9ea",
-			"type":"text",
-			"text":"محمد عبدو\n1911",
-			"styleAttributes":{"textAlign":"center"},
-			"x":179,
-			"y":-401,
-			"width":122,
-			"height":56,
-			"color":"3"
-		},
-		{
-			"id":"09b9a9d8699a6fb7",
-			"type":"text",
-			"text":"حسن\n1812",
-			"styleAttributes":{"textAlign":"center"},
-			"x":310,
-			"y":-793,
-			"width":139,
-			"height":110
-		},
-		{
-			"id":"e08711747080508c",
-			"type":"text",
-			"text":"الحاج محمود",
-			"styleAttributes":{"textAlign":"center"},
-			"x":260,
-			"y":-260,
-			"width":120,
-			"height":50,
-			"color":"4"
-		},
-		{
-			"id":"0bfd7de32aa39764",
-			"type":"text",
-			"text":"الحاج محمد",
-			"styleAttributes":{"textAlign":"center"},
-			"x":101,
-			"y":-260,
-			"width":120,
-			"height":50,
-			"color":"4"
-		},
-		{
-			"id":"2de33a3e90ca405c",
-			"type":"text",
-			"text":"موفق",
-			"styleAttributes":{"textAlign":"center"},
-			"x":470,
-			"y":-266,
-			"width":108,
-			"height":56,
-			"color":"4"
-		},
-		{
-			"id":"a6d8c853c9fb5d03",
-			"type":"text",
-			"text":"نجوى",
-			"styleAttributes":{"textAlign":"center"},
-			"x":260,
-			"y":-160,
-			"width":120,
-			"height":50,
-			"color":"5"
-		},
-		{
-			"id":"cac613d1b9a96bfd",
-			"type":"text",
-			"text":"بشير",
-			"styleAttributes":{"textAlign":"center"},
-			"x":180,
-			"y":-40,
-			"width":120,
-			"height":50,
-			"color":"6"
-		},
-		{
-			"id":"c8a9f62954f4c159",
-			"type":"text",
-			"text":"عبد الرحمن",
-			"styleAttributes":{"textAlign":"center"},
-			"x":101,
-			"y":-160,
-			"width":120,
-			"height":50,
-			"color":"5"
-		},
-		{
-			"id":"58e3f46bce8eb7c4",
-			"type":"text",
-			"text":"ميرة منافيخي",
-			"styleAttributes":{"textAlign":"center"},
-			"x":367,
-			"y":-888,
-			"width":136,
-			"height":50
-		},
-		{
 			"id":"0f235ce11eccb353",
 			"type":"text",
-			"text":"ميرة مطر",
+			"text":"ميره مطر",
 			"styleAttributes":{"textAlign":"center"},
-			"x":524,
-			"y":-888,
+			"x":500,
+			"y":-949,
 			"width":120,
 			"height":50
 		},
@@ -167,30 +15,42 @@
 			"type":"text",
 			"text":"ميرة تلجة",
 			"styleAttributes":{"textAlign":"center"},
-			"x":673,
-			"y":-888,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"4b7fe7f1281bda39",
-			"type":"text",
-			"text":"ميرة",
-			"styleAttributes":{"textAlign":"center"},
-			"x":858,
-			"y":-888,
+			"x":649,
+			"y":-949,
 			"width":120,
 			"height":50
 		},
 		{
 			"id":"105432792cfa43b0",
 			"type":"text",
-			"text":"ميرة",
+			"text":"ميره",
 			"styleAttributes":{"textAlign":"center"},
-			"x":613,
-			"y":-1085,
+			"x":805,
+			"y":-1131,
 			"width":120,
-			"height":60
+			"height":60,
+			"color":"1"
+		},
+		{
+			"id":"4b7fe7f1281bda39",
+			"type":"text",
+			"text":"ميره",
+			"styleAttributes":{"textAlign":"center"},
+			"x":805,
+			"y":-949,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"58e3f46bce8eb7c4",
+			"type":"text",
+			"text":"ميره منافيخي",
+			"styleAttributes":{"textAlign":"center"},
+			"file":"people/58e3f46bce8eb7c4.md",
+			"x":311,
+			"y":-949,
+			"width":136,
+			"height":50
 		}
 	],
 	"edges":[
@@ -228,99 +88,6 @@
 			"fromNode":"105432792cfa43b0",
 			"fromSide":"bottom",
 			"toNode":"58e3f46bce8eb7c4",
-			"toSide":"top"
-		},
-		{"id":"1d5ed7e377e8f325","fromNode":"09b9a9d8699a6fb7","fromSide":"bottom","toNode":"a21f2f747dbce5ab","toSide":"top","color":"#ffffff"},
-		{
-			"id":"2c520be1ca18ef25",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"ea91761cd01de80e",
-			"fromSide":"bottom",
-			"toNode":"cf9144a397f892b7",
-			"toSide":"top"
-		},
-		{"id":"8fe4c1bc8c32c96a","toFloating":false,"fromNode":"09b9a9d8699a6fb7","fromSide":"bottom","toNode":"ea91761cd01de80e","toSide":"top","color":"#ffffff"},
-		{
-			"id":"efa02e0a1cba3d3e",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"cf9144a397f892b7",
-			"fromSide":"bottom",
-			"toNode":"1aa0a3e533ecd36a",
-			"toSide":"top"
-		},
-		{
-			"id":"868cd961c7521fab",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"1aa0a3e533ecd36a",
-			"fromSide":"bottom",
-			"toNode":"2de33a3e90ca405c",
-			"toSide":"top"
-		},
-		{"id":"7e7853385773abaa","fromNode":"0be16f5c211c1644","fromSide":"bottom","toNode":"e633712caf39f9ea","toSide":"top","color":"#bc6798"},
-		{
-			"id":"c044c5bf68184e0b",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"a21f2f747dbce5ab",
-			"fromSide":"bottom",
-			"toNode":"0be16f5c211c1644",
-			"toSide":"top"
-		},
-		{
-			"id":"5d564a0ce2a97b1b",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"e633712caf39f9ea",
-			"fromSide":"bottom",
-			"toNode":"e08711747080508c",
-			"toSide":"top"
-		},
-		{
-			"id":"e61d01b5524dccaf",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"e633712caf39f9ea",
-			"fromSide":"bottom",
-			"toNode":"0bfd7de32aa39764",
-			"toSide":"top"
-		},
-		{
-			"id":"45a9ba15ab0789de",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"e08711747080508c",
-			"fromSide":"bottom",
-			"toNode":"a6d8c853c9fb5d03",
-			"toSide":"top"
-		},
-		{
-			"id":"336612dd0334b70c",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"0bfd7de32aa39764",
-			"fromSide":"bottom",
-			"toNode":"c8a9f62954f4c159",
-			"toSide":"top"
-		},
-		{
-			"id":"3b1d6f32d9a00aa3",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"a6d8c853c9fb5d03",
-			"fromSide":"bottom",
-			"toNode":"cac613d1b9a96bfd",
-			"toSide":"top"
-		},
-		{
-			"id":"40da4c5618e033fd",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"c8a9f62954f4c159",
-			"fromSide":"bottom",
-			"toNode":"cac613d1b9a96bfd",
 			"toSide":"top"
 		}
 	],

@@ -1,0 +1,20 @@
+filters:
+  and:
+    - file.inFolder("people")
+views:
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - first_name
+      - last_name
+      - gender
+      - birth_date
+      - death_date
+      - images
+      - profile_image
+    sort:
+      - property: images
+        direction: DESC
+      - property: name
+        direction: ASC

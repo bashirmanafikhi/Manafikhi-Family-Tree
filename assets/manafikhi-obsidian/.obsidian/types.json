@@ -3,6 +3,7 @@
     "aliases": "aliases",
     "cssclasses": "multitext",
     "tags": "tags",
-    "birth_date": "date"
+    "birth_date": "date",
+    "gender": "text"
   }
 }
