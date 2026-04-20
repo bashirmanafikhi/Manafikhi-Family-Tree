@@ -4,20 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "6768a0f697ce130e",
+        "id": "546966250a86011a",
         "type": "tabs",
         "children": [
           {
-            "id": "122ec685c24a3578",
+            "id": "bd4c0718670027a7",
             "type": "leaf",
             "state": {
               "type": "canvas",
               "state": {
                 "file": "tree.canvas",
                 "viewState": {
-                  "x": -5162.732790462381,
-                  "y": 5858.675950660534,
-                  "zoom": -0.9985183942248064
+                  "x": -3305.4327354233733,
+                  "y": 1318.504768342795,
+                  "zoom": -1.3733278198919248
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -174,18 +174,19 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "People_Base.base"
+                "file": "tree.canvas"
               },
               "icon": "lucide-info",
-              "title": "File properties for People_Base"
+              "title": "File properties for tree"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 333.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -198,13 +199,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "122ec685c24a3578",
+  "active": "bd4c0718670027a7",
   "lastOpenFiles": [
     "draft_canvas.canvas",
+    "tree.canvas",
     "People_Base.base",
     "Untitled.canvas",
+    "Untitled.base",
     "people/0a180d76982ace1b.md",
-    "tree.canvas",
     "people/120022ed6b8d32d8.md",
     "people/19d0fe9089f07bc3.md",
     "people/45f9790ae3c23a4b.md",
@@ -230,7 +232,6 @@
     "people/0d5928f0ca1638d6.md",
     "people/0de92d154c5733fd.md",
     "people",
-    "Untitled.base",
     "people/images/2.jpeg",
     "people/images",
     "dark1.jpg",
