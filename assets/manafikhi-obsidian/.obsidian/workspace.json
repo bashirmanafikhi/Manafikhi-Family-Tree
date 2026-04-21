@@ -4,27 +4,45 @@
     "type": "split",
     "children": [
       {
-        "id": "546966250a86011a",
+        "id": "642ee420601fe333",
         "type": "tabs",
         "children": [
           {
-            "id": "bd4c0718670027a7",
+            "id": "b5deaca7a5fe7054",
             "type": "leaf",
             "state": {
               "type": "canvas",
               "state": {
                 "file": "tree.canvas",
                 "viewState": {
-                  "x": -3305.4327354233733,
-                  "y": 1318.504768342795,
-                  "zoom": -1.3733278198919248
+                  "x": -6636.696877618392,
+                  "y": 3642.156685066709,
+                  "zoom": -1.0108677357484217
                 }
               },
               "icon": "lucide-layout-dashboard",
               "title": "tree"
             }
+          },
+          {
+            "id": "5a92d52f17864c3a",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "draft_canvas.canvas",
+                "viewState": {
+                  "x": 472.7846278640118,
+                  "y": 336.59148378867326,
+                  "zoom": -1.1703954053073098
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "draft_canvas"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -81,7 +99,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 238.5
+    "width": 219.5
   },
   "right": {
     "id": "7cf912ae0c08bce7",
@@ -159,13 +177,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tree.canvas",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of tree"
+              "title": "Outline"
             }
           },
           {
@@ -173,11 +190,9 @@
             "type": "leaf",
             "state": {
               "type": "file-properties",
-              "state": {
-                "file": "tree.canvas"
-              },
+              "state": {},
               "icon": "lucide-info",
-              "title": "File properties for tree"
+              "title": "File properties"
             }
           }
         ],
@@ -199,11 +214,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "bd4c0718670027a7",
+  "active": "5a92d52f17864c3a",
   "lastOpenFiles": [
-    "draft_canvas.canvas",
     "tree.canvas",
+    "draft_canvas.canvas",
     "People_Base.base",
+    "tree copy.json",
+    "tree copy.canvas",
+    "tree.html",
     "Untitled.canvas",
     "Untitled.base",
     "people/0a180d76982ace1b.md",
@@ -244,8 +262,6 @@
     "main.js",
     "plugins/manafikhi-linker/main.js",
     "plugins/manafikhi-linker",
-    "plugins",
-    "people/mohammad-abdo",
     "شجرة عائلة المنافيخي 1.canvas",
     "شجرة عائلة المنافيخي.canvas"
   ]

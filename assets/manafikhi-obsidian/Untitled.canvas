@@ -1,66 +1,6 @@
 {
 	"nodes":[
 		{
-			"id":"b2c0812292ca8b78",
-			"type":"text",
-			"text":"إيمان",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/7d3d4b1466221d36.md",
-			"x":320,
-			"y":-797,
-			"width":120,
-			"height":50,
-			"color":"2"
-		},
-		{
-			"id":"2d945237bd229d70",
-			"type":"text",
-			"text":"ابراهيم",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/bddc2f21dd66a24f.md",
-			"x":200,
-			"y":-667,
-			"width":120,
-			"height":50,
-			"color":"3"
-		},
-		{
-			"id":"fffb4b93fffca582",
-			"type":"text",
-			"text":"رفيف",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/77e4068c2ac394f9.md",
-			"x":200,
-			"y":-577,
-			"width":120,
-			"height":50,
-			"color":"3"
-		},
-		{
-			"id":"5eeaba274189be39",
-			"type":"text",
-			"text":"ايناس",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/a2ceda4ef1510576.md",
-			"x":80,
-			"y":-797,
-			"width":120,
-			"height":50,
-			"color":"2"
-		},
-		{
-			"id":"538f853d225c9b9e",
-			"type":"text",
-			"text":"أنس",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/05054b2bd1a9510e.md",
-			"x":-160,
-			"y":-797,
-			"width":120,
-			"height":50,
-			"color":"2"
-		},
-		{
 			"id":"18267dd8189514d9",
 			"type":"text",
 			"text":"رضوان",
@@ -133,78 +73,6 @@
 			"color":"2"
 		},
 		{
-			"id":"9d86663cb3aca685",
-			"type":"text",
-			"text":"أمينة",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/52008895ed9ac9d8.md",
-			"x":759,
-			"y":-797,
-			"width":120,
-			"height":50,
-			"color":"2"
-		},
-		{
-			"id":"1fa28501ce4c1ff8",
-			"type":"text",
-			"text":"رضوان",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/e0964a6bc87f3782.md",
-			"x":451,
-			"y":-667,
-			"width":120,
-			"height":50,
-			"color":"3"
-		},
-		{
-			"id":"70a7aeb4f2ab20f9",
-			"type":"text",
-			"text":"أنس",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/ad46cceff2433a66.md",
-			"x":451,
-			"y":-577,
-			"width":120,
-			"height":50,
-			"color":"3"
-		},
-		{
-			"id":"79d9a4521d4c1b64",
-			"type":"text",
-			"text":"أيهم",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/824ee1a8465a246e.md",
-			"x":451,
-			"y":-487,
-			"width":120,
-			"height":50,
-			"color":"3"
-		},
-		{
-			"id":"e49d983599ca95a9",
-			"type":"text",
-			"text":"محمود",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/b4fab95719ff699c.md",
-			"x":451,
-			"y":-397,
-			"width":120,
-			"height":50,
-			"color":"3"
-		},
-		{
-			"id":"167c830ebf07c8bc",
-			"type":"text",
-			"text":"أيمن",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/0de92d154c5733fd.md",
-			"x":571,
-			"y":-797,
-			"width":120,
-			"height":50,
-			"color":"2"
-		},
-		{
 			"id":"b5267ed1884f8d31",
 			"type":"text",
 			"text":"رضوان منافيخي",
@@ -228,63 +96,99 @@
 			"color":"1"
 		},
 		{
-			"id":"a67ca11ba5c7813d",
+			"id":"1fa28501ce4c1ff8",
 			"type":"text",
-			"text":"محمد شريف",
+			"text":"رضوان",
 			"styleAttributes":{"textAlign":"center"},
-			"file":"people/b257391c0be4521f.md",
-			"x":-40,
+			"file":"people/e0964a6bc87f3782.md",
+			"x":281,
 			"y":-667,
 			"width":120,
 			"height":50,
 			"color":"3"
 		},
 		{
-			"id":"23d27e874bf13802",
+			"id":"70a7aeb4f2ab20f9",
 			"type":"text",
 			"text":"أنس",
 			"styleAttributes":{"textAlign":"center"},
-			"file":"people/b257391c0be4521f.md",
-			"x":-40,
-			"y":-582,
+			"file":"people/ad46cceff2433a66.md",
+			"x":281,
+			"y":-577,
 			"width":120,
 			"height":50,
 			"color":"3"
 		},
 		{
-			"id":"006ce23494693c46",
+			"id":"79d9a4521d4c1b64",
 			"type":"text",
-			"text":"معتصم",
+			"text":"أيهم",
 			"styleAttributes":{"textAlign":"center"},
-			"file":"people/34062f7c736fbf4a.md",
-			"x":-40,
+			"file":"people/824ee1a8465a246e.md",
+			"x":281,
 			"y":-487,
 			"width":120,
 			"height":50,
 			"color":"3"
+		},
+		{
+			"id":"e49d983599ca95a9",
+			"type":"text",
+			"text":"محمود",
+			"styleAttributes":{"textAlign":"center"},
+			"file":"people/b4fab95719ff699c.md",
+			"x":281,
+			"y":-397,
+			"width":120,
+			"height":50,
+			"color":"3"
+		},
+		{
+			"id":"167c830ebf07c8bc",
+			"type":"text",
+			"text":"أيمن",
+			"styleAttributes":{"textAlign":"center"},
+			"file":"people/0de92d154c5733fd.md",
+			"x":401,
+			"y":-797,
+			"width":120,
+			"height":50,
+			"color":"2"
+		},
+		{
+			"id":"693035d01a0975ea",
+			"type":"text",
+			"text":"زوجة أيمن",
+			"styleAttributes":{"textAlign":"center"},
+			"x":221,
+			"y":-797,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"db0ca7b6411a62ce",
+			"type":"text",
+			"text":"زوج أمينة",
+			"styleAttributes":{"textAlign":"center"},
+			"x":546,
+			"y":-797,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"9d86663cb3aca685",
+			"type":"text",
+			"text":"أمينة",
+			"styleAttributes":{"textAlign":"center"},
+			"file":"people/52008895ed9ac9d8.md",
+			"x":699,
+			"y":-797,
+			"width":120,
+			"height":50,
+			"color":"2"
 		}
 	],
 	"edges":[
-		{
-			"id":"fde1650e14fb285e",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromFloating":false,
-			"fromNode":"5eeaba274189be39",
-			"fromSide":"bottom",
-			"toNode":"006ce23494693c46",
-			"toSide":"right"
-		},
-		{
-			"id":"d5c3081bd7f86ce3",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromFloating":false,
-			"fromNode":"5eeaba274189be39",
-			"fromSide":"bottom",
-			"toNode":"a67ca11ba5c7813d",
-			"toSide":"right"
-		},
 		{
 			"id":"eea1c0441deae373",
 			"styleAttributes":{"pathfindingMethod":"square"},
@@ -293,26 +197,6 @@
 			"fromNode":"167c830ebf07c8bc",
 			"fromSide":"bottom",
 			"toNode":"e49d983599ca95a9",
-			"toSide":"right"
-		},
-		{
-			"id":"c2fd0d543ecc89b5",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromFloating":false,
-			"fromNode":"b2c0812292ca8b78",
-			"fromSide":"bottom",
-			"toNode":"fffb4b93fffca582",
-			"toSide":"right"
-		},
-		{
-			"id":"2ba1a1e60ec771cf",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromFloating":false,
-			"fromNode":"b2c0812292ca8b78",
-			"fromSide":"bottom",
-			"toNode":"2d945237bd229d70",
 			"toSide":"right"
 		},
 		{
@@ -423,60 +307,6 @@
 			"toSide":"top"
 		},
 		{
-			"id":"a5ed965249ff7e4d",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"b5267ed1884f8d31",
-			"fromSide":"bottom",
-			"toNode":"b2c0812292ca8b78",
-			"toSide":"top"
-		},
-		{
-			"id":"530d76b7f145d60a",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"b5267ed1884f8d31",
-			"fromSide":"bottom",
-			"toNode":"5eeaba274189be39",
-			"toSide":"top"
-		},
-		{
-			"id":"cdf0826bf61241e3",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"b5267ed1884f8d31",
-			"fromSide":"bottom",
-			"toNode":"538f853d225c9b9e",
-			"toSide":"top"
-		},
-		{
-			"id":"8a2d613ab113c28d",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"5451d7fa404328f8",
-			"fromSide":"bottom",
-			"toNode":"b2c0812292ca8b78",
-			"toSide":"top"
-		},
-		{
-			"id":"dc9972d52f8e0e1c",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"5451d7fa404328f8",
-			"fromSide":"bottom",
-			"toNode":"5eeaba274189be39",
-			"toSide":"top"
-		},
-		{
-			"id":"c4004ceed733764d",
-			"styleAttributes":{"pathfindingMethod":"square"},
-			"toFloating":false,
-			"fromNode":"5451d7fa404328f8",
-			"fromSide":"bottom",
-			"toNode":"538f853d225c9b9e",
-			"toSide":"top"
-		},
-		{
 			"id":"72fdce81094fde10",
 			"styleAttributes":{"pathfindingMethod":"square"},
 			"toFloating":false,
@@ -514,12 +344,33 @@
 			"toEnd":"none"
 		},
 		{
-			"id":"e615fdb58cc3ecbf",
+			"id":"b148ff0721e661bb",
 			"styleAttributes":{"pathfindingMethod":"square"},
 			"toFloating":false,
-			"fromNode":"5eeaba274189be39",
-			"fromSide":"bottom",
-			"toNode":"23d27e874bf13802",
+			"fromFloating":false,
+			"fromNode":"693035d01a0975ea",
+			"fromSide":"right",
+			"toNode":"167c830ebf07c8bc",
+			"toSide":"left",
+			"toEnd":"none"
+		},
+		{
+			"id":"d7ce53e1049424e2",
+			"styleAttributes":{"pathfindingMethod":"square"},
+			"toFloating":false,
+			"fromNode":"9d86663cb3aca685",
+			"fromSide":"left",
+			"toNode":"db0ca7b6411a62ce",
+			"toSide":"right",
+			"toEnd":"none"
+		},
+		{
+			"id":"9eb094fcc2fcfc42",
+			"styleAttributes":{"pathfindingMethod":"square"},
+			"toFloating":false,
+			"fromNode":"a6818fae45a8a6b1",
+			"fromSide":"left",
+			"toNode":"8a036a2d99f3604c",
 			"toSide":"right"
 		}
 	],

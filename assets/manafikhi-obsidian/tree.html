@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شجرة العائلة - Manafikhi Family Tree</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea22 0%, #764ba222 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .search-box {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-box input {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      border-radius: 25px;
+      width: 100%;
+      max-width: 400px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .search-box input:focus {
+      border-color: #667eea;
+    }
+
+    .tree-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .tree-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .person-card {
+      background: white;
+      border-radius: 12px;
+      padding: 15px 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 120px;
+      text-align: center;
+      position: relative;
+    }
+
+    .person-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .person-card.color-0 { background: #777; color: white; }
+    .person-card.color-1 { background: #bc6798; color: white; }
+    .person-card.color-2 { background: #9969b0; color: white; }
+    .person-card.color-3 { background: #7c8cd6; color: white; }
+    .person-card.color-4 { background: #5b9; color: white; }
+    .person-card.color-5 { background: #c95; color: white; }
+    .person-card.color-6 { background: #e87925; color: white; }
+
+    .person-card .name {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .person-card .children-count {
+      font-size: 12px;
+      opacity: 0.8;
+      margin-top: 5px;
+    }
+
+    .spouse-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(255,255,255,0.3);
+    }
+
+    .children-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 2px dashed #ddd;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .connector {
+      width: 2px;
+      height: 20px;
+      background: #ccc;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .info-panel {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      max-width: 300px;
+      display: none;
+      z-index: 100;
+    }
+
+    .info-panel.show {
+      display: block;
+    }
+
+    .info-panel h3 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .info-panel p {
+      color: #666;
+      margin: 5px 0;
+    }
+
+    .info-panel .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #999;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #666;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>شجرة العائلة</h1>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="بحث..." oninput="handleSearch(this.value)">
+    </div>
+    <p id="memberCount" style="color:#666;margin-top:10px;"></p>
+  </div>
+
+  <div class="tree-container" id="treeContainer">
+    <div class="loading">جاري تحميل الشجرة...</div>
+  </div>
+
+  <div class="info-panel" id="infoPanel">
+    <button class="close-btn" onclick="closeInfo()">&times;</button>
+    <h3 id="infoName"></h3>
+    <p id="infoGender"></p>
+    <p id="infoBirth"></p>
+    <p id="infoDeath"></p>
+    <p id="infoOccupation"></p>
+    <p id="infoBio"></p>
+  </div>
+
+  <script>
+    const NODE_COLORS = {
+      '0': 'color-0',
+      '1': 'color-1',
+      '2': 'color-2',
+      '3': 'color-3',
+      '4': 'color-4',
+      '5': 'color-5',
+      '6': 'color-6'
+    };
+
+    let canvasData = null;
+    let nodeMap = new Map();
+    let edgeMap = new Map();
+    let spouseMap = new Map();
+    let spouseTargetMap = new Map();
+    let parentMap = new Map();
+
+    async function loadData() {
+      try {
+        const response = await fetch('tree.canvas');
+        if (!response.ok) throw new Error('Failed to load canvas');
+        canvasData = await response.json();
+
+        buildMaps();
+        renderTree();
+        
+        const textNodes = Array.from(nodeMap.values());
+        document.getElementById('memberCount').textContent = `${textNodes.length} عضو`;
+      } catch (e) {
+        console.error('Error loading data:', e);
+        document.getElementById('treeContainer').innerHTML = '<p style="text-align:center;color:red;">خطأ في تحميل البيانات</p>';
+      }
+    }
+
+    function buildMaps() {
+      const textNodes = canvasData.nodes.filter(n => n.type === 'text' || n.type === 'file');
+      textNodes.forEach(n => nodeMap.set(n.id, n));
+
+      canvasData.edges.forEach(e => {
+        if (e.toEnd !== 'none') {
+          const children = edgeMap.get(e.fromNode) || [];
+          children.push(e.toNode);
+          edgeMap.set(e.fromNode, children);
+          parentMap.set(e.toNode, e.fromNode);
+        } else {
+          const spouses = spouseMap.get(e.fromNode) || [];
+          spouses.push(e.toNode);
+          spouseMap.set(e.fromNode, spouses);
+          spouseTargetMap.set(e.toNode, e.fromNode);
+        }
+      });
+    }
+
+    function getNodeName(node) {
+      if (!node) return 'Unknown';
+      return node.type === 'file' 
+        ? (node.file?.split('/').pop()?.replace('.md', '') || 'Unknown')
+        : node.text.split('\n')[0];
+    }
+
+    function getRootNodes() {
+      const textNodes = Array.from(nodeMap.values());
+      const childIds = new Set(Array.from(edgeMap.values()).flat());
+      const spouseTargetIds = new Set(Array.from(spouseTargetMap.keys()));
+      return textNodes
+        .filter(n => !childIds.has(n.id) && !spouseTargetIds.has(n.id))
+        .map(n => n.id);
+    }
+
+    function renderTree() {
+      const container = document.getElementById('treeContainer');
+      container.innerHTML = '';
+
+      const roots = getRootNodes();
+      roots.forEach(rootId => {
+        const node = renderTreeNode(rootId);
+        container.appendChild(node);
+      });
+    }
+
+    function renderTreeNode(nodeId) {
+      const node = nodeMap.get(nodeId);
+      if (!node) return document.createElement('div');
+
+      const children = edgeMap.get(nodeId) || [];
+      const spouses = spouseMap.get(nodeId) || [];
+      const colorClass = NODE_COLORS[node.color || '0'];
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'tree-node';
+
+      const mainCard = document.createElement('div');
+      mainCard.className = `person-card ${colorClass}`;
+      mainCard.onclick = (e) => { e.stopPropagation(); showInfo(node); };
+      mainCard.innerHTML = `
+        <div class="name">${getNodeName(node)}</div>
+        ${children.length > 0 ? `<div class="children-count">${children.length} أبناء</div>` : ''}
+        ${children.length > 0 ? `<button class="toggle-btn" onclick="event.stopPropagation(); toggleChildren('${nodeId}')">▼</button>` : ''}
+      `;
+      wrapper.appendChild(mainCard);
+
+      if (spouses.length > 0) {
+        const spouseRow = document.createElement('div');
+        spouseRow.className = 'spouse-row';
+        spouses.forEach(spouseId => {
+          const spouseNode = nodeMap.get(spouseId);
+          if (spouseNode) {
+            const spouseCard = document.createElement('div');
+            spouseCard.className = `person-card ${NODE_COLORS[spouseNode.color || '0']}`;
+            spouseCard.onclick = (e) => { e.stopPropagation(); showInfo(spouseNode); };
+            spouseCard.innerHTML = `<div class="name">${getNodeName(spouseNode)}</div>`;
+            spouseRow.appendChild(spouseCard);
+          }
+        });
+        wrapper.appendChild(spouseRow);
+      }
+
+      if (children.length > 0) {
+        const connector = document.createElement('div');
+        connector.className = 'connector';
+        wrapper.appendChild(connector);
+
+        const childrenContainer = document.createElement('div');
+        childrenContainer.className = 'children-container hidden';
+        childrenContainer.id = `children-${nodeId}`;
+        children.forEach(childId => {
+          childrenContainer.appendChild(renderTreeNode(childId));
+        });
+        wrapper.appendChild(childrenContainer);
+      }
+
+      return wrapper;
+    }
+
+    function toggleChildren(nodeId) {
+      const childrenDiv = document.getElementById(`children-${nodeId}`);
+      if (childrenDiv) {
+        childrenDiv.classList.toggle('hidden');
+      }
+    }
+
+    function showInfo(node) {
+      const name = getNodeName(node);
+      
+      document.getElementById('infoName').textContent = name;
+      document.getElementById('infoGender').textContent = node.type === 'file' ? `ملف: ${node.file}` : '';
+      document.getElementById('infoBirth').textContent = `الموقع: x=${node.x}, y=${node.y}`;
+      document.getElementById('infoDeath').textContent = `الألوان: ${node.color || 'افتراضي'}`;
+      document.getElementById('infoOccupation').textContent = `width: ${node.width}, height: ${node.height}`;
+      document.getElementById('infoBio').textContent = `type: ${node.type}`;
+
+      document.getElementById('infoPanel').classList.add('show');
+    }
+
+    function closeInfo() {
+      document.getElementById('infoPanel').classList.remove('show');
+    }
+
+    function handleSearch(query) {
+      if (!query.trim()) {
+        renderTree();
+        return;
+      }
+
+      const q = query.toLowerCase();
+      const container = document.getElementById('treeContainer');
+      container.innerHTML = '';
+
+      const matchingNodes = [];
+      nodeMap.forEach((node, nodeId) => {
+        const name = getNodeName(node).toLowerCase();
+        if (name.includes(q)) {
+          matchingNodes.push({ nodeId, name });
+        }
+      });
+
+      matchingNodes.forEach(({ nodeId }) => {
+        let currentId = nodeId;
+        while (currentId) {
+          const parentId = parentMap.get(currentId);
+          if (parentId) {
+            if (!nodeMap.has(parentId)) break;
+            currentId = parentId;
+          } else {
+            break;
+          }
+        }
+
+        if (!container.querySelector(`[data-root-id="${currentId}"]`)) {
+          const nodeDiv = renderTreeNode(currentId);
+          nodeDiv.dataset.rootId = currentId;
+          
+          if (currentId !== nodeId) {
+            expandPath(nodeId);
+          }
+          container.appendChild(nodeDiv);
+        }
+      });
+
+      if (container.children.length === 0) {
+        container.innerHTML = '<p style="text-align:center;color:#666;">لا توجد نتائج</p>';
+      }
+    }
+
+    function expandPath(nodeId) {
+      let currentId = nodeId;
+      while (currentId) {
+        const childrenDiv = document.getElementById(`children-${currentId}`);
+        if (childrenDiv) {
+          childrenDiv.classList.remove('hidden');
+        }
+        const parentId = parentMap.get(currentId);
+        if (parentId) {
+          currentId = parentId;
+        } else {
+          break;
+        }
+      }
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

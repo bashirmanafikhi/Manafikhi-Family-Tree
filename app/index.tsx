@@ -35,9 +35,37 @@ export default function TreeScreen() {
     if (!canvasData) return new Map<string, string[]>();
     const map = new Map<string, string[]>();
     canvasData.edges.forEach(e => {
-      const children = map.get(e.fromNode) || [];
-      children.push(e.toNode);
-      map.set(e.fromNode, children);
+      if (e.toEnd !== 'none') {
+        const children = map.get(e.fromNode) || [];
+        children.push(e.toNode);
+        map.set(e.fromNode, children);
+      }
+    });
+    return map;
+  }, [canvasData]);
+
+  const spouseMap = useMemo(() => {
+    if (!canvasData) return new Map<string, string[]>();
+    const map = new Map<string, string[]>();
+    canvasData.edges.forEach(e => {
+      if (e.toEnd === 'none') {
+        const spouses = map.get(e.fromNode) || [];
+        if (!spouses.includes(e.toNode)) {
+          spouses.push(e.toNode);
+        }
+        map.set(e.fromNode, spouses);
+      }
+    });
+    return map;
+  }, [canvasData]);
+
+  const spouseTargetMap = useMemo(() => {
+    if (!canvasData) return new Map<string, string>();
+    const map = new Map<string, string>();
+    canvasData.edges.forEach(e => {
+      if (e.toEnd === 'none' && !map.has(e.toNode)) {
+        map.set(e.toNode, e.fromNode);
+      }
     });
     return map;
   }, [canvasData]);
@@ -45,7 +73,11 @@ export default function TreeScreen() {
   const parentMap = useMemo(() => {
     if (!canvasData) return new Map<string, string>();
     const map = new Map<string, string>();
-    canvasData.edges.forEach(e => map.set(e.toNode, e.fromNode));
+    canvasData.edges.forEach(e => {
+      if (e.toEnd !== 'none') {
+        map.set(e.toNode, e.fromNode);
+      }
+    });
     return map;
   }, [canvasData]);
 
@@ -83,22 +115,28 @@ export default function TreeScreen() {
         nodesToShow.add(parentId);
         parentId = parentMap.get(parentId);
       }
+      const spouses = spouseMap.get(id) || [];
+      spouses.forEach(s => nodesToShow.add(s));
+      const spouseParent = spouseTargetMap.get(id);
+      if (spouseParent) nodesToShow.add(spouseParent);
     });
 
     const rootIds = Array.from(nodesToShow).filter(id => {
       const parentId = parentMap.get(id);
-      return !parentId || !nodesToShow.has(parentId);
+      const spouseParentId = spouseTargetMap.get(id);
+      return (!parentId || !nodesToShow.has(parentId)) && (!spouseParentId || !nodesToShow.has(spouseParentId));
     });
 
     return { nodesToShow, rootIds };
-  }, [canvasData, searchQuery, parentMap]);
+  }, [canvasData, searchQuery, parentMap, spouseMap, spouseTargetMap]);
 
-  const rootNodeIds = canvasData
+const rootNodeIds = canvasData
     ? (() => {
-      const textNodes = canvasData.nodes.filter(n => n.type === 'text' || n.type === 'file');
-      const childIds = new Set(canvasData.edges.map(e => e.toNode));
-      return textNodes.filter(n => !childIds.has(n.id)).map(n => n.id);
-    })()
+        const textNodes = canvasData.nodes.filter(n => n.type === 'text' || n.type === 'file');
+        const childIds = new Set(canvasData.edges.filter(e => e.toEnd !== 'none').map(e => e.toNode));
+        const spouseTargetIds = new Set(canvasData.edges.filter(e => e.toEnd === 'none').map(e => e.toNode));
+        return textNodes.filter(n => !childIds.has(n.id) && !spouseTargetIds.has(n.id)).map(n => n.id);
+      })()
     : [];
 
   React.useEffect(() => {
@@ -150,13 +188,63 @@ export default function TreeScreen() {
     if (visibleNodes) {
       children = children.filter(c => visibleNodes.has(c));
     }
+    const spouses = spouseMap.get(nodeId) || [];
     const hasChildren = children.length > 0;
     const isExpanded = expanded.includes(nodeId);
     const bgColor = NODE_COLORS[node.color || '0'] || NODE_COLORS['0'];
     const person = getPersonForNode(nodeId);
-    const name = node.type === 'file' 
+    const rawName = node.type === 'file'
       ? (person?.name || node.file?.split('/').pop()?.replace('.md', '') || 'Unknown File')
       : node.text.split('\n')[0];
+    const name = rawName?.trim() ? rawName : '(بدون اسم)';
+
+    const renderSpouse = (spouseId: string): ReactNode => {
+      const spouseNode = nodeMap.get(spouseId);
+      if (!spouseNode) return null;
+      const spousePerson = getPersonForNode(spouseId);
+      const rawSpouseName = spouseNode.type === 'file'
+        ? (spousePerson?.name || spouseNode.file?.split('/').pop()?.replace('.md', '') || 'Unknown File')
+        : spouseNode.text.split('\n')[0];
+      const spouseName = rawSpouseName?.trim() ? rawSpouseName : '(بدون اسم)';
+      const spouseBgColor = NODE_COLORS[spouseNode.color || '0'] || NODE_COLORS['0'];
+      // If the spouse has no meaningful name, render a plain text (no node rectangle)
+      const isNameEmpty = spouseName === '(بدون اسم)';
+      if (isNameEmpty) {
+        return (
+          <View key={spouseId} style={{ marginRight: 8 }}>
+            <Text style={{ color: 'white', fontStyle: 'italic' }} numberOfLines={1}>
+              {spouseName}
+            </Text>
+          </View>
+        );
+      }
+
+      return (
+        <TouchableOpacity
+          key={spouseId}
+          className="flex-row items-center p-3 rounded-lg mb-0.5 mr-1"
+          style={{ backgroundColor: spouseBgColor, flexDirection: 'row' }}
+        >
+          <View className="flex-row items-center flex-1">
+            {spousePerson && (
+              <TouchableOpacity
+                onPress={() => handleNodePress(spouseId)}
+                className="w-8 h-8 items-center justify-center mr-2 bg-white/10 rounded-full"
+              >
+                <Ionicons name="eye" size={16} color="white" />
+              </TouchableOpacity>
+            )}
+            <Text
+              className="flex-1 text-sm font-bold text-white"
+              numberOfLines={1}
+              style={{ textAlign: 'left' }}
+            >
+              {spouseName}
+            </Text>
+          </View>
+        </TouchableOpacity>
+      );
+    };
 
     return (
       <View key={nodeId} className="mb-1">
@@ -204,6 +292,12 @@ export default function TreeScreen() {
             )}
           </View>
         </TouchableOpacity>
+
+        {spouses.length > 0 && (
+          <View className="flex-row mr-2">
+            {spouses.map(spouseId => renderSpouse(spouseId))}
+          </View>
+        )}
 
         {isExpanded && hasChildren && (
           <View

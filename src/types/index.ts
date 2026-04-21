@@ -17,6 +17,7 @@ export interface CanvasEdge {
   toNode: string;
   toSide: string;
   color?: string;
+  toEnd?: string;
 }
 
 export interface CanvasData {
