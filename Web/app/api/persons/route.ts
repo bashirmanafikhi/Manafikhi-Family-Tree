@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { z } from 'zod'
 
+export const dynamic = 'force-dynamic'
+
 const createPersonSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().optional(),

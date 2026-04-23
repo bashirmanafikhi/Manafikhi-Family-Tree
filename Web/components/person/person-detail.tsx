@@ -114,6 +114,7 @@ export function PersonDetail({ person }: PersonDetailProps) {
     
     setIsDeleting(true)
     await fetch(`/api/persons/${person.id}`, { method: 'DELETE' })
+    await router.refresh()
     router.push('/persons')
   }
 

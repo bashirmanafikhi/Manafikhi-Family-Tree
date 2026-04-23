@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { z } from 'zod'
+import { revalidatePath } from 'next/cache'
+
+export const dynamic = 'force-dynamic'
 
 const updatePersonSchema = z.object({
   firstName: z.string().min(1).optional(),
@@ -93,9 +96,38 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  await prisma.person.delete({
-    where: { id: params.id },
-  })
+  const personId = params.id
+
+  try {
+    await prisma.$transaction([
+      prisma.marriage.deleteMany({
+        where: {
+          OR: [{ person1Id: personId }, { person2Id: personId }],
+        },
+      }),
+      prisma.person.updateMany({
+        where: { fatherId: personId },
+        data: { fatherId: null },
+      }),
+      prisma.person.updateMany({
+        where: { motherId: personId },
+        data: { motherId: null },
+      }),
+      prisma.person.delete({
+        where: { id: personId },
+      }),
+    ])
+  } catch (error: any) {
+    if (error.code === 'P2025') {
+      return NextResponse.json({ success: true })
+    }
+    throw error
+  }
+
+  revalidatePath('/persons')
+  revalidatePath('/')
+  revalidatePath('/persons/new')
+  revalidatePath('/tree')
 
   return NextResponse.json({ success: true })
 }

@@ -2,6 +2,8 @@ import { prisma } from '@/lib/prisma'
 import { PersonDetail } from '@/components/person/person-detail'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
 async function getPerson(id: string) {
   return prisma.person.findUnique({
     where: { id },

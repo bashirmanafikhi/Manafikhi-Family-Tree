@@ -10567,18 +10567,6 @@
 			"color":"#ffffff"
 		},
 		{
-			"id":"fc19be26e2e468a8",
-			"type":"text",
-			"text":"عبد الرزاق عتال",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/d0f0e8a3455f8d7a.md",
-			"x":-7399,
-			"y":5546,
-			"width":155,
-			"height":50,
-			"color":"#ffffff"
-		},
-		{
 			"id":"126a6a2ba01e7850",
 			"type":"text",
 			"text":"حسان مزعل",
@@ -12577,6 +12565,18 @@
 			"width":120,
 			"height":50,
 			"color":"6"
+		},
+		{
+			"id":"fc19be26e2e468a8",
+			"type":"text",
+			"text":"عبد الرزاق عتال",
+			"styleAttributes":{"textAlign":"center"},
+			"file":"people/d0f0e8a3455f8d7a.md",
+			"x":-7401,
+			"y":5546,
+			"width":155,
+			"height":50,
+			"color":"#ffffff"
 		}
 	],
 	"edges":[

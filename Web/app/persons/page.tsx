@@ -4,6 +4,8 @@ import { prisma } from '@/lib/prisma'
 import { PersonTable } from '@/components/person/person-table'
 import { PersonFilters } from '@/components/person/person-filters'
 
+export const dynamic = 'force-dynamic'
+
 async function getPersons(search: string, gender?: string, isAlive?: boolean) {
   const where: any = {}
   
