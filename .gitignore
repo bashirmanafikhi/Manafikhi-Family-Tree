@@ -53,10 +53,6 @@ build/
 # Git
 .git/
 
-# Database
-dev.db
-*.db
-
 # Environment variables
 .env
 .env.local

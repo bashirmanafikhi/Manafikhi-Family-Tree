@@ -21,6 +21,7 @@ model Person {
   
   fatherId         String?
   motherId         String?
+  canvasId         String?
   father           Person?  @relation("FatherChild", fields: [fatherId], references: [id])
   mother           Person?  @relation("MotherChild", fields: [motherId], references: [id])
   childrenOfFather Person[] @relation("FatherChild")

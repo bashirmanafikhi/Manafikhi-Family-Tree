@@ -1,22 +1,21 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { CanvasData, Person, FamilyTree, TreeNode, CanvasNode } from '../types';
-import { loadCanvasDataAsync, loadCanvasData, getCanvasData, buildNodeMap, getChildNodes, getParentNodes } from '../parsers/canvas';
-import { loadAllPersonsAsync, loadAllPersons } from '../parsers/markdown';
+import { Person, PersonWithRelations } from '../types';
+import { getFamilyTree, getPersonById, getChildren, getParents, getSpouses } from '../services/database';
 
 interface FamilyContextType {
-  canvasData: CanvasData | null;
-  persons: Person[];
+  persons: PersonWithRelations[];
   isLoading: boolean;
   error: string | null;
-  getTreeForNode: (nodeId: string) => TreeNode | null;
-  getPersonForNode: (nodeId: string) => Person | null;
+  getPersonById: (id: string) => Promise<PersonWithRelations | null>;
+  getChildren: (personId: string) => Promise<Person[]>;
+  getParents: (personId: string) => Promise<{ father?: Person; mother?: Person }>;
+  getSpouses: (personId: string) => Promise<Person[]>;
 }
 
 const FamilyContext = createContext<FamilyContextType | undefined>(undefined);
 
 export function FamilyProvider({ children }: { children: ReactNode }) {
-  const [canvasData, setCanvasData] = useState<CanvasData | null>(null);
-  const [persons, setPersons] = useState<Person[]>([]);
+  const [persons, setPersons] = useState<PersonWithRelations[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -29,11 +28,8 @@ export function FamilyProvider({ children }: { children: ReactNode }) {
       setIsLoading(true);
       setError(null);
       
-      const canvas = await loadCanvasDataAsync();
-      setCanvasData(canvas);
-      
-      const personsList = await loadAllPersonsAsync();
-      setPersons(personsList);
+      const tree = await getFamilyTree();
+      setPersons(Array.from(tree.persons.values()));
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
     } finally {
@@ -41,69 +37,33 @@ export function FamilyProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  function getPersonForNode(nodeId: string): Person | null {
-    if (!canvasData) return null;
+  async function getPersonByIdHandler(id: string): Promise<PersonWithRelations | null> {
+    const person = await getPersonById(id);
+    if (!person) return null;
     
-    const node = canvasData.nodes.find(n => n.id === nodeId);
-    if (!node) return null;
-
-    // Priority 1: Direct linking via 'file' property (e.g. "people/51071acea696ccb3.md")
-    // This is the primary method used by the Obsidian plugin.
-    if (node.file) {
-      const personId = node.file
-        .replace(/^people\//, '') // Remove top level 'people/' folder
-        .replace(/\.md$/, '');    // Remove extension
-      
-      const person = persons.find(p => p.id === personId);
-      if (person) return person;
-    }
+    const [children, spouses, parents] = await Promise.all([
+      getChildren(id),
+      getSpouses(id),
+      getParents(id),
+    ]);
     
-    // Priority 2: Direct ID match (Fallover for nodes where 'file' prop isn't set yet)
-    // If a person file exists named after the Node ID, use it.
-    const personById = persons.find(p => p.id === node.id);
-    if (personById) return personById;
-    
-    return null;
-  }
-
-  function getTreeForNode(nodeId: string): TreeNode | null {
-    if (!canvasData) return null;
-    
-    const node = canvasData.nodes.find(n => n.id === nodeId);
-    if (!node) return null;
-    
-    const person = getPersonForNode(nodeId);
-    const children = getChildNodes(canvasData.edges, nodeId);
-    const parents = getParentNodes(canvasData.edges, nodeId);
-    
-    // For file nodes, use the person's name if available
-    const displayName = node.type === 'file' 
-      ? (person?.name || node.file?.split('/').pop()?.replace('.md', '') || 'Unknown File')
-      : node.text?.replace(/\n.*/g, '') || 'Unknown';
-
     return {
-      id: node.id,
-      personId: person?.id,
-      name: displayName,
-      x: node.x,
-      y: node.y,
-      width: node.width,
-      height: node.height,
-      color: node.color,
-      children: [],
-      parents: parents,
-      isTextNode: node.type === 'text' || node.type === 'file', // Treat both as renderable nodes
+      ...person,
+      ...parents,
+      children,
+      spouses,
     };
   }
 
   return (
     <FamilyContext.Provider value={{
-      canvasData,
       persons,
       isLoading,
       error,
-      getTreeForNode,
-      getPersonForNode,
+      getPersonById: getPersonByIdHandler,
+      getChildren,
+      getParents,
+      getSpouses,
     }}>
       {children}
     </FamilyContext.Provider>

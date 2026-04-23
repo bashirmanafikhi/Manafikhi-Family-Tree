@@ -1,166 +1,103 @@
 import React, { useState, useMemo, ReactNode } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, ActivityIndicator, TextInput } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
 import { useFamily } from '../src/context/FamilyContext';
 import { useTheme } from '../src/context/ThemeContext';
-import { CanvasNode } from '../src/types';
-
-const NODE_COLORS: Record<string, string> = {
-  '0': '#777',
-  '1': '#bc6798',
-  '2': '#9969b0',
-  '3': '#7c8cd6',
-  '4': '#5b9',
-  '5': '#c95',
-  '6': '#e87925'
-};
+import { Person, GENDER_COLORS } from '../src/types';
 
 export default function TreeScreen() {
-  const { canvasData, persons, isLoading, getPersonForNode } = useFamily();
+  const { persons, isLoading, error } = useFamily();
   const { colors } = useTheme();
   const router = useRouter();
   const [expanded, setExpanded] = useState<string[]>([]);
-  const [selectedNode, setSelectedNode] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const nodeMap = useMemo(() => {
-    if (!canvasData) return new Map<string, CanvasNode>();
-    const map = new Map<string, CanvasNode>();
-    canvasData.nodes.filter(n => n.type === 'text' || n.type === 'file').forEach(n => map.set(n.id, n));
-    return map;
-  }, [canvasData]);
-
-  const edgeMap = useMemo(() => {
-    if (!canvasData) return new Map<string, string[]>();
-    const map = new Map<string, string[]>();
-    canvasData.edges.forEach(e => {
-      if (e.toEnd !== 'none') {
-        const children = map.get(e.fromNode) || [];
-        children.push(e.toNode);
-        map.set(e.fromNode, children);
-      }
+  const childrenMap = useMemo(() => {
+    const map = new Map<string, Person[]>();
+    persons.forEach(p => {
+      map.set(p.id, p.children || []);
     });
     return map;
-  }, [canvasData]);
+  }, [persons]);
 
   const spouseMap = useMemo(() => {
-    if (!canvasData) return new Map<string, string[]>();
-    const map = new Map<string, string[]>();
-    canvasData.edges.forEach(e => {
-      if (e.toEnd === 'none') {
-        const spouses = map.get(e.fromNode) || [];
-        if (!spouses.includes(e.toNode)) {
-          spouses.push(e.toNode);
-        }
-        map.set(e.fromNode, spouses);
-      }
+    const map = new Map<string, Person[]>();
+    persons.forEach(p => {
+      map.set(p.id, p.spouses || []);
     });
     return map;
-  }, [canvasData]);
-
-  const spouseTargetMap = useMemo(() => {
-    if (!canvasData) return new Map<string, string>();
-    const map = new Map<string, string>();
-    canvasData.edges.forEach(e => {
-      if (e.toEnd === 'none' && !map.has(e.toNode)) {
-        map.set(e.toNode, e.fromNode);
-      }
-    });
-    return map;
-  }, [canvasData]);
+  }, [persons]);
 
   const parentMap = useMemo(() => {
-    if (!canvasData) return new Map<string, string>();
-    const map = new Map<string, string>();
-    canvasData.edges.forEach(e => {
-      if (e.toEnd !== 'none') {
-        map.set(e.toNode, e.fromNode);
-      }
+    const map = new Map<string, { fatherId?: string; motherId?: string }>();
+    persons.forEach(p => {
+      map.set(p.id, { fatherId: p.fatherId, motherId: p.motherId });
     });
     return map;
-  }, [canvasData]);
+  }, [persons]);
 
-  const findAncestors = (nodeId: string): string[] => {
+  const findAncestors = (personId: string): string[] => {
     const ancestors: string[] = [];
-    let current = parentMap.get(nodeId);
-    while (current) {
-      ancestors.push(current);
-      current = parentMap.get(current);
+    let current = parentMap.get(personId);
+    while (current?.fatherId || current?.motherId) {
+      if (current.fatherId) ancestors.push(current.fatherId);
+      if (current.motherId) ancestors.push(current.motherId);
+      current = parentMap.get(current.fatherId || current.motherId!);
     }
     return ancestors;
   };
 
   const searchResults = useMemo(() => {
-    if (!canvasData || !searchQuery.trim()) return { nodesToShow: new Set<string>(), rootIds: [] as string[] };
-    const query = searchQuery.toLowerCase();
-    const textNodes = canvasData.nodes.filter(n => n.type === 'text' || n.type === 'file');
-    const allTextNodeIds = new Set(textNodes.map(n => n.id));
+    if (!searchQuery.trim()) return { personsToShow: new Set<string>(), rootIds: [] as string[] };
+    const query = searchQuery.trim().toLowerCase();
+    
+    const matchingIds = new Set<string>();
+    const personsToShow = new Set<string>();
 
-    const matchingNodeIds = new Set<string>();
-    const nodesToShow = new Set<string>();
-
-    textNodes.forEach(n => {
-      const person = getPersonForNode(n.id);
-      const name = n.type === 'file' ? (person?.name || n.file || '') : n.text;
-      if (name.toLowerCase().includes(query)) {
-        matchingNodeIds.add(n.id);
+    persons.forEach(p => {
+      const fullName = `${p.firstName} ${p.lastName || ''}`.trim().toLowerCase();
+      if (fullName.includes(query)) {
+        matchingIds.add(p.id);
       }
     });
 
-    matchingNodeIds.forEach(id => {
-      nodesToShow.add(id);
-      let parentId = parentMap.get(id);
-      while (parentId) {
-        nodesToShow.add(parentId);
-        parentId = parentMap.get(parentId);
-      }
+    matchingIds.forEach(id => {
+      personsToShow.add(id);
+      findAncestors(id).forEach(a => personsToShow.add(a));
       const spouses = spouseMap.get(id) || [];
-      spouses.forEach(s => nodesToShow.add(s));
-      const spouseParent = spouseTargetMap.get(id);
-      if (spouseParent) nodesToShow.add(spouseParent);
+      spouses.forEach(s => personsToShow.add(s.id));
     });
 
-    const rootIds = Array.from(nodesToShow).filter(id => {
-      const parentId = parentMap.get(id);
-      const spouseParentId = spouseTargetMap.get(id);
-      return (!parentId || !nodesToShow.has(parentId)) && (!spouseParentId || !nodesToShow.has(spouseParentId));
+    const rootIds = Array.from(personsToShow).filter(id => {
+      const parent = parentMap.get(id);
+      return (!parent?.fatherId && !parent?.motherId) || !personsToShow.has(parent.fatherId || '') || !personsToShow.has(parent.motherId || '');
     });
 
-    return { nodesToShow, rootIds };
-  }, [canvasData, searchQuery, parentMap, spouseMap, spouseTargetMap]);
+    return { personsToShow, rootIds };
+  }, [persons, searchQuery, parentMap, spouseMap]);
 
-const rootNodeIds = canvasData
-    ? (() => {
-        const textNodes = canvasData.nodes.filter(n => n.type === 'text' || n.type === 'file');
-        const childIds = new Set(canvasData.edges.filter(e => e.toEnd !== 'none').map(e => e.toNode));
-        const spouseTargetIds = new Set(canvasData.edges.filter(e => e.toEnd === 'none').map(e => e.toNode));
-        return textNodes.filter(n => !childIds.has(n.id) && !spouseTargetIds.has(n.id)).map(n => n.id);
-      })()
-    : [];
+  const rootNodeIds = useMemo(() => {
+    return persons
+      .filter(p => !p.fatherId && !p.motherId)
+      .map(p => p.id);
+  }, [persons]);
 
   React.useEffect(() => {
-    if (searchQuery.trim() && searchResults.nodesToShow.size > 0) {
-      setExpanded(Array.from(searchResults.nodesToShow));
+    if (searchQuery.trim() && searchResults.personsToShow.size > 0) {
+      setExpanded(Array.from(searchResults.personsToShow));
     }
   }, [searchQuery, searchResults]);
 
-  const filteredRootNodeIds = searchQuery.trim() ? searchResults.rootIds : rootNodeIds;
+  const filteredRootIds = searchQuery.trim() ? searchResults.rootIds : rootNodeIds;
 
-  const toggleNode = (nodeId: string) => {
+  const togglePerson = (personId: string) => {
     setExpanded(prev =>
-      prev.includes(nodeId) ? prev.filter(id => id !== nodeId) : [...prev, nodeId]
+      prev.includes(personId) ? prev.filter(id => id !== personId) : [...prev, personId]
     );
   };
 
-  const handleNodePress = (nodeId: string) => {
-    setSelectedNode(nodeId);
-    const person = getPersonForNode(nodeId);
-    if (person) router.push(`/person/${encodeURIComponent(person.id)}`);
-  };
-
-  const handleSettingsPress = () => {
-    router.push('/settings');
+  const handlePersonPress = (personId: string) => {
+    router.push(`/person/${encodeURIComponent(personId)}`);
   };
 
   if (isLoading) {
@@ -172,82 +109,52 @@ const rootNodeIds = canvasData
     );
   }
 
-  if (!canvasData) {
+  if (error) {
     return (
       <View className="flex-1 justify-center items-center p-5" style={{ backgroundColor: colors.background }}>
-        <Text className="text-lg text-center" style={{ color: '#c00' }}>لم يتم تحميل الشجرة العائلية</Text>
+        <Text className="text-lg text-center" style={{ color: '#c00' }}>{error}</Text>
       </View>
     );
   }
 
-  const renderTreeNode = (nodeId: string, level: number, _isLast: boolean, visibleNodes?: Set<string>): ReactNode => {
-    const node = nodeMap.get(nodeId);
-    if (!node) return null;
+  const renderPerson = (personId: string, level: number, visiblePersons?: Set<string>): ReactNode => {
+    const person = persons.find(p => p.id === personId);
+    if (!person) return null;
 
-    let children = edgeMap.get(nodeId) || [];
-    if (visibleNodes) {
-      children = children.filter(c => visibleNodes.has(c));
+    let children: Person[] = childrenMap.get(personId) || [];
+    if (visiblePersons) {
+      children = children.filter(c => visiblePersons.has(c.id));
     }
-    const spouses = spouseMap.get(nodeId) || [];
+    const spouses = spouseMap.get(personId) || [];
     const hasChildren = children.length > 0;
-    const isExpanded = expanded.includes(nodeId);
-    const bgColor = NODE_COLORS[node.color || '0'] || NODE_COLORS['0'];
-    const person = getPersonForNode(nodeId);
-    const rawName = node.type === 'file'
-      ? (person?.name || node.file?.split('/').pop()?.replace('.md', '') || 'Unknown File')
-      : node.text.split('\n')[0];
-    const name = rawName?.trim() ? rawName : '(بدون اسم)';
+    const isExpanded = expanded.includes(personId);
+    const bgColor = GENDER_COLORS[person.gender] || GENDER_COLORS.MALE;
+    const fullName = `${person.firstName} ${person.lastName || ''}`.trim() || '(بدون اسم)';
 
-    const renderSpouse = (spouseId: string): ReactNode => {
-      const spouseNode = nodeMap.get(spouseId);
-      if (!spouseNode) return null;
-      const spousePerson = getPersonForNode(spouseId);
-      const rawSpouseName = spouseNode.type === 'file'
-        ? (spousePerson?.name || spouseNode.file?.split('/').pop()?.replace('.md', '') || 'Unknown File')
-        : spouseNode.text.split('\n')[0];
-      const spouseName = rawSpouseName?.trim() ? rawSpouseName : '(بدون اسم)';
-      const spouseBgColor = NODE_COLORS[spouseNode.color || '0'] || NODE_COLORS['0'];
-      // If the spouse has no meaningful name, render a plain text (no node rectangle)
-      const isNameEmpty = spouseName === '(بدون اسم)';
-      if (isNameEmpty) {
-        return (
-          <View key={spouseId} style={{ marginRight: 8 }}>
-            <Text style={{ color: 'white', fontStyle: 'italic' }} numberOfLines={1}>
-              {spouseName}
-            </Text>
-          </View>
-        );
-      }
-
+    const renderSpouse = (spouse: Person): ReactNode => {
+      const spouseName = `${spouse.firstName} ${spouse.lastName || ''}`.trim();
+      const spouseBgColor = GENDER_COLORS[spouse.gender] || GENDER_COLORS.FEMALE;
+      
       return (
         <TouchableOpacity
-          key={spouseId}
+          key={spouse.id}
           className="flex-row items-center p-3 rounded-lg mb-0.5 mr-1"
           style={{ backgroundColor: spouseBgColor, flexDirection: 'row' }}
+          onPress={() => handlePersonPress(spouse.id)}
         >
-          <View className="flex-row items-center flex-1">
-            {spousePerson && (
-              <TouchableOpacity
-                onPress={() => handleNodePress(spouseId)}
-                className="w-8 h-8 items-center justify-center mr-2 bg-white/10 rounded-full"
-              >
-                <Ionicons name="eye" size={16} color="white" />
-              </TouchableOpacity>
-            )}
-            <Text
-              className="flex-1 text-sm font-bold text-white"
-              numberOfLines={1}
-              style={{ textAlign: 'left' }}
-            >
-              {spouseName}
-            </Text>
-          </View>
+          <Text
+            className="flex-1 text-sm font-bold text-white"
+            numberOfLines={1}
+            style={{ textAlign: 'left' }}
+          >
+            {spouseName}
+          </Text>
         </TouchableOpacity>
       );
     };
 
     return (
-      <View key={nodeId} className="mb-1">
+      <View key={personId} className="mb-1">
         <TouchableOpacity
           className="flex-row items-center p-3 rounded-lg mb-0.5"
           style={{ 
@@ -255,25 +162,20 @@ const rootNodeIds = canvasData
             marginLeft: 10,
             flexDirection: 'row'
           }}
-          onPress={() => hasChildren && toggleNode(nodeId)}
+          onPress={() => hasChildren && togglePerson(personId)}
         >
-          <View className="flex-row items-center flex-1">
-            {person && (
-              <TouchableOpacity
-                onPress={() => handleNodePress(nodeId)}
-                className="w-8 h-8 items-center justify-center mr-2 bg-white/10 rounded-full"
-              >
-                <Ionicons name="eye" size={16} color="white" />
-              </TouchableOpacity>
-            )}
+          <TouchableOpacity
+            onPress={() => handlePersonPress(personId)}
+            className="flex-row items-center flex-1"
+          >
             <Text
               className="flex-1 text-sm font-bold text-white"
               numberOfLines={1}
               style={{ textAlign: 'left' }}
             >
-              {name}
+              {fullName}
             </Text>
-          </View>
+          </TouchableOpacity>
 
           <View className="flex-row items-center min-w-[45px] justify-end">
             {hasChildren && (
@@ -295,7 +197,7 @@ const rootNodeIds = canvasData
 
         {spouses.length > 0 && (
           <View className="flex-row mr-2">
-            {spouses.map(spouseId => renderSpouse(spouseId))}
+            {spouses.map(spouse => renderSpouse(spouse))}
           </View>
         )}
 
@@ -304,7 +206,7 @@ const rootNodeIds = canvasData
             className="border-l-2 pt-1"
             style={{ borderColor: '#bc6798', marginLeft: 10 }}
           >
-            {children.map((childId, idx) => renderTreeNode(childId, level + 1, idx === children.length - 1, visibleNodes))}
+            {children.map((child) => renderPerson(child.id, level + 1, visiblePersons))}
           </View>
         )}
       </View>
@@ -325,20 +227,19 @@ const rootNodeIds = canvasData
           />
         </View>
         <Text className="text-xs" style={{ color: colors.textSecondary }}>
-          {canvasData?.nodes.filter(n => n.type === 'text' || n.type === 'file').length || 0} أعضاء
+          {persons.length} أعضاء
         </Text>
       </View>
 
       <ScrollView className="flex-1 p-4">
         <View className="p-4">
-          {filteredRootNodeIds.map(rootId => renderTreeNode(rootId, 0, true, searchQuery.trim() ? searchResults.nodesToShow : undefined))}
+          {filteredRootIds.map(rootId => renderPerson(rootId, 0, searchQuery.trim() ? searchResults.personsToShow : undefined))}
         </View>
       </ScrollView>
 
       <View className="p-3 pb-12 border-t" style={{ backgroundColor: colors.surface, borderColor: colors.border }}>
         <TouchableOpacity onPress={() => router.push('/settings')} className="flex-row justify-center items-center py-2">
-          <Ionicons name="settings" size={18} color={colors.textSecondary} />
-          <Text className="text-sm mr-2" style={{ color: colors.textSecondary }}>الإعدادات</Text>
+          <Text style={{ color: colors.textSecondary, fontSize: 14 }}>الإعدادات</Text>
         </TouchableOpacity>
       </View>
     </View>

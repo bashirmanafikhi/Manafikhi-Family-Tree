@@ -4,24 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "642ee420601fe333",
+        "id": "f87d90b502ea09fd",
         "type": "tabs",
         "children": [
           {
-            "id": "5a92d52f17864c3a",
+            "id": "8e8206277ec259ea",
             "type": "leaf",
             "state": {
-              "type": "canvas",
-              "state": {
-                "file": "tree.canvas",
-                "viewState": {
-                  "x": -7127.673283661677,
-                  "y": 5652.451138507432,
-                  "zoom": 0.32246559758491106
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "tree"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -196,12 +189,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "5a92d52f17864c3a",
+  "active": "8e8206277ec259ea",
   "lastOpenFiles": [
+    "tree.canvas",
     "Untitled.canvas",
     "draft_canvas.canvas",
     "Untitled.md",
-    "tree.canvas",
     "People_Base.base",
     "prompts/رسم شجرة.md",
     "tree copy.json",

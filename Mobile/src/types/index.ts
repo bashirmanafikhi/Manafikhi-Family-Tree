@@ -1,71 +1,33 @@
-export interface CanvasNode {
-  id: string;
-  type: string;
-  text: string;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  color?: string;
-  file?: string;
-}
-
-export interface CanvasEdge {
-  id: string;
-  fromNode: string;
-  fromSide: string;
-  toNode: string;
-  toSide: string;
-  color?: string;
-  toEnd?: string;
-}
-
-export interface CanvasData {
-  nodes: CanvasNode[];
-  edges: CanvasEdge[];
-}
-
-export interface PersonMeta {
-  name?: string;
-  birth_date?: string;
-  death_date?: string;
-  gender?: 'male' | 'female';
-  images?: string[];
-  occupation?: string;
-  nickname?: string;
-  [key: string]: string | string[] | undefined;
-}
-
 export interface Person {
   id: string;
-  folderName: string;
-  fileName: string;
-  name: string;
+  firstName: string;
+  lastName?: string;
+  gender: 'MALE' | 'FEMALE';
   birthDate?: string;
   deathDate?: string;
-  gender?: 'male' | 'female';
-  images?: string[];
-  occupation?: string;
-  nickname?: string;
-  bio: string;
-  rawMeta: PersonMeta;
+  isAlive: boolean;
+  profileImage?: string;
+  additionalImages?: string[];
+  bio?: string;
+  fatherId?: string;
+  motherId?: string;
+  createdAt: number;
+  updatedAt: number;
 }
 
-export interface TreeNode {
-  id: string;
-  personId?: string;
-  name: string;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  color?: string;
-  children: TreeNode[];
-  parents: string[];
-  isTextNode: boolean;
+export interface PersonWithRelations extends Person {
+  father?: Person;
+  mother?: Person;
+  children: Person[];
+  spouses: Person[];
 }
 
 export interface FamilyTree {
-  nodes: Map<string, TreeNode>;
-  persons: Map<string, Person>;
+  persons: Map<string, PersonWithRelations>;
+  rootIds: string[];
 }
+
+export const GENDER_COLORS: Record<string, string> = {
+  MALE: '#5b9',
+  FEMALE: '#bc6798',
+};

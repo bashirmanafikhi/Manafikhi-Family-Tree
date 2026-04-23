@@ -3,6 +3,6 @@ const { withNativeWind } = require('nativewind/metro');
 
 const config = getDefaultConfig(__dirname);
 
-config.resolver.assetExts.push('md', 'canvas');
+config.resolver.assetExts.push('md', 'canvas', 'db');
 
 module.exports = withNativeWind(config, { input: './global.css' });
