@@ -64,8 +64,16 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const body = await request.json()
-  const data = createPersonSchema.parse(body)
+  try {
+    const body = await request.json()
+    
+    // Clean data: convert empty strings to undefined
+    const cleanBody: any = {}
+    for (const [key, value] of Object.entries(body)) {
+      cleanBody[key] = value === '' ? undefined : value
+    }
+
+    const data = createPersonSchema.parse(cleanBody)
 
   const person = await prisma.person.create({
     data: {
@@ -79,5 +87,12 @@ export async function POST(request: NextRequest) {
     },
   })
 
-  return NextResponse.json(person, { status: 201 })
+    return NextResponse.json(person, { status: 201 })
+  } catch (error) {
+    console.error('Error creating person:', error)
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ error: 'Validation error', details: error.errors }, { status: 400 })
+    }
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  }
 }

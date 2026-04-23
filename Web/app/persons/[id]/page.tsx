@@ -18,12 +18,12 @@ async function getPerson(id: string) {
       },
       marriagesAsPerson1: {
         include: {
-          person2: { select: { id: true, firstName: true, lastName: true } },
+          person2: { select: { id: true, firstName: true, lastName: true, gender: true } },
         },
       },
       marriagesAsPerson2: {
         include: {
-          person1: { select: { id: true, firstName: true, lastName: true } },
+          person1: { select: { id: true, firstName: true, lastName: true, gender: true } },
         },
       },
     },

@@ -48,9 +48,9 @@ export function MarriageForm({ currentPersonId, currentPersonGender, onMarriageC
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           firstName: newPersonData.firstName,
-          lastName: newPersonData.lastName || null,
+          lastName: newPersonData.lastName || undefined,
           gender: currentPersonGender === 'MALE' ? 'FEMALE' : 'MALE',
-          birthDate: newPersonData.birthDate || null,
+          birthDate: newPersonData.birthDate || undefined,
           isAlive: true,
         }),
       })

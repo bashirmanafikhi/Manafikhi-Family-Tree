@@ -76,9 +76,9 @@ export async function PUT(
   if (data.birthDate) updateData.birthDate = new Date(data.birthDate)
   if (data.deathDate) updateData.deathDate = new Date(data.deathDate)
 
-  // Handle null parent IDs properly - set to undefined to clear
-  if (updateData.fatherId === null) updateData.fatherId = undefined
-  if (updateData.motherId === null) updateData.motherId = undefined
+  // Handle parent IDs - if null, it stays null to clear the relation in DB
+  if (updateData.fatherId === null) updateData.fatherId = null
+  if (updateData.motherId === null) updateData.motherId = null
 
   const person = await prisma.person.update({
     where: { id: params.id },
@@ -88,6 +88,10 @@ export async function PUT(
       mother: { select: { id: true, firstName: true, lastName: true } },
     },
   })
+
+  revalidatePath('/persons')
+  revalidatePath(`/persons/${params.id}`)
+  revalidatePath('/tree')
 
   return NextResponse.json(person)
 }

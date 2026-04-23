@@ -24,27 +24,29 @@ export async function initDatabase(): Promise<SQLite.SQLiteDatabase> {
     try {
       const fileInfo = await FileSystem.getInfoAsync(dbPath);
 
-      // In dev mode, we might want to force copy if the file is newer, 
-      // but for now let's stick to only if it doesn't exist to be safe.
-      if (!fileInfo.exists) {
-        console.log('Database not found in storage, copying from assets...');
-        const dirInfo = await FileSystem.getInfoAsync(dbDir);
-        if (!dirInfo.exists) {
-          await FileSystem.makeDirectoryAsync(dbDir, { intermediates: true });
-        }
+      if (fileInfo.exists) {
+        console.log('Deleting existing database...');
+        await FileSystem.deleteAsync(dbPath, { idempotent: true });
+      }
 
-        const asset = Asset.fromModule(require('../../assets/dev.db'));
-        await asset.downloadAsync();
+      console.log('Copying database from assets...');
 
-        if (asset.localUri) {
-          await FileSystem.copyAsync({
-            from: asset.localUri,
-            to: dbPath,
-          });
-          console.log('Database copied successfully to:', dbPath);
-        } else {
-          throw new Error('Failed to get local URI for database asset');
-        }
+      const dirInfo = await FileSystem.getInfoAsync(dbDir);
+      if (!dirInfo.exists) {
+        await FileSystem.makeDirectoryAsync(dbDir, { intermediates: true });
+      }
+
+      const asset = Asset.fromModule(require('../../assets/dev.db'));
+      await asset.downloadAsync();
+
+      if (asset.localUri) {
+        await FileSystem.copyAsync({
+          from: asset.localUri,
+          to: dbPath,
+        });
+        console.log('Database copied successfully to:', dbPath);
+      } else {
+        throw new Error('Failed to get local URI for database asset');
       }
     } catch (error) {
       console.error('Error handling database file:', error);

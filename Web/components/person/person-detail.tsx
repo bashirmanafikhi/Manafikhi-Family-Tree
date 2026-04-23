@@ -21,8 +21,8 @@ interface PersonDetailProps {
     mother?: { id: string; firstName: string; lastName: string | null } | null
     childrenOfFather?: Array<{ id: string; firstName: string; lastName: string | null; gender: string }>
     childrenOfMother?: Array<{ id: string; firstName: string; lastName: string | null; gender: string }>
-    marriagesAsPerson1?: Array<{ person2: { id: string; firstName: string; lastName: string | null }; isCurrent: boolean }>
-    marriagesAsPerson2?: Array<{ person1: { id: string; firstName: string; lastName: string | null }; isCurrent: boolean }>
+    marriagesAsPerson1?: Array<{ id: string; person2: { id: string; firstName: string; lastName: string | null }; isCurrent: boolean }>
+    marriagesAsPerson2?: Array<{ id: string; person1: { id: string; firstName: string; lastName: string | null }; isCurrent: boolean }>
   }
 }
 
@@ -43,6 +43,9 @@ export function PersonDetail({ person }: PersonDetailProps) {
   })
   const [isDeleting, setIsDeleting] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
+  const [isLinkingChild, setIsLinkingChild] = useState(false)
+  const [selectedChildId, setSelectedChildId] = useState('')
+  const [isLinking, setIsLinking] = useState(false)
 
   // Fetch parent labels for dropdowns
   useEffect(() => {
@@ -118,6 +121,43 @@ export function PersonDetail({ person }: PersonDetailProps) {
     router.push('/persons')
   }
 
+  const handleLinkChild = async () => {
+    if (!selectedChildId) return
+    setIsLinking(true)
+    try {
+      const res = await fetch(`/api/persons/${selectedChildId}`)
+      if (!res.ok) throw new Error('Person not found')
+      const childData = await res.json()
+
+      const updateData = {
+        ...childData,
+        fatherId: person.gender === 'MALE' ? person.id : (childData.father?.id || null),
+        motherId: person.gender === 'FEMALE' ? person.id : (childData.mother?.id || null),
+      }
+
+      // Convert birth/death dates back to ISO strings if they are objects
+      if (updateData.birthDate) updateData.birthDate = new Date(updateData.birthDate).toISOString().split('T')[0]
+      if (updateData.deathDate) updateData.deathDate = new Date(updateData.deathDate).toISOString().split('T')[0]
+
+      const updateRes = await fetch(`/api/persons/${selectedChildId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updateData),
+      })
+
+      if (updateRes.ok) {
+        setIsLinkingChild(false)
+        setSelectedChildId('')
+        router.refresh()
+      }
+    } catch (error) {
+      console.error(error)
+      alert('حدث خطأ أثناء ربط الطفل')
+    } finally {
+      setIsLinking(false)
+    }
+  }
+
   const children = [
     ...(person.childrenOfFather || []),
     ...(person.childrenOfMother || []),
@@ -129,13 +169,79 @@ export function PersonDetail({ person }: PersonDetailProps) {
   const spouses = [
     ...(person.marriagesAsPerson1 || []).map(m => ({
       ...m.person2,
-      isCurrent: m.isCurrent
+      isCurrent: m.isCurrent,
+      marriageId: m.id
     })),
     ...(person.marriagesAsPerson2 || []).map(m => ({
       ...m.person1,
-      isCurrent: m.isCurrent
+      isCurrent: m.isCurrent,
+      marriageId: m.id
     })),
   ]
+
+  const handleDeleteMarriage = async (marriageId: string) => {
+    if (!confirm('هل أنت متأكد من حذف هذا الزواج؟')) return
+    try {
+      const res = await fetch(`/api/marriages/${marriageId}`, { method: 'DELETE' })
+      if (res.ok) {
+        router.refresh()
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleShareChildren = async (spouseId: string, spouseGender: string) => {
+    if (!confirm('هل تريد ربط جميع أبناء هذا الشخص بالزوج/الزوجة أيضاً؟')) return
+    
+    const childrenToShare = [
+      ...(person.childrenOfFather || []),
+      ...(person.childrenOfMother || []),
+    ]
+
+    if (childrenToShare.length === 0) {
+      alert('لا يوجد أبناء لمشاركتهم')
+      return
+    }
+
+    try {
+      let successCount = 0
+      for (const child of childrenToShare) {
+        // Get full child data first to avoid overwriting other fields
+        const res = await fetch(`/api/persons/${child.id}`)
+        if (!res.ok) continue
+        const childData = await res.json()
+
+        const updateData = {
+          firstName: childData.firstName,
+          lastName: childData.lastName,
+          gender: childData.gender,
+          birthDate: childData.birthDate ? new Date(childData.birthDate).toISOString().split('T')[0] : null,
+          deathDate: childData.deathDate ? new Date(childData.deathDate).toISOString().split('T')[0] : null,
+          isAlive: childData.isAlive,
+          fatherId: spouseGender === 'MALE' ? spouseId : (childData.fatherId || childData.father?.id || null),
+          motherId: spouseGender === 'FEMALE' ? spouseId : (childData.motherId || childData.mother?.id || null),
+        }
+
+        const updateRes = await fetch(`/api/persons/${child.id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updateData),
+        })
+
+        if (updateRes.ok) successCount++
+      }
+
+      alert(`تم ربط ${successCount} أبناء بنجاح`)
+      // Small delay to ensure DB revalidation is finished
+      setTimeout(() => {
+        router.refresh()
+      }, 500)
+    } catch (error) {
+      console.error(error)
+      alert('حدث خطأ أثناء مشاركة الأبناء')
+    }
+  }
 
   // View Mode
   if (!isEditing) {
@@ -305,13 +411,37 @@ export function PersonDetail({ person }: PersonDetailProps) {
                           <p className="text-xs" style={{ color: '#9c9690' }}>انقر للعرض</p>
                         </div>
                       </div>
-                      <span className={`px-3 py-1 rounded-full text-xs ${
-                        spouse.isCurrent 
-                          ? 'bg-[#e6f4ef] text-[#4a9d7c]' 
-                          : 'bg-[#f0ede8] text-[#6b6560]'
-                      }`}>
-                        {spouse.isCurrent ? 'حالي' : 'سابق'}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className={`px-3 py-1 rounded-full text-xs ${
+                          spouse.isCurrent 
+                            ? 'bg-[#e6f4ef] text-[#4a9d7c]' 
+                            : 'bg-[#f0ede8] text-[#6b6560]'
+                        }`}>
+                          {spouse.isCurrent ? 'حالي' : 'سابق'}
+                        </span>
+                        
+                        {/* Share Children Action */}
+                        <button 
+                          onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleShareChildren(spouse.id, spouse.gender); }}
+                          title="مشاركة الأبناء"
+                          className="p-2 rounded-lg hover:bg-[#e0f2fe] text-[#0d5c63] transition-colors"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                          </svg>
+                        </button>
+
+                        {/* Delete Marriage Action */}
+                        <button 
+                          onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleDeleteMarriage(spouse.marriageId); }}
+                          title="حذف الزواج"
+                          className="p-2 rounded-lg hover:bg-[#fdecea] text-[#d94f4f] transition-colors"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                          </svg>
+                        </button>
+                      </div>
                     </Link>
                   </li>
                 ))}
@@ -338,7 +468,7 @@ export function PersonDetail({ person }: PersonDetailProps) {
           </h2>
           
           {uniqueChildren.length > 0 ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
               {uniqueChildren.map((child: any) => (
                 <Link key={child.id} href={`/persons/${child.id}`} className="p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
                   <div className="flex items-center gap-3">
@@ -364,11 +494,52 @@ export function PersonDetail({ person }: PersonDetailProps) {
           ) : (
             <div className="text-center py-8">
               <p className="text-sm mb-4" style={{ color: '#9c9690' }}>لا يوجد أبناء</p>
-              <Link href={`/persons/new?fatherId=${person.id}`} className="btn-primary inline-flex">
-                + إضافة طفل
-              </Link>
             </div>
           )}
+
+          {/* Add/Link Child Actions */}
+          <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t" style={{ borderColor: '#ede8e0' }}>
+            {!isLinkingChild ? (
+              <>
+                <Link href={`/persons/new?fatherId=${person.gender === 'MALE' ? person.id : ''}&motherId=${person.gender === 'FEMALE' ? person.id : ''}`} className="btn-primary flex-1 justify-center">
+                  + إضافة طفل جديد
+                </Link>
+                <button 
+                  onClick={() => setIsLinkingChild(true)} 
+                  className="btn-outline flex-1 justify-center"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                  </svg>
+                  ربط طفل موجود مسبقاً
+                </button>
+              </>
+            ) : (
+              <div className="flex-1 space-y-3">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-bold" style={{ color: '#2d2926' }}>اختر طفلاً لربطه</h3>
+                  <button onClick={() => setIsLinkingChild(false)} className="text-xs text-[#d94f4f]">إلغاء</button>
+                </div>
+                <div className="flex gap-2">
+                  <div className="flex-1">
+                    <PersonDropdown
+                      value={selectedChildId}
+                      onChange={(val) => setSelectedChildId(val || '')}
+                      excludeIds={[person.id, ...uniqueChildren.map(c => c.id)]}
+                      placeholder="ابحث عن الشخص..."
+                    />
+                  </div>
+                  <button 
+                    onClick={handleLinkChild} 
+                    disabled={!selectedChildId || isLinking}
+                    className="btn-primary"
+                  >
+                    {isLinking ? 'جاري الربط...' : 'ربط'}
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     )

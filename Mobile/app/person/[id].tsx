@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useNavigation, router } from 'expo-router';
 import { useFamily } from '../../src/context/FamilyContext';
 import { useTheme } from '../../src/context/ThemeContext';
@@ -66,12 +67,12 @@ export default function PersonDetailScreen() {
       <TouchableOpacity
         className="flex-1 p-3 rounded-lg m-1"
         style={{ backgroundColor: colors.card, minWidth: 120 }}
-        onPress={() => router.push(`/person/${encodeURIComponent(relPerson.id)}`)}
+        onPress={() => router.replace(`/person/${encodeURIComponent(relPerson.id)}`)}
       >
         <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>{label}</Text>
         <Text className="text-base font-semibold" style={{ color: colors.text }}>{fullName}</Text>
         <Text className="text-xs" style={{ color: relPerson.gender === MALE ? '#5b9' : '#bc6798' }}>
-          {relPerson.gender === MALE ? '👨' : '👩'}
+          <Ionicons name={relPerson.gender === MALE ? 'male' : 'female'} size={16} color={relPerson.gender === MALE ? '#5b9' : '#bc6798'} />
         </Text>
       </TouchableOpacity>
     );
@@ -106,7 +107,7 @@ export default function PersonDetailScreen() {
       ) : (
         <View className="w-full aspect-square justify-center items-center" style={{ backgroundColor: colors.surface }}>
           <Text className="text-7xl">
-            {person.gender === MALE ? '👨' : '👩'}
+            <Ionicons name={person.gender === MALE ? 'male' : 'female'} size={48} color={person.gender === MALE ? '#5b9' : '#bc6798'} />
           </Text>
         </View>
       )}
@@ -165,13 +166,13 @@ export default function PersonDetailScreen() {
                   key={spouse.id}
                   className="flex-1 p-3 rounded-lg m-1"
                   style={{ backgroundColor: colors.card, minWidth: 120 }}
-                  onPress={() => router.push(`/person/${encodeURIComponent(spouse.id)}`)}
+                  onPress={() => router.replace(`/person/${encodeURIComponent(spouse.id)}`)}
                 >
                   <Text className="text-base font-semibold" style={{ color: colors.text }}>
                     {spouse.firstName} {spouse.lastName || ''}
                   </Text>
                   <Text className="text-xs" style={{ color: spouse.gender === MALE ? '#5b9' : '#bc6798' }}>
-                    {spouse.gender === MALE ? '👨' : '👩'}
+                    <Ionicons name={spouse.gender === MALE ? 'male' : 'female'} size={16} color={spouse.gender === MALE ? '#5b9' : '#bc6798'} />
                   </Text>
                 </TouchableOpacity>
               ))}
@@ -188,13 +189,13 @@ export default function PersonDetailScreen() {
                   key={child.id}
                   className="p-3 rounded-lg m-1"
                   style={{ backgroundColor: colors.card, minWidth: 120 }}
-                  onPress={() => router.push(`/person/${encodeURIComponent(child.id)}`)}
+                  onPress={() => router.replace(`/person/${encodeURIComponent(child.id)}`)}
                 >
                   <Text className="text-base font-semibold" style={{ color: colors.text }}>
                     {child.firstName} {child.lastName || ''}
                   </Text>
                   <Text className="text-xs" style={{ color: child.gender === MALE ? '#5b9' : '#bc6798' }}>
-                    {child.gender === MALE ? '👨' : '👩'}
+                    <Ionicons name={child.gender === MALE ? 'male' : 'female'} size={16} color={child.gender === MALE ? '#5b9' : '#bc6798'} />
                   </Text>
                 </TouchableOpacity>
               ))}
