@@ -3,7 +3,7 @@ import * as FileSystem from 'expo-file-system/legacy';
 import { Asset } from 'expo-asset';
 import { Person, PersonWithRelations, FamilyTree } from '../types';
 
-let db: SQLite.SQLiteDatabase | null = null;
+let dbPromise: Promise<SQLite.SQLiteDatabase> | null = null;
 
 function transformPerson(raw: any): Person {
   return {
@@ -14,45 +14,47 @@ function transformPerson(raw: any): Person {
 }
 
 export async function initDatabase(): Promise<SQLite.SQLiteDatabase> {
-  if (db) return db;
+  if (dbPromise) return dbPromise;
 
-  const dbName = 'dev.db';
-  const dbDir = `${FileSystem.documentDirectory}SQLite`;
-  const dbPath = `${dbDir}/${dbName}`;
+  dbPromise = (async () => {
+    const dbName = 'dev.db';
+    const dbDir = `${FileSystem.documentDirectory}SQLite`;
+    const dbPath = `${dbDir}/${dbName}`;
 
-  const fileInfo = await FileSystem.getInfoAsync(dbPath);
-
-  if (!fileInfo.exists) {
-    console.log('Database not found in storage, copying from assets...');
     try {
-      // Ensure SQLite directory exists
-      const dirInfo = await FileSystem.getInfoAsync(dbDir);
-      if (!dirInfo.exists) {
-        await FileSystem.makeDirectoryAsync(dbDir, { intermediates: true });
-      }
+      const fileInfo = await FileSystem.getInfoAsync(dbPath);
 
-      // Load asset and copy
-      const asset = Asset.fromModule(require('../../assets/dev.db'));
-      await asset.downloadAsync();
+      // In dev mode, we might want to force copy if the file is newer, 
+      // but for now let's stick to only if it doesn't exist to be safe.
+      if (!fileInfo.exists) {
+        console.log('Database not found in storage, copying from assets...');
+        const dirInfo = await FileSystem.getInfoAsync(dbDir);
+        if (!dirInfo.exists) {
+          await FileSystem.makeDirectoryAsync(dbDir, { intermediates: true });
+        }
 
-      if (asset.localUri) {
-        await FileSystem.copyAsync({
-          from: asset.localUri,
-          to: dbPath,
-        });
-        console.log('Database copied successfully to:', dbPath);
-      } else {
-        throw new Error('Failed to get local URI for database asset');
+        const asset = Asset.fromModule(require('../../assets/dev.db'));
+        await asset.downloadAsync();
+
+        if (asset.localUri) {
+          await FileSystem.copyAsync({
+            from: asset.localUri,
+            to: dbPath,
+          });
+          console.log('Database copied successfully to:', dbPath);
+        } else {
+          throw new Error('Failed to get local URI for database asset');
+        }
       }
     } catch (error) {
-      console.error('Error copying database:', error);
-      // Fallback: just try to open and see if it creates a new one
+      console.error('Error handling database file:', error);
+      // If copying fails, we still try to open it
     }
-  }
 
-  // Use the default openDatabaseAsync but ensure it's pointing to our name
-  db = await SQLite.openDatabaseAsync(dbName);
-  return db;
+    return await SQLite.openDatabaseAsync(dbName);
+  })();
+
+  return dbPromise;
 }
 
 export async function getAllPersons(): Promise<Person[]> {

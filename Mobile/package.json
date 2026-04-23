@@ -4,9 +4,10 @@
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
-    "android": "expo run:android",
+    "android": "npm run db:sync && expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "db:sync": "node -e \"const fs=require('fs'); if(!fs.existsSync('./assets')) fs.mkdirSync('./assets'); fs.copyFileSync('../db/dev.db', './assets/dev.db'); console.log('DB synced from root to assets')\""
   },
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",
