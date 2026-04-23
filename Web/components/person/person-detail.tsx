@@ -24,9 +24,10 @@ interface PersonDetailProps {
     marriagesAsPerson1?: Array<{ id: string; person2: { id: string; firstName: string; lastName: string | null }; isCurrent: boolean }>
     marriagesAsPerson2?: Array<{ id: string; person1: { id: string; firstName: string; lastName: string | null }; isCurrent: boolean }>
   }
+  siblings: Array<{ id: string; firstName: string; lastName: string | null; gender: string }>
 }
 
-export function PersonDetail({ person }: PersonDetailProps) {
+export function PersonDetail({ person, siblings }: PersonDetailProps) {
   const router = useRouter()
   const [isEditing, setIsEditing] = useState(false)
   const [fatherLabel, setFatherLabel] = useState('')
@@ -332,57 +333,7 @@ export function PersonDetail({ person }: PersonDetailProps) {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {/* Parents Section */}
-          <div className="card p-6">
-            <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: '#0d5c63' }}>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              الوالدين
-            </h2>
-            
-            <div className="space-y-4">
-              <div>
-                <label className="text-sm" style={{ color: '#9c9690' }}>الأب</label>
-                {person.father ? (
-                  <Link href={`/persons/${person.father.id}`} className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-gradient-to-br from-[#0d5c63] to-[#14919b]">
-                      {person.father.firstName.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="font-medium group-hover:text-[#0d5c63] transition-colors" style={{ color: '#2d2926' }}>
-                        {person.father.firstName} {person.father.lastName}
-                      </p>
-                      <p className="text-xs" style={{ color: '#9c9690' }}>انقر للعرض</p>
-                    </div>
-                  </Link>
-                ) : (
-                  <p className="text-sm p-3" style={{ color: '#9c9690' }}>غير محدد</p>
-                )}
-              </div>
-              
-              <div>
-                <label className="text-sm" style={{ color: '#9c9690' }}>الأم</label>
-                {person.mother ? (
-                  <Link href={`/persons/${person.mother.id}`} className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]">
-                      {person.mother.firstName.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="font-medium group-hover:text-[#e07a5f] transition-colors" style={{ color: '#2d2926' }}>
-                        {person.mother.firstName} {person.mother.lastName}
-                      </p>
-                      <p className="text-xs" style={{ color: '#9c9690' }}>انقر للعرض</p>
-                    </div>
-                  </Link>
-                ) : (
-                  <p className="text-sm p-3" style={{ color: '#9c9690' }}>غير محدد</p>
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Spouses Section */}
+          {/* Marriages Section */}
           <div className="card p-6">
             <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: '#e07a5f' }}>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -455,6 +406,56 @@ export function PersonDetail({ person }: PersonDetailProps) {
               currentPersonId={person.id} 
               currentPersonGender={person.gender}
             />
+          </div>
+
+          {/* Parents Section */}
+          <div className="card p-6">
+            <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: '#0d5c63' }}>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              الوالدين
+            </h2>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="text-sm" style={{ color: '#9c9690' }}>الأب</label>
+                {person.father ? (
+                  <Link href={`/persons/${person.father.id}`} className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-gradient-to-br from-[#0d5c63] to-[#14919b]">
+                      {person.father.firstName.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-medium group-hover:text-[#0d5c63] transition-colors" style={{ color: '#2d2926' }}>
+                        {person.father.firstName} {person.father.lastName}
+                      </p>
+                      <p className="text-xs" style={{ color: '#9c9690' }}>انقر للعرض</p>
+                    </div>
+                  </Link>
+                ) : (
+                  <p className="text-sm p-3" style={{ color: '#9c9690' }}>غير محدد</p>
+                )}
+              </div>
+              
+              <div>
+                <label className="text-sm" style={{ color: '#9c9690' }}>الأم</label>
+                {person.mother ? (
+                  <Link href={`/persons/${person.mother.id}`} className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]">
+                      {person.mother.firstName.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-medium group-hover:text-[#e07a5f] transition-colors" style={{ color: '#2d2926' }}>
+                        {person.mother.firstName} {person.mother.lastName}
+                      </p>
+                      <p className="text-xs" style={{ color: '#9c9690' }}>انقر للعرض</p>
+                    </div>
+                  </Link>
+                ) : (
+                  <p className="text-sm p-3" style={{ color: '#9c9690' }}>غير محدد</p>
+                )}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -541,6 +542,42 @@ export function PersonDetail({ person }: PersonDetailProps) {
             )}
           </div>
         </div>
+
+        {/* Siblings Section - Full Width */}
+        {siblings.length > 0 && (
+          <div className="card p-6 mt-6">
+            <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: '#0d5c63' }}>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              الاخوة ({siblings.length})
+            </h2>
+            
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {siblings.map((sibling: any) => (
+                <Link key={sibling.id} href={`/persons/${sibling.id}`} className="p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white ${
+                      sibling.gender === 'MALE' 
+                        ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]' 
+                        : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
+                    }`}>
+                      {sibling.firstName.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-medium group-hover:text-[#0d5c63] transition-colors" style={{ color: '#2d2926' }}>
+                        {sibling.firstName} {sibling.lastName}
+                      </p>
+                      <p className="text-xs" style={{ color: '#9c9690' }}>
+                        {sibling.gender === 'MALE' ? 'أخ' : 'أخت'}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     )
   }

@@ -20,6 +20,7 @@ export interface PersonWithRelations extends Person {
   mother?: Person;
   children: Person[];
   spouses: Person[];
+  siblings: Person[];
 }
 
 export interface FamilyTree {

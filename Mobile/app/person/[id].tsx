@@ -11,7 +11,7 @@ const MALE = 'MALE' as const;
 export default function PersonDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const navigation = useNavigation();
-  const { getPersonById, getParents, getSpouses } = useFamily();
+  const { getPersonById, getParents, getSpouses, getSiblings } = useFamily();
   const { colors } = useTheme();
   const [person, setPerson] = useState<PersonWithRelations | null>(null);
   const [parents, setParents] = useState<{ father?: Person; mother?: Person }>({});
@@ -118,26 +118,26 @@ export default function PersonDetailScreen() {
         </Text>
         
         <View className="flex-row flex-wrap justify-center mt-5 gap-3">
-          {person.birthDate && (
+          {!!person.birthDate && (
             <View className="p-3 rounded-lg min-w-[100]" style={{ backgroundColor: colors.surface }}>
               <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>تاريخ الميلاد</Text>
               <Text className="text-base font-semibold" style={{ color: colors.text }}>{person.birthDate}</Text>
             </View>
           )}
           
-          {!person.isAlive && person.deathDate && (
+          {!person.isAlive && !!person.deathDate && (
             <View className="p-3 rounded-lg min-w-[100]" style={{ backgroundColor: colors.surface }}>
               <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>تاريخ الوفاة</Text>
               <Text className="text-base font-semibold" style={{ color: colors.text }}>{person.deathDate}</Text>
             </View>
           )}
           
-          {person.isAlive && (
-            <View className="p-3 rounded-lg min-w-[100]" style={{ backgroundColor: colors.surface }}>
-              <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>الحالة</Text>
-              <Text className="text-base font-semibold" style={{ color: '#5b9' }}>على قيد الحياة</Text>
-            </View>
-          )}
+          <View className="p-3 rounded-lg min-w-[100]" style={{ backgroundColor: colors.surface }}>
+            <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>الحالة</Text>
+            <Text className="text-base font-semibold" style={{ color: person.isAlive ? '#5b9' : '#ef4444' }}>
+              {person.isAlive ? 'على قيد الحياة' : 'متوفى'}
+            </Text>
+          </View>
           
           <View className="p-3 rounded-lg min-w-[100]" style={{ backgroundColor: colors.surface }}>
             <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>الجنس</Text>
@@ -147,7 +147,7 @@ export default function PersonDetailScreen() {
           </View>
         </View>
 
-        {(parents.father || parents.mother) && (
+        {(!!parents.father || !!parents.mother) && (
           <View className="mt-6">
             <Text className="text-lg font-bold mb-3" style={{ color: colors.text }}>الوالدان</Text>
             <View className="flex-row flex-wrap">
@@ -180,7 +180,7 @@ export default function PersonDetailScreen() {
           </View>
         )}
 
-        {person.children && person.children.length > 0 && (
+        {!!person.children && person.children.length > 0 && (
           <View className="mt-6">
             <Text className="text-lg font-bold mb-3" style={{ color: colors.text }}>الأبناء ({person.children.length})</Text>
             <View className="flex-row flex-wrap">
@@ -203,7 +203,30 @@ export default function PersonDetailScreen() {
           </View>
         )}
 
-        {person.bio && (
+        {!!person.siblings && person.siblings.length > 0 && (
+          <View className="mt-6">
+            <Text className="text-lg font-bold mb-3" style={{ color: colors.text }}>الاخوة ({person.siblings.length})</Text>
+            <View className="flex-row flex-wrap">
+              {person.siblings.map(sibling => (
+                <TouchableOpacity
+                  key={sibling.id}
+                  className="p-3 rounded-lg m-1"
+                  style={{ backgroundColor: colors.card, minWidth: 120 }}
+                  onPress={() => router.replace(`/person/${encodeURIComponent(sibling.id)}`)}
+                >
+                  <Text className="text-base font-semibold" style={{ color: colors.text }}>
+                    {sibling.firstName} {sibling.lastName || ''}
+                  </Text>
+                  <Text className="text-xs" style={{ color: sibling.gender === MALE ? '#5b9' : '#bc6798' }}>
+                    <Ionicons name={sibling.gender === MALE ? 'male' : 'female'} size={16} color={sibling.gender === MALE ? '#5b9' : '#bc6798'} />
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+        )}
+
+        {!!person.bio && (
           <View className="mt-6 p-4 rounded-xl" style={{ backgroundColor: colors.surface }}>
             <Text className="text-lg font-bold mb-3" style={{ color: colors.text }}>السيرة الذاتية</Text>
             <Text className="text-base leading-6" style={{ color: colors.textSecondary }}>{person.bio}</Text>

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Person, PersonWithRelations } from '../types';
-import { getFamilyTree, getPersonById, getChildren, getParents, getSpouses } from '../services/database';
+import { getFamilyTree, getPersonById, getChildren, getParents, getSpouses, getSiblings } from '../services/database';
 
 interface FamilyContextType {
   persons: PersonWithRelations[];
@@ -10,6 +10,7 @@ interface FamilyContextType {
   getChildren: (personId: string) => Promise<Person[]>;
   getParents: (personId: string) => Promise<{ father?: Person; mother?: Person }>;
   getSpouses: (personId: string) => Promise<Person[]>;
+  getSiblings: (personId: string) => Promise<Person[]>;
 }
 
 const FamilyContext = createContext<FamilyContextType | undefined>(undefined);
@@ -37,23 +38,25 @@ export function FamilyProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  async function getPersonByIdHandler(id: string): Promise<PersonWithRelations | null> {
-    const person = await getPersonById(id);
-    if (!person) return null;
-    
-    const [children, spouses, parents] = await Promise.all([
-      getChildren(id),
-      getSpouses(id),
-      getParents(id),
-    ]);
-    
-    return {
-      ...person,
-      ...parents,
-      children,
-      spouses,
-    };
-  }
+async function getPersonByIdHandler(id: string): Promise<PersonWithRelations | null> {
+  const person = await getPersonById(id);
+  if (!person) return null;
+  
+  const [children, spouses, parents, siblings] = await Promise.all([
+    getChildren(id),
+    getSpouses(id),
+    getParents(id),
+    getSiblings(id),
+  ]);
+  
+  return {
+    ...person,
+    ...parents,
+    children,
+    spouses,
+    siblings,
+  };
+}
 
   return (
     <FamilyContext.Provider value={{
@@ -64,6 +67,7 @@ export function FamilyProvider({ children }: { children: ReactNode }) {
       getChildren,
       getParents,
       getSpouses,
+      getSiblings,
     }}>
       {children}
     </FamilyContext.Provider>

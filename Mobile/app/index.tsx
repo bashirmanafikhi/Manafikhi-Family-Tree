@@ -52,7 +52,7 @@ export default function TreeScreen() {
   }, []);
 
   const handlePersonPress = (personId: string) => {
-    router.replace(`/person/${encodeURIComponent(personId)}`);
+    router.push(`/person/${encodeURIComponent(personId)}`);
   };
 
   const getFatherName = (person: PersonWithRelations): string => {
@@ -204,7 +204,7 @@ export default function TreeScreen() {
         }
       />
 
-      <View style={[styles.footer, { backgroundColor: colors.surface, borderTopColor: colors.border }]}>
+      <View style={[styles.footer, { backgroundColor: colors.surface, borderTopColor: colors.border, paddingBottom: 36 }]}>
         <TouchableOpacity onPress={() => router.push('/settings')} style={styles.settingsButton}>
           <Ionicons name="settings-outline" size={20} color={colors.textSecondary} />
           <Text style={[styles.settingsText, { color: colors.textSecondary }]}>الإعدادات</Text>

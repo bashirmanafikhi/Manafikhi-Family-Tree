@@ -30,12 +30,41 @@ async function getPerson(id: string) {
   })
 }
 
+async function getSiblings(personId: string) {
+  const person = await prisma.person.findUnique({
+    where: { id: personId },
+    select: { fatherId: true, motherId: true },
+  })
+  if (!person) return []
+  if (!person.fatherId && !person.motherId) return []
+
+  const conditions = []
+  if (person.fatherId) {
+    conditions.push({ fatherId: person.fatherId })
+  }
+  if (person.motherId) {
+    conditions.push({ motherId: person.motherId })
+  }
+  if (conditions.length === 0) return []
+
+  return prisma.person.findMany({
+    where: {
+      id: { not: personId },
+      OR: conditions,
+    },
+    select: { id: true, firstName: true, lastName: true, gender: true },
+  })
+}
+
 export default async function PersonPage({
   params,
 }: {
   params: { id: string }
 }) {
-  const person = await getPerson(params.id)
+  const [person, siblings] = await Promise.all([
+    getPerson(params.id),
+    getSiblings(params.id),
+  ])
 
   if (!person) {
     return (
@@ -53,7 +82,7 @@ export default async function PersonPage({
             ربما تم حذف هذا الشخص من قاعدة البيانات
           </p>
           <Link href="/persons" className="btn-primary">
-            العودة لقائمةIndividuals
+            العودة لقائمة الأفراد
           </Link>
         </div>
       </div>
@@ -62,7 +91,7 @@ export default async function PersonPage({
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <PersonDetail person={person} />
+      <PersonDetail person={person} siblings={siblings} />
     </div>
   )
 }
