@@ -8,41 +8,23 @@
         "type": "tabs",
         "children": [
           {
-            "id": "b5deaca7a5fe7054",
+            "id": "5a92d52f17864c3a",
             "type": "leaf",
             "state": {
               "type": "canvas",
               "state": {
                 "file": "tree.canvas",
                 "viewState": {
-                  "x": -6636.696877618392,
-                  "y": 3642.156685066709,
-                  "zoom": -1.0108677357484217
+                  "x": -6825.611183345174,
+                  "y": 4851.025235492828,
+                  "zoom": -1.3442010690817554
                 }
               },
               "icon": "lucide-layout-dashboard",
               "title": "tree"
             }
-          },
-          {
-            "id": "5a92d52f17864c3a",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "draft_canvas.canvas",
-                "viewState": {
-                  "x": 472.7846278640118,
-                  "y": 336.59148378867326,
-                  "zoom": -1.1703954053073098
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "draft_canvas"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -216,13 +198,15 @@
   },
   "active": "5a92d52f17864c3a",
   "lastOpenFiles": [
-    "tree.canvas",
+    "Untitled.canvas",
     "draft_canvas.canvas",
+    "Untitled.md",
+    "tree.canvas",
     "People_Base.base",
+    "prompts/رسم شجرة.md",
     "tree copy.json",
     "tree copy.canvas",
     "tree.html",
-    "Untitled.canvas",
     "Untitled.base",
     "people/0a180d76982ace1b.md",
     "people/120022ed6b8d32d8.md",
@@ -247,8 +231,6 @@
     "people/3b6a2890e9b830e5.md",
     "people/58e3f46bce8eb7c4.md",
     "people/0ef5deee661ad130.md",
-    "people/0d5928f0ca1638d6.md",
-    "people/0de92d154c5733fd.md",
     "people",
     "people/images/2.jpeg",
     "people/images",
