@@ -8,6 +8,7 @@ export const dynamic = 'force-dynamic'
 const updatePersonSchema = z.object({
   firstName: z.string().min(1).optional(),
   lastName: z.any().optional(),
+  nickname: z.any().optional(),
   gender: z.any().optional(),
   birthDate: z.any().optional(),
   deathDate: z.any().optional(),

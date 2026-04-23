@@ -2,6 +2,7 @@ export interface Person {
   id: string;
   firstName: string;
   lastName?: string;
+  nickname?: string;
   gender: 'MALE' | 'FEMALE';
   birthDate?: string;
   deathDate?: string;

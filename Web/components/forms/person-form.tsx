@@ -27,6 +27,7 @@ export function PersonForm({ prefillFather, prefillMother }: PersonFormProps) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
+    nickname: '',
     gender: 'MALE' as 'MALE' | 'FEMALE',
     fatherId: prefillFather || undefined,
     motherId: prefillMother || undefined,
@@ -135,6 +136,16 @@ export function PersonForm({ prefillFather, prefillMother }: PersonFormProps) {
                 onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                 className="input-field"
                 placeholder="المنافيخي"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2" style={{ color: '#2d2926' }}>اللقب</label>
+              <input
+                type="text"
+                value={formData.nickname || ''}
+                onChange={(e) => setFormData({ ...formData, nickname: e.target.value })}
+                className="input-field"
+                placeholder="الشيخ"
               />
             </div>
           </div>

@@ -117,6 +117,12 @@ export default function PersonDetailScreen() {
           {person.firstName} {person.lastName || ''}
         </Text>
         
+        {!!person.nickname && (
+          <Text className="text-lg text-center mt-1" style={{ color: colors.textSecondary }}>
+            ({person.nickname})
+          </Text>
+        )}
+        
         <View className="flex-row flex-wrap justify-center mt-5 gap-3">
           {!!person.birthDate && (
             <View className="p-3 rounded-lg min-w-[100]" style={{ backgroundColor: colors.surface }}>

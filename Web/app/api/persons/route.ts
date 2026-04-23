@@ -7,6 +7,7 @@ export const dynamic = 'force-dynamic'
 const createPersonSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().optional(),
+  nickname: z.string().optional(),
   gender: z.string(),
   birthDate: z.string().optional(),
   deathDate: z.string().optional(),

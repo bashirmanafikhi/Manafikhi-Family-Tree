@@ -11,6 +11,7 @@ interface PersonDetailProps {
     id: string
     firstName: string
     lastName: string | null
+    nickname: string | null
     gender: string
     birthDate: Date | string | null
     deathDate: Date | string | null
@@ -35,6 +36,7 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
   const [formData, setFormData] = useState({
     firstName: person.firstName,
     lastName: person.lastName || '',
+    nickname: person.nickname || '',
     gender: person.gender,
     birthDate: person.birthDate ? new Date(person.birthDate).toISOString().split('T')[0] : '',
     deathDate: person.deathDate ? new Date(person.deathDate).toISOString().split('T')[0] : '',
@@ -73,6 +75,7 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
     setFormData({
       firstName: person.firstName,
       lastName: person.lastName || '',
+      nickname: person.nickname || '',
       gender: person.gender,
       birthDate: person.birthDate ? new Date(person.birthDate).toISOString().split('T')[0] : '',
       deathDate: person.deathDate ? new Date(person.deathDate).toISOString().split('T')[0] : '',
@@ -88,6 +91,7 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
       const updateData = {
         firstName: formData.firstName,
         lastName: formData.lastName || null,
+        nickname: formData.nickname || null,
         gender: formData.gender,
         birthDate: formData.birthDate || null,
         deathDate: formData.isAlive ? null : (formData.deathDate || null),
@@ -279,6 +283,11 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
                   {person.isAlive ? 'حي' : 'متوفى'}
                 </span>
               </div>
+              {person.nickname && (
+                <p className="text-lg" style={{ color: '#6b6560' }}>
+                  ({person.nickname})
+                </p>
+              )}
               <p className="text-lg" style={{ color: '#6b6560' }}>
                 {person.gender === 'MALE' ? 'ذكر' : 'أنثى'}
               </p>
@@ -626,6 +635,16 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
                 value={formData.lastName}
                 onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                 className="input-field"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2" style={{ color: '#2d2926' }}>اللقب</label>
+              <input
+                type="text"
+                value={formData.nickname}
+                onChange={(e) => setFormData({ ...formData, nickname: e.target.value })}
+                className="input-field"
+                placeholder="الشيخ"
               />
             </div>
           </div>
