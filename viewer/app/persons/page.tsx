@@ -4,9 +4,9 @@ import { Filters } from "@/components/filters";
 
 const PAGE_SIZE = 20;
 
-async function getPersons(searchParams: { 
-  gender?: string; 
-  status?: string; 
+async function getPersons(searchParams: {
+  gender?: string;
+  status?: string;
   search?: string;
   father?: string;
   mother?: string;
@@ -38,7 +38,7 @@ async function getPersons(searchParams: {
   // Filter by search name
   if (searchParams.search) {
     const term = searchParams.search.toLowerCase()
-    persons = persons.filter(p => 
+    persons = persons.filter(p =>
       p.firstName.toLowerCase().includes(term) ||
       (p.lastName && p.lastName.toLowerCase().includes(term))
     )
@@ -47,7 +47,7 @@ async function getPersons(searchParams: {
   // Filter by father name
   if (searchParams.father) {
     const term = searchParams.father.toLowerCase()
-    persons = persons.filter(p => 
+    persons = persons.filter(p =>
       p.father?.firstName?.toLowerCase().includes(term) ||
       (p.father?.lastName && p.father.lastName.toLowerCase().includes(term))
     )
@@ -56,7 +56,7 @@ async function getPersons(searchParams: {
   // Filter by mother name
   if (searchParams.mother) {
     const term = searchParams.mother.toLowerCase()
-    persons = persons.filter(p => 
+    persons = persons.filter(p =>
       p.mother?.firstName?.toLowerCase().includes(term) ||
       (p.mother?.lastName && p.mother.lastName.toLowerCase().includes(term))
     )
@@ -83,7 +83,7 @@ export default async function PersonsPage({
 
       <Filters />
 
-      <div className="card overflow-hidden">
+      <div className="card overflow-hidden p-4">
         <p className="mb-4 text-sm" style={{ color: '#6b6560' }}>
           عرض {persons.length} من {total} فرد
         </p>
@@ -103,15 +103,14 @@ export default async function PersonsPage({
               {persons.map((person) => (
                 <tr key={person.id} className="border-b border-border-light hover:bg-surface-muted transition-colors">
                   <td className="px-4 py-3">
-                    <Link 
+                    <Link
                       href={`/persons/${person.id}`}
                       className="flex items-center gap-3 group"
                     >
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-medium ${
-                        person.gender === 'MALE' 
-                          ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]' 
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-medium ${person.gender === 'MALE'
+                          ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
                           : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-                      }`}>
+                        }`}>
                         {person.firstName.charAt(0)}
                       </div>
                       <div>
@@ -128,26 +127,22 @@ export default async function PersonsPage({
                     {person.mother ? `${person.mother.firstName} ${person.mother.lastName || ''}` : '-'}
                   </td>
                   <td className="px-4 py-3">
-                    <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm ${
-                      person.gender === 'MALE' 
-                        ? 'bg-[#e0f2fe] text-[#0d5c63]' 
+                    <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm ${person.gender === 'MALE'
+                        ? 'bg-[#e0f2fe] text-[#0d5c63]'
                         : 'bg-[#fce7f3] text-[#e07a5f]'
-                    }`}>
-                      <span className={`w-2 h-2 rounded-full ${
-                        person.gender === 'MALE' ? 'bg-[#0d5c63]' : 'bg-[#e07a5f]'
-                      }`} />
+                      }`}>
+                      <span className={`w-2 h-2 rounded-full ${person.gender === 'MALE' ? 'bg-[#0d5c63]' : 'bg-[#e07a5f]'
+                        }`} />
                       {person.gender === 'MALE' ? 'ذكر' : 'أنثى'}
                     </span>
                   </td>
                   <td className="px-4 py-3">
-                    <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm ${
-                      person.isAlive 
-                        ? 'bg-[#e6f4ef] text-[#4a9d7c]' 
+                    <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm ${person.isAlive
+                        ? 'bg-[#e6f4ef] text-[#4a9d7c]'
                         : 'bg-[#f5e6e6] text-[#d94f4f]'
-                    }`}>
-                      <span className={`w-2 h-2 rounded-full ${
-                        person.isAlive ? 'bg-[#4a9d7c]' : 'bg-[#d94f4f]'
-                      }`} />
+                      }`}>
+                      <span className={`w-2 h-2 rounded-full ${person.isAlive ? 'bg-[#4a9d7c]' : 'bg-[#d94f4f]'
+                        }`} />
                       {person.isAlive ? 'حي' : 'متوفى'}
                     </span>
                   </td>

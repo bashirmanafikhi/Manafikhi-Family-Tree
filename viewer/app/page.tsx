@@ -9,7 +9,7 @@ async function getStats() {
     prisma.person.count({ where: { gender: "MALE" } }),
     prisma.person.count({ where: { gender: "FEMALE" } }),
   ]);
-  
+
   return { totalPersons, aliveCount, deceasedCount, malesCount, femalesCount };
 }
 
@@ -32,7 +32,7 @@ export default async function Home() {
             <p className="text-xl sm:text-2xl mb-12" style={{ color: '#6b6560' }}>
               تصفح شجرة عائلتك العريقة
             </p>
-            
+
             <Link href="/persons" className="btn-primary text-lg px-8 py-4">
               تصفح أفراد العائلة
             </Link>
@@ -52,7 +52,7 @@ export default async function Home() {
                 </div>
                 <div>
                   <p className="text-3xl font-bold" style={{ color: '#0d5c63' }}>{stats.totalPersons}</p>
-                  <p className="text-sm" style={{ color: '#6b6560' }}>إجمالي Individuals</p>
+                  <p className="text-sm" style={{ color: '#6b6560' }}>إجمالي الأفراد</p>
                 </div>
               </div>
             </div>

@@ -119,7 +119,7 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
 
   const handleDelete = async () => {
     if (!confirm('هل أنت متأكد من حذف هذا الشخص؟')) return
-    
+
     setIsDeleting(true)
     await fetch(`/api/persons/${person.id}`, { method: 'DELETE' })
     await router.refresh()
@@ -167,7 +167,7 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
     ...(person.childrenOfFather || []),
     ...(person.childrenOfMother || []),
   ]
-  const uniqueChildren = children.filter((c, index, self) => 
+  const uniqueChildren = children.filter((c, index, self) =>
     index === self.findIndex((t) => t.id === c.id)
   )
 
@@ -198,7 +198,7 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
 
   const handleShareChildren = async (spouseId: string, spouseGender: string) => {
     if (!confirm('هل تريد ربط جميع أبناء هذا الشخص بالزوج/الزوجة أيضاً؟')) return
-    
+
     const childrenToShare = [
       ...(person.childrenOfFather || []),
       ...(person.childrenOfMother || []),
@@ -254,32 +254,30 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
       <div className="max-w-4xl mx-auto">
         {/* Back Link */}
         <Link href="/persons" className="btn-ghost mb-6 inline-flex">
-          ← العودة لقائمة Individuals
+          ← العودة لقائمة الأفراد
         </Link>
 
         {/* Profile Header */}
         <div className="card p-6 sm:p-8 mb-6">
           <div className="flex flex-col sm:flex-row items-center gap-6">
             {/* Avatar */}
-            <div className={`w-24 h-24 rounded-2xl flex items-center justify-center text-3xl font-bold text-white ${
-              person.gender === 'MALE' 
-                ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]' 
-                : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-            }`}>
+            <div className={`w-24 h-24 rounded-2xl flex items-center justify-center text-3xl font-bold text-white ${person.gender === 'MALE'
+              ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
+              : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
+              }`}>
               {person.firstName.charAt(0)}
             </div>
-            
+
             {/* Info */}
             <div className="flex-1 text-center sm:text-right">
               <div className="flex items-center justify-center sm:justify-start gap-3 mb-2">
                 <h1 className="text-3xl font-bold" style={{ color: '#2d2926' }}>
                   {person.firstName} {person.lastName}
                 </h1>
-                <span className={`px-3 py-1 rounded-full text-sm ${
-                  person.isAlive 
-                    ? 'bg-[#e6f4ef] text-[#4a9d7c]' 
-                    : 'bg-[#f5e6e6] text-[#d94f4f]'
-                }`}>
+                <span className={`px-3 py-1 rounded-full text-sm ${person.isAlive
+                  ? 'bg-[#e6f4ef] text-[#4a9d7c]'
+                  : 'bg-[#f5e6e6] text-[#d94f4f]'
+                  }`}>
                   {person.isAlive ? 'حي' : 'متوفى'}
                 </span>
               </div>
@@ -292,10 +290,10 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
                 {person.gender === 'MALE' ? 'ذكر' : 'أنثى'}
               </p>
               <p className="text-sm mt-1" style={{ color: '#9c9690' }}>
-                {person.birthDate 
+                {person.birthDate
                   ? `Born: ${new Date(person.birthDate).toLocaleDateString('ar')}`
                   : ''}
-                {!person.isAlive && person.deathDate 
+                {!person.isAlive && person.deathDate
                   ? ` - Died: ${new Date(person.deathDate).toLocaleDateString('ar')}`
                   : ''}
               </p>
@@ -336,7 +334,7 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <span className="font-medium" style={{ color: '#2d2926' }}>العودة لقائمة Individuals</span>
+              <span className="font-medium" style={{ color: '#2d2926' }}>العودة لقائمة الأفراد</span>
             </div>
           </Link>
         </div>
@@ -350,18 +348,17 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
               </svg>
               الزواج ({spouses.length})
             </h2>
-            
+
             {spouses.length > 0 ? (
               <ul className="space-y-3 mb-4">
                 {spouses.map((spouse: any) => (
                   <li key={spouse.id}>
                     <Link href={`/persons/${spouse.id}`} className="flex items-center justify-between p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
                       <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white ${
-                          spouse.gender === 'MALE' 
-                            ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]' 
-                            : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-                        }`}>
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white ${spouse.gender === 'MALE'
+                          ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
+                          : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
+                          }`}>
                           {spouse.firstName.charAt(0)}
                         </div>
                         <div>
@@ -372,16 +369,15 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className={`px-3 py-1 rounded-full text-xs ${
-                          spouse.isCurrent 
-                            ? 'bg-[#e6f4ef] text-[#4a9d7c]' 
-                            : 'bg-[#f0ede8] text-[#6b6560]'
-                        }`}>
+                        <span className={`px-3 py-1 rounded-full text-xs ${spouse.isCurrent
+                          ? 'bg-[#e6f4ef] text-[#4a9d7c]'
+                          : 'bg-[#f0ede8] text-[#6b6560]'
+                          }`}>
                           {spouse.isCurrent ? 'حالي' : 'سابق'}
                         </span>
-                        
+
                         {/* Share Children Action */}
-                        <button 
+                        <button
                           onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleShareChildren(spouse.id, spouse.gender); }}
                           title="مشاركة الأبناء"
                           className="p-2 rounded-lg hover:bg-[#e0f2fe] text-[#0d5c63] transition-colors"
@@ -392,7 +388,7 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
                         </button>
 
                         {/* Delete Marriage Action */}
-                        <button 
+                        <button
                           onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleDeleteMarriage(spouse.marriageId); }}
                           title="حذف الزواج"
                           className="p-2 rounded-lg hover:bg-[#fdecea] text-[#d94f4f] transition-colors"
@@ -411,8 +407,8 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
             )}
 
             {/* Add Marriage Form */}
-            <MarriageForm 
-              currentPersonId={person.id} 
+            <MarriageForm
+              currentPersonId={person.id}
               currentPersonGender={person.gender}
             />
           </div>
@@ -425,7 +421,7 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
               </svg>
               الوالدين
             </h2>
-            
+
             <div className="space-y-4">
               <div>
                 <label className="text-sm" style={{ color: '#9c9690' }}>الأب</label>
@@ -445,7 +441,7 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
                   <p className="text-sm p-3" style={{ color: '#9c9690' }}>غير محدد</p>
                 )}
               </div>
-              
+
               <div>
                 <label className="text-sm" style={{ color: '#9c9690' }}>الأم</label>
                 {person.mother ? (
@@ -476,17 +472,16 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
             </svg>
             الأبناء ({uniqueChildren.length})
           </h2>
-          
+
           {uniqueChildren.length > 0 ? (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
               {uniqueChildren.map((child: any) => (
                 <Link key={child.id} href={`/persons/${child.id}`} className="p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
                   <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white ${
-                      child.gender === 'MALE' 
-                        ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]' 
-                        : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-                    }`}>
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white ${child.gender === 'MALE'
+                      ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
+                      : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
+                      }`}>
                       {child.firstName.charAt(0)}
                     </div>
                     <div>
@@ -514,8 +509,8 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
                 <Link href={`/persons/new?fatherId=${person.gender === 'MALE' ? person.id : ''}&motherId=${person.gender === 'FEMALE' ? person.id : ''}`} className="btn-primary flex-1 justify-center">
                   + إضافة طفل جديد
                 </Link>
-                <button 
-                  onClick={() => setIsLinkingChild(true)} 
+                <button
+                  onClick={() => setIsLinkingChild(true)}
                   className="btn-outline flex-1 justify-center"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -539,8 +534,8 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
                       placeholder="ابحث عن الشخص..."
                     />
                   </div>
-                  <button 
-                    onClick={handleLinkChild} 
+                  <button
+                    onClick={handleLinkChild}
                     disabled={!selectedChildId || isLinking}
                     className="btn-primary"
                   >
@@ -561,16 +556,15 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
               </svg>
               الاخوة ({siblings.length})
             </h2>
-            
+
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {siblings.map((sibling: any) => (
                 <Link key={sibling.id} href={`/persons/${sibling.id}`} className="p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
                   <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white ${
-                      sibling.gender === 'MALE' 
-                        ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]' 
-                        : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-                    }`}>
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white ${sibling.gender === 'MALE'
+                      ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
+                      : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
+                      }`}>
                       {sibling.firstName.charAt(0)}
                     </div>
                     <div>
@@ -595,7 +589,7 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
   return (
     <div className="max-w-4xl mx-auto">
       <Link href="/persons" className="btn-ghost mb-6 inline-flex">
-        ← العودة لقائمة Individuals
+        ← العودة لقائمة الأفراد
       </Link>
 
       <div className="card p-6 sm:p-8">
@@ -610,7 +604,7 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
               تعديل البيانات
             </h1>
             <p className="text-sm" style={{ color: '#6b6560' }}>
-             قم بتعديل بيانات {person.firstName} {person.lastName}
+              قم بتعديل بيانات {person.firstName} {person.lastName}
             </p>
           </div>
         </div>
@@ -656,11 +650,10 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
               <button
                 type="button"
                 onClick={() => setFormData({ ...formData, gender: 'MALE' })}
-                className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border-2 transition-all ${
-                  formData.gender === 'MALE'
-                    ? 'border-[#0d5c63] bg-[#e0f2fe] text-[#0d5c63]'
-                    : 'border-[#ede8e0] hover:border-[#0d5c63]/50'
-                }`}
+                className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border-2 transition-all ${formData.gender === 'MALE'
+                  ? 'border-[#0d5c63] bg-[#e0f2fe] text-[#0d5c63]'
+                  : 'border-[#ede8e0] hover:border-[#0d5c63]/50'
+                  }`}
               >
                 <span className={`w-3 h-3 rounded-full ${formData.gender === 'MALE' ? 'bg-[#0d5c63]' : 'bg-[#9c9690]'}`} />
                 ذكر
@@ -668,11 +661,10 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
               <button
                 type="button"
                 onClick={() => setFormData({ ...formData, gender: 'FEMALE' })}
-                className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border-2 transition-all ${
-                  formData.gender === 'FEMALE'
-                    ? 'border-[#e07a5f] bg-[#fce7f3] text-[#e07a5f]'
-                    : 'border-[#ede8e0] hover:border-[#e07a5f]/50'
-                }`}
+                className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border-2 transition-all ${formData.gender === 'FEMALE'
+                  ? 'border-[#e07a5f] bg-[#fce7f3] text-[#e07a5f]'
+                  : 'border-[#ede8e0] hover:border-[#e07a5f]/50'
+                  }`}
               >
                 <span className={`w-3 h-3 rounded-full ${formData.gender === 'FEMALE' ? 'bg-[#e07a5f]' : 'bg-[#9c9690]'}`} />
                 أنثى
@@ -761,10 +753,10 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
                 </span>
               )}
             </button>
-            
-            <button 
-              type="button" 
-              onClick={() => setIsEditing(false)} 
+
+            <button
+              type="button"
+              onClick={() => setIsEditing(false)}
               className="btn-outline flex-1 sm:flex-none"
             >
               إلغاء

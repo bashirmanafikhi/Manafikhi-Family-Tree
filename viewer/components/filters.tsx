@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 export function Filters() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  
+
   const [gender, setGender] = useState(searchParams.get('gender') || '')
   const [status, setStatus] = useState(searchParams.get('status') || '')
   const [search, setSearch] = useState(searchParams.get('search') || '')
@@ -20,18 +20,18 @@ export function Filters() {
     if (search) params.set('search', search)
     if (fatherName) params.set('father', fatherName)
     if (motherName) params.set('mother', motherName)
-    
+
     const query = params.toString()
     router.push(`/persons${query ? `?${query}` : ''}`)
   }, [gender, status, search, fatherName, motherName, router])
 
   return (
-    <div className="card mb-6">
+    <div className="card mb-6 p-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         <div>
           <label className="block text-sm font-medium mb-2" style={{ color: '#6b6560' }}>الجنس</label>
-          <select 
-            value={gender} 
+          <select
+            value={gender}
             onChange={(e) => setGender(e.target.value)}
             className="input-field"
           >
@@ -43,8 +43,8 @@ export function Filters() {
 
         <div>
           <label className="block text-sm font-medium mb-2" style={{ color: '#6b6560' }}>الحالة</label>
-          <select 
-            value={status} 
+          <select
+            value={status}
             onChange={(e) => setStatus(e.target.value)}
             className="input-field"
           >
