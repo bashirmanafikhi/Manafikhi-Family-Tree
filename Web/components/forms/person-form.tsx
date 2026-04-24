@@ -41,8 +41,16 @@ export function PersonForm({ prefillFather, prefillMother }: PersonFormProps) {
     const fetchParentLabel = async (id: string, setLabel: (label: string) => void) => {
       const res = await fetch(`/api/persons/${id}`)
       if (res.ok) {
-        const person = await res.json()
-        setLabel(`${person.firstName} ${person.lastName || ''}`)
+        const p = await res.json()
+        const label = [
+          p.firstName,
+          p.father?.firstName,
+          p.lastName,
+          p.mother?.firstName ? `(${p.mother.firstName})` : null,
+        ]
+          .filter(Boolean)
+          .join(' ')
+        setLabel(label)
       }
     }
 

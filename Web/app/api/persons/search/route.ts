@@ -43,9 +43,9 @@ export async function GET(request: NextRequest) {
     id: p.id,
     label: [
       p.firstName,
-      p.father?.lastName,
+      p.father?.firstName,
+      p.lastName,
       p.mother?.firstName ? `(${p.mother.firstName})` : null,
-      p.lastName && p.lastName !== p.father?.lastName ? `- ${p.lastName}` : null,
     ]
       .filter(Boolean)
       .join(' '),

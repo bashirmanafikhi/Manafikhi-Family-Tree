@@ -57,14 +57,30 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
         const res = await fetch(`/api/persons/${person.father.id}`)
         if (res.ok) {
           const p = await res.json()
-          setFatherLabel(`${p.firstName} ${p.lastName || ''}`)
+          const label = [
+            p.firstName,
+            p.father?.firstName,
+            p.lastName,
+            p.mother?.firstName ? `(${p.mother.firstName})` : null,
+          ]
+            .filter(Boolean)
+            .join(' ')
+          setFatherLabel(label)
         }
       }
       if (person.mother?.id) {
         const res = await fetch(`/api/persons/${person.mother.id}`)
         if (res.ok) {
           const p = await res.json()
-          setMotherLabel(`${p.firstName} ${p.lastName || ''}`)
+          const label = [
+            p.firstName,
+            p.father?.firstName,
+            p.lastName,
+            p.mother?.firstName ? `(${p.mother.firstName})` : null,
+          ]
+            .filter(Boolean)
+            .join(' ')
+          setMotherLabel(label)
         }
       }
     }
