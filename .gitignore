@@ -70,9 +70,6 @@ yarn-error.log*
 .DS_Store
 *.pem
 
-# Prisma / SQLite
-Web/prisma/*.db
-db/*.db
 !*.gitkeep
 
 # Vercel

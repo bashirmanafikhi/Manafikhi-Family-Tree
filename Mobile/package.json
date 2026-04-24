@@ -7,7 +7,7 @@
     "android": "npm run db:sync && expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "db:sync": "node -e \"const fs=require('fs'); if(!fs.existsSync('./assets')) fs.mkdirSync('./assets'); fs.copyFileSync('../db/dev.db', './assets/dev.db'); console.log('DB synced from root to assets')\""
+    "db:sync": "node -e \"const fs=require('fs'); if(!fs.existsSync('./assets')) fs.mkdirSync('./assets'); fs.copyFileSync('../Web/prisma/dev.db', './assets/dev.db'); console.log('DB synced from Web/prisma to assets')\""
   },
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",
