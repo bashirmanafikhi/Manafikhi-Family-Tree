@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { prisma } from "@/lib/prisma";
+import { getPersons as getAllPersons } from "@/lib/data";
 import { Filters } from "@/components/filters";
 
 const PAGE_SIZE = 20;
@@ -12,16 +12,12 @@ async function getPersons(searchParams: {
   mother?: string;
   page?: string;
 }) {
+  const allPersons = getAllPersons();
+  
   const page = parseInt(searchParams.page || '1')
   const skip = (page - 1) * PAGE_SIZE
 
-  let persons = await prisma.person.findMany({
-    include: {
-      father: { select: { id: true, firstName: true, lastName: true } },
-      mother: { select: { id: true, firstName: true, lastName: true } },
-    },
-    orderBy: { firstName: 'asc' },
-  })
+  let persons = [...allPersons]
 
   // Filter by gender
   if (searchParams.gender) {

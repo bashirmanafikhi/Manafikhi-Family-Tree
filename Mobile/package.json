@@ -4,10 +4,9 @@
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
-    "android": "npm run db:sync && expo run:android",
+    "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web",
-    "db:sync": "node -e \"const fs=require('fs'); if(!fs.existsSync('./assets')) fs.mkdirSync('./assets'); fs.copyFileSync('../Web/prisma/dev.db', './assets/dev.db'); console.log('DB synced from Web/prisma to assets')\""
+    "web": "expo start --web"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",

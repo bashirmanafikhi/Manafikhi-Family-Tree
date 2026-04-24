@@ -1,20 +1,8 @@
 import Link from "next/link";
-import { prisma } from "@/lib/prisma";
+import { getStats } from "@/lib/data";
 
-async function getStats() {
-  const [totalPersons, aliveCount, deceasedCount, malesCount, femalesCount] = await Promise.all([
-    prisma.person.count(),
-    prisma.person.count({ where: { isAlive: true } }),
-    prisma.person.count({ where: { isAlive: false } }),
-    prisma.person.count({ where: { gender: "MALE" } }),
-    prisma.person.count({ where: { gender: "FEMALE" } }),
-  ]);
-
-  return { totalPersons, aliveCount, deceasedCount, malesCount, femalesCount };
-}
-
-export default async function Home() {
-  const stats = await getStats();
+export default function Home() {
+  const stats = getStats();
 
   return (
     <div className="min-h-screen">

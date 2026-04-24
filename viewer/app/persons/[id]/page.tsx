@@ -1,48 +1,39 @@
 import Link from "next/link";
-import { prisma } from "@/lib/prisma";
+import { getData } from "@/lib/data";
 
 async function getPerson(id: string) {
-  const person = await prisma.person.findUnique({
-    where: { id },
-    include: {
-      father: { select: { id: true, firstName: true, lastName: true } },
-      mother: { select: { id: true, firstName: true, lastName: true } },
-      childrenOfFather: { select: { id: true, firstName: true, lastName: true, gender: true } },
-      childrenOfMother: { select: { id: true, firstName: true, lastName: true, gender: true } },
-      marriagesAsPerson1: {
-        include: { person2: { select: { id: true, firstName: true, lastName: true, gender: true } } }
-      },
-      marriagesAsPerson2: {
-        include: { person1: { select: { id: true, firstName: true, lastName: true, gender: true } } }
-      },
-    },
-  });
+  const { persons, marriages } = getData();
+  const person = persons.find(p => p.id === id);
 
   if (!person) return null;
 
-  // Get siblings - same father OR same mother
-  let siblings: any[] = []
+  const enrichedPerson = {
+    ...person,
+    father: person.fatherId ? persons.find(p => p.id === person.fatherId) : null,
+    mother: person.motherId ? persons.find(p => p.id === person.motherId) : null,
+  };
+
+  const siblings: any[] = [];
   
   if (person.fatherId) {
-    const fathersChildren = await prisma.person.findMany({
-      where: { fatherId: person.fatherId, id: { not: person.id } },
-      select: { id: true, firstName: true, lastName: true, gender: true }
-    })
-    siblings.push(...fathersChildren)
+    const fathersChildren = persons.filter(p => p.fatherId === person.fatherId && p.id !== person.id);
+    siblings.push(...fathersChildren.map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender })));
   }
   
   if (person.motherId) {
-    const mothersChildren = await prisma.person.findMany({
-      where: { motherId: person.motherId, id: { not: person.id } },
-      select: { id: true, firstName: true, lastName: true, gender: true }
-    })
-    siblings.push(...mothersChildren)
+    const mothersChildren = persons.filter(p => p.motherId === person.motherId && p.id !== person.id);
+    siblings.push(...mothersChildren.map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender })));
   }
   
-  // Remove duplicates
-  siblings = siblings.filter((s, index, self) => index === self.findIndex(x => x.id === s.id))
+  const uniqueSiblings = siblings.filter((s, index, self) => index === self.findIndex(x => x.id === s.id));
 
-  return { person, siblings };
+  const childrenOfFather = persons.filter(p => p.fatherId === person.id);
+  const childrenOfMother = persons.filter(p => p.motherId === person.id);
+  
+  const marriagesAsPerson1 = marriages.filter(m => m.person1Id === person.id);
+  const marriagesAsPerson2 = marriages.filter(m => m.person2Id === person.id);
+
+  return { person: enrichedPerson, siblings: uniqueSiblings, childrenOfFather, childrenOfMother, marriagesAsPerson1, marriagesAsPerson2 };
 }
 
 export default async function PersonDetailPage({
@@ -65,23 +56,23 @@ export default async function PersonDetailPage({
     )
   }
 
-  const { person, siblings } = data
+  const { person, siblings, childrenOfFather, childrenOfMother, marriagesAsPerson1, marriagesAsPerson2 } = data
   
   const children = [
-    ...(person.childrenOfFather || []),
-    ...(person.childrenOfMother || []),
+    ...(childrenOfFather || []),
+    ...(childrenOfMother || []),
   ]
   const uniqueChildren = children.filter((c, index, self) => index === self.findIndex(t => t.id === c.id))
 
   const spouses = [
-    ...(person.marriagesAsPerson1 || []).map(m => ({
-      ...m.person2,
-      isCurrent: m.isCurrent,
-    })),
-    ...(person.marriagesAsPerson2 || []).map(m => ({
-      ...m.person1,
-      isCurrent: m.isCurrent,
-    })),
+    ...(marriagesAsPerson1 || []).map((m: any) => {
+      const spouse = persons.find(p => p.id === m.person2Id);
+      return spouse ? { ...spouse, isCurrent: m.isCurrent } : null;
+    }).filter(Boolean),
+    ...(marriagesAsPerson2 || []).map((m: any) => {
+      const spouse = persons.find(p => p.id === m.person1Id);
+      return spouse ? { ...spouse, isCurrent: m.isCurrent } : null;
+    }).filter(Boolean),
   ]
 
   return (
