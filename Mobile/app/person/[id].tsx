@@ -8,6 +8,15 @@ import { Person, PersonWithRelations } from '../../src/types';
 
 const MALE = 'MALE' as const;
 
+// Helper to resolve image source for bundled assets
+// DB path: "images/persons/xxx/profile.jpg" -> asset path: "assets/images/persons/xxx/profile.jpg"
+// Uses Expo's asset:// URI scheme for bundled images
+function getImageSource(imagePath: string | undefined): { uri: string } | undefined {
+  if (!imagePath) return undefined;
+  // Use asset:// scheme for bundled assets in Expo
+  return { uri: `asset:/${imagePath}` };
+}
+
 const formatDate = (dateString: string | undefined) => {
   if (!dateString) return '';
   try {
@@ -76,6 +85,7 @@ export default function PersonDetailScreen() {
 
   const allImages = [person.profileImage, ...(person.additionalImages || [])].filter(Boolean) as string[];
   const hasMultipleImages = allImages.length > 1;
+  const hasImages = allImages.length > 0;
 
   const renderRelation = (relPerson: Person | undefined, label: string) => {
     if (!relPerson) return null;
@@ -99,7 +109,7 @@ export default function PersonDetailScreen() {
       {hasMultipleImages ? (
         <View className="w-full h-full">
           <Image
-            source={{ uri: allImages[currentImageIndex] }}
+            source={getImageSource(allImages[currentImageIndex])}
             className="w-full h-full"
             resizeMode="cover"
           />
@@ -113,9 +123,9 @@ export default function PersonDetailScreen() {
             ))}
           </View>
         </View>
-      ) : allImages.length === 1 ? (
+      ) : hasImages ? (
         <Image
-          source={{ uri: allImages[0] }}
+          source={getImageSource(allImages[0])}
           className="w-full h-full"
           resizeMode="cover"
         />
@@ -185,7 +195,27 @@ export default function PersonDetailScreen() {
         </>
       )}
 
-      <View className="px-4 pb-10">
+        {person.additionalImages && person.additionalImages.length > 0 && (
+          <View className="px-4 pb-4">
+            <Text className="text-sm font-bold mb-2 text-text-secondary dark:text-text-dark-secondary">صور إضافية</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} className="flex-row gap-2">
+              {person.additionalImages.map((img: string, idx: number) => (
+                <TouchableOpacity
+                  key={idx}
+                  className="w-16 h-16 rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-600"
+                >
+                  <Image
+                    source={getImageSource(img)}
+                    className="w-full h-full"
+                    resizeMode="cover"
+                  />
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        )}
+
+        <View className="px-4 pb-10">
         {(!!parents.father || !!parents.mother) && (
           <View className="mt-6">
             <Text className="text-lg font-bold mb-3 text-text-primary dark:text-text-dark">الوالدان</Text>
