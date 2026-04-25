@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { z } from 'zod'
 import { revalidatePath } from 'next/cache'
+import { existsSync } from 'fs'
+import path from 'path'
+import { rm } from 'fs/promises'
 
 export const dynamic = 'force-dynamic'
 
@@ -102,6 +105,12 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   const personId = params.id
+
+  // Delete person's image folder
+  const personImageDirPath = path.join(process.cwd(), 'public', 'images', 'persons', personId);
+  if (existsSync(personImageDirPath)) {
+    await rm(personImageDirPath, { recursive: true });
+  }
 
   try {
     await prisma.$transaction([
