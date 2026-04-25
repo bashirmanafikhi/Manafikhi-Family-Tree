@@ -348,12 +348,9 @@ export function PersonForm({ prefillFather, prefillMother }: PersonFormProps) {
       </div>
 
       {/* Quick Links */}
-      <div className="mt-6 flex justify-center gap-4">
+      <div className="mt-6 flex justify-center">
         <Link href="/persons" className="btn-ghost">
           ← قائمة الأفراد
-        </Link>
-        <Link href="/tree" className="btn-ghost">
-          عرض الشجرة ←
         </Link>
       </div>
     </div>
