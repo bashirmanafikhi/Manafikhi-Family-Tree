@@ -7,6 +7,7 @@ interface PersonWithRelations {
   firstName: string
   lastName: string | null
   gender: string
+  profileImage: string | null
   birthDate: Date | string | null
   deathDate: Date | string | null
   isAlive: boolean
@@ -44,10 +45,18 @@ export function PersonTable({ persons }: PersonTableProps) {
                   href={`/persons/${person.id}`} 
                   className="flex items-center gap-3 group"
                 >
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-medium ${
-                    person.gender === 'MALE' ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]' : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-medium overflow-hidden ${
+                    !person.profileImage ? (person.gender === 'MALE' ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]' : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]') : ''
                   }`}>
-                    {person.firstName.charAt(0)}
+                    {person.profileImage ? (
+                      <img 
+                        src={person.profileImage.startsWith('/') ? person.profileImage : '/' + person.profileImage} 
+                        alt={person.firstName} 
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      person.firstName.charAt(0)
+                    )}
                   </div>
                   <div>
                     <p className="font-medium group-hover:text-[#0d5c63] transition-colors" style={{ color: '#2d2926' }}>

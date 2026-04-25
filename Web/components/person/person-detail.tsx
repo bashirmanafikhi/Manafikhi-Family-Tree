@@ -18,6 +18,7 @@ interface PersonDetailProps {
     deathDate: Date | string | null
     isAlive: boolean
     profileImage: string | null
+    additionalImages: string | null
     bio: string | null
     father?: { id: string; firstName: string; lastName: string | null } | null
     mother?: { id: string; firstName: string; lastName: string | null } | null
@@ -351,11 +352,10 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
                 />
               </div>
             ) : (
-              <div className={`w-24 h-24 rounded-2xl flex items-center justify-center text-3xl font-bold text-white ${
-                person.gender === 'MALE'
+              <div className={`w-24 h-24 rounded-2xl flex items-center justify-center text-3xl font-bold text-white ${person.gender === 'MALE'
                   ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
                   : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-              }`}>
+                }`}>
                 {person.firstName.charAt(0)}
               </div>
             )}
@@ -383,10 +383,10 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
               </p>
               <p className="text-sm mt-1" style={{ color: '#9c9690' }}>
                 {person.birthDate
-                  ? `Born: ${new Date(person.birthDate).toLocaleDateString('ar')}`
+                  ? `تاريخ الولادة: ${new Date(person.birthDate).toLocaleDateString('ar')}`
                   : ''}
                 {!person.isAlive && person.deathDate
-                  ? ` - Died: ${new Date(person.deathDate).toLocaleDateString('ar')}`
+                  ? ` - تاريخ الوفاة: ${new Date(person.deathDate).toLocaleDateString('ar')}`
                   : ''}
               </p>
             </div>
@@ -426,7 +426,7 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
                   </div>
                 );
               }
-            } catch {}
+            } catch { }
             return null;
           })()}
         </div>

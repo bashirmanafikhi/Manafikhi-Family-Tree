@@ -109,9 +109,6 @@ export default async function PersonsPage({
                             src={`/${person.profileImage}`}
                             alt=""
                             className="w-full h-full object-cover"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).style.display = 'none';
-                            }}
                           />
                         </div>
                       ) : (
