@@ -44,7 +44,7 @@ export default async function Home() {
                إضافة فرد جديد
               </Link>
               
-              <Link href="/persons" className="btn-outline">
+<Link href="/persons" className="btn-outline">
                 استعراض الأفراد
               </Link>
               
@@ -152,16 +152,6 @@ export default async function Home() {
               </div>
               <h3 className="text-lg font-semibold mb-2" style={{ color: '#2d2926' }}>قائمة الأفراد</h3>
               <p className="text-sm" style={{ color: '#6b6560' }}>استعرض وابحث في أفراد العائلة</p>
-            </Link>
-
-            <Link href="/tree" className="card p-6 hover:shadow-lg transition-all duration-300 group">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform bg-gradient-accent">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold mb-2" style={{ color: '#2d2926' }}>الشجرة المرئية</h3>
-              <p className="text-sm" style={{ color: '#6b6560' }}>اعرض الشجرة بشكل مرئي وتفاعلي</p>
             </Link>
           </div>
         </div>
