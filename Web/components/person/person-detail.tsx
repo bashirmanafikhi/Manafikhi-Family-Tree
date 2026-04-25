@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { compressImage, blobToFile } from '@/lib/image-utils';
 import { PersonDropdown } from '@/components/person/person-dropdown'
 import { MarriageForm } from '@/components/forms/marriage-form'
 
@@ -49,6 +50,10 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
   const [isLinkingChild, setIsLinkingChild] = useState(false)
   const [selectedChildId, setSelectedChildId] = useState('')
   const [isLinking, setIsLinking] = useState(false)
+  const [selectedProfileImage, setSelectedProfileImage] = useState<File | null>(null);
+  const [selectedAdditionalImages, setSelectedAdditionalImages] = useState<File[]>([]);
+  const [uploadPreview, setUploadPreview] = useState<string | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
 
   // Fetch parent labels for dropdowns
   useEffect(() => {
@@ -100,6 +105,66 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
       motherId: person.mother?.id || '',
     })
   }, [person])
+
+  const handleProfileImageSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      const compressed = await compressImage(file);
+      const fileObj = blobToFile(compressed.blob, 'profile.jpg');
+      setSelectedProfileImage(fileObj);
+      setUploadPreview(URL.createObjectURL(compressed.blob));
+    } catch (err) {
+      console.error('Failed to compress image', err);
+    }
+  };
+
+  const handleAdditionalImagesSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
+    const compressed = await Promise.all(files.map(f => compressImage(f)));
+    const fileObjs = compressed.map((c, i) => blobToFile(c.blob, `${Date.now()}_${i}.jpg`));
+    setSelectedAdditionalImages(prev => [...prev, ...fileObjs]);
+  };
+
+  const handleRemoveAdditionalPreview = (index: number) => {
+    setSelectedAdditionalImages(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const handleUploadImages = async () => {
+    setIsUploading(true);
+    try {
+      const fd = new FormData();
+      if (selectedProfileImage) {
+        fd.append('profileImage', selectedProfileImage);
+      }
+      for (const file of selectedAdditionalImages) {
+        fd.append('additionalImages', file);
+      }
+      const res = await fetch(`/api/persons/${person.id}/images`, {
+        method: 'POST',
+        body: fd,
+      });
+      if (res.ok) {
+        setSelectedProfileImage(null);
+        setSelectedAdditionalImages([]);
+        setUploadPreview(null);
+        router.refresh();
+      }
+    } catch (err) {
+      console.error('Upload failed', err);
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const handleDeleteImage = async (type: 'profile' | 'gallery', index?: number) => {
+    const url = `/api/persons/${person.id}/images?type=${type}${index !== undefined ? `&index=${index}` : ''}`;
+    const res = await fetch(url, { method: 'DELETE' });
+    if (res.ok) {
+      router.refresh();
+    }
+  };
 
   const handleSave = async () => {
     setIsSaving(true)
@@ -277,12 +342,23 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
         <div className="card p-6 sm:p-8 mb-6">
           <div className="flex flex-col sm:flex-row items-center gap-6">
             {/* Avatar */}
-            <div className={`w-24 h-24 rounded-2xl flex items-center justify-center text-3xl font-bold text-white ${person.gender === 'MALE'
-              ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
-              : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
+            {person.profileImage ? (
+              <div className="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0">
+                <img
+                  src={`/${person.profileImage}`}
+                  alt={`${person.firstName} ${person.lastName || ''}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ) : (
+              <div className={`w-24 h-24 rounded-2xl flex items-center justify-center text-3xl font-bold text-white ${
+                person.gender === 'MALE'
+                  ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
+                  : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
               }`}>
-              {person.firstName.charAt(0)}
-            </div>
+                {person.firstName.charAt(0)}
+              </div>
+            )}
 
             {/* Info */}
             <div className="flex-1 text-center sm:text-right">
@@ -328,6 +404,31 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
               </button>
             </div>
           </div>
+
+          {/* Additional Images Thumbnail Strip */}
+          {person.additionalImages && (() => {
+            try {
+              const imgs = JSON.parse(person.additionalImages) as string[];
+              if (imgs && imgs.length > 0) {
+                return (
+                  <div className="card p-4 mb-6">
+                    <div className="flex gap-2 overflow-x-auto pb-2">
+                      {imgs.map((img: string, idx: number) => (
+                        <button
+                          key={idx}
+                          onClick={() => window.open(`/${img}`, '_blank')}
+                          className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden hover:opacity-80 transition-opacity"
+                        >
+                          <img src={`/${img}`} alt="" className="w-full h-full object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }
+            } catch {}
+            return null;
+          })()}
         </div>
 
         {/* Quick Actions */}
@@ -749,6 +850,102 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
                   className="input-field"
                 />
               </div>
+            )}
+          </div>
+
+          {/* Images */}
+          <div className="border-t pt-6" style={{ borderColor: '#ede8e0' }}>
+            <h3 className="text-sm font-bold mb-4" style={{ color: '#2d2926' }}>الصور</h3>
+
+            {/* Current Profile Image */}
+            <div className="mb-4">
+              <label className="block text-sm mb-2" style={{ color: '#6b6560' }}>صورة البروفايل</label>
+              <div className="flex items-center gap-4">
+                {person.profileImage ? (
+                  <div className="relative w-20 h-20 rounded-xl overflow-hidden">
+                    <img src={`/${person.profileImage}`} alt="" className="w-full h-full object-cover" />
+                    <button
+                      onClick={() => handleDeleteImage('profile')}
+                      className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full text-xs flex items-center justify-center"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ) : (
+                  <div className="w-20 h-20 rounded-xl bg-[#f0ede8] flex items-center justify-center text-[#9c9690]">
+                    لا توجد صورة
+                  </div>
+                )}
+                <label className="btn-outline cursor-pointer text-sm">
+                  اختر صورة
+                  <input type="file" accept="image/*" onChange={handleProfileImageSelect} className="hidden" />
+                </label>
+              </div>
+              {uploadPreview && (
+                <div className="mt-2 w-20 h-20 rounded-xl overflow-hidden">
+                  <img src={uploadPreview} alt="Preview" className="w-full h-full object-cover" />
+                </div>
+              )}
+            </div>
+
+            {/* Current Additional Images */}
+            {person.additionalImages && (() => {
+              const imgs = JSON.parse(person.additionalImages) as string[];
+              if (imgs.length > 0) {
+                return (
+                  <div className="mb-4">
+                    <label className="block text-sm mb-2" style={{ color: '#6b6560' }}>صور إضافية ({imgs.length})</label>
+                    <div className="flex flex-wrap gap-2">
+                      {imgs.map((img: string, idx: number) => (
+                        <div key={idx} className="relative w-16 h-16 rounded-lg overflow-hidden">
+                          <img src={`/${img}`} alt="" className="w-full h-full object-cover" />
+                          <button
+                            onClick={() => handleDeleteImage('gallery', idx)}
+                            className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white rounded-full text-xs flex items-center justify-center"
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }
+              return null;
+            })()}
+
+            {/* New Additional Images */}
+            <div className="mb-4">
+              <label className="block text-sm mb-2" style={{ color: '#6b6560' }}>إضافة صور جديدة</label>
+              <label className="btn-outline cursor-pointer text-sm">
+                اختر ملفات
+                <input type="file" accept="image/*" multiple onChange={handleAdditionalImagesSelect} className="hidden" />
+              </label>
+              {selectedAdditionalImages.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {selectedAdditionalImages.map((file, idx) => (
+                    <div key={idx} className="relative w-16 h-16 rounded-lg overflow-hidden">
+                      <img src={URL.createObjectURL(file)} alt="" className="w-full h-full object-cover" />
+                      <button
+                        onClick={() => handleRemoveAdditionalPreview(idx)}
+                        className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white rounded-full text-xs flex items-center justify-center"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {(selectedProfileImage || selectedAdditionalImages.length > 0) && (
+              <button
+                onClick={handleUploadImages}
+                disabled={isUploading}
+                className="btn-primary"
+              >
+                {isUploading ? 'جاري الرفع...' : 'رفع الصور'}
+              </button>
             )}
           </div>
 
