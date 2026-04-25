@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { PersonDropdown } from '@/components/person/person-dropdown'
+import { compressImage, blobToFile } from '@/lib/image-utils'
 
 interface PersonFormProps {
   prefillFather?: string
@@ -23,6 +24,8 @@ export function PersonForm({ prefillFather, prefillMother }: PersonFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [fatherLabel, setFatherLabel] = useState('')
   const [motherLabel, setMotherLabel] = useState('')
+  const [selectedProfileImage, setSelectedProfileImage] = useState<File | null>(null);
+  const [profilePreview, setProfilePreview] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -58,6 +61,15 @@ export function PersonForm({ prefillFather, prefillMother }: PersonFormProps) {
     if (prefillMother) fetchParentLabel(prefillMother, setMotherLabel)
   }, [prefillFather, prefillMother])
 
+  const handleProfileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const compressed = await compressImage(file);
+    const fileObj = blobToFile(compressed.blob, 'profile.jpg');
+    setSelectedProfileImage(fileObj);
+    setProfilePreview(URL.createObjectURL(compressed.blob));
+  };
+
   const handleSubmit = async (action: 'continue' | 'addChild' | 'addSibling') => {
     setIsSubmitting(true)
     try {
@@ -70,6 +82,15 @@ export function PersonForm({ prefillFather, prefillMother }: PersonFormProps) {
       if (!res.ok) throw new Error('Failed to create')
 
       const person = await res.json()
+
+      if (selectedProfileImage) {
+        const fd = new FormData();
+        fd.append('profileImage', selectedProfileImage);
+        await fetch(`/api/persons/${person.id}/images`, {
+          method: 'POST',
+          body: fd,
+        });
+      }
 
       if (action === 'continue') {
         router.push('/persons')
@@ -247,6 +268,28 @@ export function PersonForm({ prefillFather, prefillMother }: PersonFormProps) {
                   onChange={(e) => setFormData({ ...formData, deathDate: e.target.value })}
                   className="input-field"
                 />
+              </div>
+            )}
+          </div>
+
+          {/* Profile Image */}
+          <div className="border-t pt-6" style={{ borderColor: '#ede8e0' }}>
+            <label className="block text-sm font-medium mb-2" style={{ color: '#2d2926' }}>صورة البروفايل</label>
+            <label className="btn-outline cursor-pointer">
+              اختر صورة
+              <input type="file" accept="image/*" onChange={handleProfileSelect} className="hidden" />
+            </label>
+            {profilePreview && (
+              <div className="mt-3 flex items-center gap-4">
+                <div className="w-20 h-20 rounded-xl overflow-hidden">
+                  <img src={profilePreview} alt="Preview" className="w-full h-full object-cover" />
+                </div>
+                <button
+                  onClick={() => { setSelectedProfileImage(null); setProfilePreview(null); }}
+                  className="text-sm text-red-500"
+                >
+                  إزالة
+                </button>
               </div>
             )}
           </div>
