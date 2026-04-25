@@ -9,9 +9,10 @@
     "lint": "next lint",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
-    "db:sync": "npx tsx scripts/export-json.ts"
+    "db:sync": "npx tsx scripts/export-json.ts",
+    "db:fill-last-names": "npx tsx scripts/fill-last-names.ts"
   },
-    "dependencies": {
+  "dependencies": {
     "@dagrejs/dagre": "^3.0.0",
     "@prisma/client": "^5.10.0",
     "@radix-ui/react-dialog": "^1.0.5",

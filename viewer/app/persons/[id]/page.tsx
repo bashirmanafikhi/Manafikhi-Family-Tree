@@ -33,7 +33,7 @@ async function getPerson(id: string) {
   const marriagesAsPerson1 = marriages.filter(m => m.person1Id === person.id);
   const marriagesAsPerson2 = marriages.filter(m => m.person2Id === person.id);
 
-  return { person: enrichedPerson, siblings: uniqueSiblings, childrenOfFather, childrenOfMother, marriagesAsPerson1, marriagesAsPerson2 };
+  return { person: enrichedPerson, siblings: uniqueSiblings, childrenOfFather, childrenOfMother, marriagesAsPerson1, marriagesAsPerson2, persons };
 }
 
 export default async function PersonDetailPage({
@@ -56,7 +56,7 @@ export default async function PersonDetailPage({
     )
   }
 
-  const { person, siblings, childrenOfFather, childrenOfMother, marriagesAsPerson1, marriagesAsPerson2 } = data
+  const { person, siblings, childrenOfFather, childrenOfMother, marriagesAsPerson1, marriagesAsPerson2, persons } = data
   
   const children = [
     ...(childrenOfFather || []),

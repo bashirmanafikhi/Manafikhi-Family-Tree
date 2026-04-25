@@ -46,8 +46,9 @@ export function getData(): FamilyData {
   
   const filePath = path.join(process.cwd(), 'public', 'data', 'family.json');
   const raw = fs.readFileSync(filePath, 'utf-8');
-  cachedData = JSON.parse(raw);
-  return cachedData;
+  const data = JSON.parse(raw) as FamilyData;
+  cachedData = data;
+  return data;
 }
 
 export function getPersonById(id: string): Person | undefined {
@@ -66,5 +67,6 @@ export function getStats() {
     deceasedCount: persons.filter(p => !p.isAlive).length,
     malesCount: persons.filter(p => p.gender === 'MALE').length,
     femalesCount: persons.filter(p => p.gender === 'FEMALE').length,
+    manafikhiCount: persons.filter(p => p.lastName === 'منافيخي').length,
   };
 }
