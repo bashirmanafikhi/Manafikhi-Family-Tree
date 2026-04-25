@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
-import { existsSync, cp, mkdirSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, writeFileSync, cp as copyFile } from 'fs';
 import * as path from 'path';
-import { mkdir } from 'fs/promises';
+import { mkdir, cp } from 'fs/promises';
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
