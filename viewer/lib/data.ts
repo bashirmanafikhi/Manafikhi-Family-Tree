@@ -11,6 +11,7 @@ export interface Person {
   deathDate: string | null;
   isAlive: boolean;
   profileImage: string | null;
+  additionalImages: string | null;
   bio: string | null;
   fatherId: string | null;
   motherId: string | null;

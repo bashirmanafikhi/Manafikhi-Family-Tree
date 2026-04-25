@@ -83,13 +83,23 @@ export default async function PersonDetailPage({
 
       <div className="card p-6 sm:p-8 mb-6">
         <div className="flex flex-col sm:flex-row items-center gap-6">
-          <div className={`w-24 h-24 rounded-2xl flex items-center justify-center text-3xl font-bold text-white ${
-            person.gender === 'MALE' 
-              ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]' 
-              : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-          }`}>
-            {person.firstName.charAt(0)}
-          </div>
+          {person.profileImage ? (
+            <div className="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0">
+              <img
+                src={`/${person.profileImage}`}
+                alt={`${person.firstName} ${person.lastName || ''}`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : (
+            <div className={`w-24 h-24 rounded-2xl flex items-center justify-center text-3xl font-bold text-white ${
+              person.gender === 'MALE'
+                ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
+                : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
+            }`}>
+              {person.firstName.charAt(0)}
+            </div>
+          )}
           
           <div className="flex-1 text-center sm:text-right">
             <div className="flex items-center justify-center sm:justify-start gap-3 mb-2">
@@ -122,6 +132,31 @@ export default async function PersonDetailPage({
             </p>
           </div>
         </div>
+        {person.additionalImages && (() => {
+          try {
+            const imgs = JSON.parse(person.additionalImages);
+            if (imgs && imgs.length > 0) {
+              return (
+                <div className="card p-4 mb-6">
+                  <div className="flex gap-2 overflow-x-auto pb-2">
+                    {imgs.map((img: string, idx: number) => (
+                      <a
+                        key={idx}
+                        href={`/${img}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden hover:opacity-80 transition-opacity"
+                      >
+                        <img src={`/${img}`} alt="" className="w-full h-full object-cover" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+          } catch {}
+          return null;
+        })()}
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">

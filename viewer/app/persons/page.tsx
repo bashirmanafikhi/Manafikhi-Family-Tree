@@ -103,12 +103,26 @@ export default async function PersonsPage({
                       href={`/persons/${person.id}`}
                       className="flex items-center gap-3 group"
                     >
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-medium ${person.gender === 'MALE'
-                          ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
-                          : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
+                      {person.profileImage ? (
+                        <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                          <img
+                            src={`/${person.profileImage}`}
+                            alt=""
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).style.display = 'none';
+                            }}
+                          />
+                        </div>
+                      ) : (
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-medium ${
+                          person.gender === 'MALE'
+                            ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
+                            : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
                         }`}>
-                        {person.firstName.charAt(0)}
-                      </div>
+                          {person.firstName.charAt(0)}
+                        </div>
+                      )}
                       <div>
                         <p className="font-medium group-hover:text-[#0d5c63]" style={{ color: '#2d2926' }}>
                           {person.firstName} {person.lastName}
