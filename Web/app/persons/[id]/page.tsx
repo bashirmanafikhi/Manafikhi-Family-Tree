@@ -61,9 +61,21 @@ export default async function PersonPage({
 }: {
   params: { id: string }
 }) {
-  const [person, siblings] = await Promise.all([
+  const [person, siblings, allPersons] = await Promise.all([
     getPerson(params.id),
     getSiblings(params.id),
+    prisma.person.findMany({
+      select: {
+        id: true,
+        firstName: true,
+        lastName: true,
+        gender: true,
+        isAlive: true,
+        profileImage: true,
+        fatherId: true,
+        motherId: true,
+      },
+    }),
   ])
 
   if (!person) {
@@ -89,9 +101,15 @@ export default async function PersonPage({
     )
   }
 
+  const treePerson = {
+    ...person,
+    fatherId: person.father?.id || null,
+    motherId: person.mother?.id || null,
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <PersonDetail person={person} siblings={siblings} />
+      <PersonDetail person={person} siblings={siblings} allPersons={allPersons} treePerson={treePerson} />
     </div>
   )
 }

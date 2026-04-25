@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { compressImage, blobToFile } from '@/lib/image-utils';
 import { PersonDropdown } from '@/components/person/person-dropdown'
 import { MarriageForm } from '@/components/forms/marriage-form'
+import FamilyTree from '@/components/FamilyTree'
 
 interface PersonDetailProps {
   person: {
@@ -28,9 +29,29 @@ interface PersonDetailProps {
     marriagesAsPerson2?: Array<{ id: string; person1: { id: string; firstName: string; lastName: string | null }; isCurrent: boolean }>
   }
   siblings: Array<{ id: string; firstName: string; lastName: string | null; gender: string }>
+  allPersons: Array<{
+    id: string
+    firstName: string
+    lastName: string | null
+    gender: string
+    isAlive: boolean
+    profileImage: string | null
+    fatherId: string | null
+    motherId: string | null
+  }>
+  treePerson: {
+    id: string
+    firstName: string
+    lastName: string | null
+    gender: string
+    isAlive: boolean
+    profileImage: string | null
+    fatherId: string | null
+    motherId: string | null
+  }
 }
 
-export function PersonDetail({ person, siblings }: PersonDetailProps) {
+export function PersonDetail({ person, siblings, allPersons, treePerson }: PersonDetailProps) {
   const router = useRouter()
   const [isEditing, setIsEditing] = useState(false)
   const [fatherLabel, setFatherLabel] = useState('')
@@ -698,6 +719,8 @@ export function PersonDetail({ person, siblings }: PersonDetailProps) {
             </div>
           </div>
         )}
+
+        <FamilyTree person={treePerson} allPersons={allPersons} />
       </div>
     )
   }

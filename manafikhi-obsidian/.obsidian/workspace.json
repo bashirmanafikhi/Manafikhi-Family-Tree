@@ -13,15 +13,15 @@
             "state": {
               "type": "canvas",
               "state": {
-                "file": "tree.canvas",
+                "file": "draft_canvas.canvas",
                 "viewState": {
-                  "x": -3028.7549373150296,
-                  "y": 2843.214408100228,
-                  "zoom": -0.3442010690817553
+                  "x": -104.42491842597536,
+                  "y": 190.57720211818602,
+                  "zoom": -0.4840219028649339
                 }
               },
               "icon": "lucide-layout-dashboard",
-              "title": "tree"
+              "title": "draft_canvas"
             }
           }
         ]
@@ -81,7 +81,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 219.5
+    "width": 219.5,
+    "collapsed": true
   },
   "right": {
     "id": "7cf912ae0c08bce7",
@@ -198,8 +199,8 @@
   },
   "active": "d834319bd75ba36a",
   "lastOpenFiles": [
-    "draft_canvas.canvas",
     "tree.canvas",
+    "draft_canvas.canvas",
     "People_Base.base",
     "Untitled.canvas",
     "Untitled.md",
