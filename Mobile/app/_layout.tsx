@@ -10,12 +10,17 @@ function RootStack() {
   
   return (
     <>
-      <StatusBar style={theme === 'light' ? 'dark' : 'light'} />
+      <StatusBar 
+        style={theme === 'light' ? 'dark' : 'light'} 
+        translucent={true}
+        backgroundColor="transparent"
+      />
       <Stack
         screenOptions={{
           headerStyle: { backgroundColor: colors.surface },
           headerTintColor: colors.text,
           headerTitleStyle: { fontWeight: 'bold' },
+          headerTitleAlign: 'center',
           contentStyle: { backgroundColor: colors.background },
         }}
       >

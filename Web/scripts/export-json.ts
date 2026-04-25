@@ -2,6 +2,12 @@ import { PrismaClient } from '@prisma/client';
 import * as fs from 'fs';
 import * as path from 'path';
 
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const prisma = new PrismaClient();
 
 async function main() {
@@ -31,17 +37,16 @@ async function main() {
   const data = { persons, marriages };
   
   const familyJsonPath = path.join(viewerDataDir, 'family.json');
-  fs.writeFileSync(familyJsonPath, JSON.stringify(data, null, 2));
+  const familyJsonString = JSON.stringify(data, null, 2);
+  fs.writeFileSync(familyJsonPath, familyJsonString);
   console.log(`Exported family.json to viewer`);
 
-  if (fs.existsSync(sourceDbPath)) {
-    if (!fs.existsSync(mobileAssetsDir)) {
-      fs.mkdirSync(mobileAssetsDir, { recursive: true });
-    }
-    const mobileDbPath = path.join(mobileAssetsDir, 'dev.db');
-    fs.copyFileSync(sourceDbPath, mobileDbPath);
-    console.log(`Copied dev.db to Mobile/assets`);
+  if (!fs.existsSync(mobileAssetsDir)) {
+    fs.mkdirSync(mobileAssetsDir, { recursive: true });
   }
+  const mobileJsonPath = path.join(mobileAssetsDir, 'family.json');
+  fs.writeFileSync(mobileJsonPath, familyJsonString);
+  console.log(`Exported family.json to Mobile/assets`);
 
   console.log('Sync complete!');
 }

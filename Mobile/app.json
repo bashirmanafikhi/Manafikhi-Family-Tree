@@ -1,12 +1,11 @@
 {
   "expo": {
-    "name": "ManafikhiFamilyTree",
-    "slug": "ManafikhiFamilyTree",
+    "name": "عائلة المنافيخي",
+    "slug": "manafikhifamilytree",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
     "scheme": "manafikhifamilytree",
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -21,7 +20,6 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0d5c63"
       },
-      "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
       "package": "com.bashirmanafikhi.manafikhi"
     },
@@ -37,8 +35,7 @@
       "**/*"
     ],
     "plugins": [
-      "expo-asset",
-      "expo-sqlite"
+      "expo-asset"
     ]
   }
 }

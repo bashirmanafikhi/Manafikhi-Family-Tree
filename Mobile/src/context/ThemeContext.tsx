@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useColorScheme } from 'nativewind';
 
 export type ThemeMode = 'light' | 'dark';
 
@@ -45,7 +46,8 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 const STORAGE_KEY = '@theme_mode';
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<ThemeMode>('light');
+  const { colorScheme, setColorScheme } = useColorScheme();
+  const [theme, setThemeState] = useState<ThemeMode>((colorScheme as ThemeMode) || 'light');
 
   useEffect(() => {
     loadTheme();
@@ -55,7 +57,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     try {
       const saved = await AsyncStorage.getItem(STORAGE_KEY);
       if (saved === 'light' || saved === 'dark') {
-        setThemeState(saved);
+        setThemeState(saved as ThemeMode);
+        setColorScheme(saved as ThemeMode);
+      } else if (colorScheme) {
+        setThemeState(colorScheme as ThemeMode);
       }
     } catch (e) {
       console.warn('Failed to load theme', e);
@@ -72,11 +77,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   const setTheme = (newTheme: ThemeMode) => {
     setThemeState(newTheme);
+    setColorScheme(newTheme);
     saveTheme(newTheme);
   };
 
   const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
   };
 
   const colors = theme === 'light' ? lightColors : darkColors;

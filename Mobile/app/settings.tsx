@@ -5,7 +5,7 @@ import { useTheme } from '../src/context/ThemeContext';
 import { AppActions } from '../src/services/AppActions';
 
 export default function SettingsScreen() {
-  const { theme, colors, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   const SettingRow = ({ 
     title, 
@@ -21,10 +21,9 @@ export default function SettingsScreen() {
     <TouchableOpacity 
       onPress={onPress}
       disabled={!onPress}
-      className="flex-row items-center justify-between p-4"
-      style={{ backgroundColor: colors.card, borderColor: colors.border, borderBottomWidth: border ? 1 : 0 }}
+      className={`flex-row items-center justify-between p-4 bg-card dark:bg-card-dark ${border ? 'border-b border-border dark:border-border-dark' : ''}`}
     >
-      <Text className="text-base" style={{ color: colors.text }}>
+      <Text className="text-base text-text-primary dark:text-text-dark">
         {title}
       </Text>
       {rightElement}
@@ -32,7 +31,7 @@ export default function SettingsScreen() {
   );
 
   return (
-    <ScrollView className="flex-1 pb-8" style={{ backgroundColor: colors.surface }}>
+    <ScrollView className="flex-1 pb-8 bg-surface-light dark:bg-surface-dark">
       <View className="mx-4 mt-4 rounded-xl overflow-hidden">
         <SettingRow
           title={theme === 'light' ? 'الوضع الفاتح' : 'الوضع الداكن'}
@@ -52,18 +51,18 @@ export default function SettingsScreen() {
         <SettingRow
           title="تقييم التطبيق"
           onPress={() => AppActions.rateApp()}
-          rightElement={<Ionicons name="star" size={22} color={colors.textSecondary} />}
+          rightElement={<Ionicons name="star" size={22} className="text-text-secondary dark:text-text-dark-secondary" />}
         />
         <SettingRow
           title="مشاركة التطبيق"
           onPress={() => AppActions.shareApp()}
-          rightElement={<Ionicons name="share" size={22} color={colors.textSecondary} />}
+          rightElement={<Ionicons name="share" size={22} className="text-text-secondary dark:text-text-dark-secondary" />}
         />
         <SettingRow
           title="راسلني"
           onPress={() => AppActions.sendFeedback()}
           border={false}
-          rightElement={<Ionicons name="mail" size={22} color={colors.textSecondary} />}
+          rightElement={<Ionicons name="mail" size={22} className="text-text-secondary dark:text-text-dark-secondary" />}
         />
       </View>
     </ScrollView>

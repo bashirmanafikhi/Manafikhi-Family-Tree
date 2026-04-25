@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Person, PersonWithRelations } from '../types';
-import { getFamilyTree, getPersonById, getChildren, getParents, getSpouses, getSiblings } from '../services/database';
+import { getFamilyTree, getPersonById, getChildren, getParents, getSpouses, getSiblings } from '../services/dataService';
 
 interface FamilyContextType {
   persons: PersonWithRelations[];

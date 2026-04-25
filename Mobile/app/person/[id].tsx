@@ -1,18 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, ScrollView, Image, TouchableOpacity, ActivityIndicator, useWindowDimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useNavigation, router } from 'expo-router';
 import { useFamily } from '../../src/context/FamilyContext';
 import { useTheme } from '../../src/context/ThemeContext';
-import { Person, PersonWithRelations, GENDER_COLORS } from '../../src/types';
+import { Person, PersonWithRelations } from '../../src/types';
 
 const MALE = 'MALE' as const;
+
+const formatDate = (dateString: string | undefined) => {
+  if (!dateString) return '';
+  try {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('ar-SY', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  } catch (e) {
+    return dateString;
+  }
+};
 
 export default function PersonDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const navigation = useNavigation();
-  const { getPersonById, getParents, getSpouses, getSiblings } = useFamily();
+  const { getPersonById, getParents, getSpouses } = useFamily();
   const { colors } = useTheme();
+  const { width, height } = useWindowDimensions();
+  const isLandscape = width > height;
+
   const [person, setPerson] = useState<PersonWithRelations | null>(null);
   const [parents, setParents] = useState<{ father?: Person; mother?: Person }>({});
   const [spouses, setSpouses] = useState<Person[]>([]);
@@ -28,7 +45,7 @@ export default function PersonDetailScreen() {
       if (found) {
         setPerson(found);
         navigation.setOptions({ title: `${found.firstName} ${found.lastName || ''}` });
-        
+
         const [parentsData, spousesData] = await Promise.all([
           getParents(decodedId),
           getSpouses(decodedId),
@@ -43,7 +60,7 @@ export default function PersonDetailScreen() {
 
   if (isLoading) {
     return (
-      <View className="flex-1 justify-center items-center" style={{ backgroundColor: colors.background }}>
+      <View className="flex-1 justify-center items-center bg-bg-primary dark:bg-bg-dark">
         <ActivityIndicator size="large" color="#bc6798" />
       </View>
     );
@@ -51,8 +68,8 @@ export default function PersonDetailScreen() {
 
   if (!person) {
     return (
-      <View className="flex-1 justify-center items-center" style={{ backgroundColor: colors.background }}>
-        <Text className="text-lg" style={{ color: colors.text }}>الشخص غير موجود</Text>
+      <View className="flex-1 justify-center items-center bg-bg-primary dark:bg-bg-dark">
+        <Text className="text-lg text-text-primary dark:text-text-dark">الشخص غير موجود</Text>
       </View>
     );
   }
@@ -65,34 +82,32 @@ export default function PersonDetailScreen() {
     const fullName = `${relPerson.firstName} ${relPerson.lastName || ''}`.trim();
     return (
       <TouchableOpacity
-        className="flex-1 p-3 rounded-lg m-1"
-        style={{ backgroundColor: colors.card, minWidth: 120 }}
+        className="flex-1 p-3 rounded-lg m-1 bg-card dark:bg-card-dark min-w-[120px]"
         onPress={() => router.replace(`/person/${encodeURIComponent(relPerson.id)}`)}
       >
-        <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>{label}</Text>
-        <Text className="text-base font-semibold" style={{ color: colors.text }}>{fullName}</Text>
-        <Text className="text-xs" style={{ color: relPerson.gender === MALE ? '#5b9' : '#bc6798' }}>
+        <Text className="text-xs mb-1 text-text-secondary dark:text-text-dark-secondary">{label}</Text>
+        <Text className="text-base font-semibold text-text-primary dark:text-text-dark">{fullName}</Text>
+        <Text className={relPerson.gender === MALE ? 'text-[#5b9]' : 'text-[#bc6798]'}>
           <Ionicons name={relPerson.gender === MALE ? 'male' : 'female'} size={16} color={relPerson.gender === MALE ? '#5b9' : '#bc6798'} />
         </Text>
       </TouchableOpacity>
     );
   };
 
-  return (
-    <ScrollView className="flex-1" style={{ backgroundColor: colors.background }}>
+  const imageSection = (
+    <View className={isLandscape ? "w-1/3 aspect-square" : "w-full aspect-square"}>
       {hasMultipleImages ? (
-        <View className="w-full aspect-square">
+        <View className="w-full h-full">
           <Image
             source={{ uri: allImages[currentImageIndex] }}
             className="w-full h-full"
             resizeMode="cover"
           />
-          <View className="flex-row justify-center items-center p-2.5">
+          <View className="flex-row justify-center items-center p-2.5 absolute bottom-0 left-0 right-0 bg-black/30">
             {allImages.map((_: string, idx: number) => (
               <TouchableOpacity
                 key={idx}
-                className="w-2 h-2 rounded-full mx-1"
-                style={{ backgroundColor: idx === currentImageIndex ? '#bc6798' : '#ccc' }}
+                className={`w-2 h-2 rounded-full mx-1 ${idx === currentImageIndex ? 'bg-primary' : 'bg-gray-300'}`}
                 onPress={() => setCurrentImageIndex(idx)}
               />
             ))}
@@ -101,61 +116,79 @@ export default function PersonDetailScreen() {
       ) : allImages.length === 1 ? (
         <Image
           source={{ uri: allImages[0] }}
-          className="w-full aspect-square"
+          className="w-full h-full"
           resizeMode="cover"
         />
       ) : (
-        <View className="w-full aspect-square justify-center items-center" style={{ backgroundColor: colors.surface }}>
-          <Text className="text-7xl">
-            <Ionicons name={person.gender === MALE ? 'male' : 'female'} size={48} color={person.gender === MALE ? '#5b9' : '#bc6798'} />
-          </Text>
+        <View className="w-full h-full justify-center items-center bg-surface-light dark:bg-surface-dark">
+          <Ionicons name={person.gender === MALE ? 'male' : 'female'} size={isLandscape ? 80 : 48} color={person.gender === MALE ? '#5b9' : '#bc6798'} />
         </View>
       )}
+    </View>
+  );
 
-      <View className="p-4">
-        <Text className="text-2xl font-bold text-center" style={{ color: colors.text }}>
-          {person.firstName} {person.lastName || ''}
+  const mainInfo = (
+    <View className={isLandscape ? "flex-1 p-6" : "p-4"}>
+      <Text className="text-2xl font-bold text-center text-text-primary dark:text-text-dark">
+        {person.firstName} {person.lastName || ''}
+      </Text>
+
+      {!!person.nickname && (
+        <Text className="text-lg text-center mt-1 text-text-secondary dark:text-text-dark-secondary">
+          ({person.nickname})
         </Text>
-        
-        {!!person.nickname && (
-          <Text className="text-lg text-center mt-1" style={{ color: colors.textSecondary }}>
-            ({person.nickname})
-          </Text>
+      )}
+
+      <View className="flex-row flex-wrap justify-center mt-5 gap-3">
+        {!!person.birthDate && (
+          <View className="p-3 rounded-lg min-w-[100px] bg-surface-light dark:bg-surface-dark">
+            <Text className="text-xs mb-1 text-text-secondary dark:text-text-dark-secondary">تاريخ الميلاد</Text>
+            <Text className="text-base font-semibold text-text-primary dark:text-text-dark">{formatDate(person.birthDate)}</Text>
+          </View>
         )}
-        
-        <View className="flex-row flex-wrap justify-center mt-5 gap-3">
-          {!!person.birthDate && (
-            <View className="p-3 rounded-lg min-w-[100]" style={{ backgroundColor: colors.surface }}>
-              <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>تاريخ الميلاد</Text>
-              <Text className="text-base font-semibold" style={{ color: colors.text }}>{person.birthDate}</Text>
-            </View>
-          )}
-          
-          {!person.isAlive && !!person.deathDate && (
-            <View className="p-3 rounded-lg min-w-[100]" style={{ backgroundColor: colors.surface }}>
-              <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>تاريخ الوفاة</Text>
-              <Text className="text-base font-semibold" style={{ color: colors.text }}>{person.deathDate}</Text>
-            </View>
-          )}
-          
-          <View className="p-3 rounded-lg min-w-[100]" style={{ backgroundColor: colors.surface }}>
-            <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>الحالة</Text>
-            <Text className="text-base font-semibold" style={{ color: person.isAlive ? '#5b9' : '#ef4444' }}>
-              {person.isAlive ? 'على قيد الحياة' : 'متوفى'}
-            </Text>
+
+        {!person.isAlive && !!person.deathDate && (
+          <View className="p-3 rounded-lg min-w-[100px] bg-surface-light dark:bg-surface-dark">
+            <Text className="text-xs mb-1 text-text-secondary dark:text-text-dark-secondary">تاريخ الوفاة</Text>
+            <Text className="text-base font-semibold text-text-primary dark:text-text-dark">{formatDate(person.deathDate)}</Text>
           </View>
-          
-          <View className="p-3 rounded-lg min-w-[100]" style={{ backgroundColor: colors.surface }}>
-            <Text className="text-xs mb-1" style={{ color: colors.textSecondary }}>الجنس</Text>
-            <Text className="text-base font-semibold" style={{ color: colors.text }}>
-              {person.gender === MALE ? 'ذكر' : 'أنثى'}
-            </Text>
-          </View>
+        )}
+
+        <View className="p-3 rounded-lg min-w-[100px] bg-surface-light dark:bg-surface-dark">
+          <Text className="text-xs mb-1 text-text-secondary dark:text-text-dark-secondary">الحالة</Text>
+          <Text className={`text-base font-semibold ${person.isAlive ? 'text-[#5b9]' : 'text-red-500'}`}>
+            {person.isAlive ? 'على قيد الحياة' : (person.gender === MALE ? 'متوفى' : 'متوفاة')}
+          </Text>
         </View>
 
+        <View className="p-3 rounded-lg min-w-[100px] bg-surface-light dark:bg-surface-dark">
+          <Text className="text-xs mb-1 text-text-secondary dark:text-text-dark-secondary">الجنس</Text>
+          <Text className="text-base font-semibold text-text-primary dark:text-text-dark">
+            {person.gender === MALE ? 'ذكر' : 'أنثى'}
+          </Text>
+        </View>
+      </View>
+    </View>
+  );
+
+  return (
+    <ScrollView className="flex-1 bg-bg-primary dark:bg-bg-dark">
+      {isLandscape ? (
+        <View className="flex-row">
+          {imageSection}
+          {mainInfo}
+        </View>
+      ) : (
+        <>
+          {imageSection}
+          {mainInfo}
+        </>
+      )}
+
+      <View className="px-4 pb-10">
         {(!!parents.father || !!parents.mother) && (
           <View className="mt-6">
-            <Text className="text-lg font-bold mb-3" style={{ color: colors.text }}>الوالدان</Text>
+            <Text className="text-lg font-bold mb-3 text-text-primary dark:text-text-dark">الوالدان</Text>
             <View className="flex-row flex-wrap">
               {renderRelation(parents.father, 'الأب')}
               {renderRelation(parents.mother, 'الأم')}
@@ -165,19 +198,20 @@ export default function PersonDetailScreen() {
 
         {spouses.length > 0 && (
           <View className="mt-6">
-            <Text className="text-lg font-bold mb-3" style={{ color: colors.text }}>الزوج/ة</Text>
+            <Text className="text-lg font-bold mb-3 text-text-primary dark:text-text-dark">
+              {person.gender === MALE ? 'الزوجة' : 'الزوج'}
+            </Text>
             <View className="flex-row flex-wrap">
               {spouses.map(spouse => (
                 <TouchableOpacity
                   key={spouse.id}
-                  className="flex-1 p-3 rounded-lg m-1"
-                  style={{ backgroundColor: colors.card, minWidth: 120 }}
+                  className="flex-1 p-3 rounded-lg m-1 bg-card dark:bg-card-dark min-w-[120px]"
                   onPress={() => router.replace(`/person/${encodeURIComponent(spouse.id)}`)}
                 >
-                  <Text className="text-base font-semibold" style={{ color: colors.text }}>
+                  <Text className="text-base font-semibold text-text-primary dark:text-text-dark">
                     {spouse.firstName} {spouse.lastName || ''}
                   </Text>
-                  <Text className="text-xs" style={{ color: spouse.gender === MALE ? '#5b9' : '#bc6798' }}>
+                  <Text className={spouse.gender === MALE ? 'text-[#5b9]' : 'text-[#bc6798]'}>
                     <Ionicons name={spouse.gender === MALE ? 'male' : 'female'} size={16} color={spouse.gender === MALE ? '#5b9' : '#bc6798'} />
                   </Text>
                 </TouchableOpacity>
@@ -188,19 +222,18 @@ export default function PersonDetailScreen() {
 
         {!!person.children && person.children.length > 0 && (
           <View className="mt-6">
-            <Text className="text-lg font-bold mb-3" style={{ color: colors.text }}>الأبناء ({person.children.length})</Text>
+            <Text className="text-lg font-bold mb-3 text-text-primary dark:text-text-dark">الأبناء ({person.children.length})</Text>
             <View className="flex-row flex-wrap">
               {person.children.map(child => (
                 <TouchableOpacity
                   key={child.id}
-                  className="p-3 rounded-lg m-1"
-                  style={{ backgroundColor: colors.card, minWidth: 120 }}
+                  className="p-3 rounded-lg m-1 bg-card dark:bg-card-dark min-w-[120px]"
                   onPress={() => router.replace(`/person/${encodeURIComponent(child.id)}`)}
                 >
-                  <Text className="text-base font-semibold" style={{ color: colors.text }}>
+                  <Text className="text-base font-semibold text-text-primary dark:text-text-dark">
                     {child.firstName} {child.lastName || ''}
                   </Text>
-                  <Text className="text-xs" style={{ color: child.gender === MALE ? '#5b9' : '#bc6798' }}>
+                  <Text className={child.gender === MALE ? 'text-[#5b9]' : 'text-[#bc6798]'}>
                     <Ionicons name={child.gender === MALE ? 'male' : 'female'} size={16} color={child.gender === MALE ? '#5b9' : '#bc6798'} />
                   </Text>
                 </TouchableOpacity>
@@ -211,19 +244,18 @@ export default function PersonDetailScreen() {
 
         {!!person.siblings && person.siblings.length > 0 && (
           <View className="mt-6">
-            <Text className="text-lg font-bold mb-3" style={{ color: colors.text }}>الاخوة ({person.siblings.length})</Text>
+            <Text className="text-lg font-bold mb-3 text-text-primary dark:text-text-dark">الاخوة ({person.siblings.length})</Text>
             <View className="flex-row flex-wrap">
               {person.siblings.map(sibling => (
                 <TouchableOpacity
                   key={sibling.id}
-                  className="p-3 rounded-lg m-1"
-                  style={{ backgroundColor: colors.card, minWidth: 120 }}
+                  className="p-3 rounded-lg m-1 bg-card dark:bg-card-dark min-w-[120px]"
                   onPress={() => router.replace(`/person/${encodeURIComponent(sibling.id)}`)}
                 >
-                  <Text className="text-base font-semibold" style={{ color: colors.text }}>
+                  <Text className="text-base font-semibold text-text-primary dark:text-text-dark">
                     {sibling.firstName} {sibling.lastName || ''}
                   </Text>
-                  <Text className="text-xs" style={{ color: sibling.gender === MALE ? '#5b9' : '#bc6798' }}>
+                  <Text className={sibling.gender === MALE ? 'text-[#5b9]' : 'text-[#bc6798]'}>
                     <Ionicons name={sibling.gender === MALE ? 'male' : 'female'} size={16} color={sibling.gender === MALE ? '#5b9' : '#bc6798'} />
                   </Text>
                 </TouchableOpacity>
@@ -233,9 +265,9 @@ export default function PersonDetailScreen() {
         )}
 
         {!!person.bio && (
-          <View className="mt-6 p-4 rounded-xl" style={{ backgroundColor: colors.surface }}>
-            <Text className="text-lg font-bold mb-3" style={{ color: colors.text }}>السيرة الذاتية</Text>
-            <Text className="text-base leading-6" style={{ color: colors.textSecondary }}>{person.bio}</Text>
+          <View className="mt-6 p-4 rounded-xl bg-surface-light dark:bg-surface-dark">
+            <Text className="text-lg font-bold mb-3 text-text-primary dark:text-text-dark">السيرة الذاتية</Text>
+            <Text className="text-base leading-6 text-text-secondary dark:text-text-dark-secondary">{person.bio}</Text>
           </View>
         )}
       </View>
