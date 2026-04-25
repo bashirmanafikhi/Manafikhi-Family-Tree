@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getData } from "@/lib/data";
+import FamilyTree from "@/components/FamilyTree";
 
 async function getPerson(id: string) {
   const { persons, marriages } = getData();
@@ -308,6 +309,8 @@ export default async function PersonDetailPage({
           </div>
         </div>
       )}
+
+      <FamilyTree person={person} allPersons={persons} />
     </div>
   )
 }
