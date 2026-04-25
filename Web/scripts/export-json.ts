@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
-import * as fs from 'fs';
+import { existsSync, cp, mkdirSync, writeFileSync } from 'fs';
 import * as path from 'path';
+import { mkdir } from 'fs/promises';
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -15,8 +16,8 @@ async function main() {
   const mobileAssetsDir = path.join(__dirname, '..', '..', 'Mobile', 'assets');
   const sourceDbPath = path.join(__dirname, '..', 'prisma', 'dev.db');
   
-  if (!fs.existsSync(viewerDataDir)) {
-    fs.mkdirSync(viewerDataDir, { recursive: true });
+  if (!existsSync(viewerDataDir)) {
+    mkdirSync(viewerDataDir, { recursive: true });
   }
 
   console.log('Fetching data from database...');
@@ -34,18 +35,35 @@ async function main() {
 
   console.log(`Found ${persons.length} persons and ${marriages.length} marriages`);
 
+  // Copy images to viewer and mobile
+  const imagesSrc = path.join(__dirname, '..', 'public', 'images', 'persons');
+  const imagesViewerDest = path.join(__dirname, '..', '..', 'viewer', 'public', 'images', 'persons');
+  const imagesMobileDest = path.join(__dirname, '..', '..', 'Mobile', 'assets', 'images', 'persons');
+
+  if (existsSync(imagesSrc)) {
+    await mkdir(path.dirname(imagesViewerDest), { recursive: true });
+    await cp(imagesSrc, imagesViewerDest, { recursive: true });
+    console.log('Copied images to viewer');
+
+    await mkdir(path.dirname(imagesMobileDest), { recursive: true });
+    await cp(imagesSrc, imagesMobileDest, { recursive: true });
+    console.log('Copied images to mobile');
+  } else {
+    console.log('No images to copy');
+  }
+
   const data = { persons, marriages };
   
   const familyJsonPath = path.join(viewerDataDir, 'family.json');
   const familyJsonString = JSON.stringify(data, null, 2);
-  fs.writeFileSync(familyJsonPath, familyJsonString);
+  writeFileSync(familyJsonPath, familyJsonString);
   console.log(`Exported family.json to viewer`);
 
-  if (!fs.existsSync(mobileAssetsDir)) {
-    fs.mkdirSync(mobileAssetsDir, { recursive: true });
+  if (!existsSync(mobileAssetsDir)) {
+    mkdirSync(mobileAssetsDir, { recursive: true });
   }
   const mobileJsonPath = path.join(mobileAssetsDir, 'family.json');
-  fs.writeFileSync(mobileJsonPath, familyJsonString);
+  writeFileSync(mobileJsonPath, familyJsonString);
   console.log(`Exported family.json to Mobile/assets`);
 
   console.log('Sync complete!');
