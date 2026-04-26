@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { compressImage, blobToFile } from '@/lib/image-utils';
+import { Avatar } from '@/components/ui/avatar'
 import { PersonDropdown } from '@/components/person/person-dropdown'
 import { MarriageForm } from '@/components/forms/marriage-form'
 import FamilyTree from '@/components/FamilyTree'
@@ -21,14 +22,14 @@ interface PersonDetailProps {
     profileImage: string | null
     additionalImages: string | null
     bio: string | null
-    father?: { id: string; firstName: string; lastName: string | null } | null
-    mother?: { id: string; firstName: string; lastName: string | null } | null
-    childrenOfFather?: Array<{ id: string; firstName: string; lastName: string | null; gender: string }>
-    childrenOfMother?: Array<{ id: string; firstName: string; lastName: string | null; gender: string }>
-    marriagesAsPerson1?: Array<{ id: string; person2: { id: string; firstName: string; lastName: string | null }; isCurrent: boolean }>
-    marriagesAsPerson2?: Array<{ id: string; person1: { id: string; firstName: string; lastName: string | null }; isCurrent: boolean }>
+    father?: { id: string; firstName: string; lastName: string | null; profileImage: string | null } | null
+    mother?: { id: string; firstName: string; lastName: string | null; profileImage: string | null } | null
+    childrenOfFather?: Array<{ id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null }>
+    childrenOfMother?: Array<{ id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null }>
+    marriagesAsPerson1?: Array<{ id: string; person2: { id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null }; isCurrent: boolean }>
+    marriagesAsPerson2?: Array<{ id: string; person1: { id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null }; isCurrent: boolean }>
   }
-  siblings: Array<{ id: string; firstName: string; lastName: string | null; gender: string }>
+  siblings: Array<{ id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null }>
   allPersons: Array<{
     id: string
     firstName: string
@@ -362,24 +363,15 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
 
         {/* Profile Header */}
         <div className="card p-6 sm:p-8 mb-6">
-          <div className="flex flex-col sm:flex-row items-center gap-6">
-            {/* Avatar */}
-            {person.profileImage ? (
-              <div className="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0">
-                <img
-                  src={`/${person.profileImage}`}
-                  alt={`${person.firstName} ${person.lastName || ''}`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ) : (
-              <div className={`w-24 h-24 rounded-2xl flex items-center justify-center text-3xl font-bold text-white ${person.gender === 'MALE'
-                  ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
-                  : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-                }`}>
-                {person.firstName.charAt(0)}
-              </div>
-            )}
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+              {/* Avatar */}
+              <Avatar
+                firstName={person.firstName}
+                lastName={person.lastName}
+                profileImage={person.profileImage}
+                gender={person.gender}
+                size="xl"
+              />
 
             {/* Info */}
             <div className="flex-1 text-center sm:text-right">
@@ -493,12 +485,12 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
                   <li key={spouse.id}>
                     <Link href={`/persons/${spouse.id}`} className="flex items-center justify-between p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
                       <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white ${spouse.gender === 'MALE'
-                          ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
-                          : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-                          }`}>
-                          {spouse.firstName.charAt(0)}
-                        </div>
+                        <Avatar
+                          firstName={spouse.firstName}
+                          lastName={spouse.lastName}
+                          gender={spouse.gender}
+                          profileImage={spouse.profileImage}
+                        />
                         <div>
                           <p className="font-medium group-hover:text-[#0d5c63] transition-colors" style={{ color: '#2d2926' }}>
                             {spouse.firstName} {spouse.lastName}
@@ -565,9 +557,12 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
                 <label className="text-sm" style={{ color: '#9c9690' }}>الأب</label>
                 {person.father ? (
                   <Link href={`/persons/${person.father.id}`} className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-gradient-to-br from-[#0d5c63] to-[#14919b]">
-                      {person.father.firstName.charAt(0)}
-                    </div>
+                    <Avatar
+                      firstName={person.father.firstName}
+                      lastName={person.father.lastName}
+                      gender="MALE"
+                      profileImage={person.father.profileImage}
+                    />
                     <div>
                       <p className="font-medium group-hover:text-[#0d5c63] transition-colors" style={{ color: '#2d2926' }}>
                         {person.father.firstName} {person.father.lastName}
@@ -584,9 +579,12 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
                 <label className="text-sm" style={{ color: '#9c9690' }}>الأم</label>
                 {person.mother ? (
                   <Link href={`/persons/${person.mother.id}`} className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]">
-                      {person.mother.firstName.charAt(0)}
-                    </div>
+                    <Avatar
+                      firstName={person.mother.firstName}
+                      lastName={person.mother.lastName}
+                      gender="FEMALE"
+                      profileImage={person.mother.profileImage}
+                    />
                     <div>
                       <p className="font-medium group-hover:text-[#e07a5f] transition-colors" style={{ color: '#2d2926' }}>
                         {person.mother.firstName} {person.mother.lastName}
@@ -616,12 +614,12 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
               {uniqueChildren.map((child: any) => (
                 <Link key={child.id} href={`/persons/${child.id}`} className="p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
                   <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white ${child.gender === 'MALE'
-                      ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
-                      : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-                      }`}>
-                      {child.firstName.charAt(0)}
-                    </div>
+                    <Avatar
+                      firstName={child.firstName}
+                      lastName={child.lastName}
+                      gender={child.gender}
+                      profileImage={child.profileImage}
+                    />
                     <div>
                       <p className="font-medium group-hover:text-[#0d5c63] transition-colors" style={{ color: '#2d2926' }}>
                         {child.firstName} {child.lastName}
@@ -699,12 +697,12 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
               {siblings.map((sibling: any) => (
                 <Link key={sibling.id} href={`/persons/${sibling.id}`} className="p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
                   <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white ${sibling.gender === 'MALE'
-                      ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
-                      : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-                      }`}>
-                      {sibling.firstName.charAt(0)}
-                    </div>
+                    <Avatar
+                      firstName={sibling.firstName}
+                      lastName={sibling.lastName}
+                      gender={sibling.gender}
+                      profileImage={sibling.profileImage}
+                    />
                     <div>
                       <p className="font-medium group-hover:text-[#0d5c63] transition-colors" style={{ color: '#2d2926' }}>
                         {sibling.firstName} {sibling.lastName}

@@ -11,17 +11,14 @@
             "id": "d834319bd75ba36a",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "draft_canvas.canvas",
-                "viewState": {
-                  "x": -104.42491842597536,
-                  "y": 190.57720211818602,
-                  "zoom": -0.4840219028649339
-                }
+                "file": "prompts/رسم شجرة.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "draft_canvas"
+              "icon": "lucide-file",
+              "title": "رسم شجرة"
             }
           }
         ]
@@ -81,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 219.5,
-    "collapsed": true
+    "width": 219.5
   },
   "right": {
     "id": "7cf912ae0c08bce7",
@@ -199,8 +195,8 @@
   },
   "active": "d834319bd75ba36a",
   "lastOpenFiles": [
-    "tree.canvas",
     "draft_canvas.canvas",
+    "tree.canvas",
     "People_Base.base",
     "Untitled.canvas",
     "Untitled.md",

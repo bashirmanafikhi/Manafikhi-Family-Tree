@@ -73,7 +73,7 @@
       "mother": {
         "id": "cmobc1hcz00tpt75fzal2p8go",
         "firstName": "هبة",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       }
     },
     {
@@ -290,8 +290,8 @@
     },
     {
       "id": "cmobc0xy800nzt75f78xh7t0i",
-      "firstName": "آية حمصي",
-      "lastName": null,
+      "firstName": "آية ",
+      "lastName": "حمصي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -304,7 +304,7 @@
       "motherId": null,
       "canvasId": "93c6f9aaf05fc00f",
       "createdAt": "2026-04-23T10:21:53.504Z",
-      "updatedAt": "2026-04-23T10:21:53.504Z",
+      "updatedAt": "2026-04-26T12:07:12.333Z",
       "father": null,
       "mother": null
     },
@@ -345,16 +345,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0kaq00k0t75fxanwp7qh",
-      "motherId": null,
+      "motherId": "cmobc0nsy00l2t75fh4iphr2f",
       "canvasId": "bc799fac5d4b989d",
       "createdAt": "2026-04-23T10:21:29.310Z",
-      "updatedAt": "2026-04-25T05:06:19.631Z",
+      "updatedAt": "2026-04-26T12:39:09.677Z",
       "father": {
         "id": "cmobc0kaq00k0t75fxanwp7qh",
         "firstName": "محمود",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0nsy00l2t75fh4iphr2f",
+        "firstName": "عائشة",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobbyhgy000ft75f18u9hel0",
@@ -581,30 +585,6 @@
       }
     },
     {
-      "id": "cmobbzqfe00bgt75f1qv7xm2w",
-      "firstName": "أحمد",
-      "lastName": "منافيخي",
-      "nickname": null,
-      "gender": "MALE",
-      "birthDate": null,
-      "deathDate": null,
-      "isAlive": true,
-      "profileImage": null,
-      "additionalImages": "[]",
-      "bio": null,
-      "fatherId": "cmobbzmsz00a9t75fkucyfd5h",
-      "motherId": null,
-      "canvasId": "947b9bbcf9483e84",
-      "createdAt": "2026-04-23T10:20:57.099Z",
-      "updatedAt": "2026-04-25T05:05:58.008Z",
-      "father": {
-        "id": "cmobbzmsz00a9t75fkucyfd5h",
-        "firstName": "محمد",
-        "lastName": "منافيخي"
-      },
-      "mother": null
-    },
-    {
       "id": "cmobc04j600fct75f1r0gehfq",
       "firstName": "أحمد",
       "lastName": "منافيخي",
@@ -631,7 +611,7 @@
     {
       "id": "cmobc08pe00gjt75frg7lo10q",
       "firstName": "أحمد",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -644,18 +624,18 @@
       "motherId": null,
       "canvasId": "b2b2372403d906ba",
       "createdAt": "2026-04-23T10:21:20.786Z",
-      "updatedAt": "2026-04-23T10:23:10.273Z",
+      "updatedAt": "2026-04-26T13:33:00.496Z",
       "father": {
         "id": "cmobc09wf00gwt75fq6bt8pa6",
         "firstName": "عبد الحليم",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
     {
       "id": "cmobc0b3p00h8t75fqcqyjh0z",
       "firstName": "أحمد",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -668,11 +648,11 @@
       "motherId": "cmobc0bzn00hit75f7wzby6yt",
       "canvasId": "2b72f04e600b11ee",
       "createdAt": "2026-04-23T10:21:23.893Z",
-      "updatedAt": "2026-04-24T15:53:16.357Z",
+      "updatedAt": "2026-04-26T13:33:02.685Z",
       "father": {
         "id": "cmobc0buf00hht75fkva8whmn",
-        "firstName": "عمر بوشي",
-        "lastName": null
+        "firstName": "عمر ",
+        "lastName": "بوشي حصال"
       },
       "mother": {
         "id": "cmobc0bzn00hit75f7wzby6yt",
@@ -693,16 +673,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0kaq00k0t75fxanwp7qh",
-      "motherId": null,
+      "motherId": "cmobc0nsy00l2t75fh4iphr2f",
       "canvasId": "396bb6b0afa9cab2",
       "createdAt": "2026-04-23T10:21:29.197Z",
-      "updatedAt": "2026-04-25T05:06:19.398Z",
+      "updatedAt": "2026-04-26T12:39:09.067Z",
       "father": {
         "id": "cmobc0kaq00k0t75fxanwp7qh",
         "firstName": "محمود",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0nsy00l2t75fh4iphr2f",
+        "firstName": "عائشة",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc0fou00imt75fxbgb0nff",
@@ -753,9 +737,37 @@
       }
     },
     {
+      "id": "cmobc0utx00n6t75f3gdvh0nd",
+      "firstName": "أحمد",
+      "lastName": "زينة",
+      "nickname": null,
+      "gender": "MALE",
+      "birthDate": null,
+      "deathDate": null,
+      "isAlive": false,
+      "profileImage": null,
+      "additionalImages": "[]",
+      "bio": null,
+      "fatherId": "cmobc0u3000myt75f0yxkcgj4",
+      "motherId": "cmobc0zo100oht75f65hvmfwu",
+      "canvasId": "69db2e2b2ab84032",
+      "createdAt": "2026-04-23T10:21:49.461Z",
+      "updatedAt": "2026-04-26T12:26:05.498Z",
+      "father": {
+        "id": "cmobc0u3000myt75f0yxkcgj4",
+        "firstName": "يحيى ",
+        "lastName": "زينة"
+      },
+      "mother": {
+        "id": "cmobc0zo100oht75f65hvmfwu",
+        "firstName": "رويدة",
+        "lastName": null
+      }
+    },
+    {
       "id": "cmobc0yj700o5t75fawpuakq1",
       "firstName": "أحمد",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -764,12 +776,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0u3000myt75f0yxkcgj4",
       "motherId": "cmobc0zo100oht75f65hvmfwu",
       "canvasId": "407801bc6bfc086f",
       "createdAt": "2026-04-23T10:21:54.259Z",
-      "updatedAt": "2026-04-23T10:24:23.948Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:06.933Z",
+      "father": {
+        "id": "cmobc0u3000myt75f0yxkcgj4",
+        "firstName": "يحيى ",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0zo100oht75f65hvmfwu",
         "firstName": "رويدة",
@@ -801,26 +817,26 @@
       "mother": {
         "id": "cmobc0ymj00o6t75f0wq62tgl",
         "firstName": "فاطمة منافيخي",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
       "id": "cmobc17l700qtt75fbhwrbevw",
       "firstName": "أحمد",
       "lastName": "منافيخي",
-      "nickname": null,
+      "nickname": "احمد يامو",
       "gender": "MALE",
       "birthDate": null,
       "deathDate": null,
       "isAlive": true,
-      "profileImage": null,
+      "profileImage": "images/persons/cmobc17l700qtt75fbhwrbevw/profile.jpg",
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc18ak00r0t75f4q4nwbes",
       "motherId": "cmobc0cdr00hmt75fbjecx5ji",
       "canvasId": "663d01b3f3112022",
       "createdAt": "2026-04-23T10:22:05.996Z",
-      "updatedAt": "2026-04-25T05:06:35.230Z",
+      "updatedAt": "2026-04-26T12:09:06.478Z",
       "father": {
         "id": "cmobc18ak00r0t75f4q4nwbes",
         "firstName": "محمد",
@@ -872,16 +888,12 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": "cmobc14lc00pzt75f212lv0k0",
+      "fatherId": null,
       "motherId": null,
       "canvasId": "336b769596edda0e",
       "createdAt": "2026-04-23T10:22:10.896Z",
-      "updatedAt": "2026-04-23T10:23:47.946Z",
-      "father": {
-        "id": "cmobc14lc00pzt75f212lv0k0",
-        "firstName": "مهدي",
-        "lastName": null
-      },
+      "updatedAt": "2026-04-26T10:22:16.451Z",
+      "father": null,
       "mother": null
     },
     {
@@ -985,7 +997,7 @@
       "mother": {
         "id": "cmobc08s000gkt75fmhyz95t8",
         "firstName": "بثينة",
-        "lastName": null
+        "lastName": "بوشي حصال"
       }
     },
     {
@@ -1014,30 +1026,6 @@
         "id": "cmobbzj700099t75f9a30lmpx",
         "firstName": "عائشة",
         "lastName": "منافيخي"
-      }
-    },
-    {
-      "id": "cmobc0utx00n6t75f3gdvh0nd",
-      "firstName": "أحمد ت",
-      "lastName": null,
-      "nickname": null,
-      "gender": "MALE",
-      "birthDate": null,
-      "deathDate": null,
-      "isAlive": true,
-      "profileImage": null,
-      "additionalImages": "[]",
-      "bio": null,
-      "fatherId": null,
-      "motherId": "cmobc0zo100oht75f65hvmfwu",
-      "canvasId": "69db2e2b2ab84032",
-      "createdAt": "2026-04-23T10:21:49.461Z",
-      "updatedAt": "2026-04-23T10:24:22.619Z",
-      "father": null,
-      "mother": {
-        "id": "cmobc0zo100oht75f65hvmfwu",
-        "firstName": "رويدة",
-        "lastName": null
       }
     },
     {
@@ -1141,7 +1129,7 @@
       "mother": {
         "id": "cmobc034300ezt75fhqfqfm0d",
         "firstName": "صبا",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
@@ -1169,6 +1157,34 @@
       "mother": {
         "id": "cmobbzitc0095t75fmtp001lj",
         "firstName": "وداد",
+        "lastName": "منافيخي"
+      }
+    },
+    {
+      "id": "cmobbzqfe00bgt75f1qv7xm2w",
+      "firstName": "أحمد لطف الله",
+      "lastName": "منافيخي",
+      "nickname": null,
+      "gender": "MALE",
+      "birthDate": null,
+      "deathDate": null,
+      "isAlive": true,
+      "profileImage": null,
+      "additionalImages": "[]",
+      "bio": null,
+      "fatherId": "cmobbzmsz00a9t75fkucyfd5h",
+      "motherId": "cmoeucdwi000uk96jlu7286u9",
+      "canvasId": "947b9bbcf9483e84",
+      "createdAt": "2026-04-23T10:20:57.099Z",
+      "updatedAt": "2026-04-26T10:52:38.482Z",
+      "father": {
+        "id": "cmobbzmsz00a9t75fkucyfd5h",
+        "firstName": "محمد",
+        "lastName": "منافيخي"
+      },
+      "mother": {
+        "id": "cmoeucdwi000uk96jlu7286u9",
+        "firstName": "لطفية",
         "lastName": "منافيخي"
       }
     },
@@ -1244,7 +1260,7 @@
       "motherId": "cmobc1al700rot75f01otc2pi",
       "canvasId": "ff259c8afe955944",
       "createdAt": "2026-04-23T10:20:33.705Z",
-      "updatedAt": "2026-04-25T05:05:46.268Z",
+      "updatedAt": "2026-04-26T10:22:24.663Z",
       "father": {
         "id": "cmobc17l700qtt75fbhwrbevw",
         "firstName": "أحمد",
@@ -1257,33 +1273,9 @@
       }
     },
     {
-      "id": "cmobc146r00pvt75fbz1gp11a",
-      "firstName": "أريج",
-      "lastName": null,
-      "nickname": null,
-      "gender": "FEMALE",
-      "birthDate": null,
-      "deathDate": null,
-      "isAlive": true,
-      "profileImage": null,
-      "additionalImages": "[]",
-      "bio": null,
-      "fatherId": null,
-      "motherId": "cmobc1al700rot75f01otc2pi",
-      "canvasId": "955e805472dffb30",
-      "createdAt": "2026-04-23T10:22:01.587Z",
-      "updatedAt": "2026-04-23T10:23:48.321Z",
-      "father": null,
-      "mother": {
-        "id": "cmobc1al700rot75f01otc2pi",
-        "firstName": "ايمان",
-        "lastName": "منافيخي"
-      }
-    },
-    {
       "id": "cmobc13gh00pmt75figqa46kn",
-      "firstName": "أسامة العبد",
-      "lastName": null,
+      "firstName": "أسامة",
+      "lastName": "العبد",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -1296,7 +1288,7 @@
       "motherId": null,
       "canvasId": "6136f2b5fdd8d7b6",
       "createdAt": "2026-04-23T10:22:00.642Z",
-      "updatedAt": "2026-04-23T10:22:00.642Z",
+      "updatedAt": "2026-04-26T12:00:14.822Z",
       "father": null,
       "mother": null
     },
@@ -1345,7 +1337,7 @@
       "mother": {
         "id": "cmobc034300ezt75fhqfqfm0d",
         "firstName": "صبا",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
@@ -1447,7 +1439,7 @@
     {
       "id": "cmobc0vlw00net75fkfxiua1u",
       "firstName": "أسيل",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -1460,11 +1452,11 @@
       "motherId": null,
       "canvasId": "72ad4a7cb4c995a6",
       "createdAt": "2026-04-23T10:21:50.468Z",
-      "updatedAt": "2026-04-23T10:24:22.965Z",
+      "updatedAt": "2026-04-26T12:26:05.983Z",
       "father": {
         "id": "cmobc0tr200mvt75ffgkj4xud",
         "firstName": "قتيبة",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -1489,7 +1481,7 @@
       "mother": {
         "id": "cmobc0q6z00ltt75f8v4gd14y",
         "firstName": "روان",
-        "lastName": null
+        "lastName": "مصطو"
       }
     },
     {
@@ -1580,7 +1572,7 @@
       "motherId": "cmobc1al700rot75f01otc2pi",
       "canvasId": "2dc9c3d07842e90d",
       "createdAt": "2026-04-23T10:20:33.834Z",
-      "updatedAt": "2026-04-25T05:05:46.399Z",
+      "updatedAt": "2026-04-26T10:22:24.857Z",
       "father": {
         "id": "cmobc17l700qtt75fbhwrbevw",
         "firstName": "أحمد",
@@ -1615,30 +1607,6 @@
         "lastName": null
       },
       "mother": null
-    },
-    {
-      "id": "cmobc144400put75fidw8ec2w",
-      "firstName": "ألين",
-      "lastName": null,
-      "nickname": null,
-      "gender": "FEMALE",
-      "birthDate": null,
-      "deathDate": null,
-      "isAlive": true,
-      "profileImage": null,
-      "additionalImages": "[]",
-      "bio": null,
-      "fatherId": null,
-      "motherId": "cmobc1al700rot75f01otc2pi",
-      "canvasId": "081a319e6273e485",
-      "createdAt": "2026-04-23T10:22:01.492Z",
-      "updatedAt": "2026-04-23T10:23:48.425Z",
-      "father": null,
-      "mother": {
-        "id": "cmobc1al700rot75f01otc2pi",
-        "firstName": "ايمان",
-        "lastName": "منافيخي"
-      }
     },
     {
       "id": "cmobbyr5g0032t75fpha7lxfj",
@@ -1753,16 +1721,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzmsz00a9t75fkucyfd5h",
-      "motherId": null,
+      "motherId": "cmoeucdwi000uk96jlu7286u9",
       "canvasId": "c967ef44a813c896",
       "createdAt": "2026-04-23T10:21:09.403Z",
-      "updatedAt": "2026-04-25T05:06:02.785Z",
+      "updatedAt": "2026-04-26T10:43:18.859Z",
       "father": {
         "id": "cmobbzmsz00a9t75fkucyfd5h",
         "firstName": "محمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoeucdwi000uk96jlu7286u9",
+        "firstName": "لطفية",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc17ic00qst75fe2skb148",
@@ -1911,7 +1883,7 @@
     {
       "id": "cmobc13vf00prt75f9m2r8b1r",
       "firstName": "أمين",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -1920,12 +1892,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0u3000myt75f0yxkcgj4",
       "motherId": "cmobc0zo100oht75f65hvmfwu",
       "canvasId": "524833af43971320",
       "createdAt": "2026-04-23T10:22:01.179Z",
-      "updatedAt": "2026-04-23T10:24:16.820Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:09.029Z",
+      "father": {
+        "id": "cmobc0u3000myt75f0yxkcgj4",
+        "firstName": "يحيى ",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0zo100oht75f65hvmfwu",
         "firstName": "رويدة",
@@ -2177,16 +2153,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0kaq00k0t75fxanwp7qh",
-      "motherId": null,
+      "motherId": "cmobc0nsy00l2t75fh4iphr2f",
       "canvasId": "3c0ab4b959523827",
       "createdAt": "2026-04-23T10:21:36.168Z",
-      "updatedAt": "2026-04-25T05:06:23.739Z",
+      "updatedAt": "2026-04-26T12:39:10.237Z",
       "father": {
         "id": "cmobc0kaq00k0t75fxanwp7qh",
         "firstName": "محمود",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0nsy00l2t75fh4iphr2f",
+        "firstName": "عائشة",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc17vu00qwt75fl8kc35mr",
@@ -2253,16 +2233,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0fou00imt75fxbgb0nff",
-      "motherId": null,
+      "motherId": "cmoecbvt3000yreflg97syhaa",
       "canvasId": null,
       "createdAt": "2026-04-25T12:54:47.588Z",
-      "updatedAt": "2026-04-25T22:09:06.126Z",
+      "updatedAt": "2026-04-26T12:37:09.107Z",
       "father": {
         "id": "cmobc0fou00imt75fxbgb0nff",
         "firstName": "أحمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoecbvt3000yreflg97syhaa",
+        "firstName": "عائشة",
+        "lastName": "بوشي حصال"
+      }
     },
     {
       "id": "cmoeub8y7000ik96jsvelnf8q",
@@ -2325,14 +2309,14 @@
       "birthDate": null,
       "deathDate": null,
       "isAlive": true,
-      "profileImage": null,
+      "profileImage": "images/persons/cmobbznhw00agt75fpzjxjvja/profile.jpg",
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzztt00e1t75fb6xtdbkx",
       "motherId": "cmobbzj700099t75f9a30lmpx",
       "canvasId": "6aaa2fb70d2d4a97",
       "createdAt": "2026-04-23T10:20:53.301Z",
-      "updatedAt": "2026-04-25T05:05:55.848Z",
+      "updatedAt": "2026-04-26T12:11:05.747Z",
       "father": {
         "id": "cmobbzztt00e1t75fb6xtdbkx",
         "firstName": "رضوان",
@@ -2623,7 +2607,7 @@
     {
       "id": "cmobc097f00gpt75f4fqtnvz5",
       "firstName": "أيهم",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -2636,11 +2620,11 @@
       "motherId": null,
       "canvasId": "7fdbb681073e3983",
       "createdAt": "2026-04-23T10:21:21.435Z",
-      "updatedAt": "2026-04-23T10:23:13.106Z",
+      "updatedAt": "2026-04-26T13:33:00.920Z",
       "father": {
         "id": "cmobc0bnh00hft75fv5pxcknf",
         "firstName": "عبد المعطي",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
@@ -2695,7 +2679,7 @@
     {
       "id": "cmobc0svy00mmt75f47ynxyc2",
       "firstName": "إلهام",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -2708,11 +2692,11 @@
       "motherId": null,
       "canvasId": "6b0e92014535f25d",
       "createdAt": "2026-04-23T10:21:46.943Z",
-      "updatedAt": "2026-04-23T10:24:17.840Z",
+      "updatedAt": "2026-04-26T12:26:04.048Z",
       "father": {
         "id": "cmobc0rm800m8t75fobzy3bcy",
         "firstName": "بسام",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -2741,7 +2725,7 @@
       "mother": {
         "id": "cmobc0ymj00o6t75f0wq62tgl",
         "firstName": "فاطمة منافيخي",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
@@ -2765,7 +2749,7 @@
       "mother": {
         "id": "cmobc0zhs00oft75fzrv1mtht",
         "firstName": "رغد",
-        "lastName": null
+        "lastName": "زينة"
       }
     },
     {
@@ -3239,7 +3223,7 @@
     {
       "id": "cmobc18uq00r6t75fumvnjfsb",
       "firstName": "ابراهيم",
-      "lastName": null,
+      "lastName": "مرعي الشامي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -3248,12 +3232,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmofmgalr0003p0cltt4y8gzz",
       "motherId": "cmobc16w800qlt75fjiqwsx5g",
       "canvasId": "0fe17575532a519a",
       "createdAt": "2026-04-23T10:22:07.634Z",
-      "updatedAt": "2026-04-23T10:22:39.094Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:09.422Z",
+      "father": {
+        "id": "cmofmgalr0003p0cltt4y8gzz",
+        "firstName": "محمود",
+        "lastName": "مرعي الشامي"
+      },
       "mother": {
         "id": "cmobc16w800qlt75fjiqwsx5g",
         "firstName": "صباح",
@@ -3555,7 +3543,7 @@
     {
       "id": "cmobc00yj00edt75fafpjegd6",
       "firstName": "احمد رمضان",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -3564,12 +3552,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0bet00hct75f0dgqz38p",
       "motherId": "cmobc03gb00f2t75fjeq4ip2j",
       "canvasId": "6d4c9fde21d7be86",
       "createdAt": "2026-04-23T10:21:10.748Z",
-      "updatedAt": "2026-04-23T10:24:34.990Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:25:59.958Z",
+      "father": {
+        "id": "cmobc0bet00hct75f0dgqz38p",
+        "firstName": "بدر",
+        "lastName": "منافيخي"
+      },
       "mother": {
         "id": "cmobc03gb00f2t75fjeq4ip2j",
         "firstName": "وفاء",
@@ -3635,7 +3627,7 @@
     {
       "id": "cmobbzw7v00czt75fav3aygw2",
       "firstName": "اسامة",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -3644,12 +3636,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmofojn0l000fp0cl3utavmjg",
       "motherId": "cmobc018600egt75ff9o68pco",
       "canvasId": "88597114ca80df9e",
       "createdAt": "2026-04-23T10:21:04.603Z",
-      "updatedAt": "2026-04-23T10:24:06.494Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:25:59.191Z",
+      "father": {
+        "id": "cmofojn0l000fp0cl3utavmjg",
+        "firstName": "عبد الحميد",
+        "lastName": "علي"
+      },
       "mother": {
         "id": "cmobc018600egt75ff9o68pco",
         "firstName": "صباح",
@@ -3658,8 +3654,8 @@
     },
     {
       "id": "cmobc10v800ott75f4mh5f04w",
-      "firstName": "اسامة ذمة",
-      "lastName": null,
+      "firstName": "اسامة ",
+      "lastName": "ذمة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -3672,7 +3668,7 @@
       "motherId": null,
       "canvasId": "549f6a6cdf0d173a",
       "createdAt": "2026-04-23T10:21:57.284Z",
-      "updatedAt": "2026-04-23T10:21:57.284Z",
+      "updatedAt": "2026-04-26T12:05:00.307Z",
       "father": null,
       "mother": null
     },
@@ -3737,16 +3733,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0z2v00obt75fomh3ut73",
-      "motherId": null,
+      "motherId": "cmobc0z6800oct75fkunq1l8v",
       "canvasId": "674b0b6c7d5c4cc1",
       "createdAt": "2026-04-23T10:21:48.827Z",
-      "updatedAt": "2026-04-23T10:24:19.007Z",
+      "updatedAt": "2026-04-26T11:57:52.077Z",
       "father": {
         "id": "cmobc0z2v00obt75fomh3ut73",
         "firstName": "هشام",
         "lastName": null
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0z6800oct75fkunq1l8v",
+        "firstName": "صباح ",
+        "lastName": "قشقش"
+      }
     },
     {
       "id": "cmobbzcep007dt75f0bm6teq0",
@@ -3769,7 +3769,7 @@
       "mother": {
         "id": "cmobc18y100r7t75fcc69j70l",
         "firstName": "ايمان",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       }
     },
     {
@@ -3847,7 +3847,7 @@
     {
       "id": "cmobbzcsp007ht75fcv33c4l2",
       "firstName": "الاء",
-      "lastName": null,
+      "lastName": "مرعي الشامي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -3856,12 +3856,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmofmgalr0003p0cltt4y8gzz",
       "motherId": "cmobc16w800qlt75fjiqwsx5g",
       "canvasId": "1e01390f97837c2a",
       "createdAt": "2026-04-23T10:20:39.433Z",
-      "updatedAt": "2026-04-23T10:22:39.261Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:25:57.230Z",
+      "father": {
+        "id": "cmofmgalr0003p0cltt4y8gzz",
+        "firstName": "محمود",
+        "lastName": "مرعي الشامي"
+      },
       "mother": {
         "id": "cmobc16w800qlt75fjiqwsx5g",
         "firstName": "صباح",
@@ -3993,7 +3997,7 @@
       "mother": {
         "id": "cmobc0ymj00o6t75f0wq62tgl",
         "firstName": "فاطمة منافيخي",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
@@ -4137,7 +4141,7 @@
       "mother": {
         "id": "cmobc0ymj00o6t75f0wq62tgl",
         "firstName": "فاطمة منافيخي",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
@@ -4177,16 +4181,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0z2v00obt75fomh3ut73",
-      "motherId": null,
+      "motherId": "cmobc0z6800oct75fkunq1l8v",
       "canvasId": "49ea1e51697825ca",
       "createdAt": "2026-04-23T10:21:51.067Z",
-      "updatedAt": "2026-04-23T10:24:19.140Z",
+      "updatedAt": "2026-04-26T11:57:52.436Z",
       "father": {
         "id": "cmobc0z2v00obt75fomh3ut73",
         "firstName": "هشام",
         "lastName": null
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0z6800oct75fkunq1l8v",
+        "firstName": "صباح ",
+        "lastName": "قشقش"
+      }
     },
     {
       "id": "cmobbzotf00avt75fluookmtn",
@@ -4291,7 +4299,7 @@
     {
       "id": "cmobc0a0200gxt75f6uklkg5m",
       "firstName": "ايمان",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -4304,18 +4312,18 @@
       "motherId": null,
       "canvasId": "3cc586eb12edcc6b",
       "createdAt": "2026-04-23T10:21:22.467Z",
-      "updatedAt": "2026-04-23T10:23:09.890Z",
+      "updatedAt": "2026-04-26T13:33:01.596Z",
       "father": {
         "id": "cmobc0aky00h3t75fuw3wjg2y",
         "firstName": "عبد الرزاق",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
     {
       "id": "cmobc12f800pbt75fqrypkv4a",
       "firstName": "ايمان",
-      "lastName": null,
+      "lastName": "مصطو",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -4324,12 +4332,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc12lq00pdt75ffs4bfqls",
       "motherId": "cmobc12ik00pct75f8o3g8848",
       "canvasId": "4345b2f04f6fd6c7",
       "createdAt": "2026-04-23T10:21:59.301Z",
-      "updatedAt": "2026-04-23T10:24:10.020Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:08.451Z",
+      "father": {
+        "id": "cmobc12lq00pdt75ffs4bfqls",
+        "firstName": "محمد كامل ",
+        "lastName": "مصطو"
+      },
       "mother": {
         "id": "cmobc12ik00pct75f8o3g8848",
         "firstName": "ليلى",
@@ -4339,7 +4351,7 @@
     {
       "id": "cmobc18y100r7t75fcc69j70l",
       "firstName": "ايمان",
-      "lastName": null,
+      "lastName": "مرعي الشامي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -4348,12 +4360,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmofmgalr0003p0cltt4y8gzz",
       "motherId": "cmobc16w800qlt75fjiqwsx5g",
       "canvasId": "113a1459ab663d9b",
       "createdAt": "2026-04-23T10:22:07.754Z",
-      "updatedAt": "2026-04-23T10:22:38.961Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:09.560Z",
+      "father": {
+        "id": "cmofmgalr0003p0cltt4y8gzz",
+        "firstName": "محمود",
+        "lastName": "مرعي الشامي"
+      },
       "mother": {
         "id": "cmobc16w800qlt75fjiqwsx5g",
         "firstName": "صباح",
@@ -4501,16 +4517,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzmsz00a9t75fkucyfd5h",
-      "motherId": null,
+      "motherId": "cmoeucdwi000uk96jlu7286u9",
       "canvasId": "3dd27d354965f6c8",
       "createdAt": "2026-04-23T10:20:51.070Z",
-      "updatedAt": "2026-04-25T05:05:54.715Z",
+      "updatedAt": "2026-04-26T10:43:17.310Z",
       "father": {
         "id": "cmobbzmsz00a9t75fkucyfd5h",
         "firstName": "محمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoeucdwi000uk96jlu7286u9",
+        "firstName": "لطفية",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc0ijj00jgt75fmk5oq96q",
@@ -4539,7 +4559,7 @@
     {
       "id": "cmobc08s000gkt75fmhyz95t8",
       "firstName": "بثينة",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -4552,11 +4572,11 @@
       "motherId": "cmobc0bzn00hit75f7wzby6yt",
       "canvasId": "1c3084e10d6a9c9f",
       "createdAt": "2026-04-23T10:21:20.880Z",
-      "updatedAt": "2026-04-24T15:53:15.574Z",
+      "updatedAt": "2026-04-26T13:33:00.593Z",
       "father": {
         "id": "cmobc0buf00hht75fkva8whmn",
-        "firstName": "عمر بوشي",
-        "lastName": null
+        "firstName": "عمر ",
+        "lastName": "بوشي حصال"
       },
       "mother": {
         "id": "cmobc0bzn00hit75f7wzby6yt",
@@ -4567,7 +4587,7 @@
     {
       "id": "cmobc02w400ext75fumwob2eb",
       "firstName": "بدر",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -4580,18 +4600,18 @@
       "motherId": null,
       "canvasId": "9b2cdd38acb1c912",
       "createdAt": "2026-04-23T10:21:13.252Z",
-      "updatedAt": "2026-04-23T10:24:13.740Z",
+      "updatedAt": "2026-04-26T12:26:00.432Z",
       "father": {
         "id": "cmobc01wc00emt75f22fyg5u4",
         "firstName": "عبد الرحمن",
-        "lastName": null
+        "lastName": "منافيخي"
       },
       "mother": null
     },
     {
       "id": "cmobc0bet00hct75f0dgqz38p",
       "firstName": "بدر",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -4604,18 +4624,18 @@
       "motherId": null,
       "canvasId": "e40f2fdd1f429045",
       "createdAt": "2026-04-23T10:21:24.294Z",
-      "updatedAt": "2026-04-24T15:42:06.268Z",
+      "updatedAt": "2026-04-26T12:26:00.712Z",
       "father": {
         "id": "cmobc0bku00het75fafhcyej4",
         "firstName": "عبد الرحمن",
-        "lastName": null
+        "lastName": "منافيخي"
       },
       "mother": null
     },
     {
       "id": "cmobbzqxp00blt75fmvusb506",
       "firstName": "بدر الدين",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -4628,11 +4648,11 @@
       "motherId": null,
       "canvasId": "aa78382be2c3ceac",
       "createdAt": "2026-04-23T10:20:57.757Z",
-      "updatedAt": "2026-04-23T10:24:14.340Z",
+      "updatedAt": "2026-04-26T12:25:57.756Z",
       "father": {
         "id": "cmobc02du00ert75f0o8wz1xb",
         "firstName": "فاروق",
-        "lastName": null
+        "lastName": "منافيخي"
       },
       "mother": null
     },
@@ -4691,7 +4711,7 @@
     {
       "id": "cmobc0uq900n5t75f6x7dlmlr",
       "firstName": "براء",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -4704,18 +4724,18 @@
       "motherId": null,
       "canvasId": "6637d2553ae7d035",
       "createdAt": "2026-04-23T10:21:49.330Z",
-      "updatedAt": "2026-04-23T10:24:17.590Z",
+      "updatedAt": "2026-04-26T12:26:05.406Z",
       "father": {
         "id": "cmobc0spq00mkt75fpejpgatu",
         "firstName": "محمد",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
     {
       "id": "cmobc0ufm00n2t75fdrr9b7is",
-      "firstName": "براءة الياسين",
-      "lastName": null,
+      "firstName": "براءة ",
+      "lastName": "الياسين",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -4728,14 +4748,14 @@
       "motherId": null,
       "canvasId": "03a08ec4ccd37a96",
       "createdAt": "2026-04-23T10:21:48.946Z",
-      "updatedAt": "2026-04-23T10:21:48.946Z",
+      "updatedAt": "2026-04-26T12:06:35.568Z",
       "father": null,
       "mother": null
     },
     {
       "id": "cmobc0rm800m8t75fobzy3bcy",
       "firstName": "بسام",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -4744,12 +4764,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0zqy00oit75fmg7yz1q0",
       "motherId": "cmobc0u5o00mzt75fjg8ud0e6",
       "canvasId": "212fcd71bc1fb631",
       "createdAt": "2026-04-23T10:21:45.296Z",
-      "updatedAt": "2026-04-23T10:24:20.095Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:02.956Z",
+      "father": {
+        "id": "cmobc0zqy00oit75fmg7yz1q0",
+        "firstName": "محمود",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0u5o00mzt75fjg8ud0e6",
         "firstName": "إلهام",
@@ -4916,7 +4940,7 @@
       "gender": "MALE",
       "birthDate": null,
       "deathDate": null,
-      "isAlive": true,
+      "isAlive": false,
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
@@ -4924,7 +4948,7 @@
       "motherId": "cmobc044t00f8t75ffud5rt29",
       "canvasId": "3a1544c59697914f",
       "createdAt": "2026-04-23T10:21:11.327Z",
-      "updatedAt": "2026-04-25T05:06:03.810Z",
+      "updatedAt": "2026-04-26T11:24:27.523Z",
       "father": {
         "id": "cmobbzmll00a7t75frm5nb7oc",
         "firstName": "أحمد",
@@ -5087,7 +5111,7 @@
     {
       "id": "cmobbzxmf00det75fxji8lyqt",
       "firstName": "بلال",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -5100,11 +5124,11 @@
       "motherId": null,
       "canvasId": "d92e6d1f5218480f",
       "createdAt": "2026-04-23T10:21:06.423Z",
-      "updatedAt": "2026-04-23T10:24:07.407Z",
+      "updatedAt": "2026-04-26T12:25:59.647Z",
       "father": {
         "id": "cmobbzw7v00czt75fav3aygw2",
         "firstName": "اسامة",
-        "lastName": null
+        "lastName": "علي"
       },
       "mother": null
     },
@@ -5157,13 +5181,13 @@
       "mother": {
         "id": "cmobc08s000gkt75fmhyz95t8",
         "firstName": "بثينة",
-        "lastName": null
+        "lastName": "بوشي حصال"
       }
     },
     {
       "id": "cmobc12yg00pht75f4vzdj9af",
       "firstName": "بنان",
-      "lastName": null,
+      "lastName": "مزعل",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -5172,12 +5196,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc12od00pet75fbu23bown",
       "motherId": "cmobc0zu200ojt75fgdj376zk",
       "canvasId": "7ea0dfa3cf6683ce",
       "createdAt": "2026-04-23T10:21:59.992Z",
-      "updatedAt": "2026-04-23T10:24:16.411Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:08.537Z",
+      "father": {
+        "id": "cmobc12od00pet75fbu23bown",
+        "firstName": "حسان ",
+        "lastName": "مزعل"
+      },
       "mother": {
         "id": "cmobc0zu200ojt75fgdj376zk",
         "firstName": "ضحى",
@@ -5211,7 +5239,7 @@
     {
       "id": "cmobbzw4900cyt75fw0fg8287",
       "firstName": "بهاء الدين",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -5224,11 +5252,11 @@
       "motherId": null,
       "canvasId": "cc48487b3149d9a8",
       "createdAt": "2026-04-23T10:21:04.473Z",
-      "updatedAt": "2026-04-23T10:24:07.312Z",
+      "updatedAt": "2026-04-26T12:25:59.098Z",
       "father": {
         "id": "cmobbzw7v00czt75fav3aygw2",
         "firstName": "اسامة",
-        "lastName": null
+        "lastName": "علي"
       },
       "mother": null
     },
@@ -5283,7 +5311,7 @@
     {
       "id": "cmobc0rcn00m5t75fmk2ukg1o",
       "firstName": "بيان",
-      "lastName": null,
+      "lastName": "عتال",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -5292,12 +5320,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc1iy400u8t75fra4d5ih5",
       "motherId": "cmobc12ri00pft75f11sgru81",
       "canvasId": "957959680c7cdbe0",
       "createdAt": "2026-04-23T10:21:44.951Z",
-      "updatedAt": "2026-04-23T10:24:09.424Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:02.865Z",
+      "father": {
+        "id": "cmobc1iy400u8t75fra4d5ih5",
+        "firstName": "عبد الرزاق ",
+        "lastName": "عتال"
+      },
       "mother": {
         "id": "cmobc12ri00pft75f11sgru81",
         "firstName": "سجى",
@@ -5331,7 +5363,7 @@
     {
       "id": "cmobc0t4r00mpt75fu86rw4p9",
       "firstName": "بيلسان",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -5341,16 +5373,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0smt00mjt75fqlzur4ah",
-      "motherId": null,
+      "motherId": "cmobc12f800pbt75fqrypkv4a",
       "canvasId": "f310eae6132e46cb",
       "createdAt": "2026-04-23T10:21:47.259Z",
-      "updatedAt": "2026-04-23T10:24:18.687Z",
+      "updatedAt": "2026-04-26T12:26:04.429Z",
       "father": {
         "id": "cmobc0smt00mjt75fqlzur4ah",
         "firstName": "هيثم",
-        "lastName": null
+        "lastName": "زينة"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc12f800pbt75fqrypkv4a",
+        "firstName": "ايمان",
+        "lastName": "مصطو"
+      }
     },
     {
       "id": "cmobbz9g8006kt75frkephe1w",
@@ -5489,21 +5525,25 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc16jd00qit75fxgpubn26",
-      "motherId": null,
+      "motherId": "cmobc0i8200jdt75f2av5grec",
       "canvasId": "3123c07cd9e83e9e",
       "createdAt": "2026-04-23T10:20:40.483Z",
-      "updatedAt": "2026-04-25T05:05:48.624Z",
+      "updatedAt": "2026-04-26T10:27:08.679Z",
       "father": {
         "id": "cmobc16jd00qit75fxgpubn26",
         "firstName": "قاسم",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0i8200jdt75f2av5grec",
+        "firstName": "فاتن",
+        "lastName": null
+      }
     },
     {
       "id": "cmobc0q2w00lst75fi5pss7wf",
       "firstName": "تسنيم",
-      "lastName": null,
+      "lastName": "مصطو",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -5512,12 +5552,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc12lq00pdt75ffs4bfqls",
       "motherId": "cmobc12ik00pct75f8o3g8848",
       "canvasId": "868f7825a0fa5b51",
       "createdAt": "2026-04-23T10:21:43.305Z",
-      "updatedAt": "2026-04-23T10:24:20.665Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:01.597Z",
+      "father": {
+        "id": "cmobc12lq00pdt75ffs4bfqls",
+        "firstName": "محمد كامل ",
+        "lastName": "مصطو"
+      },
       "mother": {
         "id": "cmobc12ik00pct75f8o3g8848",
         "firstName": "ليلى",
@@ -5561,16 +5605,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc16jd00qit75fxgpubn26",
-      "motherId": null,
+      "motherId": "cmobc0i8200jdt75f2av5grec",
       "canvasId": "1bb2b2eb3f6ff8f5",
       "createdAt": "2026-04-23T10:20:37.467Z",
-      "updatedAt": "2026-04-25T05:05:47.336Z",
+      "updatedAt": "2026-04-26T10:27:08.500Z",
       "father": {
         "id": "cmobc16jd00qit75fxgpubn26",
         "firstName": "قاسم",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0i8200jdt75f2av5grec",
+        "firstName": "فاتن",
+        "lastName": null
+      }
     },
     {
       "id": "cmobbys9i003ct75f7hxpwrk5",
@@ -5597,7 +5645,7 @@
       "mother": {
         "id": "cmobc0br300hgt75fk7i8zg24",
         "firstName": "صالحة",
-        "lastName": null
+        "lastName": "بوشي حصال"
       }
     },
     {
@@ -5669,7 +5717,7 @@
       "mother": {
         "id": "cmobc09hu00gst75f6d4h4tfy",
         "firstName": "هنادي",
-        "lastName": null
+        "lastName": "بوشي حصال"
       }
     },
     {
@@ -5777,16 +5825,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc11bw00ozt75fh3i8rmhc",
-      "motherId": null,
+      "motherId": "cmobc13d400plt75fa6sjfiqq",
       "canvasId": "e802d8e6c9684680",
       "createdAt": "2026-04-23T10:21:56.338Z",
-      "updatedAt": "2026-04-23T10:24:11.470Z",
+      "updatedAt": "2026-04-26T11:58:23.609Z",
       "father": {
         "id": "cmobc11bw00ozt75fh3i8rmhc",
         "firstName": "أحمد",
         "lastName": null
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc13d400plt75fa6sjfiqq",
+        "firstName": "كنده",
+        "lastName": null
+      }
     },
     {
       "id": "cmobbyg920002t75fpq9r3nex",
@@ -5877,16 +5929,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0kaq00k0t75fxanwp7qh",
-      "motherId": null,
+      "motherId": "cmobc0nsy00l2t75fh4iphr2f",
       "canvasId": "59bf64d621e6a03a",
       "createdAt": "2026-04-23T10:21:27.722Z",
-      "updatedAt": "2026-04-25T12:30:23.640Z",
+      "updatedAt": "2026-04-26T12:39:08.483Z",
       "father": {
         "id": "cmobc0kaq00k0t75fxanwp7qh",
         "firstName": "محمود",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0nsy00l2t75fh4iphr2f",
+        "firstName": "عائشة",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc0f4d00ift75fe1rqi5gi",
@@ -5987,7 +6043,7 @@
     {
       "id": "cmobc0uwz00n7t75fs1j6y5yd",
       "firstName": "جميلة",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -5996,12 +6052,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0u3000myt75f0yxkcgj4",
       "motherId": "cmobc0zo100oht75f65hvmfwu",
       "canvasId": "49521a15dca71f97",
       "createdAt": "2026-04-23T10:21:49.571Z",
-      "updatedAt": "2026-04-23T10:24:22.844Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:05.598Z",
+      "father": {
+        "id": "cmobc0u3000myt75f0yxkcgj4",
+        "firstName": "يحيى ",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0zo100oht75f65hvmfwu",
         "firstName": "رويدة",
@@ -6145,7 +6205,7 @@
       "mother": {
         "id": "cmobc165z00qft75fte6kob8c",
         "firstName": "كوثر",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       }
     },
     {
@@ -6247,7 +6307,7 @@
     {
       "id": "cmobbztan00cat75fyjsplxsn",
       "firstName": "جود",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -6260,11 +6320,11 @@
       "motherId": null,
       "canvasId": "b1361ef819738184",
       "createdAt": "2026-04-23T10:21:00.815Z",
-      "updatedAt": "2026-04-23T10:24:04.903Z",
+      "updatedAt": "2026-04-26T12:25:58.760Z",
       "father": {
         "id": "cmobbzwga00d2t75fgn9q1obe",
         "firstName": "رياض",
-        "lastName": null
+        "lastName": "علي"
       },
       "mother": null
     },
@@ -6295,7 +6355,7 @@
     {
       "id": "cmobc0tg600mst75fd4b0wm4l",
       "firstName": "جود",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -6308,11 +6368,11 @@
       "motherId": null,
       "canvasId": "3b9e86debd30cc72",
       "createdAt": "2026-04-23T10:21:47.671Z",
-      "updatedAt": "2026-04-23T10:24:17.978Z",
+      "updatedAt": "2026-04-26T12:26:04.568Z",
       "father": {
         "id": "cmobc0r3100m2t75f9fy7p93r",
         "firstName": "عصام",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -6367,7 +6427,7 @@
     {
       "id": "cmobc0xuo00nyt75f9exqbqu0",
       "firstName": "جولي",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -6380,11 +6440,11 @@
       "motherId": null,
       "canvasId": "aeeabc293891dcc6",
       "createdAt": "2026-04-23T10:21:53.376Z",
-      "updatedAt": "2026-04-23T10:24:17.022Z",
+      "updatedAt": "2026-04-26T12:26:06.632Z",
       "father": {
         "id": "cmobc0yj700o5t75fawpuakq1",
         "firstName": "أحمد",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -6511,7 +6571,7 @@
     {
       "id": "cmobc0qzg00m1t75fj8rxumke",
       "firstName": "حسام",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -6520,12 +6580,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0zqy00oit75fmg7yz1q0",
       "motherId": "cmobc0u5o00mzt75fjg8ud0e6",
       "canvasId": "c603ec32c6602d9b",
       "createdAt": "2026-04-23T10:21:44.476Z",
-      "updatedAt": "2026-04-23T10:24:19.982Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:02.606Z",
+      "father": {
+        "id": "cmobc0zqy00oit75fmg7yz1q0",
+        "firstName": "محمود",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0u5o00mzt75fjg8ud0e6",
         "firstName": "إلهام",
@@ -6534,8 +6598,8 @@
     },
     {
       "id": "cmobc12od00pet75fbu23bown",
-      "firstName": "حسان مزعل",
-      "lastName": null,
+      "firstName": "حسان ",
+      "lastName": "مزعل",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -6548,7 +6612,7 @@
       "motherId": null,
       "canvasId": "126a6a2ba01e7850",
       "createdAt": "2026-04-23T10:21:59.629Z",
-      "updatedAt": "2026-04-23T10:21:59.629Z",
+      "updatedAt": "2026-04-26T12:03:58.058Z",
       "father": null,
       "mother": null
     },
@@ -6853,16 +6917,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0kaq00k0t75fxanwp7qh",
-      "motherId": null,
+      "motherId": "cmobc0nsy00l2t75fh4iphr2f",
       "canvasId": "88078ff9901a6daf",
       "createdAt": "2026-04-23T10:21:37.888Z",
-      "updatedAt": "2026-04-25T05:06:26.930Z",
+      "updatedAt": "2026-04-26T12:39:10.705Z",
       "father": {
         "id": "cmobc0kaq00k0t75fxanwp7qh",
         "firstName": "محمود",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0nsy00l2t75fh4iphr2f",
+        "firstName": "عائشة",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc14ww00q3t75fukumzbg7",
@@ -6967,7 +7035,7 @@
     {
       "id": "cmobc13j500pnt75fkd6uecs9",
       "firstName": "حسين",
-      "lastName": null,
+      "lastName": "العبد",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -6976,12 +7044,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc13gh00pmt75figqa46kn",
       "motherId": "cmobc13nd00pot75f40m219uj",
       "canvasId": "a52a892f992e5961",
       "createdAt": "2026-04-23T10:22:00.737Z",
-      "updatedAt": "2026-04-23T10:24:22.115Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:08.744Z",
+      "father": {
+        "id": "cmobc13gh00pmt75figqa46kn",
+        "firstName": "أسامة",
+        "lastName": "العبد"
+      },
       "mother": {
         "id": "cmobc13nd00pot75f40m219uj",
         "firstName": "غفران",
@@ -7063,7 +7135,7 @@
     {
       "id": "cmobc08l200git75fmtukrqw0",
       "firstName": "حمزة",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -7076,11 +7148,11 @@
       "motherId": null,
       "canvasId": "e1383f2d5a0b6383",
       "createdAt": "2026-04-23T10:21:20.631Z",
-      "updatedAt": "2026-04-23T10:23:10.526Z",
+      "updatedAt": "2026-04-26T13:33:00.377Z",
       "father": {
         "id": "cmobc09wf00gwt75fq6bt8pa6",
         "firstName": "عبد الحليم",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
@@ -7385,13 +7457,13 @@
       "mother": {
         "id": "cmobc08s000gkt75fmhyz95t8",
         "firstName": "بثينة",
-        "lastName": null
+        "lastName": "بوشي حصال"
       }
     },
     {
       "id": "cmobc0qk600lxt75fm9d1642y",
       "firstName": "حنين",
-      "lastName": null,
+      "lastName": "عتال",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -7400,12 +7472,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc1iy400u8t75fra4d5ih5",
       "motherId": "cmobc12ri00pft75f11sgru81",
       "canvasId": "1c7f3067ca3151b6",
       "createdAt": "2026-04-23T10:21:43.926Z",
-      "updatedAt": "2026-04-23T10:24:08.937Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:02.178Z",
+      "father": {
+        "id": "cmobc1iy400u8t75fra4d5ih5",
+        "firstName": "عبد الرزاق ",
+        "lastName": "عتال"
+      },
       "mother": {
         "id": "cmobc12ri00pft75f11sgru81",
         "firstName": "سجى",
@@ -7473,16 +7549,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0fou00imt75fxbgb0nff",
-      "motherId": null,
+      "motherId": "cmoecbvt3000yreflg97syhaa",
       "canvasId": null,
       "createdAt": "2026-04-25T12:54:51.928Z",
-      "updatedAt": "2026-04-25T22:09:06.231Z",
+      "updatedAt": "2026-04-26T12:37:09.298Z",
       "father": {
         "id": "cmobc0fou00imt75fxbgb0nff",
         "firstName": "أحمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoecbvt3000yreflg97syhaa",
+        "firstName": "عائشة",
+        "lastName": "بوشي حصال"
+      }
     },
     {
       "id": "cmobbyq64002ut75fyqlg2ic7",
@@ -7539,7 +7619,7 @@
     {
       "id": "cmobc0yai00o2t75f1g1wzc7u",
       "firstName": "دانية",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -7548,12 +7628,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0ypp00o7t75f7uidjj25",
       "motherId": "cmobc0xjv00nwt75fsxwtvnyp",
       "canvasId": "53b6a8ac4f0aa305",
       "createdAt": "2026-04-23T10:21:53.946Z",
-      "updatedAt": "2026-04-23T10:24:26.020Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:06.832Z",
+      "father": {
+        "id": "cmobc0ypp00o7t75f7uidjj25",
+        "firstName": "علي",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0xjv00nwt75fsxwtvnyp",
         "firstName": "امل",
@@ -8143,7 +8227,7 @@
     {
       "id": "cmobc11s600p4t75fcqwvleir",
       "firstName": "راما",
-      "lastName": null,
+      "lastName": "مصطو",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -8152,12 +8236,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc12lq00pdt75ffs4bfqls",
       "motherId": "cmobc12ik00pct75f8o3g8848",
       "canvasId": "f6a9ff09e43bb41d",
       "createdAt": "2026-04-23T10:21:58.470Z",
-      "updatedAt": "2026-04-23T10:24:20.770Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:08.190Z",
+      "father": {
+        "id": "cmobc12lq00pdt75ffs4bfqls",
+        "firstName": "محمد كامل ",
+        "lastName": "مصطو"
+      },
       "mother": {
         "id": "cmobc12ik00pct75f8o3g8848",
         "firstName": "ليلى",
@@ -8239,7 +8327,7 @@
     {
       "id": "cmobc02gq00est75f7cca9iyy",
       "firstName": "ربيع",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -8248,12 +8336,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0bet00hct75f0dgqz38p",
       "motherId": "cmobc03gb00f2t75fjeq4ip2j",
       "canvasId": "980a8d614b72498e",
       "createdAt": "2026-04-23T10:21:12.698Z",
-      "updatedAt": "2026-04-23T10:24:13.032Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:00.341Z",
+      "father": {
+        "id": "cmobc0bet00hct75f0dgqz38p",
+        "firstName": "بدر",
+        "lastName": "منافيخي"
+      },
       "mother": {
         "id": "cmobc03gb00f2t75fjeq4ip2j",
         "firstName": "وفاء",
@@ -8324,36 +8416,12 @@
       "motherId": "cmobc1al700rot75f01otc2pi",
       "canvasId": "5ea1b3a07a4d113c",
       "createdAt": "2026-04-23T10:20:34.580Z",
-      "updatedAt": "2026-04-25T05:05:46.768Z",
+      "updatedAt": "2026-04-26T10:22:25.013Z",
       "father": {
         "id": "cmobc17l700qtt75fbhwrbevw",
         "firstName": "أحمد",
         "lastName": "منافيخي"
       },
-      "mother": {
-        "id": "cmobc1al700rot75f01otc2pi",
-        "firstName": "ايمان",
-        "lastName": "منافيخي"
-      }
-    },
-    {
-      "id": "cmobc14qw00q1t75fba5lifjv",
-      "firstName": "رجب",
-      "lastName": null,
-      "nickname": null,
-      "gender": "MALE",
-      "birthDate": null,
-      "deathDate": null,
-      "isAlive": true,
-      "profileImage": null,
-      "additionalImages": "[]",
-      "bio": null,
-      "fatherId": null,
-      "motherId": "cmobc1al700rot75f01otc2pi",
-      "canvasId": "7e3475936d47ad6b",
-      "createdAt": "2026-04-23T10:22:02.312Z",
-      "updatedAt": "2026-04-23T10:23:48.131Z",
-      "father": null,
       "mother": {
         "id": "cmobc1al700rot75f01otc2pi",
         "firstName": "ايمان",
@@ -8563,7 +8631,7 @@
     {
       "id": "cmobc0zhs00oft75fzrv1mtht",
       "firstName": "رغد",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -8572,12 +8640,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0ypp00o7t75f7uidjj25",
       "motherId": "cmobc0xjv00nwt75fsxwtvnyp",
       "canvasId": "c0606d7e722c031a",
       "createdAt": "2026-04-23T10:21:55.504Z",
-      "updatedAt": "2026-04-23T10:24:26.131Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:07.350Z",
+      "father": {
+        "id": "cmobc0ypp00o7t75f7uidjj25",
+        "firstName": "علي",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0xjv00nwt75fsxwtvnyp",
         "firstName": "امل",
@@ -8669,16 +8741,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0kaq00k0t75fxanwp7qh",
-      "motherId": null,
+      "motherId": "cmobc0nsy00l2t75fh4iphr2f",
       "canvasId": "fb2307b12c52c4a4",
       "createdAt": "2026-04-23T10:21:35.410Z",
-      "updatedAt": "2026-04-25T05:06:22.664Z",
+      "updatedAt": "2026-04-26T12:39:10.067Z",
       "father": {
         "id": "cmobc0kaq00k0t75fxanwp7qh",
         "firstName": "محمود",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0nsy00l2t75fh4iphr2f",
+        "firstName": "عائشة",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmoeuzi2x002bk96jn19fsq7u",
@@ -8711,7 +8787,7 @@
     {
       "id": "cmobc0syl00mnt75ft5oqu9y3",
       "firstName": "رمضان",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -8724,11 +8800,11 @@
       "motherId": null,
       "canvasId": "fc275873281ece47",
       "createdAt": "2026-04-23T10:21:47.038Z",
-      "updatedAt": "2026-04-23T10:24:24.890Z",
+      "updatedAt": "2026-04-26T12:26:04.158Z",
       "father": {
         "id": "cmobc0qzg00m1t75fj8rxumke",
         "firstName": "حسام",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -8855,7 +8931,7 @@
     {
       "id": "cmobc0q6z00ltt75f8v4gd14y",
       "firstName": "روان",
-      "lastName": null,
+      "lastName": "مصطو",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -8864,12 +8940,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc12lq00pdt75ffs4bfqls",
       "motherId": "cmobc12ik00pct75f8o3g8848",
       "canvasId": "5f046c5560e6f52c",
       "createdAt": "2026-04-23T10:21:43.451Z",
-      "updatedAt": "2026-04-23T10:24:22.019Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:01.783Z",
+      "father": {
+        "id": "cmobc12lq00pdt75ffs4bfqls",
+        "firstName": "محمد كامل ",
+        "lastName": "مصطو"
+      },
       "mother": {
         "id": "cmobc12ik00pct75f8o3g8848",
         "firstName": "ليلى",
@@ -8879,7 +8959,7 @@
     {
       "id": "cmobc0sdo00mgt75f062hy3id",
       "firstName": "رويدة",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -8892,11 +8972,11 @@
       "motherId": null,
       "canvasId": "268deae2c411829b",
       "createdAt": "2026-04-23T10:21:46.285Z",
-      "updatedAt": "2026-04-23T10:24:24.578Z",
+      "updatedAt": "2026-04-26T12:26:03.415Z",
       "father": {
         "id": "cmobc0tym00mxt75fi0mybm7t",
         "firstName": "محمد",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -8921,13 +9001,13 @@
       "mother": {
         "id": "cmobc0ymj00o6t75f0wq62tgl",
         "firstName": "فاطمة منافيخي",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
       "id": "cmobbzwga00d2t75fgn9q1obe",
       "firstName": "رياض",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -8936,12 +9016,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmofojn0l000fp0cl3utavmjg",
       "motherId": "cmobc018600egt75ff9o68pco",
       "canvasId": "74f18b8a44306c5e",
       "createdAt": "2026-04-23T10:21:04.907Z",
-      "updatedAt": "2026-04-23T10:24:05.121Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:25:59.465Z",
+      "father": {
+        "id": "cmofojn0l000fp0cl3utavmjg",
+        "firstName": "عبد الحميد",
+        "lastName": "علي"
+      },
       "mother": {
         "id": "cmobc018600egt75ff9o68pco",
         "firstName": "صباح",
@@ -8975,7 +9059,7 @@
     {
       "id": "cmobc0wjf00not75fwboy6mwt",
       "firstName": "ريان",
-      "lastName": null,
+      "lastName": "حج ابراهيم",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -8984,12 +9068,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0zzu00okt75f0bvrj4yx",
       "motherId": "cmobc0ysk00o8t75fxkn5mn84",
       "canvasId": "6ceb5e3c0e588232",
       "createdAt": "2026-04-23T10:21:51.676Z",
-      "updatedAt": "2026-04-23T10:24:20.865Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:06.207Z",
+      "father": {
+        "id": "cmobc0zzu00okt75f0bvrj4yx",
+        "firstName": "محمد ",
+        "lastName": "حج ابراهيم"
+      },
       "mother": {
         "id": "cmobc0ysk00o8t75fxkn5mn84",
         "firstName": "هدى",
@@ -9033,16 +9121,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc16b500qgt75fuoavn1hc",
-      "motherId": null,
+      "motherId": "cmofml4m60008p0cld6jmkhd6",
       "canvasId": "3a808a4d2827b089",
       "createdAt": "2026-04-23T10:20:41.163Z",
-      "updatedAt": "2026-04-25T05:05:49.469Z",
+      "updatedAt": "2026-04-26T10:28:41.410Z",
       "father": {
         "id": "cmobc16b500qgt75fuoavn1hc",
         "firstName": "ابراهيم",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmofml4m60008p0cld6jmkhd6",
+        "firstName": "ميادة",
+        "lastName": "رمو"
+      }
     },
     {
       "id": "cmobbzlkj009xt75fpqk6uqsg",
@@ -9299,7 +9391,7 @@
     {
       "id": "cmobbzqmk00bit75fg0bim7bx",
       "firstName": "زيد",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -9312,18 +9404,18 @@
       "motherId": null,
       "canvasId": "07bde10c3b828902",
       "createdAt": "2026-04-23T10:20:57.357Z",
-      "updatedAt": "2026-04-23T10:24:14.029Z",
+      "updatedAt": "2026-04-26T12:25:57.376Z",
       "father": {
         "id": "cmobc02gq00est75f7cca9iyy",
         "firstName": "ربيع",
-        "lastName": null
+        "lastName": "منافيخي"
       },
       "mother": null
     },
     {
       "id": "cmobbzxiy00ddt75fog2ah135",
       "firstName": "زيد",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -9336,11 +9428,11 @@
       "motherId": null,
       "canvasId": "2b280ac5127770f1",
       "createdAt": "2026-04-23T10:21:06.299Z",
-      "updatedAt": "2026-04-23T10:24:07.537Z",
+      "updatedAt": "2026-04-26T12:25:59.557Z",
       "father": {
         "id": "cmobbzw7v00czt75fav3aygw2",
         "firstName": "اسامة",
-        "lastName": null
+        "lastName": "علي"
       },
       "mother": null
     },
@@ -9371,7 +9463,7 @@
     {
       "id": "cmobc0saj00mft75f0260djts",
       "firstName": "زيد",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -9384,11 +9476,11 @@
       "motherId": null,
       "canvasId": "adcf558281dc462a",
       "createdAt": "2026-04-23T10:21:46.171Z",
-      "updatedAt": "2026-04-23T10:24:24.673Z",
+      "updatedAt": "2026-04-26T12:26:03.323Z",
       "father": {
         "id": "cmobc0tym00mxt75fi0mybm7t",
         "firstName": "محمد",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -9477,16 +9569,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc178000qpt75f7321kmfw",
-      "motherId": null,
+      "motherId": "cmofmem9e0000p0cluqexka82",
       "canvasId": "9e77768454276059",
       "createdAt": "2026-04-23T10:20:33.176Z",
-      "updatedAt": "2026-04-25T05:05:45.910Z",
+      "updatedAt": "2026-04-26T10:23:36.494Z",
       "father": {
         "id": "cmobc178000qpt75f7321kmfw",
         "firstName": "عادل",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmofmem9e0000p0cluqexka82",
+        "firstName": "صفاء",
+        "lastName": "عتال"
+      }
     },
     {
       "id": "cmobc020e00ent75ff2aoy9jq",
@@ -9519,7 +9615,7 @@
     {
       "id": "cmobc0qni00lyt75flqolc2c4",
       "firstName": "سارة",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -9532,11 +9628,11 @@
       "motherId": null,
       "canvasId": "8ff25f60cd99504c",
       "createdAt": "2026-04-23T10:21:44.047Z",
-      "updatedAt": "2026-04-23T10:24:23.465Z",
+      "updatedAt": "2026-04-26T12:26:02.340Z",
       "father": {
         "id": "cmobc0tkd00mtt75f7jz4vrs8",
         "firstName": "محمود",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -9567,7 +9663,7 @@
     {
       "id": "cmobc0xqi00nxt75fyef3iza5",
       "firstName": "ساره",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -9580,11 +9676,11 @@
       "motherId": null,
       "canvasId": "5f7dca867ff0e18a",
       "createdAt": "2026-04-23T10:21:53.226Z",
-      "updatedAt": "2026-04-23T10:24:18.115Z",
+      "updatedAt": "2026-04-26T12:26:06.541Z",
       "father": {
         "id": "cmobc0y2v00o0t75fg1c0kl56",
         "firstName": "طاهر",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -9613,13 +9709,13 @@
       "mother": {
         "id": "cmobc0br300hgt75fk7i8zg24",
         "firstName": "صالحة",
-        "lastName": null
+        "lastName": "بوشي حصال"
       }
     },
     {
       "id": "cmobc116400oxt75f8rb831r0",
       "firstName": "سارية",
-      "lastName": null,
+      "lastName": "ذمة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -9628,12 +9724,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc10v800ott75f4mh5f04w",
       "motherId": "cmobc12uu00pgt75fljqr7wvt",
       "canvasId": "fb71f69e8c582d5f",
       "createdAt": "2026-04-23T10:21:57.676Z",
-      "updatedAt": "2026-04-23T10:24:10.762Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:07.733Z",
+      "father": {
+        "id": "cmobc10v800ott75f4mh5f04w",
+        "firstName": "اسامة ",
+        "lastName": "ذمة"
+      },
       "mother": {
         "id": "cmobc12uu00pgt75fljqr7wvt",
         "firstName": "انعام",
@@ -9667,7 +9767,7 @@
     {
       "id": "cmobc0qro00lzt75fhyf41h92",
       "firstName": "سامي",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -9680,11 +9780,11 @@
       "motherId": null,
       "canvasId": "892cb57a1a18cf67",
       "createdAt": "2026-04-23T10:21:44.196Z",
-      "updatedAt": "2026-04-23T10:24:23.628Z",
+      "updatedAt": "2026-04-26T12:26:02.481Z",
       "father": {
         "id": "cmobc0tkd00mtt75f7jz4vrs8",
         "firstName": "محمود",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -9737,7 +9837,7 @@
       "mother": {
         "id": "cmobc0ymj00o6t75f0wq62tgl",
         "firstName": "فاطمة منافيخي",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
@@ -9753,16 +9853,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0fou00imt75fxbgb0nff",
-      "motherId": null,
+      "motherId": "cmoecbvt3000yreflg97syhaa",
       "canvasId": null,
       "createdAt": "2026-04-25T12:55:39.199Z",
-      "updatedAt": "2026-04-25T22:09:06.705Z",
+      "updatedAt": "2026-04-26T12:37:10.051Z",
       "father": {
         "id": "cmobc0fou00imt75fxbgb0nff",
         "firstName": "أحمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoecbvt3000yreflg97syhaa",
+        "firstName": "عائشة",
+        "lastName": "بوشي حصال"
+      }
     },
     {
       "id": "cmobbywxb004dt75f9phb6jt1",
@@ -9889,7 +9993,7 @@
       "mother": {
         "id": "cmobc034300ezt75fhqfqfm0d",
         "firstName": "صبا",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
@@ -9991,7 +10095,7 @@
     {
       "id": "cmobc10oz00ort75fj6wcma38",
       "firstName": "سلام",
-      "lastName": null,
+      "lastName": "ذمة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -10000,12 +10104,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc10v800ott75f4mh5f04w",
       "motherId": "cmobc12uu00pgt75fljqr7wvt",
       "canvasId": "5f05028bb00f0a51",
       "createdAt": "2026-04-23T10:21:57.059Z",
-      "updatedAt": "2026-04-23T10:24:09.917Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:07.640Z",
+      "father": {
+        "id": "cmobc10v800ott75f4mh5f04w",
+        "firstName": "اسامة ",
+        "lastName": "ذمة"
+      },
       "mother": {
         "id": "cmobc12uu00pgt75fljqr7wvt",
         "firstName": "انعام",
@@ -10183,7 +10291,7 @@
     {
       "id": "cmobc093y00got75f4vjkf5iv",
       "firstName": "سنا",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -10196,11 +10304,11 @@
       "motherId": null,
       "canvasId": "83aeedacc5ace0f6",
       "createdAt": "2026-04-23T10:21:21.310Z",
-      "updatedAt": "2026-04-23T10:23:13.314Z",
+      "updatedAt": "2026-04-26T13:33:00.802Z",
       "father": {
         "id": "cmobc0b3p00h8t75fqcqyjh0z",
         "firstName": "أحمد",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
@@ -10249,13 +10357,13 @@
       "mother": {
         "id": "cmobc165z00qft75fte6kob8c",
         "firstName": "كوثر",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       }
     },
     {
       "id": "cmobc11it00p1t75f013h9uyn",
       "firstName": "سناء",
-      "lastName": null,
+      "lastName": "عتال",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -10264,12 +10372,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc1iy400u8t75fra4d5ih5",
       "motherId": "cmobc12ri00pft75f11sgru81",
       "canvasId": "6788ccdcbaec6b60",
       "createdAt": "2026-04-23T10:21:58.134Z",
-      "updatedAt": "2026-04-23T10:24:09.565Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:07.840Z",
+      "father": {
+        "id": "cmobc1iy400u8t75fra4d5ih5",
+        "firstName": "عبد الرزاق ",
+        "lastName": "عتال"
+      },
       "mother": {
         "id": "cmobc12ri00pft75f11sgru81",
         "firstName": "سجى",
@@ -10313,16 +10425,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc16jd00qit75fxgpubn26",
-      "motherId": null,
+      "motherId": "cmobc0i8200jdt75f2av5grec",
       "canvasId": "c158319eb8ab4447",
       "createdAt": "2026-04-23T10:22:03.925Z",
-      "updatedAt": "2026-04-25T05:06:32.913Z",
+      "updatedAt": "2026-04-26T10:27:09.163Z",
       "father": {
         "id": "cmobc16jd00qit75fxgpubn26",
         "firstName": "قاسم",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0i8200jdt75f2av5grec",
+        "firstName": "فاتن",
+        "lastName": null
+      }
     },
     {
       "id": "cmobc18qz00r5t75f1fu2dv4o",
@@ -10427,7 +10543,7 @@
     {
       "id": "cmobc10c300ont75frnhr60k5",
       "firstName": "سوزان",
-      "lastName": null,
+      "lastName": "العبد",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -10436,12 +10552,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc13gh00pmt75figqa46kn",
       "motherId": "cmobc13nd00pot75f40m219uj",
       "canvasId": "883823f38883852a",
       "createdAt": "2026-04-23T10:21:56.596Z",
-      "updatedAt": "2026-04-23T10:24:17.253Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:07.440Z",
+      "father": {
+        "id": "cmobc13gh00pmt75figqa46kn",
+        "firstName": "أسامة",
+        "lastName": "العبد"
+      },
       "mother": {
         "id": "cmobc13nd00pot75f40m219uj",
         "firstName": "غفران",
@@ -10509,16 +10629,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzmsz00a9t75fkucyfd5h",
-      "motherId": null,
+      "motherId": "cmoeucdwi000uk96jlu7286u9",
       "canvasId": "dd6d33c0bc2bab71",
       "createdAt": "2026-04-23T10:21:09.716Z",
-      "updatedAt": "2026-04-25T05:06:03.001Z",
+      "updatedAt": "2026-04-26T10:43:19.085Z",
       "father": {
         "id": "cmobbzmsz00a9t75fkucyfd5h",
         "firstName": "محمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoeucdwi000uk96jlu7286u9",
+        "firstName": "لطفية",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobbyrrf0037t75f673q2m9k",
@@ -10547,7 +10671,7 @@
     {
       "id": "cmobc0xcm00nut75fsvueb7jo",
       "firstName": "سيليا",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -10560,11 +10684,11 @@
       "motherId": null,
       "canvasId": "87a9a1a1cbeabb41",
       "createdAt": "2026-04-23T10:21:52.726Z",
-      "updatedAt": "2026-04-23T10:24:25.573Z",
+      "updatedAt": "2026-04-26T12:26:06.391Z",
       "father": {
         "id": "cmobc0yvx00o9t75frrcnqmxi",
         "firstName": "محمد",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -10629,16 +10753,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0kaq00k0t75fxanwp7qh",
-      "motherId": null,
+      "motherId": "cmobc0nsy00l2t75fh4iphr2f",
       "canvasId": "52557509d798c7be",
       "createdAt": "2026-04-23T10:21:35.110Z",
-      "updatedAt": "2026-04-25T05:06:22.222Z",
+      "updatedAt": "2026-04-26T12:39:09.910Z",
       "father": {
         "id": "cmobc0kaq00k0t75fxanwp7qh",
         "firstName": "محمود",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0nsy00l2t75fh4iphr2f",
+        "firstName": "عائشة",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc0pf200llt75fhccqmrms",
@@ -10733,7 +10861,7 @@
       "mother": {
         "id": "cmobbzcsp007ht75fcv33c4l2",
         "firstName": "الاء",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       }
     },
     {
@@ -10787,7 +10915,7 @@
     {
       "id": "cmobc08hi00ght75f8r6zpryu",
       "firstName": "شهد",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -10800,11 +10928,11 @@
       "motherId": null,
       "canvasId": "39894e0879435cdd",
       "createdAt": "2026-04-23T10:21:20.502Z",
-      "updatedAt": "2026-04-23T10:23:10.384Z",
+      "updatedAt": "2026-04-26T13:33:00.278Z",
       "father": {
         "id": "cmobc09wf00gwt75fq6bt8pa6",
         "firstName": "عبد الحليم",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
@@ -10939,7 +11067,7 @@
     {
       "id": "cmobc0pr400lot75f1i90ym51",
       "firstName": "شيماء",
-      "lastName": null,
+      "lastName": "مصطو",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -10948,12 +11076,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc12lq00pdt75ffs4bfqls",
       "motherId": "cmobc12ik00pct75f8o3g8848",
       "canvasId": "cefccf9237e90a7f",
       "createdAt": "2026-04-23T10:21:42.880Z",
-      "updatedAt": "2026-04-23T10:24:11.357Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:01.398Z",
+      "father": {
+        "id": "cmobc12lq00pdt75ffs4bfqls",
+        "firstName": "محمد كامل ",
+        "lastName": "مصطو"
+      },
       "mother": {
         "id": "cmobc12ik00pct75f8o3g8848",
         "firstName": "ليلى",
@@ -11035,7 +11167,7 @@
     {
       "id": "cmobc0br300hgt75fk7i8zg24",
       "firstName": "صالحة",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -11048,11 +11180,11 @@
       "motherId": "cmobc0bzn00hit75f7wzby6yt",
       "canvasId": "865b2461e666c540",
       "createdAt": "2026-04-23T10:21:24.735Z",
-      "updatedAt": "2026-04-24T15:53:16.657Z",
+      "updatedAt": "2026-04-26T13:33:02.944Z",
       "father": {
         "id": "cmobc0buf00hht75fkva8whmn",
-        "firstName": "عمر بوشي",
-        "lastName": null
+        "firstName": "عمر ",
+        "lastName": "بوشي حصال"
       },
       "mother": {
         "id": "cmobc0bzn00hit75f7wzby6yt",
@@ -11107,7 +11239,7 @@
     {
       "id": "cmobc034300ezt75fhqfqfm0d",
       "firstName": "صبا",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -11116,12 +11248,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0bet00hct75f0dgqz38p",
       "motherId": "cmobc03gb00f2t75fjeq4ip2j",
       "canvasId": "ab29b42dc6b8b23e",
       "createdAt": "2026-04-23T10:21:13.539Z",
-      "updatedAt": "2026-04-23T10:24:13.487Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:00.525Z",
+      "father": {
+        "id": "cmobc0bet00hct75f0dgqz38p",
+        "firstName": "بدر",
+        "lastName": "منافيخي"
+      },
       "mother": {
         "id": "cmobc03gb00f2t75fjeq4ip2j",
         "firstName": "وفاء",
@@ -11193,16 +11329,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0kaq00k0t75fxanwp7qh",
-      "motherId": null,
+      "motherId": "cmobc0nsy00l2t75fh4iphr2f",
       "canvasId": "f16e181510e8ed81",
       "createdAt": "2026-04-23T10:21:36.747Z",
-      "updatedAt": "2026-04-25T05:06:25.084Z",
+      "updatedAt": "2026-04-26T12:39:10.384Z",
       "father": {
         "id": "cmobc0kaq00k0t75fxanwp7qh",
         "firstName": "محمود",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0nsy00l2t75fh4iphr2f",
+        "firstName": "عائشة",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc0nyi00l4t75f2vrkrnpb",
@@ -11269,16 +11409,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0fou00imt75fxbgb0nff",
-      "motherId": null,
+      "motherId": "cmoecbvt3000yreflg97syhaa",
       "canvasId": null,
       "createdAt": "2026-04-25T12:54:39.641Z",
-      "updatedAt": "2026-04-25T22:09:05.997Z",
+      "updatedAt": "2026-04-26T12:37:08.925Z",
       "father": {
         "id": "cmobc0fou00imt75fxbgb0nff",
         "firstName": "أحمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoecbvt3000yreflg97syhaa",
+        "firstName": "عائشة",
+        "lastName": "بوشي حصال"
+      }
     },
     {
       "id": "cmoeuflwj001qk96jel27hmwe",
@@ -11330,8 +11474,8 @@
     },
     {
       "id": "cmobc0z6800oct75fkunq1l8v",
-      "firstName": "صباح قشقش",
-      "lastName": null,
+      "firstName": "صباح ",
+      "lastName": "قشقش",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -11344,7 +11488,7 @@
       "motherId": null,
       "canvasId": "8649f212076d4f28",
       "createdAt": "2026-04-23T10:21:55.088Z",
-      "updatedAt": "2026-04-23T10:21:55.088Z",
+      "updatedAt": "2026-04-26T12:01:48.142Z",
       "father": null,
       "mother": null
     },
@@ -11516,7 +11660,7 @@
       "motherId": "cmobc1al700rot75f01otc2pi",
       "canvasId": "82851bb971325dcd",
       "createdAt": "2026-04-23T10:20:34.825Z",
-      "updatedAt": "2026-04-25T05:05:46.882Z",
+      "updatedAt": "2026-04-26T10:22:25.185Z",
       "father": {
         "id": "cmobc17l700qtt75fbhwrbevw",
         "firstName": "أحمد",
@@ -11577,9 +11721,9 @@
       "mother": null
     },
     {
-      "id": "cmobc14o000q0t75fvc26dysw",
+      "id": "cmofmem9e0000p0cluqexka82",
       "firstName": "صفاء",
-      "lastName": null,
+      "lastName": "عتال",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -11589,16 +11733,12 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": null,
-      "motherId": "cmobc1al700rot75f01otc2pi",
-      "canvasId": "23d03ac262f43f40",
-      "createdAt": "2026-04-23T10:22:02.209Z",
-      "updatedAt": "2026-04-23T10:23:48.224Z",
+      "motherId": null,
+      "canvasId": null,
+      "createdAt": "2026-04-26T10:23:32.401Z",
+      "updatedAt": "2026-04-26T10:23:32.401Z",
       "father": null,
-      "mother": {
-        "id": "cmobc1al700rot75f01otc2pi",
-        "firstName": "ايمان",
-        "lastName": "منافيخي"
-      }
+      "mother": null
     },
     {
       "id": "cmobc0dz300i2t75f9aab6uwf",
@@ -11801,7 +11941,7 @@
       "mother": {
         "id": "cmobc0ymj00o6t75f0wq62tgl",
         "firstName": "فاطمة منافيخي",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
@@ -11845,21 +11985,25 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0z2v00obt75fomh3ut73",
-      "motherId": null,
+      "motherId": "cmobc0z6800oct75fkunq1l8v",
       "canvasId": "fdc11a436ac60e75",
       "createdAt": "2026-04-23T10:21:51.288Z",
-      "updatedAt": "2026-04-23T10:24:16.715Z",
+      "updatedAt": "2026-04-26T11:57:52.621Z",
       "father": {
         "id": "cmobc0z2v00obt75fomh3ut73",
         "firstName": "هشام",
         "lastName": null
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0z6800oct75fkunq1l8v",
+        "firstName": "صباح ",
+        "lastName": "قشقش"
+      }
     },
     {
       "id": "cmobc0y2v00o0t75fg1c0kl56",
       "firstName": "طاهر",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -11868,12 +12012,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0zqy00oit75fmg7yz1q0",
       "motherId": "cmobc0u5o00mzt75fjg8ud0e6",
       "canvasId": "a8b0889391f74d7f",
       "createdAt": "2026-04-23T10:21:53.672Z",
-      "updatedAt": "2026-04-23T10:24:18.262Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:06.741Z",
+      "father": {
+        "id": "cmobc0zqy00oit75fmg7yz1q0",
+        "firstName": "محمود",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0u5o00mzt75fjg8ud0e6",
         "firstName": "إلهام",
@@ -11921,16 +12069,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc11bw00ozt75fh3i8rmhc",
-      "motherId": null,
+      "motherId": "cmobc13d400plt75fa6sjfiqq",
       "canvasId": "9a9eaf9190ee394b",
       "createdAt": "2026-04-23T10:21:57.763Z",
-      "updatedAt": "2026-04-23T10:24:11.999Z",
+      "updatedAt": "2026-04-26T11:58:23.924Z",
       "father": {
         "id": "cmobc11bw00ozt75fh3i8rmhc",
         "firstName": "أحمد",
         "lastName": null
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc13d400plt75fa6sjfiqq",
+        "firstName": "كنده",
+        "lastName": null
+      }
     },
     {
       "id": "cmobc0zl500ogt75f4si4xpin",
@@ -11955,7 +12107,7 @@
     {
       "id": "cmobc0s7o00met75f1bpu3tsb",
       "firstName": "طوبى",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -11965,16 +12117,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0smt00mjt75fqlzur4ah",
-      "motherId": null,
+      "motherId": "cmobc12f800pbt75fqrypkv4a",
       "canvasId": "e248780b78116acc",
       "createdAt": "2026-04-23T10:21:46.068Z",
-      "updatedAt": "2026-04-23T10:24:16.915Z",
+      "updatedAt": "2026-04-26T12:26:03.231Z",
       "father": {
         "id": "cmobc0smt00mjt75fqlzur4ah",
         "firstName": "هيثم",
-        "lastName": null
+        "lastName": "زينة"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc12f800pbt75fqrypkv4a",
+        "firstName": "ايمان",
+        "lastName": "مصطو"
+      }
     },
     {
       "id": "cmobbygg20004t75fi9xs33x2",
@@ -12141,7 +12297,7 @@
       "mother": {
         "id": "cmobc09hu00gst75f6d4h4tfy",
         "firstName": "هنادي",
-        "lastName": null
+        "lastName": "بوشي حصال"
       }
     },
     {
@@ -12303,7 +12459,7 @@
     {
       "id": "cmobc0rqa00m9t75f1qzihz9l",
       "firstName": "عائشة",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -12316,11 +12472,11 @@
       "motherId": null,
       "canvasId": "010b47f736d296bb",
       "createdAt": "2026-04-23T10:21:45.443Z",
-      "updatedAt": "2026-04-23T10:24:24.786Z",
+      "updatedAt": "2026-04-26T12:26:03.049Z",
       "father": {
         "id": "cmobc0qzg00m1t75fj8rxumke",
         "firstName": "حسام",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -12405,16 +12561,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0fou00imt75fxbgb0nff",
-      "motherId": null,
+      "motherId": "cmoecbvt3000yreflg97syhaa",
       "canvasId": null,
       "createdAt": "2026-04-25T12:54:19.108Z",
-      "updatedAt": "2026-04-25T22:09:05.892Z",
+      "updatedAt": "2026-04-26T12:37:08.762Z",
       "father": {
         "id": "cmobc0fou00imt75fxbgb0nff",
         "firstName": "أحمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoecbvt3000yreflg97syhaa",
+        "firstName": "عائشة",
+        "lastName": "بوشي حصال"
+      }
     },
     {
       "id": "cmoeu8yth0000k96j96zvgfpw",
@@ -12545,16 +12705,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc16b500qgt75fuoavn1hc",
-      "motherId": null,
+      "motherId": "cmofml4m60008p0cld6jmkhd6",
       "canvasId": "eed66747f920809a",
       "createdAt": "2026-04-23T10:20:37.838Z",
-      "updatedAt": "2026-04-25T05:05:47.585Z",
+      "updatedAt": "2026-04-26T10:28:40.928Z",
       "father": {
         "id": "cmobc16b500qgt75fuoavn1hc",
         "firstName": "ابراهيم",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmofml4m60008p0cld6jmkhd6",
+        "firstName": "ميادة",
+        "lastName": "رمو"
+      }
     },
     {
       "id": "cmobbyjgu0012t75f9lhd8dud",
@@ -12617,16 +12781,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0kaq00k0t75fxanwp7qh",
-      "motherId": null,
+      "motherId": "cmobc0nsy00l2t75fh4iphr2f",
       "canvasId": "f662e8005e2facec",
       "createdAt": "2026-04-23T10:21:28.889Z",
-      "updatedAt": "2026-04-25T05:06:19.148Z",
+      "updatedAt": "2026-04-26T12:39:08.827Z",
       "father": {
         "id": "cmobc0kaq00k0t75fxanwp7qh",
         "firstName": "محمود",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0nsy00l2t75fh4iphr2f",
+        "firstName": "عائشة",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc1dan00sgt75fv5u211x9",
@@ -12655,7 +12823,7 @@
     {
       "id": "cmobc09ed00grt75focs2ypp5",
       "firstName": "عبد الحليم",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -12668,18 +12836,18 @@
       "motherId": null,
       "canvasId": "a7a97290fb824c42",
       "createdAt": "2026-04-23T10:21:21.685Z",
-      "updatedAt": "2026-04-23T10:23:10.726Z",
+      "updatedAt": "2026-04-26T13:33:01.027Z",
       "father": {
         "id": "cmobc09ph00gut75ff8tpx0s5",
         "firstName": "عمر",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
     {
       "id": "cmobc09wf00gwt75fq6bt8pa6",
       "firstName": "عبد الحليم",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -12692,11 +12860,11 @@
       "motherId": "cmobc0bzn00hit75f7wzby6yt",
       "canvasId": "5e475e7dbf5b68ce",
       "createdAt": "2026-04-23T10:21:22.336Z",
-      "updatedAt": "2026-04-24T15:53:15.865Z",
+      "updatedAt": "2026-04-26T13:33:01.477Z",
       "father": {
         "id": "cmobc0buf00hht75fkva8whmn",
-        "firstName": "عمر بوشي",
-        "lastName": null
+        "firstName": "عمر ",
+        "lastName": "بوشي حصال"
       },
       "mother": {
         "id": "cmobc0bzn00hit75f7wzby6yt",
@@ -12707,7 +12875,7 @@
     {
       "id": "cmobbzwdf00d1t75f8q6ecjsb",
       "firstName": "عبد الحميد",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -12720,12 +12888,32 @@
       "motherId": null,
       "canvasId": "0a098ab7ec148076",
       "createdAt": "2026-04-23T10:21:04.803Z",
-      "updatedAt": "2026-04-23T10:24:04.549Z",
+      "updatedAt": "2026-04-26T12:25:59.374Z",
       "father": {
         "id": "cmobbzwai00d0t75fg07yoxhb",
         "firstName": "غسان",
-        "lastName": null
+        "lastName": "علي"
       },
+      "mother": null
+    },
+    {
+      "id": "cmofojn0l000fp0cl3utavmjg",
+      "firstName": "عبد الحميد",
+      "lastName": "علي",
+      "nickname": "أبو اسامة",
+      "gender": "MALE",
+      "birthDate": null,
+      "deathDate": null,
+      "isAlive": false,
+      "profileImage": null,
+      "additionalImages": "[]",
+      "bio": null,
+      "fatherId": null,
+      "motherId": null,
+      "canvasId": null,
+      "createdAt": "2026-04-26T11:23:25.894Z",
+      "updatedAt": "2026-04-26T11:23:46.966Z",
+      "father": null,
       "mother": null
     },
     {
@@ -12793,16 +12981,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzmsz00a9t75fkucyfd5h",
-      "motherId": null,
+      "motherId": "cmoeucdwi000uk96jlu7286u9",
       "canvasId": "0fe3c022e720b4b3",
       "createdAt": "2026-04-23T10:20:55.770Z",
-      "updatedAt": "2026-04-25T05:05:56.926Z",
+      "updatedAt": "2026-04-26T10:43:18.052Z",
       "father": {
         "id": "cmobbzmsz00a9t75fkucyfd5h",
         "firstName": "محمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoeucdwi000uk96jlu7286u9",
+        "firstName": "لطفية",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobbyp8y002mt75faypba6lx",
@@ -12919,7 +13111,7 @@
       "updatedAt": "2026-04-25T05:05:56.676Z",
       "father": {
         "id": "cmobbzqfe00bgt75f1qv7xm2w",
-        "firstName": "أحمد",
+        "firstName": "أحمد لطف الله",
         "lastName": "منافيخي"
       },
       "mother": null
@@ -12951,7 +13143,7 @@
     {
       "id": "cmobbzswz00c6t75flhr0h46d",
       "firstName": "عبد الرحمن",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -12964,18 +13156,18 @@
       "motherId": null,
       "canvasId": "bc2d8503ba895a97",
       "createdAt": "2026-04-23T10:21:00.323Z",
-      "updatedAt": "2026-04-23T10:24:32.756Z",
+      "updatedAt": "2026-04-26T12:25:58.193Z",
       "father": {
         "id": "cmobbzyj700dnt75f1x3iuj5f",
         "firstName": "فادي",
-        "lastName": null
+        "lastName": "علي"
       },
       "mother": null
     },
     {
       "id": "cmobbzt1a00c7t75f1geqz2ui",
       "firstName": "عبد الرحمن",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -12988,18 +13180,18 @@
       "motherId": null,
       "canvasId": "8d278b05509ee52d",
       "createdAt": "2026-04-23T10:21:00.479Z",
-      "updatedAt": "2026-04-23T10:24:04.440Z",
+      "updatedAt": "2026-04-26T12:25:58.281Z",
       "father": {
         "id": "cmobbzwga00d2t75fgn9q1obe",
         "firstName": "رياض",
-        "lastName": null
+        "lastName": "علي"
       },
       "mother": null
     },
     {
       "id": "cmobc01wc00emt75f22fyg5u4",
       "firstName": "عبد الرحمن",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -13008,12 +13200,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0bet00hct75f0dgqz38p",
       "motherId": "cmobc03gb00f2t75fjeq4ip2j",
       "canvasId": "d7a83d47c9743dd7",
       "createdAt": "2026-04-23T10:21:11.964Z",
-      "updatedAt": "2026-04-23T10:24:13.220Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:00.059Z",
+      "father": {
+        "id": "cmobc0bet00hct75f0dgqz38p",
+        "firstName": "بدر",
+        "lastName": "منافيخي"
+      },
       "mother": {
         "id": "cmobc03gb00f2t75fjeq4ip2j",
         "firstName": "وفاء",
@@ -13047,7 +13243,7 @@
     {
       "id": "cmobc0bku00het75fafhcyej4",
       "firstName": "عبد الرحمن",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -13060,14 +13256,14 @@
       "motherId": null,
       "canvasId": "d908a2dc8efd20f0",
       "createdAt": "2026-04-23T10:21:24.510Z",
-      "updatedAt": "2026-04-24T15:42:17.846Z",
+      "updatedAt": "2026-04-26T11:49:13.101Z",
       "father": null,
       "mother": null
     },
     {
       "id": "cmobc0oyb00lgt75fmolufr48",
       "firstName": "عبد الرحمن",
-      "lastName": null,
+      "lastName": "مصطو",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -13076,12 +13272,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc12lq00pdt75ffs4bfqls",
       "motherId": "cmobc12ik00pct75f8o3g8848",
       "canvasId": "915e7836bf6d542c",
       "createdAt": "2026-04-23T10:21:41.843Z",
-      "updatedAt": "2026-04-23T10:24:11.262Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:01.132Z",
+      "father": {
+        "id": "cmobc12lq00pdt75ffs4bfqls",
+        "firstName": "محمد كامل ",
+        "lastName": "مصطو"
+      },
       "mother": {
         "id": "cmobc12ik00pct75f8o3g8848",
         "firstName": "ليلى",
@@ -13109,7 +13309,7 @@
       "mother": {
         "id": "cmobc0q2w00lst75fi5pss7wf",
         "firstName": "تسنيم",
-        "lastName": null
+        "lastName": "مصطو"
       }
     },
     {
@@ -13133,13 +13333,13 @@
       "mother": {
         "id": "cmobc0rcn00m5t75fmk2ukg1o",
         "firstName": "بيان",
-        "lastName": null
+        "lastName": "عتال"
       }
     },
     {
       "id": "cmobc0qd800lvt75fcbai9j0i",
       "firstName": "عبد الرحمن",
-      "lastName": null,
+      "lastName": "عتال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -13148,12 +13348,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc1iy400u8t75fra4d5ih5",
       "motherId": "cmobc12ri00pft75f11sgru81",
       "canvasId": "9f55b1fcc1fc46fc",
       "createdAt": "2026-04-23T10:21:43.676Z",
-      "updatedAt": "2026-04-23T10:24:09.041Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:01.958Z",
+      "father": {
+        "id": "cmobc1iy400u8t75fra4d5ih5",
+        "firstName": "عبد الرزاق ",
+        "lastName": "عتال"
+      },
       "mother": {
         "id": "cmobc12ri00pft75f11sgru81",
         "firstName": "سجى",
@@ -13343,7 +13547,7 @@
     {
       "id": "cmobc0aky00h3t75fuw3wjg2y",
       "firstName": "عبد الرزاق",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -13356,11 +13560,11 @@
       "motherId": "cmobc0bzn00hit75f7wzby6yt",
       "canvasId": "31eef204d95c4bf4",
       "createdAt": "2026-04-23T10:21:23.218Z",
-      "updatedAt": "2026-04-24T15:53:16.043Z",
+      "updatedAt": "2026-04-26T13:33:02.128Z",
       "father": {
         "id": "cmobc0buf00hht75fkva8whmn",
-        "firstName": "عمر بوشي",
-        "lastName": null
+        "firstName": "عمر ",
+        "lastName": "بوشي حصال"
       },
       "mother": {
         "id": "cmobc0bzn00hit75f7wzby6yt",
@@ -13413,13 +13617,13 @@
       "mother": {
         "id": "cmobc11it00p1t75f013h9uyn",
         "firstName": "سناء",
-        "lastName": null
+        "lastName": "عتال"
       }
     },
     {
       "id": "cmobc1iy400u8t75fra4d5ih5",
-      "firstName": "عبد الرزاق عتال",
-      "lastName": null,
+      "firstName": "عبد الرزاق ",
+      "lastName": "عتال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -13432,7 +13636,7 @@
       "motherId": null,
       "canvasId": "fc19be26e2e468a8",
       "createdAt": "2026-04-23T10:22:20.716Z",
-      "updatedAt": "2026-04-23T10:22:20.716Z",
+      "updatedAt": "2026-04-26T12:04:46.768Z",
       "father": null,
       "mother": null
     },
@@ -13605,7 +13809,7 @@
       "mother": {
         "id": "cmobc165z00qft75fte6kob8c",
         "firstName": "كوثر",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       }
     },
     {
@@ -13657,7 +13861,7 @@
       "mother": {
         "id": "cmobc09hu00gst75f6d4h4tfy",
         "firstName": "هنادي",
-        "lastName": null
+        "lastName": "بوشي حصال"
       }
     },
     {
@@ -13721,16 +13925,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0fou00imt75fxbgb0nff",
-      "motherId": null,
+      "motherId": "cmoecbvt3000yreflg97syhaa",
       "canvasId": "49a67b59af40d27c",
       "createdAt": "2026-04-23T10:21:29.622Z",
-      "updatedAt": "2026-04-25T05:06:20.184Z",
+      "updatedAt": "2026-04-26T12:37:08.435Z",
       "father": {
         "id": "cmobc0fou00imt75fxbgb0nff",
         "firstName": "أحمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoecbvt3000yreflg97syhaa",
+        "firstName": "عائشة",
+        "lastName": "بوشي حصال"
+      }
     },
     {
       "id": "cmobc0n9w00kxt75fsl48m8l2",
@@ -13957,7 +14165,7 @@
       "mother": {
         "id": "cmobc034300ezt75fhqfqfm0d",
         "firstName": "صبا",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
@@ -14225,7 +14433,7 @@
       "mother": {
         "id": "cmobc18y100r7t75fcc69j70l",
         "firstName": "ايمان",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       }
     },
     {
@@ -14241,21 +14449,25 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzmwk00aat75f8lwxwox7",
-      "motherId": null,
+      "motherId": "cmoeucla0000yk96jj7f6pzv9",
       "canvasId": "68029d3b34247c7b",
       "createdAt": "2026-04-23T10:20:57.899Z",
-      "updatedAt": "2026-04-25T05:05:58.126Z",
+      "updatedAt": "2026-04-26T11:17:09.946Z",
       "father": {
         "id": "cmobbzmwk00aat75f8lwxwox7",
         "firstName": "ذو الكفل",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoeucla0000yk96jj7f6pzv9",
+        "firstName": "نجاح",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobbzw1d00cxt75fvryoxz0r",
       "firstName": "عبد الله",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -14268,11 +14480,11 @@
       "motherId": null,
       "canvasId": "3ad526321649a2e5",
       "createdAt": "2026-04-23T10:21:04.370Z",
-      "updatedAt": "2026-04-23T10:24:07.649Z",
+      "updatedAt": "2026-04-26T12:25:58.976Z",
       "father": {
         "id": "cmobbzw7v00czt75fav3aygw2",
         "firstName": "اسامة",
-        "lastName": null
+        "lastName": "علي"
       },
       "mother": null
     },
@@ -14313,16 +14525,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0kaq00k0t75fxanwp7qh",
-      "motherId": null,
+      "motherId": "cmobc0nsy00l2t75fh4iphr2f",
       "canvasId": "3b99e5ab20d4e896",
       "createdAt": "2026-04-23T10:21:28.785Z",
-      "updatedAt": "2026-04-25T05:06:18.917Z",
+      "updatedAt": "2026-04-26T12:39:08.650Z",
       "father": {
         "id": "cmobc0kaq00k0t75fxanwp7qh",
         "firstName": "محمود",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0nsy00l2t75fh4iphr2f",
+        "firstName": "عائشة",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc0lqw00kgt75f8xt5arkm",
@@ -14407,7 +14623,7 @@
     {
       "id": "cmobc0bnh00hft75fv5pxcknf",
       "firstName": "عبد المعطي",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -14420,11 +14636,11 @@
       "motherId": "cmobc0bzn00hit75f7wzby6yt",
       "canvasId": "6a9f7fbf86552b87",
       "createdAt": "2026-04-23T10:21:24.605Z",
-      "updatedAt": "2026-04-24T15:53:16.508Z",
+      "updatedAt": "2026-04-26T13:33:02.830Z",
       "father": {
         "id": "cmobc0buf00hht75fkva8whmn",
-        "firstName": "عمر بوشي",
-        "lastName": null
+        "firstName": "عمر ",
+        "lastName": "بوشي حصال"
       },
       "mother": {
         "id": "cmobc0bzn00hit75f7wzby6yt",
@@ -14473,16 +14689,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzmwk00aat75f8lwxwox7",
-      "motherId": null,
+      "motherId": "cmoeucla0000yk96jj7f6pzv9",
       "canvasId": "3bd9be73aeeb53e5",
       "createdAt": "2026-04-23T10:21:07.055Z",
-      "updatedAt": "2026-04-25T05:06:01.196Z",
+      "updatedAt": "2026-04-26T11:17:10.334Z",
       "father": {
         "id": "cmobbzmwk00aat75f8lwxwox7",
         "firstName": "ذو الكفل",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoeucla0000yk96jj7f6pzv9",
+        "firstName": "نجاح",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc06tb00g0t75f24y5qy8a",
@@ -14521,16 +14741,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0kaq00k0t75fxanwp7qh",
-      "motherId": null,
+      "motherId": "cmobc0nsy00l2t75fh4iphr2f",
       "canvasId": "17de53e6e4d416a9",
       "createdAt": "2026-04-23T10:21:37.451Z",
-      "updatedAt": "2026-04-25T05:06:26.322Z",
+      "updatedAt": "2026-04-26T12:39:10.555Z",
       "father": {
         "id": "cmobc0kaq00k0t75fxanwp7qh",
         "firstName": "محمود",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0nsy00l2t75fh4iphr2f",
+        "firstName": "عائشة",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc02z300eyt75fe3lr6ltc",
@@ -14639,7 +14863,7 @@
     {
       "id": "cmobc0bi500hdt75ffnewssmj",
       "firstName": "عبدر القادر",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -14652,11 +14876,11 @@
       "motherId": null,
       "canvasId": "b5146a1e1af5a19e",
       "createdAt": "2026-04-23T10:21:24.414Z",
-      "updatedAt": "2026-04-24T15:42:13.792Z",
+      "updatedAt": "2026-04-26T12:26:00.806Z",
       "father": {
         "id": "cmobc0bku00het75fafhcyej4",
         "firstName": "عبد الرحمن",
-        "lastName": null
+        "lastName": "منافيخي"
       },
       "mother": null
     },
@@ -14691,7 +14915,7 @@
     {
       "id": "cmobbzrc600bpt75f0fan6o5t",
       "firstName": "عبير",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -14700,12 +14924,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmofojn0l000fp0cl3utavmjg",
       "motherId": "cmobc018600egt75ff9o68pco",
       "canvasId": "c49dc1b4e2724ad5",
       "createdAt": "2026-04-23T10:20:58.279Z",
-      "updatedAt": "2026-04-23T10:24:06.249Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:25:57.858Z",
+      "father": {
+        "id": "cmofojn0l000fp0cl3utavmjg",
+        "firstName": "عبد الحميد",
+        "lastName": "علي"
+      },
       "mother": {
         "id": "cmobc018600egt75ff9o68pco",
         "firstName": "صباح",
@@ -14733,13 +14961,13 @@
       "mother": {
         "id": "cmobc0q2w00lst75fi5pss7wf",
         "firstName": "تسنيم",
-        "lastName": null
+        "lastName": "مصطو"
       }
     },
     {
       "id": "cmobc0a7e00gzt75fuytfxfh5",
       "firstName": "عدنان",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -14752,18 +14980,18 @@
       "motherId": null,
       "canvasId": "3a723f4dbb3a9673",
       "createdAt": "2026-04-23T10:21:22.731Z",
-      "updatedAt": "2026-04-23T10:23:09.781Z",
+      "updatedAt": "2026-04-26T13:33:01.828Z",
       "father": {
         "id": "cmobc0aky00h3t75fuw3wjg2y",
         "firstName": "عبد الرزاق",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
     {
       "id": "cmobc0wpp00npt75fyq0xwd5k",
       "firstName": "عدنان",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -14772,12 +15000,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0ypp00o7t75f7uidjj25",
       "motherId": "cmobc0xjv00nwt75fsxwtvnyp",
       "canvasId": "2924408f426f700e",
       "createdAt": "2026-04-23T10:21:51.901Z",
-      "updatedAt": "2026-04-23T10:24:25.798Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:06.298Z",
+      "father": {
+        "id": "cmobc0ypp00o7t75f7uidjj25",
+        "firstName": "علي",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0xjv00nwt75fsxwtvnyp",
         "firstName": "امل",
@@ -14911,7 +15143,7 @@
     {
       "id": "cmobc0r3100m2t75f9fy7p93r",
       "firstName": "عصام",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -14920,12 +15152,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0zqy00oit75fmg7yz1q0",
       "motherId": "cmobc0u5o00mzt75fjg8ud0e6",
       "canvasId": "b3c083237cf2b365",
       "createdAt": "2026-04-23T10:21:44.605Z",
-      "updatedAt": "2026-04-23T10:24:18.486Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:02.731Z",
+      "father": {
+        "id": "cmobc0zqy00oit75fmg7yz1q0",
+        "firstName": "محمود",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0u5o00mzt75fjg8ud0e6",
         "firstName": "إلهام",
@@ -15029,7 +15265,7 @@
       "mother": {
         "id": "cmobc11it00p1t75f013h9uyn",
         "firstName": "سناء",
-        "lastName": null
+        "lastName": "عتال"
       }
     },
     {
@@ -15073,16 +15309,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc16b500qgt75fuoavn1hc",
-      "motherId": null,
+      "motherId": "cmofml4m60008p0cld6jmkhd6",
       "canvasId": "0c1a8f298e9c2bd1",
       "createdAt": "2026-04-23T10:20:37.933Z",
-      "updatedAt": "2026-04-25T05:05:47.702Z",
+      "updatedAt": "2026-04-26T10:28:41.105Z",
       "father": {
         "id": "cmobc16b500qgt75fuoavn1hc",
         "firstName": "ابراهيم",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmofml4m60008p0cld6jmkhd6",
+        "firstName": "ميادة",
+        "lastName": "رمو"
+      }
     },
     {
       "id": "cmobbygsj0008t75f82jl2tlb",
@@ -15181,9 +15421,9 @@
       }
     },
     {
-      "id": "cmobc0ze300oet75fly9z6e3t",
+      "id": "cmobc0ypp00o7t75f7uidjj25",
       "firstName": "علي",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -15193,11 +15433,35 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": null,
+      "motherId": null,
+      "canvasId": "6b7eb5c1580ba0b4",
+      "createdAt": "2026-04-23T10:21:54.493Z",
+      "updatedAt": "2026-04-26T12:01:20.855Z",
+      "father": null,
+      "mother": null
+    },
+    {
+      "id": "cmobc0ze300oet75fly9z6e3t",
+      "firstName": "علي",
+      "lastName": "حج ابراهيم",
+      "nickname": null,
+      "gender": "MALE",
+      "birthDate": null,
+      "deathDate": null,
+      "isAlive": true,
+      "profileImage": null,
+      "additionalImages": "[]",
+      "bio": null,
+      "fatherId": "cmobc0zzu00okt75f0bvrj4yx",
       "motherId": "cmobc0ysk00o8t75fxkn5mn84",
       "canvasId": "7c570311721afac6",
       "createdAt": "2026-04-23T10:21:55.371Z",
-      "updatedAt": "2026-04-23T10:24:16.316Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:07.256Z",
+      "father": {
+        "id": "cmobc0zzu00okt75f0bvrj4yx",
+        "firstName": "محمد ",
+        "lastName": "حج ابراهيم"
+      },
       "mother": {
         "id": "cmobc0ysk00o8t75fxkn5mn84",
         "firstName": "هدى",
@@ -15227,26 +15491,6 @@
         "firstName": "فاطمة",
         "lastName": "منافيخي"
       }
-    },
-    {
-      "id": "cmobc0ypp00o7t75f7uidjj25",
-      "firstName": "علي زينة",
-      "lastName": null,
-      "nickname": null,
-      "gender": "MALE",
-      "birthDate": null,
-      "deathDate": null,
-      "isAlive": true,
-      "profileImage": null,
-      "additionalImages": "[]",
-      "bio": null,
-      "fatherId": null,
-      "motherId": null,
-      "canvasId": "6b7eb5c1580ba0b4",
-      "createdAt": "2026-04-23T10:21:54.493Z",
-      "updatedAt": "2026-04-23T10:21:54.493Z",
-      "father": null,
-      "mother": null
     },
     {
       "id": "cmoebp823000freflnefm4t64",
@@ -15355,7 +15599,7 @@
     {
       "id": "cmobc09ln00gtt75f9l1q0b9m",
       "firstName": "عمار",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -15368,11 +15612,11 @@
       "motherId": null,
       "canvasId": "66f9288a64bcbbb6",
       "createdAt": "2026-04-23T10:21:21.947Z",
-      "updatedAt": "2026-04-23T10:23:10.640Z",
+      "updatedAt": "2026-04-26T13:33:01.235Z",
       "father": {
         "id": "cmobc09ph00gut75ff8tpx0s5",
         "firstName": "عمر",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
@@ -15413,21 +15657,25 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc16b500qgt75fuoavn1hc",
-      "motherId": null,
+      "motherId": "cmofml4m60008p0cld6jmkhd6",
       "canvasId": "ab6d3866304a57e3",
       "createdAt": "2026-04-23T10:20:38.492Z",
-      "updatedAt": "2026-04-25T05:05:48.194Z",
+      "updatedAt": "2026-04-26T10:28:41.246Z",
       "father": {
         "id": "cmobc16b500qgt75fuoavn1hc",
         "firstName": "ابراهيم",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmofml4m60008p0cld6jmkhd6",
+        "firstName": "ميادة",
+        "lastName": "رمو"
+      }
     },
     {
       "id": "cmobc090y00gnt75fg3o1rvd7",
       "firstName": "عمر",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -15440,18 +15688,18 @@
       "motherId": null,
       "canvasId": "77aeb645dfb004d7",
       "createdAt": "2026-04-23T10:21:21.202Z",
-      "updatedAt": "2026-04-23T10:23:13.409Z",
+      "updatedAt": "2026-04-26T13:33:00.696Z",
       "father": {
         "id": "cmobc0b3p00h8t75fqcqyjh0z",
         "firstName": "أحمد",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
     {
       "id": "cmobc09ph00gut75ff8tpx0s5",
       "firstName": "عمر",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -15464,18 +15712,18 @@
       "motherId": null,
       "canvasId": "1b87b2ab6d7282f0",
       "createdAt": "2026-04-23T10:21:22.085Z",
-      "updatedAt": "2026-04-23T10:23:10.151Z",
+      "updatedAt": "2026-04-26T13:33:01.346Z",
       "father": {
         "id": "cmobc09wf00gwt75fq6bt8pa6",
         "firstName": "عبد الحليم",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
     {
       "id": "cmobc0ahh00h2t75f0zkw4e0r",
       "firstName": "عمر",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -15488,18 +15736,18 @@
       "motherId": null,
       "canvasId": "8af12b2d32c47375",
       "createdAt": "2026-04-23T10:21:23.093Z",
-      "updatedAt": "2026-04-23T10:23:14.301Z",
+      "updatedAt": "2026-04-26T13:33:02.020Z",
       "father": {
         "id": "cmobc0aky00h3t75fuw3wjg2y",
         "firstName": "عبد الرزاق",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
     {
       "id": "cmobc0b0t00h7t75fwdce2jpl",
       "firstName": "عمر",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -15512,11 +15760,11 @@
       "motherId": null,
       "canvasId": "5aa99afe016f123a",
       "createdAt": "2026-04-23T10:21:23.789Z",
-      "updatedAt": "2026-04-23T10:23:12.968Z",
+      "updatedAt": "2026-04-26T13:33:02.562Z",
       "father": {
         "id": "cmobc0bnh00hft75fv5pxcknf",
         "firstName": "عبد المعطي",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
@@ -15618,8 +15866,8 @@
     },
     {
       "id": "cmobc0buf00hht75fkva8whmn",
-      "firstName": "عمر بوشي",
-      "lastName": null,
+      "firstName": "عمر ",
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -15632,7 +15880,7 @@
       "motherId": null,
       "canvasId": "096f3a3bf463c908",
       "createdAt": "2026-04-23T10:21:24.856Z",
-      "updatedAt": "2026-04-23T10:21:24.856Z",
+      "updatedAt": "2026-04-26T12:37:56.677Z",
       "father": null,
       "mother": null
     },
@@ -15777,7 +16025,7 @@
       "mother": {
         "id": "cmobc0q6z00ltt75f8v4gd14y",
         "firstName": "روان",
-        "lastName": null
+        "lastName": "مصطو"
       }
     },
     {
@@ -15931,7 +16179,7 @@
     {
       "id": "cmobbzwai00d0t75fg07yoxhb",
       "firstName": "غسان",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -15940,12 +16188,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmofojn0l000fp0cl3utavmjg",
       "motherId": "cmobc018600egt75ff9o68pco",
       "canvasId": "5c18dabf5fd02862",
       "createdAt": "2026-04-23T10:21:04.698Z",
-      "updatedAt": "2026-04-23T10:24:04.671Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:25:59.281Z",
+      "father": {
+        "id": "cmofojn0l000fp0cl3utavmjg",
+        "firstName": "عبد الحميد",
+        "lastName": "علي"
+      },
       "mother": {
         "id": "cmobc018600egt75ff9o68pco",
         "firstName": "صباح",
@@ -16069,7 +16321,7 @@
       "mother": {
         "id": "cmobc0ymj00o6t75f0wq62tgl",
         "firstName": "فاطمة منافيخي",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
@@ -16127,7 +16379,7 @@
     {
       "id": "cmobbzrzn00bwt75fkueodl36",
       "firstName": "غنى",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -16140,11 +16392,11 @@
       "motherId": null,
       "canvasId": "704ace1f2d96a2bf",
       "createdAt": "2026-04-23T10:20:59.123Z",
-      "updatedAt": "2026-04-23T10:24:32.852Z",
+      "updatedAt": "2026-04-26T12:25:58.025Z",
       "father": {
         "id": "cmobbzyj700dnt75f1x3iuj5f",
         "firstName": "فادي",
-        "lastName": null
+        "lastName": "علي"
       },
       "mother": null
     },
@@ -16199,7 +16451,7 @@
     {
       "id": "cmobc0aqm00h4t75fn6q76mlv",
       "firstName": "غنى",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -16212,11 +16464,11 @@
       "motherId": null,
       "canvasId": "7c256d44addcf388",
       "createdAt": "2026-04-23T10:21:23.422Z",
-      "updatedAt": "2026-04-23T10:23:10.031Z",
+      "updatedAt": "2026-04-26T13:33:02.226Z",
       "father": {
         "id": "cmobc0aky00h3t75fuw3wjg2y",
         "firstName": "عبد الرزاق",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
@@ -16293,7 +16545,7 @@
       "mother": {
         "id": "cmobc0yai00o2t75f1g1wzc7u",
         "firstName": "دانية",
-        "lastName": null
+        "lastName": "زينة"
       }
     },
     {
@@ -16347,7 +16599,7 @@
     {
       "id": "cmobbzyj700dnt75f1x3iuj5f",
       "firstName": "فادي",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -16356,12 +16608,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmofojn0l000fp0cl3utavmjg",
       "motherId": "cmobc018600egt75ff9o68pco",
       "canvasId": "f453dca5d8df2f7d",
       "createdAt": "2026-04-23T10:21:07.603Z",
-      "updatedAt": "2026-04-23T10:24:06.121Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:25:59.848Z",
+      "father": {
+        "id": "cmofojn0l000fp0cl3utavmjg",
+        "firstName": "عبد الحميد",
+        "lastName": "علي"
+      },
       "mother": {
         "id": "cmobc018600egt75ff9o68pco",
         "firstName": "صباح",
@@ -16447,7 +16703,7 @@
     {
       "id": "cmobc02du00ert75f0o8wz1xb",
       "firstName": "فاروق",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -16456,12 +16712,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0bet00hct75f0dgqz38p",
       "motherId": "cmobc03gb00f2t75fjeq4ip2j",
       "canvasId": "1b97a411369785c9",
       "createdAt": "2026-04-23T10:21:12.594Z",
-      "updatedAt": "2026-04-23T10:24:13.366Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:00.248Z",
+      "father": {
+        "id": "cmobc0bet00hct75f0dgqz38p",
+        "firstName": "بدر",
+        "lastName": "منافيخي"
+      },
       "mother": {
         "id": "cmobc03gb00f2t75fjeq4ip2j",
         "firstName": "وفاء",
@@ -16743,7 +17003,7 @@
     {
       "id": "cmobc0os200let75ff44y310f",
       "firstName": "فاطمة",
-      "lastName": null,
+      "lastName": "عتال",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -16752,12 +17012,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc1iy400u8t75fra4d5ih5",
       "motherId": "cmobc12ri00pft75f11sgru81",
       "canvasId": "1bcf18ff6943efd8",
       "createdAt": "2026-04-23T10:21:41.618Z",
-      "updatedAt": "2026-04-23T10:24:09.162Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:00.901Z",
+      "father": {
+        "id": "cmobc1iy400u8t75fra4d5ih5",
+        "firstName": "عبد الرزاق ",
+        "lastName": "عتال"
+      },
       "mother": {
         "id": "cmobc12ri00pft75f11sgru81",
         "firstName": "سجى",
@@ -16767,7 +17031,7 @@
     {
       "id": "cmobc0t1r00mot75fgatvw1b5",
       "firstName": "فاطمة",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -16780,11 +17044,11 @@
       "motherId": null,
       "canvasId": "f27abeca21195a0d",
       "createdAt": "2026-04-23T10:21:47.152Z",
-      "updatedAt": "2026-04-23T10:24:25.011Z",
+      "updatedAt": "2026-04-26T12:26:04.282Z",
       "father": {
         "id": "cmobc0qzg00m1t75fj8rxumke",
         "firstName": "حسام",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -16801,16 +17065,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0z2v00obt75fomh3ut73",
-      "motherId": null,
+      "motherId": "cmobc0z6800oct75fkunq1l8v",
       "canvasId": "bde4a8868629b23d",
       "createdAt": "2026-04-23T10:21:49.830Z",
-      "updatedAt": "2026-04-23T10:24:18.895Z",
+      "updatedAt": "2026-04-26T11:57:52.266Z",
       "father": {
         "id": "cmobc0z2v00obt75fomh3ut73",
         "firstName": "هشام",
         "lastName": null
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0z6800oct75fkunq1l8v",
+        "firstName": "صباح ",
+        "lastName": "قشقش"
+      }
     },
     {
       "id": "cmoebrwxv000xreflkdm275dc",
@@ -16849,16 +17117,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0fou00imt75fxbgb0nff",
-      "motherId": null,
+      "motherId": "cmoecbvt3000yreflg97syhaa",
       "canvasId": null,
       "createdAt": "2026-04-25T12:55:30.041Z",
-      "updatedAt": "2026-04-25T22:09:06.600Z",
+      "updatedAt": "2026-04-26T12:37:09.861Z",
       "father": {
         "id": "cmobc0fou00imt75fxbgb0nff",
         "firstName": "أحمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoecbvt3000yreflg97syhaa",
+        "firstName": "عائشة",
+        "lastName": "بوشي حصال"
+      }
     },
     {
       "id": "cmoeuaz2g000ek96ju5yjl9zt",
@@ -17041,34 +17313,6 @@
       }
     },
     {
-      "id": "cmobc014u00eft75fuaiqg76j",
-      "firstName": "فاطمة منافيخي",
-      "lastName": "منافيخي",
-      "nickname": null,
-      "gender": "FEMALE",
-      "birthDate": null,
-      "deathDate": null,
-      "isAlive": true,
-      "profileImage": null,
-      "additionalImages": "[]",
-      "bio": null,
-      "fatherId": "cmobbzmll00a7t75frm5nb7oc",
-      "motherId": "cmobc044t00f8t75ffud5rt29",
-      "canvasId": "79ef1ab65ca87676",
-      "createdAt": "2026-04-23T10:21:10.974Z",
-      "updatedAt": "2026-04-25T05:06:03.451Z",
-      "father": {
-        "id": "cmobbzmll00a7t75frm5nb7oc",
-        "firstName": "أحمد",
-        "lastName": "منافيخي"
-      },
-      "mother": {
-        "id": "cmobc044t00f8t75ffud5rt29",
-        "firstName": "أمينة",
-        "lastName": "منافيخي"
-      }
-    },
-    {
       "id": "cmobc0wdz00nnt75fcsgzhji3",
       "firstName": "فاطمة منافيخي",
       "lastName": null,
@@ -17091,8 +17335,8 @@
     {
       "id": "cmobc0ymj00o6t75f0wq62tgl",
       "firstName": "فاطمة منافيخي",
-      "lastName": null,
-      "nickname": null,
+      "lastName": "منافيخي",
+      "nickname": "أم هشام",
       "gender": "FEMALE",
       "birthDate": null,
       "deathDate": null,
@@ -17100,13 +17344,21 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
-      "motherId": null,
+      "fatherId": "cmobbzmll00a7t75frm5nb7oc",
+      "motherId": "cmobc044t00f8t75ffud5rt29",
       "canvasId": "549581ac2cda7bb7",
       "createdAt": "2026-04-23T10:21:54.379Z",
-      "updatedAt": "2026-04-23T10:21:54.379Z",
-      "father": null,
-      "mother": null
+      "updatedAt": "2026-04-26T12:26:07.023Z",
+      "father": {
+        "id": "cmobbzmll00a7t75frm5nb7oc",
+        "firstName": "أحمد",
+        "lastName": "منافيخي"
+      },
+      "mother": {
+        "id": "cmobc044t00f8t75ffud5rt29",
+        "firstName": "أمينة",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc0cdr00hmt75fbjecx5ji",
@@ -17247,7 +17499,7 @@
     {
       "id": "cmobbzrf600bqt75f69816o3z",
       "firstName": "فدوى",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -17256,12 +17508,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmofojn0l000fp0cl3utavmjg",
       "motherId": "cmobc018600egt75ff9o68pco",
       "canvasId": "29353c1ae4ea9b80",
       "createdAt": "2026-04-23T10:20:58.387Z",
-      "updatedAt": "2026-04-23T10:24:06.362Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:25:57.931Z",
+      "father": {
+        "id": "cmofojn0l000fp0cl3utavmjg",
+        "firstName": "عبد الحميد",
+        "lastName": "علي"
+      },
       "mother": {
         "id": "cmobc018600egt75ff9o68pco",
         "firstName": "صباح",
@@ -17623,7 +17879,7 @@
     {
       "id": "cmobc0tr200mvt75ffgkj4xud",
       "firstName": "قتيبة",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -17632,12 +17888,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0u3000myt75f0yxkcgj4",
       "motherId": "cmobc0zo100oht75f65hvmfwu",
       "canvasId": "23f9ecd0c2ead919",
       "createdAt": "2026-04-23T10:21:48.063Z",
-      "updatedAt": "2026-04-23T10:24:23.232Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:04.958Z",
+      "father": {
+        "id": "cmobc0u3000myt75f0yxkcgj4",
+        "firstName": "يحيى ",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0zo100oht75f65hvmfwu",
         "firstName": "رويدة",
@@ -17647,7 +17907,7 @@
     {
       "id": "cmobc10i900opt75fwnatn50w",
       "firstName": "قصي",
-      "lastName": null,
+      "lastName": "العبد",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -17656,12 +17916,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc13gh00pmt75figqa46kn",
       "motherId": "cmobc13nd00pot75f40m219uj",
       "canvasId": "4a3992dc9eb75aba",
       "createdAt": "2026-04-23T10:21:56.818Z",
-      "updatedAt": "2026-04-23T10:24:17.123Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:07.533Z",
+      "father": {
+        "id": "cmobc13gh00pmt75figqa46kn",
+        "firstName": "أسامة",
+        "lastName": "العبد"
+      },
       "mother": {
         "id": "cmobc13nd00pot75f40m219uj",
         "firstName": "غفران",
@@ -17795,7 +18059,7 @@
     {
       "id": "cmobc12bv00pat75fbihlae3g",
       "firstName": "كنان",
-      "lastName": null,
+      "lastName": "مزعل",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -17804,12 +18068,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc12od00pet75fbu23bown",
       "motherId": "cmobc0zu200ojt75fgdj376zk",
       "canvasId": "eda42b3cbe7c7a20",
       "createdAt": "2026-04-23T10:21:59.179Z",
-      "updatedAt": "2026-04-23T10:24:27.048Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:08.366Z",
+      "father": {
+        "id": "cmobc12od00pet75fbu23bown",
+        "firstName": "حسان ",
+        "lastName": "مزعل"
+      },
       "mother": {
         "id": "cmobc0zu200ojt75fgdj376zk",
         "firstName": "ضحى",
@@ -17849,16 +18117,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0fou00imt75fxbgb0nff",
-      "motherId": null,
+      "motherId": "cmoecbvt3000yreflg97syhaa",
       "canvasId": null,
       "createdAt": "2026-04-25T12:55:21.651Z",
-      "updatedAt": "2026-04-25T22:09:06.472Z",
+      "updatedAt": "2026-04-26T12:37:09.643Z",
       "father": {
         "id": "cmobc0fou00imt75fxbgb0nff",
         "firstName": "أحمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoecbvt3000yreflg97syhaa",
+        "firstName": "عائشة",
+        "lastName": "بوشي حصال"
+      }
     },
     {
       "id": "cmobbzk78009jt75fq8vxhgrz",
@@ -17907,7 +18179,7 @@
     {
       "id": "cmobc165z00qft75fte6kob8c",
       "firstName": "كوثر",
-      "lastName": null,
+      "lastName": "مرعي الشامي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -17916,12 +18188,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmofmgalr0003p0cltt4y8gzz",
       "motherId": "cmobc16w800qlt75fjiqwsx5g",
       "canvasId": "265dd149aa4907a8",
       "createdAt": "2026-04-23T10:22:04.151Z",
-      "updatedAt": "2026-04-23T10:22:38.832Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:09.245Z",
+      "father": {
+        "id": "cmofmgalr0003p0cltt4y8gzz",
+        "firstName": "محمود",
+        "lastName": "مرعي الشامي"
+      },
       "mother": {
         "id": "cmobc16w800qlt75fjiqwsx5g",
         "firstName": "صباح",
@@ -17965,16 +18241,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0fou00imt75fxbgb0nff",
-      "motherId": null,
+      "motherId": "cmoecbvt3000yreflg97syhaa",
       "canvasId": null,
       "createdAt": "2026-04-25T12:55:11.859Z",
-      "updatedAt": "2026-04-25T22:09:06.367Z",
+      "updatedAt": "2026-04-26T12:37:09.468Z",
       "father": {
         "id": "cmobc0fou00imt75fxbgb0nff",
         "firstName": "أحمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoecbvt3000yreflg97syhaa",
+        "firstName": "عائشة",
+        "lastName": "بوشي حصال"
+      }
     },
     {
       "id": "cmobbyzsb0050t75fh370e2uz",
@@ -18099,7 +18379,7 @@
     {
       "id": "cmobc0ujs00n3t75fk0nj9vgk",
       "firstName": "لجين",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -18112,11 +18392,11 @@
       "motherId": null,
       "canvasId": "947fb15f9e828624",
       "createdAt": "2026-04-23T10:21:49.096Z",
-      "updatedAt": "2026-04-23T10:24:17.374Z",
+      "updatedAt": "2026-04-26T12:26:05.200Z",
       "father": {
         "id": "cmobc0spq00mkt75fpejpgatu",
         "firstName": "محمد",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -18173,6 +18453,34 @@
       }
     },
     {
+      "id": "cmoeucdwi000uk96jlu7286u9",
+      "firstName": "لطفية",
+      "lastName": "منافيخي",
+      "nickname": "لطيفة",
+      "gender": "FEMALE",
+      "birthDate": "1953-02-06T00:00:00.000Z",
+      "deathDate": null,
+      "isAlive": true,
+      "profileImage": null,
+      "additionalImages": "[]",
+      "bio": null,
+      "fatherId": "cmoebn05z0007refl9rowkem3",
+      "motherId": "cmoeu989n0003k96jhv5u1na7",
+      "canvasId": null,
+      "createdAt": "2026-04-25T21:17:59.010Z",
+      "updatedAt": "2026-04-26T10:51:58.449Z",
+      "father": {
+        "id": "cmoebn05z0007refl9rowkem3",
+        "firstName": "محمد",
+        "lastName": "منافيخي"
+      },
+      "mother": {
+        "id": "cmoeu989n0003k96jhv5u1na7",
+        "firstName": "أميرة",
+        "lastName": null
+      }
+    },
+    {
       "id": "cmobbyy8j004ot75f4e37nj51",
       "firstName": "لطيفة",
       "lastName": null,
@@ -18221,26 +18529,6 @@
       "mother": null
     },
     {
-      "id": "cmobbzmp500a8t75ft1d8x73l",
-      "firstName": "لطيفة",
-      "lastName": null,
-      "nickname": null,
-      "gender": "FEMALE",
-      "birthDate": null,
-      "deathDate": null,
-      "isAlive": true,
-      "profileImage": null,
-      "additionalImages": "[]",
-      "bio": null,
-      "fatherId": null,
-      "motherId": null,
-      "canvasId": "73da5b0ae164600a",
-      "createdAt": "2026-04-23T10:20:52.265Z",
-      "updatedAt": "2026-04-23T10:20:52.265Z",
-      "father": null,
-      "mother": null
-    },
-    {
       "id": "cmobbzpmh00b6t75fc4fyv71s",
       "firstName": "لطيفة",
       "lastName": "منافيخي",
@@ -18259,43 +18547,15 @@
       "updatedAt": "2026-04-25T05:05:57.058Z",
       "father": {
         "id": "cmobbzqfe00bgt75f1qv7xm2w",
-        "firstName": "أحمد",
+        "firstName": "أحمد لطف الله",
         "lastName": "منافيخي"
       },
       "mother": null
     },
     {
-      "id": "cmoeucdwi000uk96jlu7286u9",
-      "firstName": "لطيفة",
-      "lastName": "منافيخي",
-      "nickname": null,
-      "gender": "FEMALE",
-      "birthDate": null,
-      "deathDate": null,
-      "isAlive": true,
-      "profileImage": null,
-      "additionalImages": "[]",
-      "bio": null,
-      "fatherId": "cmoebn05z0007refl9rowkem3",
-      "motherId": "cmoeu989n0003k96jhv5u1na7",
-      "canvasId": null,
-      "createdAt": "2026-04-25T21:17:59.010Z",
-      "updatedAt": "2026-04-25T22:09:08.180Z",
-      "father": {
-        "id": "cmoebn05z0007refl9rowkem3",
-        "firstName": "محمد",
-        "lastName": "منافيخي"
-      },
-      "mother": {
-        "id": "cmoeu989n0003k96jhv5u1na7",
-        "firstName": "أميرة",
-        "lastName": null
-      }
-    },
-    {
       "id": "cmobc0sgs00mht75f3u3aglzd",
       "firstName": "لمار",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -18308,11 +18568,11 @@
       "motherId": null,
       "canvasId": "85165946e8fe8d66",
       "createdAt": "2026-04-23T10:21:46.397Z",
-      "updatedAt": "2026-04-23T10:24:23.111Z",
+      "updatedAt": "2026-04-26T12:26:03.524Z",
       "father": {
         "id": "cmobc0tr200mvt75ffgkj4xud",
         "firstName": "قتيبة",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -18371,7 +18631,7 @@
     {
       "id": "cmobc0xfh00nvt75fbit4zi35",
       "firstName": "ليا",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -18384,11 +18644,11 @@
       "motherId": null,
       "canvasId": "eb5e102f5570245b",
       "createdAt": "2026-04-23T10:21:52.830Z",
-      "updatedAt": "2026-04-23T10:24:25.469Z",
+      "updatedAt": "2026-04-26T12:26:06.457Z",
       "father": {
         "id": "cmobc0yvx00o9t75frrcnqmxi",
         "firstName": "محمد",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -18533,7 +18793,7 @@
       "mother": {
         "id": "cmobc0tog00mut75fnrmljex7",
         "firstName": "هبة الله",
-        "lastName": null
+        "lastName": "زينة"
       }
     },
     {
@@ -18597,21 +18857,25 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0w8o00nlt75fq1m4wivh",
-      "motherId": null,
+      "motherId": "cmobc11s600p4t75fcqwvleir",
       "canvasId": "7eb8cfec724c0d82",
       "createdAt": "2026-04-23T10:21:50.105Z",
-      "updatedAt": "2026-04-23T10:24:16.508Z",
+      "updatedAt": "2026-04-26T12:02:02.221Z",
       "father": {
         "id": "cmobc0w8o00nlt75fq1m4wivh",
         "firstName": "طاهر",
         "lastName": null
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc11s600p4t75fcqwvleir",
+        "firstName": "راما",
+        "lastName": "مصطو"
+      }
     },
     {
       "id": "cmobc128z00p9t75fngfkma7m",
       "firstName": "ليلى",
-      "lastName": null,
+      "lastName": "مصطو",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -18624,11 +18888,11 @@
       "motherId": null,
       "canvasId": "984a5af169aa5346",
       "createdAt": "2026-04-23T10:21:59.075Z",
-      "updatedAt": "2026-04-23T10:24:10.554Z",
+      "updatedAt": "2026-04-26T12:26:08.273Z",
       "father": {
         "id": "cmobc11pb00p3t75f3jumvqkd",
         "firstName": "محمد",
-        "lastName": null
+        "lastName": "مصطو"
       },
       "mother": null
     },
@@ -18657,7 +18921,7 @@
       "mother": {
         "id": "cmobc0ymj00o6t75f0wq62tgl",
         "firstName": "فاطمة منافيخي",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
@@ -18825,7 +19089,7 @@
       "mother": {
         "id": "cmobc0tog00mut75fnrmljex7",
         "firstName": "هبة الله",
-        "lastName": null
+        "lastName": "زينة"
       }
     },
     {
@@ -18841,16 +19105,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0w8o00nlt75fq1m4wivh",
-      "motherId": null,
+      "motherId": "cmobc11s600p4t75fcqwvleir",
       "canvasId": "371ec012ed77aac3",
       "createdAt": "2026-04-23T10:21:49.984Z",
-      "updatedAt": "2026-04-23T10:24:16.603Z",
+      "updatedAt": "2026-04-26T12:02:02.045Z",
       "father": {
         "id": "cmobc0w8o00nlt75fq1m4wivh",
         "firstName": "طاهر",
         "lastName": null
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc11s600p4t75fcqwvleir",
+        "firstName": "راما",
+        "lastName": "مصطو"
+      }
     },
     {
       "id": "cmobbyjto0016t75f2sqksej8",
@@ -19053,7 +19321,7 @@
       "mother": {
         "id": "cmobbzcsp007ht75fcv33c4l2",
         "firstName": "الاء",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       }
     },
     {
@@ -19069,16 +19337,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzmwk00aat75f8lwxwox7",
-      "motherId": null,
+      "motherId": "cmoeucla0000yk96jj7f6pzv9",
       "canvasId": "7bb528f1c62dd463",
       "createdAt": "2026-04-23T10:20:46.467Z",
-      "updatedAt": "2026-04-25T05:05:51.215Z",
+      "updatedAt": "2026-04-26T11:17:09.372Z",
       "father": {
         "id": "cmobbzmwk00aat75f8lwxwox7",
         "firstName": "ذو الكفل",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoeucla0000yk96jj7f6pzv9",
+        "firstName": "نجاح",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobbz4bz005st75f2apcy0kl",
@@ -19197,7 +19469,7 @@
       "mother": {
         "id": "cmobc0yai00o2t75f1g1wzc7u",
         "firstName": "دانية",
-        "lastName": null
+        "lastName": "زينة"
       }
     },
     {
@@ -19357,16 +19629,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzmwk00aat75f8lwxwox7",
-      "motherId": null,
+      "motherId": "cmoeucla0000yk96jj7f6pzv9",
       "canvasId": "0d752b38a3d9350f",
       "createdAt": "2026-04-23T10:20:50.382Z",
-      "updatedAt": "2026-04-25T05:05:54.069Z",
+      "updatedAt": "2026-04-26T11:17:09.529Z",
       "father": {
         "id": "cmobbzmwk00aat75f8lwxwox7",
         "firstName": "ذو الكفل",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoeucla0000yk96jj7f6pzv9",
+        "firstName": "نجاح",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobbyfzu0000t75fty488tbu",
@@ -19806,9 +20082,9 @@
       "lastName": "منافيخي",
       "nickname": null,
       "gender": "MALE",
-      "birthDate": null,
+      "birthDate": "1946-02-01T00:00:00.000Z",
       "deathDate": null,
-      "isAlive": true,
+      "isAlive": false,
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
@@ -19816,7 +20092,7 @@
       "motherId": "cmobc044t00f8t75ffud5rt29",
       "canvasId": "214a240c9a358059",
       "createdAt": "2026-04-23T10:20:52.403Z",
-      "updatedAt": "2026-04-25T05:05:55.165Z",
+      "updatedAt": "2026-04-26T10:51:42.609Z",
       "father": {
         "id": "cmobbzmll00a7t75frm5nb7oc",
         "firstName": "أحمد",
@@ -19877,7 +20153,7 @@
       "mother": {
         "id": "cmobbzygi00dmt75f26l9sp78",
         "firstName": "مها",
-        "lastName": null
+        "lastName": "علي"
       }
     },
     {
@@ -19959,7 +20235,7 @@
     {
       "id": "cmobc0aet00h1t75frxg7m2kc",
       "firstName": "محمد",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -19972,18 +20248,18 @@
       "motherId": null,
       "canvasId": "59f4c9897575929c",
       "createdAt": "2026-04-23T10:21:22.998Z",
-      "updatedAt": "2026-04-23T10:23:09.558Z",
+      "updatedAt": "2026-04-26T13:33:01.919Z",
       "father": {
         "id": "cmobc0aky00h3t75fuw3wjg2y",
         "firstName": "عبد الرزاق",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
     {
       "id": "cmobc0av400h5t75f221wrpzk",
       "firstName": "محمد",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -19996,11 +20272,11 @@
       "motherId": "cmobc0bzn00hit75f7wzby6yt",
       "canvasId": "433da026e16ced7a",
       "createdAt": "2026-04-23T10:21:23.585Z",
-      "updatedAt": "2026-04-24T15:53:16.196Z",
+      "updatedAt": "2026-04-26T13:33:02.335Z",
       "father": {
         "id": "cmobc0buf00hht75fkva8whmn",
-        "firstName": "عمر بوشي",
-        "lastName": null
+        "firstName": "عمر ",
+        "lastName": "بوشي حصال"
       },
       "mother": {
         "id": "cmobc0bzn00hit75f7wzby6yt",
@@ -20179,7 +20455,7 @@
     {
       "id": "cmobc0p1600lht75fqv8q9pnq",
       "firstName": "محمد",
-      "lastName": null,
+      "lastName": "عتال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -20188,12 +20464,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc1iy400u8t75fra4d5ih5",
       "motherId": "cmobc12ri00pft75f11sgru81",
       "canvasId": "184244493a963f00",
       "createdAt": "2026-04-23T10:21:41.946Z",
-      "updatedAt": "2026-04-23T10:24:09.274Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:01.269Z",
+      "father": {
+        "id": "cmobc1iy400u8t75fra4d5ih5",
+        "firstName": "عبد الرزاق ",
+        "lastName": "عتال"
+      },
       "mother": {
         "id": "cmobc12ri00pft75f11sgru81",
         "firstName": "سجى",
@@ -20221,7 +20501,7 @@
       "mother": {
         "id": "cmobc0rcn00m5t75fmk2ukg1o",
         "firstName": "بيان",
-        "lastName": null
+        "lastName": "عتال"
       }
     },
     {
@@ -20289,13 +20569,13 @@
       "mother": {
         "id": "cmobc0qk600lxt75fm9d1642y",
         "firstName": "حنين",
-        "lastName": null
+        "lastName": "عتال"
       }
     },
     {
       "id": "cmobc0spq00mkt75fpejpgatu",
       "firstName": "محمد",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -20304,12 +20584,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0zqy00oit75fmg7yz1q0",
       "motherId": "cmobc0u5o00mzt75fjg8ud0e6",
       "canvasId": "af660bc35142ab22",
       "createdAt": "2026-04-23T10:21:46.718Z",
-      "updatedAt": "2026-04-23T10:24:19.773Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:03.840Z",
+      "father": {
+        "id": "cmobc0zqy00oit75fmg7yz1q0",
+        "firstName": "محمود",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0u5o00mzt75fjg8ud0e6",
         "firstName": "إلهام",
@@ -20319,7 +20603,7 @@
     {
       "id": "cmobc0tym00mxt75fi0mybm7t",
       "firstName": "محمد",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -20328,12 +20612,44 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0u3000myt75f0yxkcgj4",
       "motherId": "cmobc0zo100oht75f65hvmfwu",
       "canvasId": "a4bc0f933241332a",
       "createdAt": "2026-04-23T10:21:48.334Z",
-      "updatedAt": "2026-04-23T10:24:23.844Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:05.065Z",
+      "father": {
+        "id": "cmobc0u3000myt75f0yxkcgj4",
+        "firstName": "يحيى ",
+        "lastName": "زينة"
+      },
+      "mother": {
+        "id": "cmobc0zo100oht75f65hvmfwu",
+        "firstName": "رويدة",
+        "lastName": null
+      }
+    },
+    {
+      "id": "cmobc0v0l00n8t75flubii7hw",
+      "firstName": "محمد",
+      "lastName": "زينة",
+      "nickname": null,
+      "gender": "MALE",
+      "birthDate": null,
+      "deathDate": null,
+      "isAlive": false,
+      "profileImage": null,
+      "additionalImages": "[]",
+      "bio": null,
+      "fatherId": "cmobc0u3000myt75f0yxkcgj4",
+      "motherId": "cmobc0zo100oht75f65hvmfwu",
+      "canvasId": "c321ff885ab1f8e0",
+      "createdAt": "2026-04-23T10:21:49.701Z",
+      "updatedAt": "2026-04-26T12:26:05.725Z",
+      "father": {
+        "id": "cmobc0u3000myt75f0yxkcgj4",
+        "firstName": "يحيى ",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0zo100oht75f65hvmfwu",
         "firstName": "رويدة",
@@ -20385,13 +20701,13 @@
       "mother": {
         "id": "cmobc0yai00o2t75f1g1wzc7u",
         "firstName": "دانية",
-        "lastName": null
+        "lastName": "زينة"
       }
     },
     {
       "id": "cmobc0yvx00o9t75frrcnqmxi",
       "firstName": "محمد",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -20400,12 +20716,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0ypp00o7t75f7uidjj25",
       "motherId": "cmobc0xjv00nwt75fsxwtvnyp",
       "canvasId": "19d01f66db62e2b3",
       "createdAt": "2026-04-23T10:21:54.717Z",
-      "updatedAt": "2026-04-23T10:24:25.686Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:07.150Z",
+      "father": {
+        "id": "cmobc0ypp00o7t75f7uidjj25",
+        "firstName": "علي",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0xjv00nwt75fsxwtvnyp",
         "firstName": "امل",
@@ -20437,13 +20757,13 @@
       "mother": {
         "id": "cmobc0ymj00o6t75f0wq62tgl",
         "firstName": "فاطمة منافيخي",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
       "id": "cmobc11pb00p3t75f3jumvqkd",
       "firstName": "محمد",
-      "lastName": null,
+      "lastName": "مصطو",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -20452,12 +20772,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc12lq00pdt75ffs4bfqls",
       "motherId": "cmobc12ik00pct75f8o3g8848",
       "canvasId": "cea2cbe727d8aa8f",
       "createdAt": "2026-04-23T10:21:58.367Z",
-      "updatedAt": "2026-04-23T10:24:10.640Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:08.090Z",
+      "father": {
+        "id": "cmobc12lq00pdt75ffs4bfqls",
+        "firstName": "محمد كامل ",
+        "lastName": "مصطو"
+      },
       "mother": {
         "id": "cmobc12ik00pct75f8o3g8848",
         "firstName": "ليلى",
@@ -20467,7 +20791,7 @@
     {
       "id": "cmobc13ss00pqt75fvjdpqzrx",
       "firstName": "محمد",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -20480,11 +20804,11 @@
       "motherId": null,
       "canvasId": "34b3bb05cf476fab",
       "createdAt": "2026-04-23T10:22:01.084Z",
-      "updatedAt": "2026-04-23T10:24:17.720Z",
+      "updatedAt": "2026-04-26T12:26:08.886Z",
       "father": {
         "id": "cmobc0y2v00o0t75fg1c0kl56",
         "firstName": "طاهر",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -20501,16 +20825,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc16b500qgt75fuoavn1hc",
-      "motherId": null,
+      "motherId": "cmofml4m60008p0cld6jmkhd6",
       "canvasId": "b48d10024b07de0b",
       "createdAt": "2026-04-23T10:22:06.134Z",
-      "updatedAt": "2026-04-25T05:06:35.376Z",
+      "updatedAt": "2026-04-26T10:28:41.654Z",
       "father": {
         "id": "cmobc16b500qgt75fuoavn1hc",
         "firstName": "ابراهيم",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmofml4m60008p0cld6jmkhd6",
+        "firstName": "ميادة",
+        "lastName": "رمو"
+      }
     },
     {
       "id": "cmobc18ak00r0t75f4q4nwbes",
@@ -20521,14 +20849,14 @@
       "birthDate": "1940-07-01T00:00:00.000Z",
       "deathDate": "2019-05-09T00:00:00.000Z",
       "isAlive": false,
-      "profileImage": null,
-      "additionalImages": "[]",
+      "profileImage": "images/persons/cmobc18ak00r0t75f4q4nwbes/profile.jpg",
+      "additionalImages": "[\"images/persons/cmobc18ak00r0t75f4q4nwbes/gallery/0.jpg\"]",
       "bio": null,
       "fatherId": "cmobc0n7400kwt75fya72avwy",
       "motherId": "cmoeviv4o0035k96jhxkbeyoq",
       "canvasId": "f34e12f7c6e856a4",
       "createdAt": "2026-04-23T10:22:06.909Z",
-      "updatedAt": "2026-04-25T22:07:46.078Z",
+      "updatedAt": "2026-04-26T12:24:14.430Z",
       "father": {
         "id": "cmobc0n7400kwt75fya72avwy",
         "firstName": "محمد عبدو",
@@ -20691,7 +21019,7 @@
     {
       "id": "cmobc1ha100tot75f40r0mo0j",
       "firstName": "محمد",
-      "lastName": null,
+      "lastName": "مرعي الشامي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -20700,12 +21028,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmofmgalr0003p0cltt4y8gzz",
       "motherId": "cmobc16w800qlt75fjiqwsx5g",
       "canvasId": "1fe6be2efc747d37",
       "createdAt": "2026-04-23T10:22:18.553Z",
-      "updatedAt": "2026-04-23T10:22:53.232Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:09.666Z",
+      "father": {
+        "id": "cmofmgalr0003p0cltt4y8gzz",
+        "firstName": "محمود",
+        "lastName": "مرعي الشامي"
+      },
       "mother": {
         "id": "cmobc16w800qlt75fjiqwsx5g",
         "firstName": "صباح",
@@ -20733,7 +21065,7 @@
       "mother": {
         "id": "cmobc1hcz00tpt75fzal2p8go",
         "firstName": "هبة",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       }
     },
     {
@@ -20757,7 +21089,7 @@
       "mother": {
         "id": "cmobbzcsp007ht75fcv33c4l2",
         "firstName": "الاء",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       }
     },
     {
@@ -20913,6 +21245,26 @@
       "mother": null
     },
     {
+      "id": "cmobc0zzu00okt75f0bvrj4yx",
+      "firstName": "محمد ",
+      "lastName": "حج ابراهيم",
+      "nickname": null,
+      "gender": "MALE",
+      "birthDate": null,
+      "deathDate": null,
+      "isAlive": true,
+      "profileImage": null,
+      "additionalImages": "[]",
+      "bio": null,
+      "fatherId": null,
+      "motherId": null,
+      "canvasId": "262c164b0cc1aa4d",
+      "createdAt": "2026-04-23T10:21:56.154Z",
+      "updatedAt": "2026-04-26T12:01:36.118Z",
+      "father": null,
+      "mother": null
+    },
+    {
       "id": "cmobc16zc00qmt75fd0h4mxmt",
       "firstName": "محمد أمير",
       "lastName": "منافيخي",
@@ -20977,16 +21329,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzmsz00a9t75fkucyfd5h",
-      "motherId": null,
+      "motherId": "cmoeucdwi000uk96jlu7286u9",
       "canvasId": "9f600016bbea343d",
       "createdAt": "2026-04-23T10:20:50.528Z",
-      "updatedAt": "2026-04-25T05:05:54.194Z",
+      "updatedAt": "2026-04-26T10:43:16.969Z",
       "father": {
         "id": "cmobbzmsz00a9t75fkucyfd5h",
         "firstName": "محمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoeucdwi000uk96jlu7286u9",
+        "firstName": "لطفية",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc07sy00gbt75f9aeaie1e",
@@ -21013,7 +21369,7 @@
       "mother": {
         "id": "cmobc08s000gkt75fmhyz95t8",
         "firstName": "بثينة",
-        "lastName": null
+        "lastName": "بوشي حصال"
       }
     },
     {
@@ -21042,30 +21398,6 @@
         "id": "cmobbzjqw009et75f2bhqgdfp",
         "firstName": "صفاء",
         "lastName": "منافيخي"
-      }
-    },
-    {
-      "id": "cmobc0v0l00n8t75flubii7hw",
-      "firstName": "محمد ت",
-      "lastName": null,
-      "nickname": null,
-      "gender": "MALE",
-      "birthDate": null,
-      "deathDate": null,
-      "isAlive": true,
-      "profileImage": null,
-      "additionalImages": "[]",
-      "bio": null,
-      "fatherId": null,
-      "motherId": "cmobc0zo100oht75f65hvmfwu",
-      "canvasId": "c321ff885ab1f8e0",
-      "createdAt": "2026-04-23T10:21:49.701Z",
-      "updatedAt": "2026-04-23T10:24:22.723Z",
-      "father": null,
-      "mother": {
-        "id": "cmobc0zo100oht75f65hvmfwu",
-        "firstName": "رويدة",
-        "lastName": null
       }
     },
     {
@@ -21137,28 +21469,8 @@
       "mother": {
         "id": "cmobc18y100r7t75fcc69j70l",
         "firstName": "ايمان",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       }
-    },
-    {
-      "id": "cmobc0zzu00okt75f0bvrj4yx",
-      "firstName": "محمد حج ابراهيم",
-      "lastName": null,
-      "nickname": null,
-      "gender": "MALE",
-      "birthDate": null,
-      "deathDate": null,
-      "isAlive": true,
-      "profileImage": null,
-      "additionalImages": "[]",
-      "bio": null,
-      "fatherId": null,
-      "motherId": null,
-      "canvasId": "262c164b0cc1aa4d",
-      "createdAt": "2026-04-23T10:21:56.154Z",
-      "updatedAt": "2026-04-23T10:21:56.154Z",
-      "father": null,
-      "mother": null
     },
     {
       "id": "cmobc0mr800krt75fkbydfzqa",
@@ -21253,7 +21565,7 @@
       "mother": {
         "id": "cmobc09hu00gst75f6d4h4tfy",
         "firstName": "هنادي",
-        "lastName": null
+        "lastName": "بوشي حصال"
       }
     },
     {
@@ -21465,16 +21777,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0fou00imt75fxbgb0nff",
-      "motherId": null,
+      "motherId": "cmoecbvt3000yreflg97syhaa",
       "canvasId": "497aff043557982a",
       "createdAt": "2026-04-23T10:21:29.527Z",
-      "updatedAt": "2026-04-25T05:06:20.009Z",
+      "updatedAt": "2026-04-26T12:37:08.282Z",
       "father": {
         "id": "cmobc0fou00imt75fxbgb0nff",
         "firstName": "أحمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoecbvt3000yreflg97syhaa",
+        "firstName": "عائشة",
+        "lastName": "بوشي حصال"
+      }
     },
     {
       "id": "cmobc14hu00pyt75f589sffci",
@@ -21509,14 +21825,14 @@
       "birthDate": "1904-01-01T00:00:00.000Z",
       "deathDate": "1987-02-28T00:00:00.000Z",
       "isAlive": false,
-      "profileImage": null,
-      "additionalImages": "[]",
+      "profileImage": "images/persons/cmobc0n7400kwt75fya72avwy/profile.jpg",
+      "additionalImages": "[\"images/persons/cmobc0n7400kwt75fya72avwy/gallery/0.jpg\"]",
       "bio": null,
       "fatherId": "cmobc0pjc00lmt75fmuan5s0n",
       "motherId": null,
       "canvasId": "57edad33bbcdd6df",
       "createdAt": "2026-04-23T10:21:39.569Z",
-      "updatedAt": "2026-04-25T21:50:07.881Z",
+      "updatedAt": "2026-04-26T12:20:50.620Z",
       "father": {
         "id": "cmobc0pjc00lmt75fmuan5s0n",
         "firstName": "محمود",
@@ -21581,16 +21897,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc178000qpt75f7321kmfw",
-      "motherId": null,
+      "motherId": "cmofmem9e0000p0cluqexka82",
       "canvasId": "1c2fd86dd0babb90",
       "createdAt": "2026-04-23T10:22:05.417Z",
-      "updatedAt": "2026-04-25T05:06:34.484Z",
+      "updatedAt": "2026-04-26T10:23:36.970Z",
       "father": {
         "id": "cmobc178000qpt75f7321kmfw",
         "firstName": "عادل",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmofmem9e0000p0cluqexka82",
+        "firstName": "صفاء",
+        "lastName": "عتال"
+      }
     },
     {
       "id": "cmobbzvql00cut75fpmlgfce8",
@@ -21629,16 +21949,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzmwk00aat75f8lwxwox7",
-      "motherId": null,
+      "motherId": "cmoeucla0000yk96jj7f6pzv9",
       "canvasId": "0a3508bdfccfaeaa",
       "createdAt": "2026-04-23T10:21:09.604Z",
-      "updatedAt": "2026-04-25T05:06:02.908Z",
+      "updatedAt": "2026-04-26T11:17:10.499Z",
       "father": {
         "id": "cmobbzmwk00aat75f8lwxwox7",
         "firstName": "ذو الكفل",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoeucla0000yk96jj7f6pzv9",
+        "firstName": "نجاح",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobbzju9009ft75fq54dvnoc",
@@ -21666,8 +21990,8 @@
     },
     {
       "id": "cmobc12lq00pdt75ffs4bfqls",
-      "firstName": "محمد كامل مصطو",
-      "lastName": null,
+      "firstName": "محمد كامل ",
+      "lastName": "مصطو",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -21680,14 +22004,14 @@
       "motherId": null,
       "canvasId": "5d881b4a72ca3535",
       "createdAt": "2026-04-23T10:21:59.534Z",
-      "updatedAt": "2026-04-23T10:21:59.534Z",
+      "updatedAt": "2026-04-26T12:04:30.809Z",
       "father": null,
       "mother": null
     },
     {
       "id": "cmobbzt8000c9t75f6xbxxj29",
       "firstName": "محمد نجم",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -21700,11 +22024,11 @@
       "motherId": null,
       "canvasId": "0fde0850ada42ece",
       "createdAt": "2026-04-23T10:21:00.720Z",
-      "updatedAt": "2026-04-23T10:24:04.999Z",
+      "updatedAt": "2026-04-26T12:25:58.560Z",
       "father": {
         "id": "cmobbzwga00d2t75fgn9q1obe",
         "firstName": "رياض",
-        "lastName": null
+        "lastName": "علي"
       },
       "mother": null
     },
@@ -21745,16 +22069,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc16jd00qit75fxgpubn26",
-      "motherId": null,
+      "motherId": "cmobc0i8200jdt75f2av5grec",
       "canvasId": "58e94469b7290d46",
       "createdAt": "2026-04-23T10:20:40.758Z",
-      "updatedAt": "2026-04-25T05:05:48.898Z",
+      "updatedAt": "2026-04-26T10:27:08.988Z",
       "father": {
         "id": "cmobc16jd00qit75fxgpubn26",
         "firstName": "قاسم",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0i8200jdt75f2av5grec",
+        "firstName": "فاتن",
+        "lastName": null
+      }
     },
     {
       "id": "cmobbzq2x00bct75fwdq0hz56",
@@ -21823,7 +22151,7 @@
       "updatedAt": "2026-04-25T05:05:57.884Z",
       "father": {
         "id": "cmobbzqfe00bgt75f1qv7xm2w",
-        "firstName": "أحمد",
+        "firstName": "أحمد لطف الله",
         "lastName": "منافيخي"
       },
       "mother": null
@@ -21853,7 +22181,7 @@
       "mother": {
         "id": "cmobc0br300hgt75fk7i8zg24",
         "firstName": "صالحة",
-        "lastName": null
+        "lastName": "بوشي حصال"
       }
     },
     {
@@ -22183,7 +22511,7 @@
     {
       "id": "cmobbzbxp0079t75f2z6latqg",
       "firstName": "محمود",
-      "lastName": null,
+      "lastName": "مرعي الشامي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -22196,11 +22524,11 @@
       "motherId": null,
       "canvasId": "a89ca30e0ec3707e",
       "createdAt": "2026-04-23T10:20:38.318Z",
-      "updatedAt": "2026-04-23T10:22:41.152Z",
+      "updatedAt": "2026-04-26T12:25:57.106Z",
       "father": {
         "id": "cmobc18uq00r6t75fumvnjfsb",
         "firstName": "ابراهيم",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       },
       "mother": null
     },
@@ -22271,7 +22599,7 @@
       "updatedAt": "2026-04-25T05:05:56.808Z",
       "father": {
         "id": "cmobbzqfe00bgt75f1qv7xm2w",
-        "firstName": "أحمد",
+        "firstName": "أحمد لطف الله",
         "lastName": "منافيخي"
       },
       "mother": null
@@ -22362,13 +22690,13 @@
       "deathDate": null,
       "isAlive": false,
       "profileImage": "images/persons/cmobc06nj00fyt75f5trvwoal/profile.jpg",
-      "additionalImages": "[]",
+      "additionalImages": "[\"images/persons/cmobc06nj00fyt75f5trvwoal/gallery/0.jpg\"]",
       "bio": null,
       "fatherId": "cmobc0n7400kwt75fya72avwy",
       "motherId": "cmoeviv4o0035k96jhxkbeyoq",
       "canvasId": "7fe66eb5cc4d1a80",
       "createdAt": "2026-04-23T10:21:18.127Z",
-      "updatedAt": "2026-04-25T22:07:45.122Z",
+      "updatedAt": "2026-04-26T12:22:44.197Z",
       "father": {
         "id": "cmobc0n7400kwt75fya72avwy",
         "firstName": "محمد عبدو",
@@ -22401,7 +22729,7 @@
       "mother": {
         "id": "cmobc09hu00gst75f6d4h4tfy",
         "firstName": "هنادي",
-        "lastName": null
+        "lastName": "بوشي حصال"
       }
     },
     {
@@ -22445,16 +22773,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0fou00imt75fxbgb0nff",
-      "motherId": null,
+      "motherId": "cmoecbvt3000yreflg97syhaa",
       "canvasId": "64fd64d2a12a3ea2",
       "createdAt": "2026-04-23T10:21:29.935Z",
-      "updatedAt": "2026-04-25T05:06:20.606Z",
+      "updatedAt": "2026-04-26T12:37:08.594Z",
       "father": {
         "id": "cmobc0fou00imt75fxbgb0nff",
         "firstName": "أحمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoecbvt3000yreflg97syhaa",
+        "firstName": "عائشة",
+        "lastName": "بوشي حصال"
+      }
     },
     {
       "id": "cmobc0ipb00jit75fg6m8r5e7",
@@ -22627,7 +22959,7 @@
     {
       "id": "cmobc0rtn00mat75fidrg0juk",
       "firstName": "محمود",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -22637,21 +22969,25 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0smt00mjt75fqlzur4ah",
-      "motherId": null,
+      "motherId": "cmobc12f800pbt75fqrypkv4a",
       "canvasId": "730cd195ffe1b94d",
       "createdAt": "2026-04-23T10:21:45.563Z",
-      "updatedAt": "2026-04-23T10:24:18.781Z",
+      "updatedAt": "2026-04-26T12:26:03.139Z",
       "father": {
         "id": "cmobc0smt00mjt75fqlzur4ah",
         "firstName": "هيثم",
-        "lastName": null
+        "lastName": "زينة"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc12f800pbt75fqrypkv4a",
+        "firstName": "ايمان",
+        "lastName": "مصطو"
+      }
     },
     {
       "id": "cmobc0tkd00mtt75f7jz4vrs8",
       "firstName": "محمود",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -22660,12 +22996,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0u3000myt75f0yxkcgj4",
       "motherId": "cmobc0zo100oht75f65hvmfwu",
       "canvasId": "c63140c5a5f0f97c",
       "createdAt": "2026-04-23T10:21:47.821Z",
-      "updatedAt": "2026-04-23T10:24:23.724Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:04.709Z",
+      "father": {
+        "id": "cmobc0u3000myt75f0yxkcgj4",
+        "firstName": "يحيى ",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0zo100oht75f65hvmfwu",
         "firstName": "رويدة",
@@ -22675,7 +23015,7 @@
     {
       "id": "cmobc0unm00n4t75fjict4vgy",
       "firstName": "محمود",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -22688,18 +23028,18 @@
       "motherId": null,
       "canvasId": "33a3ca8ef06e5267",
       "createdAt": "2026-04-23T10:21:49.234Z",
-      "updatedAt": "2026-04-23T10:24:17.487Z",
+      "updatedAt": "2026-04-26T12:26:05.315Z",
       "father": {
         "id": "cmobc0spq00mkt75fpejpgatu",
         "firstName": "محمد",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
     {
-      "id": "cmobc11m600p2t75frcwoddoe",
+      "id": "cmobc0zqy00oit75fmg7yz1q0",
       "firstName": "محمود",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -22709,11 +23049,35 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": null,
+      "motherId": null,
+      "canvasId": "5b10b2beb55332c9",
+      "createdAt": "2026-04-23T10:21:55.834Z",
+      "updatedAt": "2026-04-26T12:00:31.837Z",
+      "father": null,
+      "mother": null
+    },
+    {
+      "id": "cmobc11m600p2t75frcwoddoe",
+      "firstName": "محمود",
+      "lastName": "مزعل",
+      "nickname": null,
+      "gender": "MALE",
+      "birthDate": null,
+      "deathDate": null,
+      "isAlive": true,
+      "profileImage": null,
+      "additionalImages": "[]",
+      "bio": null,
+      "fatherId": "cmobc12od00pet75fbu23bown",
       "motherId": "cmobc0zu200ojt75fgdj376zk",
       "canvasId": "32579b14f3561325",
       "createdAt": "2026-04-23T10:21:58.254Z",
-      "updatedAt": "2026-04-23T10:24:20.995Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:07.933Z",
+      "father": {
+        "id": "cmobc12od00pet75fbu23bown",
+        "firstName": "حسان ",
+        "lastName": "مزعل"
+      },
       "mother": {
         "id": "cmobc0zu200ojt75fgdj376zk",
         "firstName": "ضحى",
@@ -22745,7 +23109,7 @@
       "mother": {
         "id": "cmobc0ymj00o6t75f0wq62tgl",
         "firstName": "فاطمة منافيخي",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
@@ -22845,7 +23209,7 @@
       "mother": {
         "id": "cmobc1hcz00tpt75fzal2p8go",
         "firstName": "هبة",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       }
     },
     {
@@ -22869,7 +23233,7 @@
       "mother": {
         "id": "cmobbzcsp007ht75fcv33c4l2",
         "firstName": "الاء",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       }
     },
     {
@@ -22901,24 +23265,32 @@
       }
     },
     {
-      "id": "cmobc0zqy00oit75fmg7yz1q0",
-      "firstName": "محمود زينة",
-      "lastName": null,
+      "id": "cmofmgalr0003p0cltt4y8gzz",
+      "firstName": "محمود",
+      "lastName": "مرعي الشامي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
       "deathDate": null,
-      "isAlive": true,
+      "isAlive": false,
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
-      "motherId": null,
-      "canvasId": "5b10b2beb55332c9",
-      "createdAt": "2026-04-23T10:21:55.834Z",
-      "updatedAt": "2026-04-23T10:21:55.834Z",
-      "father": null,
-      "mother": null
+      "fatherId": "cmobqqeyh00033f4ikku0559r",
+      "motherId": "cmobc0chc00hnt75foiy1rjig",
+      "canvasId": null,
+      "createdAt": "2026-04-26T10:24:50.607Z",
+      "updatedAt": "2026-04-26T10:26:29.883Z",
+      "father": {
+        "id": "cmobqqeyh00033f4ikku0559r",
+        "firstName": "ابراهيم",
+        "lastName": "مرعي الشامي"
+      },
+      "mother": {
+        "id": "cmobc0chc00hnt75foiy1rjig",
+        "firstName": "أمينة",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc0za500odt75fpwrtl6hl",
@@ -22965,7 +23337,7 @@
       "mother": {
         "id": "cmobc0br300hgt75fk7i8zg24",
         "firstName": "صالحة",
-        "lastName": null
+        "lastName": "بوشي حصال"
       }
     },
     {
@@ -23005,16 +23377,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0z2v00obt75fomh3ut73",
-      "motherId": null,
+      "motherId": "cmobc0z6800oct75fkunq1l8v",
       "canvasId": "6407126450f2484d",
       "createdAt": "2026-04-23T10:21:48.196Z",
-      "updatedAt": "2026-04-23T10:24:19.273Z",
+      "updatedAt": "2026-04-26T11:57:51.863Z",
       "father": {
         "id": "cmobc0z2v00obt75fomh3ut73",
         "firstName": "هشام",
         "lastName": null
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0z6800oct75fkunq1l8v",
+        "firstName": "صباح ",
+        "lastName": "قشقش"
+      }
     },
     {
       "id": "cmobc199d00rat75fd2y81puu",
@@ -23125,21 +23501,25 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc178000qpt75f7321kmfw",
-      "motherId": null,
+      "motherId": "cmofmem9e0000p0cluqexka82",
       "canvasId": "b7b358eac9a881c1",
       "createdAt": "2026-04-23T10:20:33.541Z",
-      "updatedAt": "2026-04-25T05:05:46.174Z",
+      "updatedAt": "2026-04-26T10:23:36.792Z",
       "father": {
         "id": "cmobc178000qpt75f7321kmfw",
         "firstName": "عادل",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmofmem9e0000p0cluqexka82",
+        "firstName": "صفاء",
+        "lastName": "عتال"
+      }
     },
     {
       "id": "cmobc023r00eot75fqrkrh496",
       "firstName": "مريم",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -23152,11 +23532,11 @@
       "motherId": null,
       "canvasId": "fad144ad4b76ba2c",
       "createdAt": "2026-04-23T10:21:12.231Z",
-      "updatedAt": "2026-04-23T10:24:13.628Z",
+      "updatedAt": "2026-04-26T12:26:00.158Z",
       "father": {
         "id": "cmobc01wc00emt75f22fyg5u4",
         "firstName": "عبد الرحمن",
-        "lastName": null
+        "lastName": "منافيخي"
       },
       "mother": null
     },
@@ -23221,16 +23601,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0fou00imt75fxbgb0nff",
-      "motherId": null,
+      "motherId": "cmoecbvt3000yreflg97syhaa",
       "canvasId": null,
       "createdAt": "2026-04-25T12:55:42.488Z",
-      "updatedAt": "2026-04-25T22:09:06.838Z",
+      "updatedAt": "2026-04-26T12:37:10.211Z",
       "father": {
         "id": "cmobc0fou00imt75fxbgb0nff",
         "firstName": "أحمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoecbvt3000yreflg97syhaa",
+        "firstName": "عائشة",
+        "lastName": "بوشي حصال"
+      }
     },
     {
       "id": "cmoeub311000gk96jq1co8i1t",
@@ -23273,16 +23657,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzmwk00aat75f8lwxwox7",
-      "motherId": null,
+      "motherId": "cmoeucla0000yk96jj7f6pzv9",
       "canvasId": "42f38a380752285d",
       "createdAt": "2026-04-23T10:20:56.353Z",
-      "updatedAt": "2026-04-25T05:05:57.430Z",
+      "updatedAt": "2026-04-26T11:17:09.745Z",
       "father": {
         "id": "cmobbzmwk00aat75f8lwxwox7",
         "firstName": "ذو الكفل",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoeucla0000yk96jj7f6pzv9",
+        "firstName": "نجاح",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobbyjau0010t75fv6ha1b2k",
@@ -23365,14 +23753,14 @@
       "birthDate": null,
       "deathDate": null,
       "isAlive": true,
-      "profileImage": null,
+      "profileImage": "images/persons/cmobbzin30093t75fgp7c09vf/profile.jpg",
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc0czj00hst75flwc9ojim",
       "motherId": "cmod2jvh1000hr6pt9hdn4wxk",
       "canvasId": "918d58451b93f1a8",
       "createdAt": "2026-04-23T10:20:47.007Z",
-      "updatedAt": "2026-04-25T05:05:51.586Z",
+      "updatedAt": "2026-04-26T12:19:15.119Z",
       "father": {
         "id": "cmobc0czj00hst75flwc9ojim",
         "firstName": "بكري",
@@ -23529,13 +23917,13 @@
       "mother": {
         "id": "cmobc11it00p1t75f013h9uyn",
         "firstName": "سناء",
-        "lastName": null
+        "lastName": "عتال"
       }
     },
     {
       "id": "cmobc0u9500n0t75f8d0eguj3",
-      "firstName": "مصطفى جود",
-      "lastName": null,
+      "firstName": "مصطفى ",
+      "lastName": "جود",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -23548,7 +23936,7 @@
       "motherId": null,
       "canvasId": "7822e1b41a8f0743",
       "createdAt": "2026-04-23T10:21:48.713Z",
-      "updatedAt": "2026-04-23T10:21:48.713Z",
+      "updatedAt": "2026-04-26T12:06:21.711Z",
       "father": null,
       "mother": null
     },
@@ -23801,16 +24189,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzmwk00aat75f8lwxwox7",
-      "motherId": null,
+      "motherId": "cmoeucla0000yk96jj7f6pzv9",
       "canvasId": "35d989d26d67c6e0",
       "createdAt": "2026-04-23T10:20:58.007Z",
-      "updatedAt": "2026-04-25T05:05:58.264Z",
+      "updatedAt": "2026-04-26T11:17:10.141Z",
       "father": {
         "id": "cmobbzmwk00aat75f8lwxwox7",
         "firstName": "ذو الكفل",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoeucla0000yk96jj7f6pzv9",
+        "firstName": "نجاح",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc03zp00f7t75fa4vdlta9",
@@ -23825,16 +24217,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzmsz00a9t75fkucyfd5h",
-      "motherId": null,
+      "motherId": "cmoeucdwi000uk96jlu7286u9",
       "canvasId": "2fe4b03860361aac",
       "createdAt": "2026-04-23T10:21:14.678Z",
-      "updatedAt": "2026-04-25T05:06:06.081Z",
+      "updatedAt": "2026-04-26T10:43:19.481Z",
       "father": {
         "id": "cmobbzmsz00a9t75fkucyfd5h",
         "firstName": "محمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoeucdwi000uk96jlu7286u9",
+        "firstName": "لطفية",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc02ag00eqt75fpos1e4zg",
@@ -24155,7 +24551,7 @@
     {
       "id": "cmobbzygi00dmt75f26l9sp78",
       "firstName": "مها",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -24164,39 +24560,19 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmofojn0l000fp0cl3utavmjg",
       "motherId": "cmobc018600egt75ff9o68pco",
       "canvasId": "00c7821fdfc33abb",
       "createdAt": "2026-04-23T10:21:07.506Z",
-      "updatedAt": "2026-04-23T10:24:05.990Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:25:59.758Z",
+      "father": {
+        "id": "cmofojn0l000fp0cl3utavmjg",
+        "firstName": "عبد الحميد",
+        "lastName": "علي"
+      },
       "mother": {
         "id": "cmobc018600egt75ff9o68pco",
         "firstName": "صباح",
-        "lastName": "منافيخي"
-      }
-    },
-    {
-      "id": "cmobc14lc00pzt75f212lv0k0",
-      "firstName": "مهدي",
-      "lastName": null,
-      "nickname": null,
-      "gender": "MALE",
-      "birthDate": null,
-      "deathDate": null,
-      "isAlive": true,
-      "profileImage": null,
-      "additionalImages": "[]",
-      "bio": null,
-      "fatherId": null,
-      "motherId": "cmobc1al700rot75f01otc2pi",
-      "canvasId": "886ee77f6c97cf5a",
-      "createdAt": "2026-04-23T10:22:02.112Z",
-      "updatedAt": "2026-04-23T10:23:48.033Z",
-      "father": null,
-      "mother": {
-        "id": "cmobc1al700rot75f01otc2pi",
-        "firstName": "ايمان",
         "lastName": "منافيخي"
       }
     },
@@ -24216,7 +24592,7 @@
       "motherId": "cmobc1al700rot75f01otc2pi",
       "canvasId": "3cdd5e06b278318d",
       "createdAt": "2026-04-23T10:22:05.779Z",
-      "updatedAt": "2026-04-25T05:06:34.917Z",
+      "updatedAt": "2026-04-26T10:22:25.329Z",
       "father": {
         "id": "cmobc17l700qtt75fbhwrbevw",
         "firstName": "أحمد",
@@ -24345,6 +24721,26 @@
       "mother": null
     },
     {
+      "id": "cmofml4m60008p0cld6jmkhd6",
+      "firstName": "ميادة",
+      "lastName": "رمو",
+      "nickname": null,
+      "gender": "FEMALE",
+      "birthDate": null,
+      "deathDate": null,
+      "isAlive": true,
+      "profileImage": null,
+      "additionalImages": "[]",
+      "bio": null,
+      "fatherId": null,
+      "motherId": null,
+      "canvasId": null,
+      "createdAt": "2026-04-26T10:28:36.127Z",
+      "updatedAt": "2026-04-26T10:28:36.127Z",
+      "father": null,
+      "mother": null
+    },
+    {
       "id": "cmobc1gr600tit75fjq8t91zn",
       "firstName": "ميرا",
       "lastName": "منافيخي",
@@ -24433,16 +24829,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobbzmsz00a9t75fkucyfd5h",
-      "motherId": null,
+      "motherId": "cmoeucdwi000uk96jlu7286u9",
       "canvasId": "6828e21ee62b6b79",
       "createdAt": "2026-04-23T10:21:09.831Z",
-      "updatedAt": "2026-04-25T05:06:03.126Z",
+      "updatedAt": "2026-04-26T10:43:19.281Z",
       "father": {
         "id": "cmobbzmsz00a9t75fkucyfd5h",
         "firstName": "محمد",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmoeucdwi000uk96jlu7286u9",
+        "firstName": "لطفية",
+        "lastName": "منافيخي"
+      }
     },
     {
       "id": "cmobc04c700fat75fwpphvqfo",
@@ -24803,7 +25203,7 @@
     {
       "id": "cmobc0a3u00gyt75fmtssobwr",
       "firstName": "نسيم",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -24816,11 +25216,11 @@
       "motherId": null,
       "canvasId": "d79a05a4f8d8a346",
       "createdAt": "2026-04-23T10:21:22.602Z",
-      "updatedAt": "2026-04-23T10:23:09.668Z",
+      "updatedAt": "2026-04-26T13:33:01.719Z",
       "father": {
         "id": "cmobc0aky00h3t75fuw3wjg2y",
         "firstName": "عبد الرزاق",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
@@ -24899,7 +25299,7 @@
     {
       "id": "cmobc0ay500h6t75f4xvz79be",
       "firstName": "نهى",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -24912,11 +25312,11 @@
       "motherId": null,
       "canvasId": "bf596a2c5334f7f1",
       "createdAt": "2026-04-23T10:21:23.693Z",
-      "updatedAt": "2026-04-23T10:23:13.201Z",
+      "updatedAt": "2026-04-26T13:33:02.444Z",
       "father": {
         "id": "cmobc0b3p00h8t75fqcqyjh0z",
         "firstName": "أحمد",
-        "lastName": null
+        "lastName": "بوشي حصال"
       },
       "mother": null
     },
@@ -24947,7 +25347,7 @@
     {
       "id": "cmobc0sjo00mit75fq51kb0km",
       "firstName": "نوال",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -24956,12 +25356,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0zqy00oit75fmg7yz1q0",
       "motherId": "cmobc0u5o00mzt75fjg8ud0e6",
       "canvasId": "59e279db3f8286e3",
       "createdAt": "2026-04-23T10:21:46.501Z",
-      "updatedAt": "2026-04-23T10:24:19.670Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:03.624Z",
+      "father": {
+        "id": "cmobc0zqy00oit75fmg7yz1q0",
+        "firstName": "محمود",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0u5o00mzt75fjg8ud0e6",
         "firstName": "إلهام",
@@ -25013,7 +25417,7 @@
       "mother": {
         "id": "cmobc18y100r7t75fcc69j70l",
         "firstName": "ايمان",
-        "lastName": null
+        "lastName": "مرعي الشامي"
       }
     },
     {
@@ -25041,7 +25445,7 @@
       "mother": {
         "id": "cmobc08s000gkt75fmhyz95t8",
         "firstName": "بثينة",
-        "lastName": null
+        "lastName": "بوشي حصال"
       }
     },
     {
@@ -25141,7 +25545,7 @@
       "mother": {
         "id": "cmobbzygi00dmt75f26l9sp78",
         "firstName": "مها",
-        "lastName": null
+        "lastName": "علي"
       }
     },
     {
@@ -25181,21 +25585,25 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc178000qpt75f7321kmfw",
-      "motherId": null,
+      "motherId": "cmofmem9e0000p0cluqexka82",
       "canvasId": "f0f6addb13caae81",
       "createdAt": "2026-04-23T10:20:33.357Z",
-      "updatedAt": "2026-04-25T05:05:46.051Z",
+      "updatedAt": "2026-04-26T10:23:36.638Z",
       "father": {
         "id": "cmobc178000qpt75f7321kmfw",
         "firstName": "عادل",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmofmem9e0000p0cluqexka82",
+        "firstName": "صفاء",
+        "lastName": "عتال"
+      }
     },
     {
       "id": "cmobc03by00f1t75fpf4755rg",
       "firstName": "هاجر",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -25208,11 +25616,11 @@
       "motherId": null,
       "canvasId": "0ee159df5fc4d6b8",
       "createdAt": "2026-04-23T10:21:13.823Z",
-      "updatedAt": "2026-04-23T10:24:13.873Z",
+      "updatedAt": "2026-04-26T12:26:00.616Z",
       "father": {
         "id": "cmobc01wc00emt75f22fyg5u4",
         "firstName": "عبد الرحمن",
-        "lastName": null
+        "lastName": "منافيخي"
       },
       "mother": null
     },
@@ -25252,16 +25660,12 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": "cmobc14lc00pzt75f212lv0k0",
+      "fatherId": null,
       "motherId": null,
       "canvasId": "7826607a3756307f",
       "createdAt": "2026-04-23T10:22:10.212Z",
-      "updatedAt": "2026-04-23T10:23:47.850Z",
-      "father": {
-        "id": "cmobc14lc00pzt75f212lv0k0",
-        "firstName": "مهدي",
-        "lastName": null
-      },
+      "updatedAt": "2026-04-26T10:22:16.451Z",
+      "father": null,
       "mother": null
     },
     {
@@ -25339,7 +25743,7 @@
     {
       "id": "cmobc1hcz00tpt75fzal2p8go",
       "firstName": "هبة",
-      "lastName": null,
+      "lastName": "مرعي الشامي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -25348,12 +25752,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmofmgalr0003p0cltt4y8gzz",
       "motherId": "cmobc16w800qlt75fjiqwsx5g",
       "canvasId": "ee0b3874d1fd768b",
       "createdAt": "2026-04-23T10:22:18.659Z",
-      "updatedAt": "2026-04-23T10:22:39.390Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:09.784Z",
+      "father": {
+        "id": "cmofmgalr0003p0cltt4y8gzz",
+        "firstName": "محمود",
+        "lastName": "مرعي الشامي"
+      },
       "mother": {
         "id": "cmobc16w800qlt75fjiqwsx5g",
         "firstName": "صباح",
@@ -25363,7 +25771,7 @@
     {
       "id": "cmobc0tog00mut75fnrmljex7",
       "firstName": "هبة الله",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -25372,12 +25780,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0u3000myt75f0yxkcgj4",
       "motherId": "cmobc0zo100oht75f65hvmfwu",
       "canvasId": "e1f6fcb30a2e52e1",
       "createdAt": "2026-04-23T10:21:47.968Z",
-      "updatedAt": "2026-04-23T10:24:24.070Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:04.831Z",
+      "father": {
+        "id": "cmobc0u3000myt75f0yxkcgj4",
+        "firstName": "يحيى ",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0zo100oht75f65hvmfwu",
         "firstName": "رويدة",
@@ -25409,7 +25821,7 @@
       "mother": {
         "id": "cmobc0ymj00o6t75f0wq62tgl",
         "firstName": "فاطمة منافيخي",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
@@ -25605,7 +26017,7 @@
       "mother": {
         "id": "cmobc0ymj00o6t75f0wq62tgl",
         "firstName": "فاطمة منافيخي",
-        "lastName": null
+        "lastName": "منافيخي"
       }
     },
     {
@@ -25735,7 +26147,7 @@
     {
       "id": "cmobc09hu00gst75f6d4h4tfy",
       "firstName": "هنادي",
-      "lastName": null,
+      "lastName": "بوشي حصال",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -25748,11 +26160,11 @@
       "motherId": "cmobc0bzn00hit75f7wzby6yt",
       "canvasId": "471339356bfa33ab",
       "createdAt": "2026-04-23T10:21:21.810Z",
-      "updatedAt": "2026-04-24T15:53:15.733Z",
+      "updatedAt": "2026-04-26T13:33:01.129Z",
       "father": {
         "id": "cmobc0buf00hht75fkva8whmn",
-        "firstName": "عمر بوشي",
-        "lastName": null
+        "firstName": "عمر ",
+        "lastName": "بوشي حصال"
       },
       "mother": {
         "id": "cmobc0bzn00hit75f7wzby6yt",
@@ -25791,7 +26203,7 @@
     {
       "id": "cmobbzs3c00bxt75ff1xq6ywx",
       "firstName": "هيا",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -25804,18 +26216,18 @@
       "motherId": null,
       "canvasId": "4f6f9216b414a7b3",
       "createdAt": "2026-04-23T10:20:59.256Z",
-      "updatedAt": "2026-04-23T10:24:32.940Z",
+      "updatedAt": "2026-04-26T12:25:58.098Z",
       "father": {
         "id": "cmobbzyj700dnt75f1x3iuj5f",
         "firstName": "فادي",
-        "lastName": null
+        "lastName": "علي"
       },
       "mother": null
     },
     {
       "id": "cmobc0smt00mjt75fqlzur4ah",
       "firstName": "هيثم",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -25824,12 +26236,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0zqy00oit75fmg7yz1q0",
       "motherId": "cmobc0u5o00mzt75fjg8ud0e6",
       "canvasId": "f943d4a873342291",
       "createdAt": "2026-04-23T10:21:46.613Z",
-      "updatedAt": "2026-04-23T10:24:19.886Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:03.741Z",
+      "father": {
+        "id": "cmobc0zqy00oit75fmg7yz1q0",
+        "firstName": "محمود",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0u5o00mzt75fjg8ud0e6",
         "firstName": "إلهام",
@@ -25909,7 +26325,7 @@
       "mother": {
         "id": "cmobbzygi00dmt75f26l9sp78",
         "firstName": "مها",
-        "lastName": null
+        "lastName": "علي"
       }
     },
     {
@@ -25938,8 +26354,8 @@
     },
     {
       "id": "cmobc0rxd00mbt75f0ny99e23",
-      "firstName": "وائل غزال",
-      "lastName": null,
+      "firstName": "وائل ",
+      "lastName": "غزال",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -25952,7 +26368,7 @@
       "motherId": null,
       "canvasId": "8c18cdc682c9177d",
       "createdAt": "2026-04-23T10:21:45.697Z",
-      "updatedAt": "2026-04-23T10:21:45.697Z",
+      "updatedAt": "2026-04-26T12:06:50.003Z",
       "father": null,
       "mother": null
     },
@@ -26073,7 +26489,7 @@
       "mother": {
         "id": "cmobc0rcn00m5t75fmk2ukg1o",
         "firstName": "بيان",
-        "lastName": null
+        "lastName": "عتال"
       }
     },
     {
@@ -26103,7 +26519,7 @@
     {
       "id": "cmobc0sst00mlt75f6kij0vb1",
       "firstName": "وسام",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -26116,11 +26532,11 @@
       "motherId": null,
       "canvasId": "01ba241d5db137ca",
       "createdAt": "2026-04-23T10:21:46.830Z",
-      "updatedAt": "2026-04-23T10:24:18.357Z",
+      "updatedAt": "2026-04-26T12:26:03.950Z",
       "father": {
         "id": "cmobc0rm800m8t75fobzy3bcy",
         "firstName": "بسام",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -26145,7 +26561,7 @@
       "mother": {
         "id": "cmobc0zhs00oft75fzrv1mtht",
         "firstName": "رغد",
-        "lastName": null
+        "lastName": "زينة"
       }
     },
     {
@@ -26203,7 +26619,7 @@
     {
       "id": "cmobbzqtz00bkt75f1b84l694",
       "firstName": "وفاء",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -26216,11 +26632,11 @@
       "motherId": null,
       "canvasId": "d6838dfeeb3d08cd",
       "createdAt": "2026-04-23T10:20:57.624Z",
-      "updatedAt": "2026-04-23T10:24:14.237Z",
+      "updatedAt": "2026-04-26T12:25:57.642Z",
       "father": {
         "id": "cmobc02du00ert75f0o8wz1xb",
         "firstName": "فاروق",
-        "lastName": null
+        "lastName": "منافيخي"
       },
       "mother": null
     },
@@ -26393,7 +26809,7 @@
       "mother": {
         "id": "cmobc0qk600lxt75fm9d1642y",
         "firstName": "حنين",
-        "lastName": null
+        "lastName": "عتال"
       }
     },
     {
@@ -26721,16 +27137,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc16jd00qit75fxgpubn26",
-      "motherId": null,
+      "motherId": "cmobc0i8200jdt75f2av5grec",
       "canvasId": "8ee6af2d03599aed",
       "createdAt": "2026-04-23T10:20:40.629Z",
-      "updatedAt": "2026-04-25T05:05:48.728Z",
+      "updatedAt": "2026-04-26T10:27:08.820Z",
       "father": {
         "id": "cmobc16jd00qit75fxgpubn26",
         "firstName": "قاسم",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmobc0i8200jdt75f2av5grec",
+        "firstName": "فاتن",
+        "lastName": null
+      }
     },
     {
       "id": "cmobbzgpj008jt75fgbao1f94",
@@ -26783,7 +27203,7 @@
     {
       "id": "cmobc0vfq00nct75f3rkxi6a7",
       "firstName": "يحيى",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -26796,11 +27216,11 @@
       "motherId": null,
       "canvasId": "96719abfb14ebffb",
       "createdAt": "2026-04-23T10:21:50.246Z",
-      "updatedAt": "2026-04-23T10:24:18.573Z",
+      "updatedAt": "2026-04-26T12:26:05.841Z",
       "father": {
         "id": "cmobc0tr200mvt75ffgkj4xud",
         "firstName": "قتيبة",
-        "lastName": null
+        "lastName": "زينة"
       },
       "mother": null
     },
@@ -26858,8 +27278,8 @@
     },
     {
       "id": "cmobc0u3000myt75f0yxkcgj4",
-      "firstName": "يحيى زينة",
-      "lastName": null,
+      "firstName": "يحيى ",
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -26872,7 +27292,7 @@
       "motherId": null,
       "canvasId": "11b998c6baf55d12",
       "createdAt": "2026-04-23T10:21:48.493Z",
-      "updatedAt": "2026-04-23T10:21:48.493Z",
+      "updatedAt": "2026-04-26T12:03:39.989Z",
       "father": null,
       "mother": null
     },
@@ -27027,7 +27447,7 @@
     {
       "id": "cmobbzqq600bjt75fid3vykao",
       "firstName": "يمان",
-      "lastName": null,
+      "lastName": "منافيخي",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -27040,18 +27460,18 @@
       "motherId": null,
       "canvasId": "5033f7cdc5c21b4d",
       "createdAt": "2026-04-23T10:20:57.486Z",
-      "updatedAt": "2026-04-23T10:24:14.132Z",
+      "updatedAt": "2026-04-26T12:25:57.498Z",
       "father": {
         "id": "cmobc02gq00est75f7cca9iyy",
         "firstName": "ربيع",
-        "lastName": null
+        "lastName": "منافيخي"
       },
       "mother": null
     },
     {
       "id": "cmobc0wbk00nmt75fcx539mkp",
       "firstName": "يمان",
-      "lastName": null,
+      "lastName": "زينة",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -27060,12 +27480,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc0ypp00o7t75f7uidjj25",
       "motherId": "cmobc0xjv00nwt75fsxwtvnyp",
       "canvasId": "f825c932556d3642",
       "createdAt": "2026-04-23T10:21:51.392Z",
-      "updatedAt": "2026-04-23T10:24:25.910Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:06.115Z",
+      "father": {
+        "id": "cmobc0ypp00o7t75f7uidjj25",
+        "firstName": "علي",
+        "lastName": "زينة"
+      },
       "mother": {
         "id": "cmobc0xjv00nwt75fsxwtvnyp",
         "firstName": "امل",
@@ -27075,7 +27499,7 @@
     {
       "id": "cmobbzt4500c8t75fmbrtark1",
       "firstName": "يمنى",
-      "lastName": null,
+      "lastName": "علي",
       "nickname": null,
       "gender": "FEMALE",
       "birthDate": null,
@@ -27088,11 +27512,11 @@
       "motherId": null,
       "canvasId": "f869954265d5f6d3",
       "createdAt": "2026-04-23T10:21:00.582Z",
-      "updatedAt": "2026-04-23T10:24:04.782Z",
+      "updatedAt": "2026-04-26T12:25:58.399Z",
       "father": {
         "id": "cmobbzwga00d2t75fgn9q1obe",
         "firstName": "رياض",
-        "lastName": null
+        "lastName": "علي"
       },
       "mother": null
     },
@@ -27165,16 +27589,20 @@
       "additionalImages": "[]",
       "bio": null,
       "fatherId": "cmobc178000qpt75f7321kmfw",
-      "motherId": null,
+      "motherId": "cmofmem9e0000p0cluqexka82",
       "canvasId": "32306ac1e91b20a1",
       "createdAt": "2026-04-23T10:20:32.971Z",
-      "updatedAt": "2026-04-25T05:05:45.777Z",
+      "updatedAt": "2026-04-26T10:23:36.319Z",
       "father": {
         "id": "cmobc178000qpt75f7321kmfw",
         "firstName": "عادل",
         "lastName": "منافيخي"
       },
-      "mother": null
+      "mother": {
+        "id": "cmofmem9e0000p0cluqexka82",
+        "firstName": "صفاء",
+        "lastName": "عتال"
+      }
     },
     {
       "id": "cmobbzamm006wt75fm5tdvlmk",
@@ -27303,7 +27731,7 @@
     {
       "id": "cmobc0oup00lft75fvcu4lhao",
       "firstName": "يونس",
-      "lastName": null,
+      "lastName": "مصطو",
       "nickname": null,
       "gender": "MALE",
       "birthDate": null,
@@ -27312,12 +27740,16 @@
       "profileImage": null,
       "additionalImages": "[]",
       "bio": null,
-      "fatherId": null,
+      "fatherId": "cmobc12lq00pdt75ffs4bfqls",
       "motherId": "cmobc12ik00pct75f8o3g8848",
       "canvasId": "f7e6e95dc9a02af2",
       "createdAt": "2026-04-23T10:21:41.713Z",
-      "updatedAt": "2026-04-23T10:24:11.137Z",
-      "father": null,
+      "updatedAt": "2026-04-26T12:26:00.999Z",
+      "father": {
+        "id": "cmobc12lq00pdt75ffs4bfqls",
+        "firstName": "محمد كامل ",
+        "lastName": "مصطو"
+      },
       "mother": {
         "id": "cmobc12ik00pct75f8o3g8848",
         "firstName": "ليلى",
@@ -27666,17 +28098,6 @@
       "notes": null,
       "createdAt": "2026-04-23T10:22:24.278Z",
       "updatedAt": "2026-04-23T10:22:24.278Z"
-    },
-    {
-      "id": "cmobc1lrp00w6t75fxfjgz8k4",
-      "person1Id": "cmobbzmsz00a9t75fkucyfd5h",
-      "person2Id": "cmobbzmp500a8t75ft1d8x73l",
-      "startDate": null,
-      "endDate": null,
-      "isCurrent": true,
-      "notes": null,
-      "createdAt": "2026-04-23T10:22:24.374Z",
-      "updatedAt": "2026-04-23T10:22:24.374Z"
     },
     {
       "id": "cmobc1lu800w8t75fwkl6o4jy",
@@ -28084,6 +28505,94 @@
       "notes": null,
       "createdAt": "2026-04-25T21:51:01.023Z",
       "updatedAt": "2026-04-25T21:51:01.023Z"
+    },
+    {
+      "id": "cmofmemkp0002p0cldmz164e0",
+      "person1Id": "cmobc178000qpt75f7321kmfw",
+      "person2Id": "cmofmem9e0000p0cluqexka82",
+      "startDate": null,
+      "endDate": null,
+      "isCurrent": false,
+      "notes": null,
+      "createdAt": "2026-04-26T10:23:32.810Z",
+      "updatedAt": "2026-04-26T10:23:32.810Z"
+    },
+    {
+      "id": "cmofmgapt0005p0clgr55ull0",
+      "person1Id": "cmobc16w800qlt75fjiqwsx5g",
+      "person2Id": "cmofmgalr0003p0cltt4y8gzz",
+      "startDate": null,
+      "endDate": null,
+      "isCurrent": true,
+      "notes": null,
+      "createdAt": "2026-04-26T10:24:50.753Z",
+      "updatedAt": "2026-04-26T10:24:50.753Z"
+    },
+    {
+      "id": "cmofmj6kq0007p0clpx11knhz",
+      "person1Id": "cmobc16jd00qit75fxgpubn26",
+      "person2Id": "cmobc0i8200jdt75f2av5grec",
+      "startDate": null,
+      "endDate": null,
+      "isCurrent": true,
+      "notes": null,
+      "createdAt": "2026-04-26T10:27:05.355Z",
+      "updatedAt": "2026-04-26T10:27:05.355Z"
+    },
+    {
+      "id": "cmofml4po000ap0clqowt4dh6",
+      "person1Id": "cmobc16b500qgt75fuoavn1hc",
+      "person2Id": "cmofml4m60008p0cld6jmkhd6",
+      "startDate": null,
+      "endDate": null,
+      "isCurrent": true,
+      "notes": null,
+      "createdAt": "2026-04-26T10:28:36.252Z",
+      "updatedAt": "2026-04-26T10:28:36.252Z"
+    },
+    {
+      "id": "cmofn3xa9000cp0cljwk10csp",
+      "person1Id": "cmobbzmsz00a9t75fkucyfd5h",
+      "person2Id": "cmoeucdwi000uk96jlu7286u9",
+      "startDate": null,
+      "endDate": null,
+      "isCurrent": true,
+      "notes": null,
+      "createdAt": "2026-04-26T10:43:13.089Z",
+      "updatedAt": "2026-04-26T10:43:13.089Z"
+    },
+    {
+      "id": "cmofobi6y000ep0cler9av4gg",
+      "person1Id": "cmobbzmwk00aat75f8lwxwox7",
+      "person2Id": "cmoeucla0000yk96jj7f6pzv9",
+      "startDate": null,
+      "endDate": null,
+      "isCurrent": true,
+      "notes": null,
+      "createdAt": "2026-04-26T11:17:06.395Z",
+      "updatedAt": "2026-04-26T11:17:06.395Z"
+    },
+    {
+      "id": "cmofojnbp000hp0cl7bn7s8aj",
+      "person1Id": "cmobc018600egt75ff9o68pco",
+      "person2Id": "cmofojn0l000fp0cl3utavmjg",
+      "startDate": null,
+      "endDate": null,
+      "isCurrent": true,
+      "notes": null,
+      "createdAt": "2026-04-26T11:23:26.293Z",
+      "updatedAt": "2026-04-26T11:23:26.293Z"
+    },
+    {
+      "id": "cmofr8y990001134yee0jy990",
+      "person1Id": "cmobc0kaq00k0t75fxanwp7qh",
+      "person2Id": "cmobc0nsy00l2t75fh4iphr2f",
+      "startDate": null,
+      "endDate": null,
+      "isCurrent": true,
+      "notes": null,
+      "createdAt": "2026-04-26T12:39:06.093Z",
+      "updatedAt": "2026-04-26T12:39:06.093Z"
     }
   ]
 }

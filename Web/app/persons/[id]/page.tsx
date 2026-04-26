@@ -8,22 +8,22 @@ async function getPerson(id: string) {
   return prisma.person.findUnique({
     where: { id },
     include: {
-      father: { select: { id: true, firstName: true, lastName: true } },
-      mother: { select: { id: true, firstName: true, lastName: true } },
+      father: { select: { id: true, firstName: true, lastName: true, profileImage: true } },
+      mother: { select: { id: true, firstName: true, lastName: true, profileImage: true } },
       childrenOfFather: {
-        select: { id: true, firstName: true, lastName: true, gender: true },
+        select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true },
       },
       childrenOfMother: {
-        select: { id: true, firstName: true, lastName: true, gender: true },
+        select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true },
       },
       marriagesAsPerson1: {
         include: {
-          person2: { select: { id: true, firstName: true, lastName: true, gender: true } },
+          person2: { select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true } },
         },
       },
       marriagesAsPerson2: {
         include: {
-          person1: { select: { id: true, firstName: true, lastName: true, gender: true } },
+          person1: { select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true } },
         },
       },
     },
@@ -52,7 +52,7 @@ async function getSiblings(personId: string) {
       id: { not: personId },
       OR: conditions,
     },
-    select: { id: true, firstName: true, lastName: true, gender: true },
+    select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true },
   })
 }
 

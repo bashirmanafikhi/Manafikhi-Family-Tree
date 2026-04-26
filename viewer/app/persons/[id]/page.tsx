@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getData } from "@/lib/data";
 import FamilyTree from "@/components/FamilyTree";
+import { Avatar } from "@/components/avatar";
 
 async function getPerson(id: string) {
   const { persons, marriages } = getData();
@@ -18,21 +19,27 @@ async function getPerson(id: string) {
   
   if (person.fatherId) {
     const fathersChildren = persons.filter(p => p.fatherId === person.fatherId && p.id !== person.id);
-    siblings.push(...fathersChildren.map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender })));
+    siblings.push(...fathersChildren.map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender, profileImage: c.profileImage })));
   }
   
   if (person.motherId) {
     const mothersChildren = persons.filter(p => p.motherId === person.motherId && p.id !== person.id);
-    siblings.push(...mothersChildren.map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender })));
+    siblings.push(...mothersChildren.map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender, profileImage: c.profileImage })));
   }
   
   const uniqueSiblings = siblings.filter((s, index, self) => index === self.findIndex(x => x.id === s.id));
 
-  const childrenOfFather = persons.filter(p => p.fatherId === person.id);
-  const childrenOfMother = persons.filter(p => p.motherId === person.id);
+  const childrenOfFather = persons.filter(p => p.fatherId === person.id).map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender, profileImage: c.profileImage }));
+  const childrenOfMother = persons.filter(p => p.motherId === person.id).map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender, profileImage: c.profileImage }));
   
-  const marriagesAsPerson1 = marriages.filter(m => m.person1Id === person.id);
-  const marriagesAsPerson2 = marriages.filter(m => m.person2Id === person.id);
+  const marriagesAsPerson1 = marriages.filter(m => m.person1Id === person.id).map(m => ({
+    ...m,
+    spouse: persons.find(p => p.id === m.person2Id)
+  }));
+  const marriagesAsPerson2 = marriages.filter(m => m.person2Id === person.id).map(m => ({
+    ...m,
+    spouse: persons.find(p => p.id === m.person1Id)
+  }));
 
   return { person: enrichedPerson, siblings: uniqueSiblings, childrenOfFather, childrenOfMother, marriagesAsPerson1, marriagesAsPerson2, persons };
 }
@@ -84,23 +91,13 @@ export default async function PersonDetailPage({
 
       <div className="card p-6 sm:p-8 mb-6">
         <div className="flex flex-col sm:flex-row items-center gap-6">
-          {person.profileImage ? (
-            <div className="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0">
-              <img
-                src={`/${person.profileImage}`}
-                alt={`${person.firstName} ${person.lastName || ''}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ) : (
-            <div className={`w-24 h-24 rounded-2xl flex items-center justify-center text-3xl font-bold text-white ${
-              person.gender === 'MALE'
-                ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
-                : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-            }`}>
-              {person.firstName.charAt(0)}
-            </div>
-          )}
+          <Avatar
+            firstName={person.firstName}
+            lastName={person.lastName}
+            profileImage={person.profileImage}
+            gender={person.gender}
+            size="xl"
+          />
           
           <div className="flex-1 text-center sm:text-right">
             <div className="flex items-center justify-center sm:justify-start gap-3 mb-2">
@@ -171,9 +168,12 @@ export default async function PersonDetailPage({
               <label className="text-sm" style={{ color: '#9c9690' }}>الأب</label>
               {person.father ? (
                 <Link href={`/persons/${person.father.id}`} className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-gradient-to-br from-[#0d5c63] to-[#14919b]">
-                    {person.father.firstName.charAt(0)}
-                  </div>
+                  <Avatar
+                    firstName={person.father.firstName}
+                    lastName={person.father.lastName}
+                    gender="MALE"
+                    profileImage={person.father.profileImage}
+                  />
                   <div>
                     <p className="font-medium group-hover:text-[#0d5c63]" style={{ color: '#2d2926' }}>
                       {person.father.firstName} {person.father.lastName}
@@ -189,9 +189,12 @@ export default async function PersonDetailPage({
               <label className="text-sm" style={{ color: '#9c9690' }}>الأم</label>
               {person.mother ? (
                 <Link href={`/persons/${person.mother.id}`} className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]">
-                    {person.mother.firstName.charAt(0)}
-                  </div>
+                  <Avatar
+                    firstName={person.mother.firstName}
+                    lastName={person.mother.lastName}
+                    gender="FEMALE"
+                    profileImage={person.mother.profileImage}
+                  />
                   <div>
                     <p className="font-medium group-hover:text-[#e07a5f]" style={{ color: '#2d2926' }}>
                       {person.mother.firstName} {person.mother.lastName}
@@ -215,13 +218,12 @@ export default async function PersonDetailPage({
               {spouses.map((spouse: any) => (
                 <li key={spouse.id}>
                   <Link href={`/persons/${spouse.id}`} className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white ${
-                      spouse.gender === 'MALE' 
-                        ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]' 
-                        : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-                    }`}>
-                      {spouse.firstName.charAt(0)}
-                    </div>
+                    <Avatar
+                      firstName={spouse.firstName}
+                      lastName={spouse.lastName}
+                      gender={spouse.gender}
+                      profileImage={spouse.profileImage}
+                    />
                     <div>
                       <p className="font-medium group-hover:text-[#0d5c63]" style={{ color: '#2d2926' }}>
                         {spouse.firstName} {spouse.lastName}
@@ -254,13 +256,12 @@ export default async function PersonDetailPage({
             {uniqueChildren.map((child: any) => (
               <Link key={child.id} href={`/persons/${child.id}`} className="p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
                 <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white ${
-                    child.gender === 'MALE' 
-                      ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]' 
-                      : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-                  }`}>
-                    {child.firstName.charAt(0)}
-                  </div>
+                  <Avatar
+                    firstName={child.firstName}
+                    lastName={child.lastName}
+                    gender={child.gender}
+                    profileImage={child.profileImage}
+                  />
                   <div>
                     <p className="font-medium group-hover:text-[#0d5c63]" style={{ color: '#2d2926' }}>
                       {child.firstName} {child.lastName}
@@ -288,13 +289,12 @@ export default async function PersonDetailPage({
             {siblings.map((sibling: any) => (
               <Link key={sibling.id} href={`/persons/${sibling.id}`} className="p-3 rounded-xl hover:bg-[#f0ede8] transition-colors group">
                 <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white ${
-                    sibling.gender === 'MALE' 
-                      ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]' 
-                      : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-                  }`}>
-                    {sibling.firstName.charAt(0)}
-                  </div>
+                  <Avatar
+                    firstName={sibling.firstName}
+                    lastName={sibling.lastName}
+                    gender={sibling.gender}
+                    profileImage={sibling.profileImage}
+                  />
                   <div>
                     <p className="font-medium group-hover:text-[#0d5c63]" style={{ color: '#2d2926' }}>
                       {sibling.firstName} {sibling.lastName}

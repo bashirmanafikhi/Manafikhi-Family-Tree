@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getPersons as getAllPersons } from "@/lib/data";
 import { Filters } from "@/components/filters";
+import { Avatar } from "@/components/avatar";
 
 const PAGE_SIZE = 20;
 
@@ -103,23 +104,12 @@ export default async function PersonsPage({
                       href={`/persons/${person.id}`}
                       className="flex items-center gap-3 group"
                     >
-                      {person.profileImage ? (
-                        <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                          <img
-                            src={`/${person.profileImage}`}
-                            alt=""
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-medium ${
-                          person.gender === 'MALE'
-                            ? 'bg-gradient-to-br from-[#0d5c63] to-[#14919b]'
-                            : 'bg-gradient-to-br from-[#e07a5f] to-[#f2a98e]'
-                        }`}>
-                          {person.firstName.charAt(0)}
-                        </div>
-                      )}
+                      <Avatar
+                        firstName={person.firstName}
+                        lastName={person.lastName}
+                        profileImage={person.profileImage}
+                        gender={person.gender}
+                      />
                       <div>
                         <p className="font-medium group-hover:text-[#0d5c63]" style={{ color: '#2d2926' }}>
                           {person.firstName} {person.lastName}
