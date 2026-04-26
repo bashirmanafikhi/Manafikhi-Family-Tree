@@ -302,7 +302,7 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
                   return (
                     <div key={`ancestor-${gen}`} className="flex flex-col items-center mb-1">
                       <span className="text-[10px] font-medium text-[#0d5c63] mb-2 bg-[#e6f4ef] px-2 py-0.5 rounded-full">
-                        {generationLabels[gen] || `الجيل ${gen}`}
+                        {generationLabels[gen] || `الجيل ${gen}`} ({nodes.length})
                       </span>
                       <GenerationRow nodes={nodes} isAncestor={true} size={isClosest ? 'normal' : 'normal'} />
                     </div>
@@ -348,7 +348,7 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
                   return (
                     <div key={`descendant-${gen}`} className="flex flex-col items-center mb-1">
                       <span className="text-[10px] font-medium text-[#e07a5f] mb-2 bg-[#fceee8] px-2 py-0.5 rounded-full">
-                        {generationLabels[gen] || `الجيل ${gen}`}
+                        {generationLabels[gen] || `الجيل ${gen}`} ({nodes.length})
                       </span>
                       <GenerationRow nodes={nodes} isAncestor={false} size={isClosest ? 'normal' : 'normal'} />
                     </div>
