@@ -40,6 +40,23 @@ function getAncestors(person: Person, allPersons: Person[], maxGen = 3): TreeNod
   return buildNode(person, 0);
 }
 
+const arabicOrdinals: Record<number, string> = {
+  1: 'الأول',
+  2: 'الثاني',
+  3: 'الثالث',
+  4: 'الرابع',
+  5: 'الخامس',
+  6: 'السادس',
+  7: 'السابع',
+  8: 'الثامن',
+  9: 'التاسع',
+  10: 'العاشر',
+};
+
+function getArabicOrdinal(n: number): string {
+  return arabicOrdinals[n] || `رقم ${n}`;
+}
+
 function getDescendants(person: Person, allPersons: Person[], maxGen = 3): TreeNode {
   const getChildren = (parentId: string): Person[] => 
     allPersons.filter(p => p.fatherId === parentId || p.motherId === parentId);
@@ -295,7 +312,7 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
           
           <div 
             ref={containerRef}
-            className="overflow-hidden h-[500px] relative cursor-grab active:cursor-grabbing touch-none"
+            className="overflow-hidden h-[600px] relative cursor-grab active:cursor-grabbing touch-none"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
@@ -325,7 +342,7 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
                   return (
                     <div key={`ancestor-${gen}`} className="flex flex-col items-center mb-1">
                       <span className="text-[10px] font-medium text-[#0d5c63] mb-2 bg-[#e6f4ef] px-2 py-0.5 rounded-full">
-                        {generationLabels[gen] || `الأجداد الجيل رقم ${gen}`} ({nodes.length})
+                        {generationLabels[gen] || `الجيل ${getArabicOrdinal(gen)}`} ({nodes.length})
                       </span>
                       <GenerationRow nodes={nodes} isAncestor={true} size={isClosest ? 'normal' : 'normal'} />
                     </div>
@@ -365,13 +382,14 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
                   const generationLabels: Record<number, string> = {
                     1: 'الأولاد',
                     2: 'الأحفاد',
-                    3: 'الذرية',
+                    3: 'أبناء الأحفاد',
+                    4: 'أحفاد الأحفاد',
                   };
                   const isClosest = genIndex === 0;
                   return (
                     <div key={`descendant-${gen}`} className="flex flex-col items-center mb-1">
                       <span className="text-[10px] font-medium text-[#e07a5f] mb-2 bg-[#fceee8] px-2 py-0.5 rounded-full">
-                        {generationLabels[gen] || `الذرية الجيل رقم ${gen}`} ({nodes.length})
+                        {generationLabels[gen] || `الجيل ${getArabicOrdinal(gen)}`} ({nodes.length})
                       </span>
                       <GenerationRow nodes={nodes} isAncestor={false} size={isClosest ? 'normal' : 'normal'} />
                     </div>
