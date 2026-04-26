@@ -154,8 +154,8 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
   const initialPinchDistance = useRef<number | null>(null);
   const initialZoom = useRef<number>(1);
   
-  const ancestorTree = useMemo(() => getAncestors(person, allPersons, 4), [person, allPersons]);
-  const descendantTree = useMemo(() => getDescendants(person, allPersons, 3), [person, allPersons]);
+  const ancestorTree = useMemo(() => getAncestors(person, allPersons, 10), [person, allPersons]);
+  const descendantTree = useMemo(() => getDescendants(person, allPersons, 10), [person, allPersons]);
   
   const ancestorGenerations = useMemo(() => {
     const map = new Map<number, TreeNode[]>();
@@ -316,8 +316,8 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
                 {/* Ancestors (older generations on top) */}
                 {ancestorGenerations.map(([gen, nodes], genIndex) => {
                   const generationLabels: Record<number, string> = {
-                    3: 'الجدود الأكبر',
-                    2: 'الجدود',
+                    3: 'والدي الأجداد',
+                    2: 'الأجداد',
                     1: 'الوالدان',
                   };
                   const totalGens = ancestorGenerations.length;
@@ -325,7 +325,7 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
                   return (
                     <div key={`ancestor-${gen}`} className="flex flex-col items-center mb-1">
                       <span className="text-[10px] font-medium text-[#0d5c63] mb-2 bg-[#e6f4ef] px-2 py-0.5 rounded-full">
-                        {generationLabels[gen] || `الجيل ${gen}`} ({nodes.length})
+                        {generationLabels[gen] || `الأجداد الجيل رقم ${gen}`} ({nodes.length})
                       </span>
                       <GenerationRow nodes={nodes} isAncestor={true} size={isClosest ? 'normal' : 'normal'} />
                     </div>
@@ -371,7 +371,7 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
                   return (
                     <div key={`descendant-${gen}`} className="flex flex-col items-center mb-1">
                       <span className="text-[10px] font-medium text-[#e07a5f] mb-2 bg-[#fceee8] px-2 py-0.5 rounded-full">
-                        {generationLabels[gen] || `الجيل ${gen}`} ({nodes.length})
+                        {generationLabels[gen] || `الذرية الجيل رقم ${gen}`} ({nodes.length})
                       </span>
                       <GenerationRow nodes={nodes} isAncestor={false} size={isClosest ? 'normal' : 'normal'} />
                     </div>
