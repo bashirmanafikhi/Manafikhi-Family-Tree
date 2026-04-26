@@ -151,6 +151,8 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
   const [isDragging, setIsDragging] = useState(false);
   const dragStart = useRef({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
+  const initialPinchDistance = useRef<number | null>(null);
+  const initialZoom = useRef<number>(1);
   
   const ancestorTree = useMemo(() => getAncestors(person, allPersons, 4), [person, allPersons]);
   const descendantTree = useMemo(() => getDescendants(person, allPersons, 3), [person, allPersons]);
@@ -192,24 +194,45 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
     setIsDragging(false);
   };
 
+  const getDistance = (t1: React.Touch, t2: React.Touch) => {
+    const dx = t1.clientX - t2.clientX;
+    const dy = t1.clientY - t2.clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  };
+
   const handleTouchStart = (e: React.TouchEvent) => {
     if (e.touches.length === 1) {
       setIsDragging(true);
       dragStart.current = { x: e.touches[0].clientX - pan.x, y: e.touches[0].clientY - pan.y };
+      initialPinchDistance.current = null;
+    } else if (e.touches.length === 2) {
+      setIsDragging(false);
+      initialPinchDistance.current = getDistance(e.touches[0], e.touches[1]);
+      initialZoom.current = zoom;
     }
   };
   
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || e.touches.length !== 1) return;
-    e.preventDefault();
-    setPan({
-      x: e.touches[0].clientX - dragStart.current.x,
-      y: e.touches[0].clientY - dragStart.current.y,
-    });
+    if (e.touches.length === 1 && isDragging) {
+      e.preventDefault();
+      setPan({
+        x: e.touches[0].clientX - dragStart.current.x,
+        y: e.touches[0].clientY - dragStart.current.y,
+      });
+    } else if (e.touches.length === 2 && initialPinchDistance.current !== null) {
+      e.preventDefault();
+      const currentDistance = getDistance(e.touches[0], e.touches[1]);
+      const scale = currentDistance / initialPinchDistance.current;
+      const newZoom = Math.min(Math.max(initialZoom.current * scale, 0.5), 2);
+      setZoom(newZoom);
+    }
   };
   
-  const handleTouchEnd = () => {
-    setIsDragging(false);
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (e.touches.length === 0) {
+      setIsDragging(false);
+      initialPinchDistance.current = null;
+    }
   };
   
   const resetView = () => {
