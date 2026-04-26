@@ -191,6 +191,26 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
   const handleMouseUp = () => {
     setIsDragging(false);
   };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 1) {
+      setIsDragging(true);
+      dragStart.current = { x: e.touches[0].clientX - pan.x, y: e.touches[0].clientY - pan.y };
+    }
+  };
+  
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || e.touches.length !== 1) return;
+    e.preventDefault();
+    setPan({
+      x: e.touches[0].clientX - dragStart.current.x,
+      y: e.touches[0].clientY - dragStart.current.y,
+    });
+  };
+  
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
   
   const resetView = () => {
     setZoom(1);
@@ -252,11 +272,14 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
           
           <div 
             ref={containerRef}
-            className="overflow-hidden h-[500px] relative cursor-grab active:cursor-grabbing"
+            className="overflow-hidden h-[500px] relative cursor-grab active:cursor-grabbing touch-none"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             <div 
               className="absolute inset-0 flex items-center justify-center"
