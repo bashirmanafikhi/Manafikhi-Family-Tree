@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "2304cbeeb45d44f3",
+        "id": "a764f58fce9072d5",
         "type": "tabs",
         "children": [
           {
-            "id": "d834319bd75ba36a",
+            "id": "8a5b5257ff796e6c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "prompts/رسم شجرة.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "رسم شجرة"
+              "title": "New tab"
             }
           }
         ]
@@ -78,7 +74,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 219.5
+    "width": 219.5,
+    "collapsed": true
   },
   "right": {
     "id": "7cf912ae0c08bce7",
@@ -193,15 +190,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "d834319bd75ba36a",
+  "active": "8a5b5257ff796e6c",
   "lastOpenFiles": [
     "draft_canvas.canvas",
+    "prompts/رسم شجرة.md",
     "tree.canvas",
     "People_Base.base",
     "Untitled.canvas",
     "Untitled.md",
     "prompts/رسم شجرة مع الأفرع.md",
-    "prompts/رسم شجرة.md",
     "tree copy.json",
     "tree copy.canvas",
     "tree.html",
