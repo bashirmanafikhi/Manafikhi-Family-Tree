@@ -739,8 +739,8 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
           </div>
         )}
 
-        <FamilyTree person={treePerson} allPersons={allPersons} />
         <GenerationStatsTable descendantGenerations={descendantGenerations} />
+        <FamilyTree person={treePerson} allPersons={allPersons} />
       </div>
     )
   }

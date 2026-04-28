@@ -331,8 +331,8 @@ export default async function PersonDetailPage({
         </div>
       )}
 
-      <FamilyTree person={person} allPersons={persons} />
       <GenerationStatsTable descendantGenerations={descendantGenerations} />
+      <FamilyTree person={person} allPersons={persons} />
     </div>
   )
 }
