@@ -11,10 +11,17 @@
             "id": "8a5b5257ff796e6c",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
+              "type": "canvas",
+              "state": {
+                "file": "draft_canvas.canvas",
+                "viewState": {
+                  "x": 464.52531494381645,
+                  "y": 592.9356398153868,
+                  "zoom": -0.4840219028649339
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "draft_canvas"
             }
           }
         ]
@@ -74,8 +81,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 219.5,
-    "collapsed": true
+    "width": 219.5
   },
   "right": {
     "id": "7cf912ae0c08bce7",
@@ -192,12 +198,14 @@
   },
   "active": "8a5b5257ff796e6c",
   "lastOpenFiles": [
-    "draft_canvas.canvas",
-    "prompts/رسم شجرة.md",
     "tree.canvas",
+    "draft_canvas.canvas",
+    "حج محمود ابو فؤاد.canvas",
+    "عائشة ام شريف.canvas",
+    "ام شريف.md",
+    "prompts/رسم شجرة.md",
+    "prompts/احصائات عدد الأفراد.md",
     "People_Base.base",
-    "Untitled.canvas",
-    "Untitled.md",
     "prompts/رسم شجرة مع الأفرع.md",
     "tree copy.json",
     "tree copy.canvas",
@@ -224,7 +232,6 @@
     "people/feb6d4c2e242d784.md",
     "people/575b293dbe340bbc.md",
     "people/3b6a2890e9b830e5.md",
-    "people/58e3f46bce8eb7c4.md",
     "people",
     "people/images/2.jpeg",
     "people/images",

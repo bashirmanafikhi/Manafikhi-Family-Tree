@@ -26,7 +26,9 @@
   "inheritEdgeColorFromNode": false,
   "defaultEdgeColor": 0,
   "defaultEdgeLineDirection": "unidirectional",
-  "defaultEdgeStyleAttributes": {},
+  "defaultEdgeStyleAttributes": {
+    "pathfindingMethod": "square"
+  },
   "edgeStyleUpdateWhileDragging": false,
   "edgeStyleSquarePathRounded": true,
   "edgeStylePathfinderAllowDiagonal": false,

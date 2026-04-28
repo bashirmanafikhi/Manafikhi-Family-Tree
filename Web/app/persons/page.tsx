@@ -49,9 +49,6 @@ export default async function PersonsPage({
           <h1 className="text-3xl font-bold" style={{ color: '#0d5c63' }}>
             أفراد العائلة
           </h1>
-          <p className="text-sm mt-1" style={{ color: '#6b6560' }}>
-            {persons.length} فرد في قاعدة البيانات
-          </p>
         </div>
         
         <Link href="/persons/new" className="btn-primary">
