@@ -28,6 +28,9 @@ function getGenderStats(nodes: any[]) {
 export default function GenerationStatsTable({ descendantGenerations }: GenerationStatsTableProps) {
   if (!descendantGenerations || descendantGenerations.length === 0) return null;
 
+  const allNodes = descendantGenerations.flatMap((item: [number, any[]]) => item[1]);
+  const totalStats = getGenderStats(allNodes);
+
   return (
     <div className="card p-6 mt-6">
       <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: '#0d5c63' }}>
@@ -80,6 +83,22 @@ export default function GenerationStatsTable({ descendantGenerations }: Generati
               );
             })}
           </tbody>
+          <tfoot>
+            <tr className="border-t-2 border-[#e8e4de] bg-[#f8f6f3]">
+              <td className="py-3 px-4 font-bold" style={{ color: '#2d2926' }}>المجموع الكلي</td>
+              <td className="py-3 px-4 text-center font-bold" style={{ color: '#2d2926' }}>{totalStats.males + totalStats.females}</td>
+              <td className="py-3 px-4 text-center font-bold" style={{ color: '#0d5c63' }}>
+                <div className="flex items-center justify-center gap-2">
+                  <span>{totalStats.males}</span>
+                </div>
+              </td>
+              <td className="py-3 px-4 text-center font-bold" style={{ color: '#e07a5f' }}>
+                <div className="flex items-center justify-center gap-2">
+                  <span>{totalStats.females}</span>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>
