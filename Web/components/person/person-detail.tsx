@@ -8,6 +8,7 @@ import { Avatar } from '@/components/ui/avatar'
 import { PersonDropdown } from '@/components/person/person-dropdown'
 import { MarriageForm } from '@/components/forms/marriage-form'
 import FamilyTree from '@/components/FamilyTree'
+import GenerationStatsTable from '@/components/GenerationStatsTable'
 
 interface PersonDetailProps {
   person: {
@@ -274,6 +275,26 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
   const uniqueChildren = children.filter((c, index, self) =>
     index === self.findIndex((t) => t.id === c.id)
   )
+
+  const descendantGenerations = (() => {
+    const getChildren = (parentId: string) =>
+      allPersons.filter(p => p.fatherId === parentId || p.motherId === parentId)
+
+    const buildGenerations = (personId: string, gen: number, result: Map<number, typeof allPersons>): Map<number, typeof allPersons> => {
+      if (gen >= 6) return result
+      const childPersons = getChildren(personId)
+      const existing = result.get(gen) || []
+      const unique = childPersons.filter(c => !existing.some(e => e.id === c.id))
+      if (unique.length > 0) {
+        result.set(gen, [...existing, ...unique])
+      }
+      childPersons.forEach(c => buildGenerations(c.id, gen + 1, result))
+      return result
+    }
+
+    const map = buildGenerations(treePerson.id, 1, new Map())
+    return Array.from(map.entries()).sort((a, b) => a[0] - b[0])
+  })()
 
   const spouses = [
     ...(person.marriagesAsPerson1 || []).map(m => ({
@@ -719,6 +740,7 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
         )}
 
         <FamilyTree person={treePerson} allPersons={allPersons} />
+        <GenerationStatsTable descendantGenerations={descendantGenerations} />
       </div>
     )
   }

@@ -101,6 +101,12 @@ function flattenDescendants(node: TreeNode, result: Map<number, TreeNode[]>): Ma
   return result;
 }
 
+function getGenderStats(nodes: TreeNode[]): { males: number; females: number } {
+  const males = nodes.filter(n => n.person.gender === 'MALE').length;
+  const females = nodes.filter(n => n.person.gender === 'FEMALE').length;
+  return { males, females };
+}
+
 function TreeNodeComponent({ node, size = 'normal' }: { node: TreeNode; size?: 'normal' | 'large' }) {
   const { person } = node;
   const isMale = person.gender === 'MALE';
@@ -340,10 +346,11 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
                   };
                   const totalGens = ancestorGenerations.length;
                   const isClosest = genIndex === totalGens - 1;
+                  const stats = getGenderStats(nodes);
                   return (
                     <div key={`ancestor-${gen}`} className="flex flex-col items-center mb-1">
                       <span className="text-[10px] font-medium text-[#0d5c63] mb-2 bg-[#e6f4ef] px-2 py-0.5 rounded-full">
-                        {generationLabels[gen] || `الأجداد الجيل ${getArabicOrdinal(gen)}`} ({nodes.length})
+                        {generationLabels[gen] || `الأجداد الجيل ${getArabicOrdinal(gen)}`} ({nodes.length} - ذكور {stats.males} ✦ إناث {stats.females})
                       </span>
                       <GenerationRow nodes={nodes} isAncestor={true} size={isClosest ? 'normal' : 'normal'} />
                     </div>
@@ -387,10 +394,11 @@ export default function FamilyTree({ person, allPersons }: FamilyTreeProps) {
                     4: 'أحفاد الأحفاد',
                   };
                   const isClosest = genIndex === 0;
+                  const stats = getGenderStats(nodes);
                   return (
                     <div key={`descendant-${gen}`} className="flex flex-col items-center mb-1">
                       <span className="text-[10px] font-medium text-[#e07a5f] mb-2 bg-[#fceee8] px-2 py-0.5 rounded-full">
-                        {generationLabels[gen] || `النسل ${getArabicOrdinal(gen)}`} ({nodes.length})
+                        {generationLabels[gen] || `النسل ${getArabicOrdinal(gen)}`} ({nodes.length} - ذكور {stats.males} ✦ إناث {stats.females})
                       </span>
                       <GenerationRow nodes={nodes} isAncestor={false} size={isClosest ? 'normal' : 'normal'} />
                     </div>

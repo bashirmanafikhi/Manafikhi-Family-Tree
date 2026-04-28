@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getData } from "@/lib/data";
 import FamilyTree from "@/components/FamilyTree";
+import GenerationStatsTable from "@/components/GenerationStatsTable";
 import { Avatar } from "@/components/avatar";
 
 async function getPerson(id: string) {
@@ -71,6 +72,26 @@ export default async function PersonDetailPage({
     ...(childrenOfMother || []),
   ]
   const uniqueChildren = children.filter((c, index, self) => index === self.findIndex(t => t.id === c.id))
+
+  const descendantGenerations = (() => {
+    const getChildren = (parentId: string) =>
+      persons.filter(p => p.fatherId === parentId || p.motherId === parentId)
+
+    const buildGenerations = (personId: string, gen: number, result: Map<number, typeof persons>): Map<number, typeof persons> => {
+      if (gen >= 6) return result
+      const childPersons = getChildren(personId)
+      const existing = result.get(gen) || []
+      const unique = childPersons.filter(c => !existing.some(e => e.id === c.id))
+      if (unique.length > 0) {
+        result.set(gen, [...existing, ...unique])
+      }
+      childPersons.forEach(c => buildGenerations(c.id, gen + 1, result))
+      return result
+    }
+
+    const map = buildGenerations(person.id, 1, new Map())
+    return Array.from(map.entries()).sort((a, b) => a[0] - b[0])
+  })()
 
   const spouses = [
     ...(marriagesAsPerson1 || []).map((m: any) => {
@@ -311,6 +332,7 @@ export default async function PersonDetailPage({
       )}
 
       <FamilyTree person={person} allPersons={persons} />
+      <GenerationStatsTable descendantGenerations={descendantGenerations} />
     </div>
   )
 }
