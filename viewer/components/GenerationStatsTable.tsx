@@ -90,11 +90,13 @@ export default function GenerationStatsTable({ descendantGenerations }: Generati
               <td className="py-3 px-4 text-center font-bold" style={{ color: '#0d5c63' }}>
                 <div className="flex items-center justify-center gap-2">
                   <span>{totalStats.males}</span>
+                  <span className="text-xs opacity-70">({(totalStats.males + totalStats.females) > 0 ? Math.round(totalStats.males / (totalStats.males + totalStats.females) * 100) : 0}%)</span>
                 </div>
               </td>
               <td className="py-3 px-4 text-center font-bold" style={{ color: '#e07a5f' }}>
                 <div className="flex items-center justify-center gap-2">
                   <span>{totalStats.females}</span>
+                  <span className="text-xs opacity-70">({(totalStats.males + totalStats.females) > 0 ? Math.round(totalStats.females / (totalStats.males + totalStats.females) * 100) : 0}%)</span>
                 </div>
               </td>
             </tr>
