@@ -1,20 +1,5 @@
 'use client';
 
-interface TreeNode {
-  person: {
-    id: string;
-    firstName: string;
-    lastName: string | null;
-    gender: string;
-    isAlive: boolean;
-    profileImage: string | null;
-    fatherId: string | null;
-    motherId: string | null;
-  };
-  children: TreeNode[];
-  generation: number;
-}
-
 interface GenerationStatsTableProps {
   descendantGenerations: any;
 }
@@ -28,9 +13,15 @@ const generationLabels: Record<number, string> = {
   6: 'أحفاد أحفاد الأحفاد',
 };
 
-function getGenderStats(nodes: TreeNode[]) {
-  const males = nodes.filter(n => n.person.gender === 'MALE').length;
-  const females = nodes.filter(n => n.person.gender === 'FEMALE').length;
+function getGenderStats(nodes: any[]) {
+  const males = nodes.filter(n => {
+    const gender = n.person ? n.person.gender : n.gender;
+    return gender === 'MALE';
+  }).length;
+  const females = nodes.filter(n => {
+    const gender = n.person ? n.person.gender : n.gender;
+    return gender === 'FEMALE';
+  }).length;
   return { males, females };
 }
 
@@ -57,7 +48,7 @@ export default function GenerationStatsTable({ descendantGenerations }: Generati
             </tr>
           </thead>
           <tbody>
-            {descendantGenerations.map((item: [number, TreeNode[]]) => {
+            {descendantGenerations.map((item: [number, any[]]) => {
               const gen = item[0];
               const nodes = item[1];
               const { males, females } = getGenderStats(nodes);
