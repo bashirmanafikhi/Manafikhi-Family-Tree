@@ -8,22 +8,22 @@ async function getPerson(id: string) {
   return prisma.person.findUnique({
     where: { id },
     include: {
-      father: { select: { id: true, firstName: true, lastName: true, profileImage: true } },
-      mother: { select: { id: true, firstName: true, lastName: true, profileImage: true } },
+      father: { select: { id: true, firstName: true, lastName: true, profileImage: true, nickname: true, isAlive: true, birthDate: true, deathDate: true } },
+      mother: { select: { id: true, firstName: true, lastName: true, profileImage: true, nickname: true, isAlive: true, birthDate: true, deathDate: true } },
       childrenOfFather: {
-        select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true },
+        select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true, nickname: true, isAlive: true, birthDate: true, deathDate: true },
       },
       childrenOfMother: {
-        select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true },
+        select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true, nickname: true, isAlive: true, birthDate: true, deathDate: true },
       },
       marriagesAsPerson1: {
         include: {
-          person2: { select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true } },
+          person2: { select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true, nickname: true, isAlive: true, birthDate: true, deathDate: true } },
         },
       },
       marriagesAsPerson2: {
         include: {
-          person1: { select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true } },
+          person1: { select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true, nickname: true, isAlive: true, birthDate: true, deathDate: true } },
         },
       },
     },
@@ -52,7 +52,7 @@ async function getSiblings(personId: string) {
       id: { not: personId },
       OR: conditions,
     },
-    select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true },
+    select: { id: true, firstName: true, lastName: true, gender: true, profileImage: true, nickname: true, isAlive: true, birthDate: true, deathDate: true },
   })
 }
 

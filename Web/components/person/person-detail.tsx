@@ -23,14 +23,14 @@ interface PersonDetailProps {
     profileImage: string | null
     additionalImages: string | null
     bio: string | null
-    father?: { id: string; firstName: string; lastName: string | null; profileImage: string | null } | null
-    mother?: { id: string; firstName: string; lastName: string | null; profileImage: string | null } | null
-    childrenOfFather?: Array<{ id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null }>
-    childrenOfMother?: Array<{ id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null }>
-    marriagesAsPerson1?: Array<{ id: string; person2: { id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null }; isCurrent: boolean }>
-    marriagesAsPerson2?: Array<{ id: string; person1: { id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null }; isCurrent: boolean }>
+    father?: { id: string; firstName: string; lastName: string | null; profileImage: string | null; nickname?: string | null; isAlive?: boolean; birthDate?: Date | null; deathDate?: Date | null } | null
+    mother?: { id: string; firstName: string; lastName: string | null; profileImage: string | null; nickname?: string | null; isAlive?: boolean; birthDate?: Date | null; deathDate?: Date | null } | null
+    childrenOfFather?: Array<{ id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null; nickname?: string | null; isAlive?: boolean; birthDate?: Date | null; deathDate?: Date | null }>
+    childrenOfMother?: Array<{ id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null; nickname?: string | null; isAlive?: boolean; birthDate?: Date | null; deathDate?: Date | null }>
+    marriagesAsPerson1?: Array<{ id: string; person2: { id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null; nickname?: string | null; isAlive?: boolean; birthDate?: Date | null; deathDate?: Date | null }; isCurrent: boolean }>
+    marriagesAsPerson2?: Array<{ id: string; person1: { id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null; nickname?: string | null; isAlive?: boolean; birthDate?: Date | null; deathDate?: Date | null }; isCurrent: boolean }>
   }
-  siblings: Array<{ id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null }>
+  siblings: Array<{ id: string; firstName: string; lastName: string | null; gender: string; profileImage: string | null; nickname?: string | null; isAlive?: boolean; birthDate?: Date | null; deathDate?: Date | null }>
   allPersons: Array<{
     id: string
     firstName: string
@@ -536,9 +536,13 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
                         />
                         <div>
                           <p className="font-medium group-hover:text-[#0d5c63] transition-colors" style={{ color: '#2d2926' }}>
-                            {spouse.firstName} {spouse.lastName}
+                            {spouse.firstName} {spouse.lastName} {spouse.nickname ? `(${spouse.nickname})` : ''}
                           </p>
-                          <p className="text-xs" style={{ color: '#9c9690' }}>انقر للعرض</p>
+                          <p className="text-xs" style={{ color: '#9c9690' }}>
+                            {spouse.isAlive ? 'حي' : 'متوفى'}
+                            {spouse.birthDate && ` • ${new Date(spouse.birthDate).getFullYear()}`}
+                            {!spouse.isAlive && spouse.deathDate && ` - ${new Date(spouse.deathDate).getFullYear()}`}
+                          </p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
@@ -608,9 +612,13 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
                     />
                     <div>
                       <p className="font-medium group-hover:text-[#0d5c63] transition-colors" style={{ color: '#2d2926' }}>
-                        {person.father.firstName} {person.father.lastName}
+                        {person.father.firstName} {person.father.lastName} {person.father.nickname ? `(${person.father.nickname})` : ''}
                       </p>
-                      <p className="text-xs" style={{ color: '#9c9690' }}>انقر للعرض</p>
+                      <p className="text-xs" style={{ color: '#9c9690' }}>
+                        {person.father.isAlive ? 'حي' : 'متوفى'}
+                        {person.father.birthDate && ` • ${new Date(person.father.birthDate).getFullYear()}`}
+                        {!person.father.isAlive && person.father.deathDate && ` - ${new Date(person.father.deathDate).getFullYear()}`}
+                      </p>
                     </div>
                   </Link>
                 ) : (
@@ -630,9 +638,13 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
                     />
                     <div>
                       <p className="font-medium group-hover:text-[#e07a5f] transition-colors" style={{ color: '#2d2926' }}>
-                        {person.mother.firstName} {person.mother.lastName}
+                        {person.mother.firstName} {person.mother.lastName} {person.mother.nickname ? `(${person.mother.nickname})` : ''}
                       </p>
-                      <p className="text-xs" style={{ color: '#9c9690' }}>انقر للعرض</p>
+                      <p className="text-xs" style={{ color: '#9c9690' }}>
+                        {person.mother.isAlive ? 'حي' : 'متوفى'}
+                        {person.mother.birthDate && ` • ${new Date(person.mother.birthDate).getFullYear()}`}
+                        {!person.mother.isAlive && person.mother.deathDate && ` - ${new Date(person.mother.deathDate).getFullYear()}`}
+                      </p>
                     </div>
                   </Link>
                 ) : (
@@ -665,10 +677,12 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
                     />
                     <div>
                       <p className="font-medium group-hover:text-[#0d5c63] transition-colors" style={{ color: '#2d2926' }}>
-                        {child.firstName} {child.lastName}
+                        {child.firstName} {child.lastName} {child.nickname ? `(${child.nickname})` : ''}
                       </p>
                       <p className="text-xs" style={{ color: '#9c9690' }}>
-                        {child.gender === 'MALE' ? 'ذكر' : 'أنثى'}
+                        {child.gender === 'MALE' ? 'ذكر' : 'أنثى'} • {child.isAlive ? 'حي' : 'متوفى'}
+                        {child.birthDate && ` • ${new Date(child.birthDate).getFullYear()}`}
+                        {!child.isAlive && child.deathDate && ` - ${new Date(child.deathDate).getFullYear()}`}
                       </p>
                     </div>
                   </div>
@@ -748,10 +762,12 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
                     />
                     <div>
                       <p className="font-medium group-hover:text-[#0d5c63] transition-colors" style={{ color: '#2d2926' }}>
-                        {sibling.firstName} {sibling.lastName}
+                        {sibling.firstName} {sibling.lastName} {sibling.nickname ? `(${sibling.nickname})` : ''}
                       </p>
                       <p className="text-xs" style={{ color: '#9c9690' }}>
-                        {sibling.gender === 'MALE' ? 'أخ' : 'أخت'}
+                        {sibling.gender === 'MALE' ? 'أخ' : 'أخت'} • {sibling.isAlive ? 'حي' : 'متوفى'}
+                        {sibling.birthDate && ` • ${new Date(sibling.birthDate).getFullYear()}`}
+                        {!sibling.isAlive && sibling.deathDate && ` - ${new Date(sibling.deathDate).getFullYear()}`}
                       </p>
                     </div>
                   </div>

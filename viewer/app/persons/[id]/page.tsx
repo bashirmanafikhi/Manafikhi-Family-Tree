@@ -20,18 +20,18 @@ async function getPerson(id: string) {
   
   if (person.fatherId) {
     const fathersChildren = persons.filter(p => p.fatherId === person.fatherId && p.id !== person.id);
-    siblings.push(...fathersChildren.map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender, profileImage: c.profileImage })));
+    siblings.push(...fathersChildren.map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender, profileImage: c.profileImage, nickname: c.nickname, isAlive: c.isAlive, deathDate: c.deathDate, birthDate: c.birthDate })));
   }
   
   if (person.motherId) {
     const mothersChildren = persons.filter(p => p.motherId === person.motherId && p.id !== person.id);
-    siblings.push(...mothersChildren.map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender, profileImage: c.profileImage })));
+    siblings.push(...mothersChildren.map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender, profileImage: c.profileImage, nickname: c.nickname, isAlive: c.isAlive, deathDate: c.deathDate, birthDate: c.birthDate })));
   }
   
   const uniqueSiblings = siblings.filter((s, index, self) => index === self.findIndex(x => x.id === s.id));
 
-  const childrenOfFather = persons.filter(p => p.fatherId === person.id).map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender, profileImage: c.profileImage }));
-  const childrenOfMother = persons.filter(p => p.motherId === person.id).map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender, profileImage: c.profileImage }));
+  const childrenOfFather = persons.filter(p => p.fatherId === person.id).map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender, profileImage: c.profileImage, nickname: c.nickname, isAlive: c.isAlive, deathDate: c.deathDate, birthDate: c.birthDate }));
+  const childrenOfMother = persons.filter(p => p.motherId === person.id).map(c => ({ id: c.id, firstName: c.firstName, lastName: c.lastName, gender: c.gender, profileImage: c.profileImage, nickname: c.nickname, isAlive: c.isAlive, deathDate: c.deathDate, birthDate: c.birthDate }));
   
   const marriagesAsPerson1 = marriages.filter(m => m.person1Id === person.id).map(m => ({
     ...m,
@@ -219,7 +219,12 @@ export default async function PersonDetailPage({
                   />
                   <div>
                     <p className="font-medium group-hover:text-[#0d5c63]" style={{ color: '#2d2926' }}>
-                      {person.father.firstName} {person.father.lastName}
+                      {person.father.firstName} {person.father.lastName} {person.father.nickname ? `(${person.father.nickname})` : ''}
+                    </p>
+                    <p className="text-xs mt-1" style={{ color: '#9c9690' }}>
+                      {person.father.isAlive ? 'حي' : 'متوفى'}
+                      {person.father.birthDate && ` • ${new Date(person.father.birthDate).getFullYear()}`}
+                      {!person.father.isAlive && person.father.deathDate && ` - ${new Date(person.father.deathDate).getFullYear()}`}
                     </p>
                   </div>
                 </Link>
@@ -240,7 +245,12 @@ export default async function PersonDetailPage({
                   />
                   <div>
                     <p className="font-medium group-hover:text-[#e07a5f]" style={{ color: '#2d2926' }}>
-                      {person.mother.firstName} {person.mother.lastName}
+                      {person.mother.firstName} {person.mother.lastName} {person.mother.nickname ? `(${person.mother.nickname})` : ''}
+                    </p>
+                    <p className="text-xs mt-1" style={{ color: '#9c9690' }}>
+                      {person.mother.isAlive ? 'حي' : 'متوفى'}
+                      {person.mother.birthDate && ` • ${new Date(person.mother.birthDate).getFullYear()}`}
+                      {!person.mother.isAlive && person.mother.deathDate && ` - ${new Date(person.mother.deathDate).getFullYear()}`}
                     </p>
                   </div>
                 </Link>
@@ -269,15 +279,22 @@ export default async function PersonDetailPage({
                     />
                     <div>
                       <p className="font-medium group-hover:text-[#0d5c63]" style={{ color: '#2d2926' }}>
-                        {spouse.firstName} {spouse.lastName}
+                        {spouse.firstName} {spouse.lastName} {spouse.nickname ? `(${spouse.nickname})` : ''}
                       </p>
-                      <span className={`text-xs px-2 py-1 rounded-full ${
-                        spouse.isCurrent 
-                          ? 'bg-[#e6f4ef] text-[#4a9d7c]' 
-                          : 'bg-[#f0ede8] text-[#6b6560]'
-                      }`}>
-                        {spouse.isCurrent ? 'حالي' : 'سابق'}
-                      </span>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className={`text-[10px] px-2 py-0.5 rounded-full ${
+                          spouse.isCurrent 
+                            ? 'bg-[#e6f4ef] text-[#4a9d7c]' 
+                            : 'bg-[#f0ede8] text-[#6b6560]'
+                        }`}>
+                          {spouse.isCurrent ? 'حالي' : 'سابق'}
+                        </span>
+                        <span className="text-xs" style={{ color: '#9c9690' }}>
+                          {spouse.isAlive ? 'حي' : 'متوفى'}
+                          {spouse.birthDate && ` • ${new Date(spouse.birthDate).getFullYear()}`}
+                          {!spouse.isAlive && spouse.deathDate && ` - ${new Date(spouse.deathDate).getFullYear()}`}
+                        </span>
+                      </div>
                     </div>
                   </Link>
                 </li>
@@ -307,10 +324,12 @@ export default async function PersonDetailPage({
                   />
                   <div>
                     <p className="font-medium group-hover:text-[#0d5c63]" style={{ color: '#2d2926' }}>
-                      {child.firstName} {child.lastName}
+                      {child.firstName} {child.lastName} {child.nickname ? `(${child.nickname})` : ''}
                     </p>
-                    <p className="text-xs" style={{ color: '#9c9690' }}>
-                      {child.gender === 'MALE' ? 'ذكر' : 'أنثى'}
+                    <p className="text-xs mt-1" style={{ color: '#9c9690' }}>
+                      {child.gender === 'MALE' ? 'ذكر' : 'أنثى'} • {child.isAlive ? 'حي' : 'متوفى'}
+                      {child.birthDate && ` • ${new Date(child.birthDate).getFullYear()}`}
+                      {!child.isAlive && child.deathDate && ` - ${new Date(child.deathDate).getFullYear()}`}
                     </p>
                   </div>
                 </div>
@@ -340,10 +359,12 @@ export default async function PersonDetailPage({
                   />
                   <div>
                     <p className="font-medium group-hover:text-[#0d5c63]" style={{ color: '#2d2926' }}>
-                      {sibling.firstName} {sibling.lastName}
+                      {sibling.firstName} {sibling.lastName} {sibling.nickname ? `(${sibling.nickname})` : ''}
                     </p>
-                    <p className="text-xs" style={{ color: '#9c9690' }}>
-                      {sibling.gender === 'MALE' ? 'أخ' : 'أخت'}
+                    <p className="text-xs mt-1" style={{ color: '#9c9690' }}>
+                      {sibling.gender === 'MALE' ? 'أخ' : 'أخت'} • {sibling.isAlive ? 'حي' : 'متوفى'}
+                      {sibling.birthDate && ` • ${new Date(sibling.birthDate).getFullYear()}`}
+                      {!sibling.isAlive && sibling.deathDate && ` - ${new Date(sibling.deathDate).getFullYear()}`}
                     </p>
                   </div>
                 </div>
