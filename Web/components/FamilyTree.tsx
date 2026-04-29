@@ -58,8 +58,30 @@ function getArabicOrdinal(n: number): string {
 }
 
 function getDescendants(person: Person, allPersons: Person[], maxGen = 3): TreeNode {
+  const descendantsSet = new Set<string>();
+  const queue = [person.id];
+  while (queue.length > 0) {
+    const current = queue.shift()!;
+    const children = allPersons.filter(p => p.fatherId === current || p.motherId === current);
+    for (const child of children) {
+      if (!descendantsSet.has(child.id)) {
+        descendantsSet.add(child.id);
+        queue.push(child.id);
+      }
+    }
+  }
+
   const getChildren = (parentId: string): Person[] => 
-    allPersons.filter(p => p.fatherId === parentId || p.motherId === parentId);
+    allPersons.filter(p => {
+      if (p.fatherId === parentId) return true;
+      if (p.motherId === parentId) {
+        if (p.fatherId && (p.fatherId === person.id || descendantsSet.has(p.fatherId))) {
+          return false;
+        }
+        return true;
+      }
+      return false;
+    });
 
   const buildNode = (p: Person, gen: number): TreeNode => {
     if (gen >= maxGen) return { person: p, children: [], generation: gen };

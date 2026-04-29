@@ -277,8 +277,30 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
   )
 
   const descendantGenerations = (() => {
+    const descendantsSet = new Set<string>();
+    const queue = [treePerson.id];
+    while (queue.length > 0) {
+      const current = queue.shift()!;
+      const children = allPersons.filter(p => p.fatherId === current || p.motherId === current);
+      for (const child of children) {
+        if (!descendantsSet.has(child.id)) {
+          descendantsSet.add(child.id);
+          queue.push(child.id);
+        }
+      }
+    }
+
     const getChildren = (parentId: string) =>
-      allPersons.filter(p => p.fatherId === parentId || p.motherId === parentId)
+      allPersons.filter(p => {
+        if (p.fatherId === parentId) return true;
+        if (p.motherId === parentId) {
+          if (p.fatherId && (p.fatherId === treePerson.id || descendantsSet.has(p.fatherId))) {
+            return false;
+          }
+          return true;
+        }
+        return false;
+      });
 
     const buildGenerations = (personId: string, gen: number, result: Map<number, typeof allPersons>): Map<number, typeof allPersons> => {
       if (gen >= 6) return result

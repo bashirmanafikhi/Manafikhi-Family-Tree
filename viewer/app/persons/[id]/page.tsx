@@ -74,8 +74,30 @@ export default async function PersonDetailPage({
   const uniqueChildren = children.filter((c, index, self) => index === self.findIndex(t => t.id === c.id))
 
   const descendantGenerations = (() => {
+    const descendantsSet = new Set<string>();
+    const queue = [person.id];
+    while (queue.length > 0) {
+      const current = queue.shift()!;
+      const children = persons.filter(p => p.fatherId === current || p.motherId === current);
+      for (const child of children) {
+        if (!descendantsSet.has(child.id)) {
+          descendantsSet.add(child.id);
+          queue.push(child.id);
+        }
+      }
+    }
+
     const getChildren = (parentId: string) =>
-      persons.filter(p => p.fatherId === parentId || p.motherId === parentId)
+      persons.filter(p => {
+        if (p.fatherId === parentId) return true;
+        if (p.motherId === parentId) {
+          if (p.fatherId && (p.fatherId === person.id || descendantsSet.has(p.fatherId))) {
+            return false;
+          }
+          return true;
+        }
+        return false;
+      });
 
     const buildGenerations = (personId: string, gen: number, result: Map<number, typeof persons>): Map<number, typeof persons> => {
       if (gen >= 6) return result
