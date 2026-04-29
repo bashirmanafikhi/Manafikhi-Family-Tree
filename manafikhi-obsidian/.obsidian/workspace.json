@@ -4,19 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "a764f58fce9072d5",
+        "id": "a84305202c7db90f",
         "type": "tabs",
         "children": [
           {
-            "id": "8a5b5257ff796e6c",
+            "id": "e27cb2f6b232ab79",
             "type": "leaf",
             "state": {
               "type": "canvas",
               "state": {
                 "file": "draft_canvas.canvas",
                 "viewState": {
-                  "x": 464.52531494381645,
-                  "y": 592.9356398153868,
+                  "x": 427.58092243186564,
+                  "y": 792.9821802935012,
                   "zoom": -0.4840219028649339
                 }
               },
@@ -196,11 +196,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "8a5b5257ff796e6c",
+  "active": "e27cb2f6b232ab79",
   "lastOpenFiles": [
+    "بيت ديبو.canvas",
     "tree.canvas",
-    "draft_canvas.canvas",
     "حج محمود ابو فؤاد.canvas",
+    "شجرة الكبار.canvas",
+    "draft_canvas.canvas",
     "عائشة ام شريف.canvas",
     "ام شريف.md",
     "prompts/رسم شجرة.md",

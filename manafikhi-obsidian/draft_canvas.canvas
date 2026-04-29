@@ -242,200 +242,6 @@
 			"height":50
 		},
 		{
-			"id":"6c00f118fb80d82c",
-			"type":"text",
-			"text":"آية",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-480,
-			"y":568,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"343be5ff4e210e89",
-			"type":"text",
-			"text":"آلاء",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-480,
-			"y":618,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"775939c002bce8ed",
-			"type":"text",
-			"text":"عمر",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-480,
-			"y":668,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"a89b84f87f55bd7a",
-			"type":"text",
-			"text":"حمزة",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-480,
-			"y":718,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"c7bbe345ec743884",
-			"type":"text",
-			"text":"صباح",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-360,
-			"y":518,
-			"width":120,
-			"height":50,
-			"color":"2"
-		},
-		{
-			"id":"c3f4d7c2c8fdfe8c",
-			"type":"text",
-			"text":"حسن",
-			"styleAttributes":{"textAlign":"center"},
-			"x":0,
-			"y":568,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"13cb9ac76d04dbd7",
-			"type":"text",
-			"text":"فخرية",
-			"styleAttributes":{"textAlign":"center"},
-			"x":120,
-			"y":518,
-			"width":120,
-			"height":50,
-			"color":"2"
-		},
-		{
-			"id":"8150e2c96b26f740",
-			"type":"text",
-			"text":"نفوس",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-120,
-			"y":518,
-			"width":120,
-			"height":50,
-			"color":"2"
-		},
-		{
-			"id":"7fc714ad98e86f92",
-			"type":"text",
-			"text":"أحمد حسن منافيخي",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-480,
-			"y":428,
-			"width":720,
-			"height":50,
-			"color":"1"
-		},
-		{
-			"id":"238ed03cab436da6",
-			"type":"text",
-			"text":"رقية",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-240,
-			"y":568,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"0b81a7c22edfa428",
-			"type":"text",
-			"text":"هيفاء",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-240,
-			"y":618,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"7ca3d39631396e4b",
-			"type":"text",
-			"text":"وليد",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-240,
-			"y":668,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"b925122a1744677a",
-			"type":"text",
-			"text":"زكريا",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-240,
-			"y":718,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"fe9c686b7f2293c6",
-			"type":"text",
-			"text":"عبد الرحمن",
-			"styleAttributes":{"textAlign":"center"},
-			"x":-240,
-			"y":768,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"5413181aa023ebdf",
-			"type":"text",
-			"text":"محمد",
-			"styleAttributes":{"textAlign":"center"},
-			"x":0,
-			"y":618,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"238a265b57bcd0e7",
-			"type":"text",
-			"text":"وفاء ميتة صغيرة",
-			"styleAttributes":{"textAlign":"center"},
-			"x":0,
-			"y":668,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"9819f258bd95a9d7",
-			"type":"text",
-			"text":"جمال",
-			"styleAttributes":{"textAlign":"center"},
-			"x":0,
-			"y":718,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"c2820fee8030b466",
-			"type":"text",
-			"text":"عماد",
-			"styleAttributes":{"textAlign":"center"},
-			"x":0,
-			"y":768,
-			"width":120,
-			"height":50
-		},
-		{
-			"id":"509acc88977a4796",
-			"type":"text",
-			"text":"فاطمة",
-			"styleAttributes":{"textAlign":"center"},
-			"x":0,
-			"y":818,
-			"width":120,
-			"height":50
-		},
-		{
 			"id":"1b542d220b48c54e",
 			"type":"text",
 			"text":"فخرية ميتة",
@@ -506,22 +312,216 @@
 			"height":50
 		},
 		{
-			"id":"ce0381a9ce61d34f",
+			"id":"8150e2c96b26f740",
+			"type":"text",
+			"text":"نفوس",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-180,
+			"y":942,
+			"width":120,
+			"height":50,
+			"color":"2"
+		},
+		{
+			"id":"c3f4d7c2c8fdfe8c",
+			"type":"text",
+			"text":"حسن",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-60,
+			"y":992,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"5413181aa023ebdf",
+			"type":"text",
+			"text":"محمد",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-60,
+			"y":1042,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"238a265b57bcd0e7",
+			"type":"text",
+			"text":"وفاء ميتة صغيرة",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-60,
+			"y":1092,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"13cb9ac76d04dbd7",
 			"type":"text",
 			"text":"فخرية",
 			"styleAttributes":{"textAlign":"center"},
-			"x":1176,
-			"y":573,
+			"x":60,
+			"y":942,
+			"width":120,
+			"height":50,
+			"color":"2"
+		},
+		{
+			"id":"9819f258bd95a9d7",
+			"type":"text",
+			"text":"جمال",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-60,
+			"y":1142,
 			"width":120,
 			"height":50
+		},
+		{
+			"id":"c2820fee8030b466",
+			"type":"text",
+			"text":"عماد",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-60,
+			"y":1192,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"509acc88977a4796",
+			"type":"text",
+			"text":"فاطمة",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-60,
+			"y":1242,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"7fc714ad98e86f92",
+			"type":"text",
+			"text":"أحمد حسن منافيخي",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-540,
+			"y":852,
+			"width":720,
+			"height":50,
+			"color":"1"
+		},
+		{
+			"id":"238ed03cab436da6",
+			"type":"text",
+			"text":"رقية",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-300,
+			"y":992,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"0b81a7c22edfa428",
+			"type":"text",
+			"text":"هيفاء",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-300,
+			"y":1042,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"7ca3d39631396e4b",
+			"type":"text",
+			"text":"وليد",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-300,
+			"y":1092,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"b925122a1744677a",
+			"type":"text",
+			"text":"زكريا",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-300,
+			"y":1142,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"fe9c686b7f2293c6",
+			"type":"text",
+			"text":"عبد الرحمن",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-300,
+			"y":1192,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"6c00f118fb80d82c",
+			"type":"text",
+			"text":"آية",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-540,
+			"y":992,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"343be5ff4e210e89",
+			"type":"text",
+			"text":"آلاء",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-540,
+			"y":1042,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"775939c002bce8ed",
+			"type":"text",
+			"text":"عمر",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-540,
+			"y":1092,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"a89b84f87f55bd7a",
+			"type":"text",
+			"text":"حمزة",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-540,
+			"y":1142,
+			"width":120,
+			"height":50
+		},
+		{
+			"id":"c7bbe345ec743884",
+			"type":"text",
+			"text":"صباح",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-420,
+			"y":942,
+			"width":120,
+			"height":50,
+			"color":"2"
+		},
+		{
+			"id":"ce0381a9ce61d34f",
+			"type":"text",
+			"text":"فخرية او رقية\nمالي متأكد ",
+			"styleAttributes":{"textAlign":"center"},
+			"x":1432,
+			"y":700,
+			"width":183,
+			"height":92
 		},
 		{
 			"id":"872aa8e0877aad67",
 			"type":"text",
 			"text":"ديبة",
 			"styleAttributes":{"textAlign":"center"},
-			"x":1036,
-			"y":593,
+			"x":1292,
+			"y":720,
 			"width":120,
 			"height":50
 		},
@@ -530,10 +530,20 @@
 			"type":"text",
 			"text":"أحمد",
 			"styleAttributes":{"textAlign":"center"},
-			"x":882,
-			"y":378,
+			"x":1138,
+			"y":505,
 			"width":120,
 			"height":50
+		},
+		{
+			"id":"1c433c03c5de9b31",
+			"type":"text",
+			"text":"فاطمة يمكن مالي متأكد\nلأنو بيان عائلي تبع رقية اسم امها فاطمة",
+			"styleAttributes":{"textAlign":"center"},
+			"x":1412,
+			"y":464,
+			"width":321,
+			"height":82
 		}
 	],
 	"edges":[
@@ -953,12 +963,25 @@
 		},
 		{
 			"id":"7ae7d732b38c292e",
-			"styleAttributes":{},
+			"styleAttributes":{"pathfindingMethod":"square"},
 			"toFloating":false,
 			"fromNode":"13cb9ac76d04dbd7",
 			"fromSide":"bottom",
 			"toNode":"238a265b57bcd0e7",
 			"toSide":"right"
+		},
+		{
+			"id":"a2295675a5efc5de",
+			"styleAttributes":{
+				"pathfindingMethod":null,
+				"path":"long-dashed"
+			},
+			"toFloating":false,
+			"fromNode":"f030546e014b45c0",
+			"fromSide":"right",
+			"toNode":"1c433c03c5de9b31",
+			"toSide":"left",
+			"toEnd":"none"
 		}
 	],
 	"metadata":{
