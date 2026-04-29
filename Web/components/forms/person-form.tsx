@@ -37,6 +37,7 @@ export function PersonForm({ prefillFather, prefillMother }: PersonFormProps) {
     isAlive: true,
     birthDate: '',
     deathDate: '',
+    bio: '',
   })
 
   // Fetch initial labels for pre-selected parents
@@ -270,6 +271,17 @@ export function PersonForm({ prefillFather, prefillMother }: PersonFormProps) {
                 />
               </div>
             )}
+          </div>
+
+          {/* Bio */}
+          <div className="border-t pt-6" style={{ borderColor: '#ede8e0' }}>
+            <label className="block text-sm font-medium mb-2" style={{ color: '#2d2926' }}>نبذة (Bio - يدعم Markdown)</label>
+            <textarea
+              value={formData.bio}
+              onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
+              className="input-field min-h-[120px]"
+              placeholder="اكتب نبذة عن هذا الشخص..."
+            />
           </div>
 
           {/* Profile Image */}

@@ -9,6 +9,7 @@ import { PersonDropdown } from '@/components/person/person-dropdown'
 import { MarriageForm } from '@/components/forms/marriage-form'
 import FamilyTree from '@/components/FamilyTree'
 import GenerationStatsTable from '@/components/GenerationStatsTable'
+import ReactMarkdown from 'react-markdown'
 
 interface PersonDetailProps {
   person: {
@@ -68,6 +69,7 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
     isAlive: person.isAlive,
     fatherId: person.father?.id || '',
     motherId: person.mother?.id || '',
+    bio: person.bio || '',
   })
   const [isDeleting, setIsDeleting] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
@@ -127,6 +129,7 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
       isAlive: person.isAlive,
       fatherId: person.father?.id || '',
       motherId: person.mother?.id || '',
+      bio: person.bio || '',
     })
   }, [person])
 
@@ -203,6 +206,7 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
         isAlive: formData.isAlive,
         fatherId: formData.fatherId || null,
         motherId: formData.motherId || null,
+        bio: formData.bio || null,
       }
 
       const res = await fetch(`/api/persons/${person.id}`, {
@@ -485,6 +489,16 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
             } catch { }
             return null;
           })()}
+
+          {/* Bio Display */}
+          {person.bio && (
+            <div className="border-t pt-6" style={{ borderColor: '#ede8e0' }}>
+              <h2 className="text-lg font-bold mb-4" style={{ color: '#2d2926' }}>نبذة</h2>
+              <div className="prose prose-sm sm:prose max-w-none text-[#6b6560]">
+                <ReactMarkdown>{person.bio}</ReactMarkdown>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Quick Actions */}
@@ -932,6 +946,17 @@ export function PersonDetail({ person, siblings, allPersons, treePerson }: Perso
                 />
               </div>
             )}
+          </div>
+
+          {/* Bio Edit */}
+          <div className="border-t pt-6" style={{ borderColor: '#ede8e0' }}>
+            <label className="block text-sm font-medium mb-2" style={{ color: '#2d2926' }}>نبذة (Bio - يدعم Markdown)</label>
+            <textarea
+              value={formData.bio}
+              onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
+              className="input-field min-h-[120px]"
+              placeholder="اكتب نبذة عن هذا الشخص..."
+            />
           </div>
 
           {/* Images */}

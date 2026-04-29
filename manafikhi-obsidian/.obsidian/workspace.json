@@ -11,10 +11,17 @@
             "id": "43d556a0adaf4559",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
+              "type": "canvas",
+              "state": {
+                "file": "بيت ديبو.canvas",
+                "viewState": {
+                  "x": 51.90278837676924,
+                  "y": -431.1940569819543,
+                  "zoom": -0.6666666666666666
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "بيت ديبو"
             }
           }
         ]
@@ -165,9 +172,11 @@
             "type": "leaf",
             "state": {
               "type": "file-properties",
-              "state": {},
+              "state": {
+                "file": "بيت ديبو.canvas"
+              },
               "icon": "lucide-info",
-              "title": "File properties"
+              "title": "File properties for بيت ديبو"
             }
           }
         ],

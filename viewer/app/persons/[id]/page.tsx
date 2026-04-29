@@ -3,6 +3,7 @@ import { getData } from "@/lib/data";
 import FamilyTree from "@/components/FamilyTree";
 import GenerationStatsTable from "@/components/GenerationStatsTable";
 import { Avatar } from "@/components/avatar";
+import ReactMarkdown from 'react-markdown';
 
 async function getPerson(id: string) {
   const { persons, marriages } = getData();
@@ -198,6 +199,16 @@ export default async function PersonDetailPage({
           } catch {}
           return null;
         })()}
+
+        {/* Bio Display */}
+        {person.bio && (
+          <div className="border-t pt-6" style={{ borderColor: '#ede8e0' }}>
+            <h2 className="text-lg font-bold mb-4" style={{ color: '#2d2926' }}>نبذة</h2>
+            <div className="prose prose-sm sm:prose max-w-none text-[#6b6560]">
+              <ReactMarkdown>{person.bio}</ReactMarkdown>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
