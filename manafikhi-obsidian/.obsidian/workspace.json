@@ -13,15 +13,15 @@
             "state": {
               "type": "canvas",
               "state": {
-                "file": "عائشة ام شريف.canvas",
+                "file": "حج محمود ابو فؤاد.canvas",
                 "viewState": {
-                  "x": -69.5,
-                  "y": 258,
-                  "zoom": -1.233982638867511
+                  "x": 114.59989994681986,
+                  "y": 197.74405620622093,
+                  "zoom": -0.2503515015114794
                 }
               },
               "icon": "lucide-layout-dashboard",
-              "title": "عائشة ام شريف"
+              "title": "حج محمود ابو فؤاد"
             }
           }
         ]
@@ -173,10 +173,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "عائشة ام شريف.canvas"
+                "file": "حج محمود ابو فؤاد.canvas"
               },
               "icon": "lucide-info",
-              "title": "File properties for عائشة ام شريف"
+              "title": "File properties for حج محمود ابو فؤاد"
             }
           }
         ],
@@ -199,8 +199,8 @@
   },
   "active": "f8603762a1d83b9d",
   "lastOpenFiles": [
-    "prompts/excalidraw exporter prompt.md",
     "عائشة ام شريف.canvas",
+    "prompts/excalidraw exporter prompt.md",
     "بيت ديبو.canvas",
     "prompts/رسم شجرة.md",
     "حسن رحمو.canvas",
