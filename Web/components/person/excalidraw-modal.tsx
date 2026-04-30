@@ -14,6 +14,7 @@ export function ExcalidrawModal({ person, allPersons }: { person: any, allPerson
     compactSpacing: false,
     lineStyle: 'solid',
     lineSharpness: 'round',
+    direction: 'ltr',
   })
 
   const handleExport = () => {
@@ -102,6 +103,18 @@ export function ExcalidrawModal({ person, allPersons }: { person: any, allPerson
                 >
                   <option value="round">منحني (Round / Curved)</option>
                   <option value="sharp">حادة (Sharp)</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1" style={{ color: '#6b6560' }}>اتجاه الشجرة (Direction)</label>
+                <select 
+                  className="input-field w-full" 
+                  value={options.direction} 
+                  onChange={e => setOptions({...options, direction: e.target.value as any})}
+                >
+                  <option value="ltr">من اليسار لليمين (LTR)</option>
+                  <option value="rtl">من اليمين لليسار (RTL)</option>
                 </select>
               </div>
 

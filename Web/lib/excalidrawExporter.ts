@@ -23,6 +23,7 @@ export interface ExcalidrawExportOptions {
   compactSpacing: boolean;
   lineStyle: 'solid' | 'dashed' | 'dotted';
   lineSharpness: 'round' | 'sharp';
+  direction: 'ltr' | 'rtl';
 }
 
 export class ExcalidrawExporter {
@@ -91,8 +92,8 @@ export class ExcalidrawExporter {
   }
 
   private static getGenerationColor(generation: number) {
-    // Professional, faded palette that doesn't distract from text
-    const colors = ["#f8f9fa", "#e9ecef", "#dee2e6", "#ced4da", "#adb5bd", "#f1f3f5", "#e2e8f0"];
+    // Professional, faded pastel palette that is colorful but doesn't distract from text
+    const colors = ["#e3f2fd", "#f3e5f5", "#e8f5e9", "#fff3e0", "#ffebee", "#e0f7fa", "#fff8e1"];
     return colors[generation % colors.length];
   }
 
@@ -148,7 +149,7 @@ export class ExcalidrawExporter {
     };
   }
 
-  private static createText(x: number, y: number, text: string, angle: number, id: string, width: number, textAlign = "center", groupIds: string[] = []) {
+  private static createText(x: number, y: number, text: string, angle: number, id: string, width: number, textAlign = "center", groupIds: string[] = [], containerId: string | null = null) {
     return {
       type: "text",
       version: 1,
@@ -176,7 +177,8 @@ export class ExcalidrawExporter {
       text: text,
       baseline: 12,
       textAlign: textAlign,
-      verticalAlign: "top"
+      verticalAlign: containerId ? "middle" : "top",
+      containerId: containerId
     };
   }
 
@@ -250,14 +252,17 @@ export class ExcalidrawExporter {
       familyGroupIds.set(node, this.generateId()); // Nuclear family group (parent + children + lines)
     });
 
+    const projectX = (x: number) => options.direction === 'rtl' ? -x : x;
+    const projectY = (y: number) => y;
+
     root.links().forEach(link => {
       const sourceId = nodeIds.get(link.source)!;
       const targetId = nodeIds.get(link.target)!;
       const groupId = familyGroupIds.get(link.source)!;
       const arrowId = this.generateId();
       
-      const sx = link.source.x, sy = link.source.y;
-      const tx = link.target.x, ty = link.target.y;
+      const sx = projectX(link.source.x), sy = projectY(link.source.y);
+      const tx = projectX(link.target.x), ty = projectY(link.target.y);
       // Smooth Bezier / Step-after
       const midY = (sy + ty) / 2;
       const points: [number, number][] = [[sx, sy], [sx, midY], [tx, midY], [tx, ty]];
@@ -276,16 +281,23 @@ export class ExcalidrawExporter {
       const nodeWidth = this.getNodeWidth(displayName);
       const boundElements = boundElementsMap.get(id) || [];
       
+      const nx = projectX(node.x);
+      const ny = projectY(node.y);
+      
       // Node belongs to its parent's family group and its own family group
       const groups = [familyGroupIds.get(node)!];
       if (node.parent) groups.push(familyGroupIds.get(node.parent)!);
 
       if (options.useRectangles) {
-        elements.push(this.createRectangle(node.x, node.y, nodeWidth, 45, bgColor, id, groups, boundElements));
-        elements.push(this.createText(node.x, node.y - 12, displayName, options.textAngle, this.generateId(), nodeWidth, "center", groups));
+        const textId = this.generateId();
+        const rectBoundElements = [...boundElements, { id: textId, type: "text" }];
+        elements.push(this.createRectangle(nx, ny, nodeWidth, 45, bgColor, id, groups, rectBoundElements));
+        elements.push(this.createText(nx, ny, displayName, options.textAngle, textId, nodeWidth, "center", groups, id));
       } else {
-        elements.push(this.createDot(node.x, node.y, bgColor, id, groups, boundElements));
-        elements.push(this.createText(node.x, node.y + 10, displayName, options.textAngle, this.generateId(), nodeWidth, "center", groups));
+        const nodeGroupId = this.generateId();
+        const combinedGroups = [nodeGroupId, ...groups];
+        elements.push(this.createDot(nx, ny, bgColor, id, combinedGroups, boundElements));
+        elements.push(this.createText(nx, ny + 10, displayName, options.textAngle, this.generateId(), nodeWidth, "center", combinedGroups));
       }
     });
 
@@ -308,6 +320,9 @@ export class ExcalidrawExporter {
       familyGroupIds.set(node, this.generateId());
     });
 
+    const projectX = (y: number) => options.direction === 'rtl' ? -y : y;
+    const projectY = (x: number) => x;
+
     root.links().forEach(link => {
       const sourceId = nodeIds.get(link.source)!;
       const targetId = nodeIds.get(link.target)!;
@@ -315,8 +330,8 @@ export class ExcalidrawExporter {
       const arrowId = this.generateId();
       
       // note: for horizontal, x and y are swapped
-      const sx = link.source.y, sy = link.source.x;
-      const tx = link.target.y, ty = link.target.x;
+      const sx = projectX(link.source.y), sy = projectY(link.source.x);
+      const tx = projectX(link.target.y), ty = projectY(link.target.x);
       const midX = (sx + tx) / 2;
       const points: [number, number][] = [[sx, sy], [midX, sy], [midX, ty], [tx, ty]];
       
@@ -334,15 +349,22 @@ export class ExcalidrawExporter {
       const nodeWidth = this.getNodeWidth(displayName);
       const boundElements = boundElementsMap.get(id) || [];
 
+      const nx = projectX(node.y);
+      const ny = projectY(node.x);
+
       const groups = [familyGroupIds.get(node)!];
       if (node.parent) groups.push(familyGroupIds.get(node.parent)!);
 
       if (options.useRectangles) {
-        elements.push(this.createRectangle(node.y, node.x, nodeWidth, 45, bgColor, id, groups, boundElements));
-        elements.push(this.createText(node.y, node.x - 12, displayName, options.textAngle, this.generateId(), nodeWidth, "center", groups));
+        const textId = this.generateId();
+        const rectBoundElements = [...boundElements, { id: textId, type: "text" }];
+        elements.push(this.createRectangle(nx, ny, nodeWidth, 45, bgColor, id, groups, rectBoundElements));
+        elements.push(this.createText(nx, ny, displayName, options.textAngle, textId, nodeWidth, "center", groups, id));
       } else {
-        elements.push(this.createDot(node.y, node.x, bgColor, id, groups, boundElements));
-        elements.push(this.createText(node.y + 10, node.x - 10, displayName, options.textAngle, this.generateId(), nodeWidth, "left", groups));
+        const nodeGroupId = this.generateId();
+        const combinedGroups = [nodeGroupId, ...groups];
+        elements.push(this.createDot(nx, ny, bgColor, id, combinedGroups, boundElements));
+        elements.push(this.createText(nx + 10, ny - 10, displayName, options.textAngle, this.generateId(), nodeWidth, "left", combinedGroups));
       }
     });
 
@@ -366,7 +388,7 @@ export class ExcalidrawExporter {
     });
 
     const project = (x: number, y: number) => {
-      const angle = x - Math.PI / 2;
+      const angle = (options.direction === 'rtl' ? -x : x) - Math.PI / 2;
       const radius = y;
       return [radius * Math.cos(angle), radius * Math.sin(angle)];
     };
@@ -405,7 +427,7 @@ export class ExcalidrawExporter {
       if (node.parent) groups.push(familyGroupIds.get(node.parent)!);
 
       // Intelligent Labeling & Geometry
-      let textAngleDegrees = (node.x * 180 / Math.PI) - 90;
+      let textAngleDegrees = ((options.direction === 'rtl' ? -node.x : node.x) * 180 / Math.PI) - 90;
       let textAlign = "left";
       
       // Normalize angle to [0, 360)
@@ -423,19 +445,23 @@ export class ExcalidrawExporter {
       }
 
       if (options.useRectangles) {
-        elements.push(this.createRectangle(x, y, nodeWidth, 40, bgColor, id, groups, boundElements));
-        elements.push(this.createText(x, y - 10, displayName, textAngleDegrees, this.generateId(), nodeWidth, textAlign, groups));
+        const textId = this.generateId();
+        const rectBoundElements = [...boundElements, { id: textId, type: "text" }];
+        elements.push(this.createRectangle(x, y, nodeWidth, 40, bgColor, id, groups, rectBoundElements));
+        elements.push(this.createText(x, y, displayName, textAngleDegrees, textId, nodeWidth, textAlign, groups, id));
       } else {
         // No-Rectangle Mode
-        elements.push(this.createDot(x, y, bgColor, id, groups, boundElements));
+        const nodeGroupId = this.generateId();
+        const combinedGroups = [nodeGroupId, ...groups];
+        elements.push(this.createDot(x, y, bgColor, id, combinedGroups, boundElements));
         
         // Offset text slightly in direction of radius
         const offsetDist = 12;
-        const angleRad = (node.x - Math.PI / 2);
+        const angleRad = ((options.direction === 'rtl' ? -node.x : node.x) - Math.PI / 2);
         const textOffsetX = Math.cos(angleRad) * offsetDist;
         const textOffsetY = Math.sin(angleRad) * offsetDist;
 
-        elements.push(this.createText(x + textOffsetX, y + textOffsetY - 10, displayName, textAngleDegrees, this.generateId(), nodeWidth, textAlign, groups));
+        elements.push(this.createText(x + textOffsetX, y + textOffsetY - 10, displayName, textAngleDegrees, this.generateId(), nodeWidth, textAlign, combinedGroups));
       }
     });
 
