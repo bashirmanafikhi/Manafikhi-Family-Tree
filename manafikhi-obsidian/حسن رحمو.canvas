@@ -37,66 +37,6 @@
 			"color":"2"
 		},
 		{
-			"id":"ed22a1ef070eaa54",
-			"type":"text",
-			"text":"رئوش",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/a0d5aef3976d633e.md",
-			"x":-529,
-			"y":138,
-			"width":120,
-			"height":50,
-			"color":"2"
-		},
-		{
-			"id":"4c2addc7676eb90b",
-			"type":"text",
-			"text":"امون",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/bb3a450f3fa179ad.md",
-			"x":48,
-			"y":138,
-			"width":120,
-			"height":50,
-			"color":"2"
-		},
-		{
-			"id":"308714a7157a5759",
-			"type":"text",
-			"text":"عمر",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/0a180d76982ace1b.md",
-			"x":-99,
-			"y":138,
-			"width":120,
-			"height":50,
-			"color":"2"
-		},
-		{
-			"id":"302cdbc792d8abdd",
-			"type":"text",
-			"text":"وجدة",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/3d42ccca71c4ca89.md",
-			"x":-392,
-			"y":138,
-			"width":120,
-			"height":50,
-			"color":"2"
-		},
-		{
-			"id":"a9542b353d8dec75",
-			"type":"text",
-			"text":"فطوم",
-			"styleAttributes":{"textAlign":"center"},
-			"file":"people/1c9cbdb4910ff90e.md",
-			"x":-252,
-			"y":138,
-			"width":120,
-			"height":50,
-			"color":"2"
-		},
-		{
 			"id":"7edf905e564e7834",
 			"type":"text",
 			"text":"حسن",
@@ -262,6 +202,66 @@
 			"y":555,
 			"width":120,
 			"height":50
+		},
+		{
+			"id":"4c2addc7676eb90b",
+			"type":"text",
+			"text":"امون",
+			"styleAttributes":{"textAlign":"center"},
+			"file":"people/bb3a450f3fa179ad.md",
+			"x":55,
+			"y":144,
+			"width":120,
+			"height":50,
+			"color":"2"
+		},
+		{
+			"id":"308714a7157a5759",
+			"type":"text",
+			"text":"عمر",
+			"styleAttributes":{"textAlign":"center"},
+			"file":"people/0a180d76982ace1b.md",
+			"x":-94,
+			"y":144,
+			"width":120,
+			"height":50,
+			"color":"2"
+		},
+		{
+			"id":"a9542b353d8dec75",
+			"type":"text",
+			"text":"فطوم",
+			"styleAttributes":{"textAlign":"center"},
+			"file":"people/1c9cbdb4910ff90e.md",
+			"x":-231,
+			"y":144,
+			"width":120,
+			"height":50,
+			"color":"2"
+		},
+		{
+			"id":"302cdbc792d8abdd",
+			"type":"text",
+			"text":"وجدة",
+			"styleAttributes":{"textAlign":"center"},
+			"file":"people/3d42ccca71c4ca89.md",
+			"x":-368,
+			"y":144,
+			"width":120,
+			"height":50,
+			"color":"2"
+		},
+		{
+			"id":"ed22a1ef070eaa54",
+			"type":"text",
+			"text":"رئوش",
+			"styleAttributes":{"textAlign":"center"},
+			"file":"people/a0d5aef3976d633e.md",
+			"x":-514,
+			"y":144,
+			"width":120,
+			"height":50,
+			"color":"2"
 		}
 	],
 	"edges":[

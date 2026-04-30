@@ -11,17 +11,14 @@
             "id": "43d556a0adaf4559",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "بيت ديبو.canvas",
-                "viewState": {
-                  "x": 51.90278837676924,
-                  "y": -431.1940569819543,
-                  "zoom": -0.6666666666666666
-                }
+                "file": "prompts/excalidraw exporter prompt.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "بيت ديبو"
+              "icon": "lucide-file",
+              "title": "excalidraw exporter prompt"
             }
           }
         ]
@@ -173,10 +170,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "بيت ديبو.canvas"
+                "file": "prompts/excalidraw exporter prompt.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for بيت ديبو"
+              "title": "File properties for excalidraw exporter prompt"
             }
           }
         ],
@@ -199,16 +196,17 @@
   },
   "active": "43d556a0adaf4559",
   "lastOpenFiles": [
+    "بيت ديبو.canvas",
+    "prompts/excalidraw exporter prompt.md",
     "حسن رحمو.canvas",
+    "عائشة ام شريف.canvas",
+    "حج محمود ابو فؤاد.canvas",
     "شجرة الكبار.canvas",
+    "prompts/احصائات عدد الأفراد.md",
     "tree.canvas",
     "draft_canvas.canvas",
-    "بيت ديبو.canvas",
-    "حج محمود ابو فؤاد.canvas",
-    "عائشة ام شريف.canvas",
     "ام شريف.md",
     "prompts/رسم شجرة.md",
-    "prompts/احصائات عدد الأفراد.md",
     "People_Base.base",
     "prompts/رسم شجرة مع الأفرع.md",
     "tree copy.json",
@@ -235,7 +233,6 @@
     "people/10c15800b5b2de2e.md",
     "people/feb6d4c2e242d784.md",
     "people/575b293dbe340bbc.md",
-    "people/3b6a2890e9b830e5.md",
     "people",
     "people/images/2.jpeg",
     "people/images",
