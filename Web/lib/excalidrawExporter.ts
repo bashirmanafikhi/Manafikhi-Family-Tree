@@ -159,57 +159,66 @@ export class ExcalidrawExporter {
   }
 
   private static processNodes(root: HierarchyPointNode<PersonNode>, options: ExcalidrawExportOptions, projectFn: (node: HierarchyPointNode<PersonNode>) => [number, number], arrowFn: (link: HierarchyLink<PersonNode>) => [number, number][]) {
-    const elements: any[] = [];
-    const nodeIds = new Map<HierarchyPointNode<PersonNode>, string>();
-    const boundMap = new Map<string, any[]>();
+  const elements: any[] = [];
+  const nodeIds = new Map<HierarchyPointNode<PersonNode>, string>();
+  const boundMap = new Map<string, any[]>();
 
-    root.each(n => {
-      const id = this.generateId();
-      nodeIds.set(n, id);
-      boundMap.set(id, []);
-    });
+  // Pre-generate IDs so arrows can reference them before nodes are created
+  root.each(n => {
+    const id = this.generateId();
+    nodeIds.set(n, id);
+    boundMap.set(id, []);
+  });
 
-    root.links().forEach(link => {
-      const points = arrowFn(link);
-      const sourceId = nodeIds.get(link.source as HierarchyPointNode<PersonNode>)!;
-      const targetId = nodeIds.get(link.target as HierarchyPointNode<PersonNode>)!;
-      const arrow = this.createArrow(points, sourceId, targetId, [], options);
-      elements.push(arrow);
-      boundMap.get(sourceId)?.push({ id: arrow.id, type: "arrow" });
-      boundMap.get(targetId)?.push({ id: arrow.id, type: "arrow" });
-    });
+  // Create Arrows
+  root.links().forEach(link => {
+    const points = arrowFn(link);
+    const sourceId = nodeIds.get(link.source as HierarchyPointNode<PersonNode>)!;
+    const targetId = nodeIds.get(link.target as HierarchyPointNode<PersonNode>)!;
+    const arrow = this.createArrow(points, sourceId, targetId, [], options);
+    
+    elements.push(arrow);
+    boundMap.get(sourceId)?.push({ id: arrow.id, type: "arrow" });
+    boundMap.get(targetId)?.push({ id: arrow.id, type: "arrow" });
+  });
 
-    root.each(node => {
-      const [nx, ny] = projectFn(node);
-      const id = nodeIds.get(node)!;
-      const group = [this.generateId()];
-      const text = node.data.firstName;
-      const genColor = this.getGenerationColor(node.data.generation || 0);
+  // Create Nodes
+  root.each(node => {
+    const [nx, ny] = projectFn(node);
+    const id = nodeIds.get(node)!; // This ID is what arrows are bound to
+    const group = [this.generateId()];
+    const text = node.data.firstName;
+    const genColor = this.getGenerationColor(node.data.generation || 0);
 
-      if (options.useRectangles) {
-        const textId = this.generateId();
-        const rectW = 85, rectH = 22;
-        elements.push(this.createRectangle(nx, ny, rectW, rectH, genColor, id, group, [...(boundMap.get(id) || []), { id: textId, type: "text" }], options.strokeWidth));
-        elements.push(this.createText(nx, ny, text, 0, textId, rectW, rectH, group, id));
-      } else {
-        // رسم النقطة فقط
-        elements.push(this.createDot(nx, ny, genColor, id, group, boundMap.get(id) || [], options.strokeWidth));
-
-        let angle = 0;
-        if (options.layout === 'radial') {
-          const rawAngle = (options.direction === 'rtl' ? -node.x : node.x) - Math.PI / 2;
-          const deg = (rawAngle * 180) / Math.PI;
-          angle = (deg % 360 + 360) % 360;
-          if (angle > 90 && angle < 270) angle += 180;
-        }
-
-        // تم حذف المستطيل الأبيض (الخلفية) وترك النص فقط ممركزاً
-        elements.push(this.createText(nx, ny, text, angle, this.generateId(), 80, 20, group, null));
+    if (options.useRectangles) {
+      const textId = this.generateId();
+      const rectW = 85, rectH = 22;
+      // Arrows bind to the Rectangle
+      elements.push(this.createRectangle(nx, ny, rectW, rectH, genColor, id, group, [...(boundMap.get(id) || []), { id: textId, type: "text" }], options.strokeWidth));
+      elements.push(this.createText(nx, ny, text, 0, textId, rectW, rectH, group, id));
+    } else {
+      // Logic for Text-Only (No Dots)
+      let angle = 0;
+      if (options.layout === 'radial') {
+        const rawAngle = (options.direction === 'rtl' ? -node.x : node.x) - Math.PI / 2;
+        const deg = (rawAngle * 180) / Math.PI;
+        angle = (deg % 360 + 360) % 360;
+        if (angle > 90 && angle < 270) angle += 180;
       }
-    });
 
-    return elements;
-  }
+      // Arrows bind directly to the Text element because we pass 'id' here
+      // We use boundMap to ensure the text element knows it has arrows attached
+      const textElement = this.createText(nx, ny, text, angle, id, 80, 20, group, null);
+      
+      // Attach the arrow bindings to the text element
+      (textElement as any).boundElements = boundMap.get(id) || [];
+      
+      elements.push(textElement);
+    }
+  });
+
+  return elements;
+}
 
   private static drawVerticalLayout(root: HierarchyPointNode<PersonNode>, options: ExcalidrawExportOptions) {
     return this.processNodes(root, options,
