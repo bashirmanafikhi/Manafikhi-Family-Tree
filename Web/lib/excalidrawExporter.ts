@@ -21,6 +21,8 @@ export interface ExcalidrawExportOptions {
   includeDates: boolean;
   textAngle: number; // 0, 45, 90
   compactSpacing: boolean;
+  lineStyle: 'solid' | 'dashed' | 'dotted';
+  lineSharpness: 'round' | 'sharp';
 }
 
 export class ExcalidrawExporter {
@@ -31,29 +33,30 @@ export class ExcalidrawExporter {
     // 2. Compute Layout
     const d3Hierarchy = hierarchy(rootNode);
     
-    // Config dimensions based on options
-    let nodeWidth = options.useRectangles ? 150 : 20;
-    let nodeHeight = options.useRectangles ? 60 : 20;
-    
-    // If text is angled and we don't use rectangles, width can be very small
-    if (options.textAngle !== 0 && !options.useRectangles) {
-        nodeWidth = 20;
-        nodeHeight = 20;
-    }
-
-    const dx = options.compactSpacing ? nodeHeight * 1.5 : nodeHeight * 2;
-    const dy = options.compactSpacing ? nodeWidth * 1.2 : nodeWidth * 1.5;
-
     let elements: any[] = [];
     
     if (options.layout === 'radial') {
-      const treeLayout = d3Tree<PersonNode>().size([2 * Math.PI, d3Hierarchy.height * dy])(d3Hierarchy);
+      const radiusStep = options.compactSpacing ? 120 : 180;
+      // Variable Radius Strategy: Exponential increase
+      const treeLayout = d3Tree<PersonNode>()
+        .size([2 * Math.PI, 1]) // We will scale radius manually
+        .separation((a, b) => (a.parent === b.parent ? 1 : 2) / a.depth)(d3Hierarchy);
+      
+      // Calculate depth manually and apply expanding radius
+      treeLayout.each(d => {
+        // Depth increases distance exponentially
+        d.y = d.depth * radiusStep * Math.pow(1.1, d.depth);
+      });
       elements = this.drawRadialLayout(treeLayout, options);
     } else if (options.layout === 'horizontal') {
+      const dx = options.compactSpacing ? 40 : 60;
+      const dy = options.compactSpacing ? 200 : 250;
       const treeLayout = d3Tree<PersonNode>().nodeSize([dx, dy])(d3Hierarchy);
       elements = this.drawHorizontalLayout(treeLayout, options);
     } else { // vertical
-      const treeLayout = d3Tree<PersonNode>().nodeSize([dy, dx])(d3Hierarchy);
+      const dx = options.compactSpacing ? 150 : 200;
+      const dy = options.compactSpacing ? 80 : 120;
+      const treeLayout = d3Tree<PersonNode>().nodeSize([dx, dy])(d3Hierarchy);
       elements = this.drawVerticalLayout(treeLayout, options);
     }
 
@@ -63,7 +66,7 @@ export class ExcalidrawExporter {
       source: "https://family-tree-app",
       elements: elements,
       appState: {
-        viewBackgroundColor: "#ffffff",
+        viewBackgroundColor: "#f8f9fa",
       }
     };
   }
@@ -75,12 +78,7 @@ export class ExcalidrawExporter {
       return node;
     }
 
-    // find children
     const children = allPersons.filter(p => p.fatherId === person.id || p.motherId === person.id);
-    
-    // handle deduplication if needed? for now just simple tree
-    // a real family tree might be a DAG, but d3-hierarchy requires a tree.
-    // We only traverse down, so no loops from children.
     
     if (children.length > 0) {
       node.children = children.map(c => this.buildHierarchy(c, allPersons, currentGen + 1, maxGen));
@@ -93,15 +91,16 @@ export class ExcalidrawExporter {
   }
 
   private static getGenerationColor(generation: number) {
-    const colors = ["#ffc9c9", "#b2f2bb", "#a5d8ff", "#ffec99", "#d0bfff", "#ffccf9", "#eebefa"];
+    // Professional, faded palette that doesn't distract from text
+    const colors = ["#f8f9fa", "#e9ecef", "#dee2e6", "#ced4da", "#adb5bd", "#f1f3f5", "#e2e8f0"];
     return colors[generation % colors.length];
   }
 
-  private static createRectangle(x: number, y: number, width: number, height: number, bgColor: string, id: string) {
+  private static createRectangle(x: number, y: number, width: number, height: number, bgColor: string, id: string, groupIds: string[] = [], boundElements: any[] = []) {
     return {
       type: "rectangle",
       version: 1,
-      versionNonce: Math.random(),
+      versionNonce: Math.floor(Math.random() * 2147483647),
       isDeleted: false,
       id,
       fillStyle: "solid",
@@ -110,50 +109,50 @@ export class ExcalidrawExporter {
       roughness: 0,
       opacity: 100,
       angle: 0,
-      x: x - width/2,
-      y: y - height/2,
-      strokeColor: "#000000",
+      x: x - width / 2,
+      y: y - height / 2,
+      strokeColor: "#343a40",
       backgroundColor: bgColor,
       width,
       height,
-      seed: Math.floor(Math.random() * 10000),
-      groupIds: [],
+      seed: Math.floor(Math.random() * 2147483647),
+      groupIds,
       strokeSharpness: "round",
-      boundElements: []
+      boundElements
     };
   }
 
-  private static createDot(x: number, y: number, bgColor: string, id: string) {
+  private static createDot(x: number, y: number, bgColor: string, id: string, groupIds: string[] = [], boundElements: any[] = []) {
     return {
       type: "ellipse",
       version: 1,
-      versionNonce: Math.random(),
+      versionNonce: Math.floor(Math.random() * 2147483647),
       isDeleted: false,
       id,
       fillStyle: "solid",
-      strokeWidth: 1,
+      strokeWidth: 2,
       strokeStyle: "solid",
       roughness: 0,
       opacity: 100,
       angle: 0,
-      x: x - 5,
-      y: y - 5,
-      strokeColor: "#000000",
+      x: x - 4,
+      y: y - 4,
+      strokeColor: "#495057",
       backgroundColor: bgColor,
-      width: 10,
-      height: 10,
-      seed: Math.floor(Math.random() * 10000),
-      groupIds: [],
+      width: 8,
+      height: 8,
+      seed: Math.floor(Math.random() * 2147483647),
+      groupIds,
       strokeSharpness: "round",
-      boundElements: []
+      boundElements
     };
   }
 
-  private static createText(x: number, y: number, text: string, angle: number, id: string, width = 100, textAlign = "center") {
+  private static createText(x: number, y: number, text: string, angle: number, id: string, width: number, textAlign = "center", groupIds: string[] = []) {
     return {
       type: "text",
       version: 1,
-      versionNonce: Math.random(),
+      versionNonce: Math.floor(Math.random() * 2147483647),
       isDeleted: false,
       id,
       fillStyle: "solid",
@@ -162,68 +161,110 @@ export class ExcalidrawExporter {
       roughness: 0,
       opacity: 100,
       angle: (angle * Math.PI) / 180,
-      x: x - width/2,
-      y: y - 10, // approximate centering
-      strokeColor: "#000000",
+      x: x - width / 2,
+      y: y,
+      strokeColor: "#212529",
       backgroundColor: "transparent",
       width: width,
       height: 20,
-      seed: Math.floor(Math.random() * 10000),
-      groupIds: [],
+      seed: Math.floor(Math.random() * 2147483647),
+      groupIds,
       strokeSharpness: "sharp",
       boundElements: [],
-      fontSize: 16,
+      fontSize: 14,
       fontFamily: 1,
       text: text,
-      baseline: 14,
+      baseline: 12,
       textAlign: textAlign,
       verticalAlign: "top"
     };
   }
 
-  private static createArrow(startX: number, startY: number, endX: number, endY: number, startId: string, endId: string) {
+  private static createArrow(id: string, points: [number, number][], startId: string, endId: string, groupIds: string[] = [], options: ExcalidrawExportOptions) {
+    const startX = points[0][0];
+    const startY = points[0][1];
+    const relativePoints = points.map(p => [p[0] - startX, p[1] - startY]);
+    const minX = Math.min(...relativePoints.map(p => p[0]));
+    const maxX = Math.max(...relativePoints.map(p => p[0]));
+    const minY = Math.min(...relativePoints.map(p => p[1]));
+    const maxY = Math.max(...relativePoints.map(p => p[1]));
+
     return {
       type: "arrow",
       version: 1,
-      versionNonce: Math.random(),
+      versionNonce: Math.floor(Math.random() * 2147483647),
       isDeleted: false,
-      id: this.generateId(),
+      id: id,
       fillStyle: "hachure",
       strokeWidth: 1,
-      strokeStyle: "solid",
+      strokeStyle: options.lineStyle || "solid",
       roughness: 0,
       opacity: 100,
       angle: 0,
       x: startX,
       y: startY,
-      strokeColor: "#999999",
+      strokeColor: "#adb5bd",
       backgroundColor: "transparent",
-      width: Math.abs(endX - startX) || 1, // Excalidraw expects width/height > 0
-      height: Math.abs(endY - startY) || 1,
-      seed: Math.floor(Math.random() * 10000),
-      groupIds: [],
-      strokeSharpness: "round",
+      width: Math.max(1, maxX - minX),
+      height: Math.max(1, maxY - minY),
+      seed: Math.floor(Math.random() * 2147483647),
+      groupIds,
+      strokeSharpness: options.lineSharpness || "round",
       boundElements: [],
       startBinding: { elementId: startId, focus: 0, gap: 5 },
       endBinding: { elementId: endId, focus: 0, gap: 5 },
-      points: [[0, 0], [endX - startX, endY - startY]],
+      points: relativePoints,
       lastCommittedPoint: null,
       startArrowhead: null,
-      endArrowhead: null // no arrowhead for family tree looks cleaner
+      endArrowhead: null
     };
+  }
+
+  private static getNodeDisplayName(node: d3.HierarchyPointNode<PersonNode>, includeDates: boolean) {
+    let displayName = node.data.firstName;
+    if (includeDates && node.data.birthDate) {
+      displayName += `\n(${new Date(node.data.birthDate).getFullYear()})`;
+    }
+    return displayName;
+  }
+
+  private static getNodeWidth(text: string) {
+    // Dynamic Width Calculation based on text length
+    const longestLine = text.split('\n').reduce((a, b) => a.length > b.length ? a : b, "");
+    return Math.max(80, longestLine.length * 9);
   }
 
   private static drawVerticalLayout(root: d3.HierarchyPointNode<PersonNode>, options: ExcalidrawExportOptions) {
     const elements: any[] = [];
     const nodeIds = new Map<d3.HierarchyPointNode<PersonNode>, string>();
+    const familyGroupIds = new Map<d3.HierarchyPointNode<PersonNode>, string>();
+    const boundElementsMap = new Map<string, { id: string, type: string }[]>();
+
+    const addBoundElement = (nodeId: string, arrowId: string) => {
+      if (!boundElementsMap.has(nodeId)) boundElementsMap.set(nodeId, []);
+      boundElementsMap.get(nodeId)!.push({ id: arrowId, type: "arrow" });
+    };
     
     root.each(node => {
       nodeIds.set(node, this.generateId());
+      familyGroupIds.set(node, this.generateId()); // Nuclear family group (parent + children + lines)
     });
 
-    // Draw links first so they are under nodes
     root.links().forEach(link => {
-      elements.push(this.createArrow(link.source.x, link.source.y, link.target.x, link.target.y, nodeIds.get(link.source)!, nodeIds.get(link.target)!));
+      const sourceId = nodeIds.get(link.source)!;
+      const targetId = nodeIds.get(link.target)!;
+      const groupId = familyGroupIds.get(link.source)!;
+      const arrowId = this.generateId();
+      
+      const sx = link.source.x, sy = link.source.y;
+      const tx = link.target.x, ty = link.target.y;
+      // Smooth Bezier / Step-after
+      const midY = (sy + ty) / 2;
+      const points: [number, number][] = [[sx, sy], [sx, midY], [tx, midY], [tx, ty]];
+      
+      elements.push(this.createArrow(arrowId, points, sourceId, targetId, [groupId], options));
+      addBoundElement(sourceId, arrowId);
+      addBoundElement(targetId, arrowId);
     });
 
     root.each(node => {
@@ -231,17 +272,20 @@ export class ExcalidrawExporter {
       const gen = node.data.generation || 0;
       const bgColor = this.getGenerationColor(gen);
       
-      let displayName = node.data.firstName;
-      if (options.includeDates && node.data.birthDate) {
-        displayName += `\n(${new Date(node.data.birthDate).getFullYear()})`;
-      }
+      const displayName = this.getNodeDisplayName(node, options.includeDates);
+      const nodeWidth = this.getNodeWidth(displayName);
+      const boundElements = boundElementsMap.get(id) || [];
+      
+      // Node belongs to its parent's family group and its own family group
+      const groups = [familyGroupIds.get(node)!];
+      if (node.parent) groups.push(familyGroupIds.get(node.parent)!);
 
       if (options.useRectangles) {
-        elements.push(this.createRectangle(node.x, node.y, 120, 50, bgColor, id));
-        elements.push(this.createText(node.x, node.y, displayName, options.textAngle, this.generateId(), 100));
+        elements.push(this.createRectangle(node.x, node.y, nodeWidth, 45, bgColor, id, groups, boundElements));
+        elements.push(this.createText(node.x, node.y - 12, displayName, options.textAngle, this.generateId(), nodeWidth, "center", groups));
       } else {
-        elements.push(this.createDot(node.x, node.y, bgColor, id));
-        elements.push(this.createText(node.x, node.y + 15, displayName, options.textAngle, this.generateId(), 100));
+        elements.push(this.createDot(node.x, node.y, bgColor, id, groups, boundElements));
+        elements.push(this.createText(node.x, node.y + 10, displayName, options.textAngle, this.generateId(), nodeWidth, "center", groups));
       }
     });
 
@@ -251,14 +295,34 @@ export class ExcalidrawExporter {
   private static drawHorizontalLayout(root: d3.HierarchyPointNode<PersonNode>, options: ExcalidrawExportOptions) {
     const elements: any[] = [];
     const nodeIds = new Map<d3.HierarchyPointNode<PersonNode>, string>();
+    const familyGroupIds = new Map<d3.HierarchyPointNode<PersonNode>, string>();
+    const boundElementsMap = new Map<string, { id: string, type: string }[]>();
+
+    const addBoundElement = (nodeId: string, arrowId: string) => {
+      if (!boundElementsMap.has(nodeId)) boundElementsMap.set(nodeId, []);
+      boundElementsMap.get(nodeId)!.push({ id: arrowId, type: "arrow" });
+    };
     
     root.each(node => {
       nodeIds.set(node, this.generateId());
+      familyGroupIds.set(node, this.generateId());
     });
 
     root.links().forEach(link => {
+      const sourceId = nodeIds.get(link.source)!;
+      const targetId = nodeIds.get(link.target)!;
+      const groupId = familyGroupIds.get(link.source)!;
+      const arrowId = this.generateId();
+      
       // note: for horizontal, x and y are swapped
-      elements.push(this.createArrow(link.source.y, link.source.x, link.target.y, link.target.x, nodeIds.get(link.source)!, nodeIds.get(link.target)!));
+      const sx = link.source.y, sy = link.source.x;
+      const tx = link.target.y, ty = link.target.x;
+      const midX = (sx + tx) / 2;
+      const points: [number, number][] = [[sx, sy], [midX, sy], [midX, ty], [tx, ty]];
+      
+      elements.push(this.createArrow(arrowId, points, sourceId, targetId, [groupId], options));
+      addBoundElement(sourceId, arrowId);
+      addBoundElement(targetId, arrowId);
     });
 
     root.each(node => {
@@ -266,17 +330,19 @@ export class ExcalidrawExporter {
       const gen = node.data.generation || 0;
       const bgColor = this.getGenerationColor(gen);
       
-      let displayName = node.data.firstName;
-      if (options.includeDates && node.data.birthDate) {
-        displayName += `\n(${new Date(node.data.birthDate).getFullYear()})`;
-      }
+      const displayName = this.getNodeDisplayName(node, options.includeDates);
+      const nodeWidth = this.getNodeWidth(displayName);
+      const boundElements = boundElementsMap.get(id) || [];
+
+      const groups = [familyGroupIds.get(node)!];
+      if (node.parent) groups.push(familyGroupIds.get(node.parent)!);
 
       if (options.useRectangles) {
-        elements.push(this.createRectangle(node.y, node.x, 120, 50, bgColor, id));
-        elements.push(this.createText(node.y, node.x, displayName, options.textAngle, this.generateId(), 100));
+        elements.push(this.createRectangle(node.y, node.x, nodeWidth, 45, bgColor, id, groups, boundElements));
+        elements.push(this.createText(node.y, node.x - 12, displayName, options.textAngle, this.generateId(), nodeWidth, "center", groups));
       } else {
-        elements.push(this.createDot(node.y, node.x, bgColor, id));
-        elements.push(this.createText(node.y, node.x + 15, displayName, options.textAngle, this.generateId(), 100, "left"));
+        elements.push(this.createDot(node.y, node.x, bgColor, id, groups, boundElements));
+        elements.push(this.createText(node.y + 10, node.x - 10, displayName, options.textAngle, this.generateId(), nodeWidth, "left", groups));
       }
     });
 
@@ -286,9 +352,17 @@ export class ExcalidrawExporter {
   private static drawRadialLayout(root: d3.HierarchyPointNode<PersonNode>, options: ExcalidrawExportOptions) {
     const elements: any[] = [];
     const nodeIds = new Map<d3.HierarchyPointNode<PersonNode>, string>();
+    const familyGroupIds = new Map<d3.HierarchyPointNode<PersonNode>, string>();
+    const boundElementsMap = new Map<string, { id: string, type: string }[]>();
+
+    const addBoundElement = (nodeId: string, arrowId: string) => {
+      if (!boundElementsMap.has(nodeId)) boundElementsMap.set(nodeId, []);
+      boundElementsMap.get(nodeId)!.push({ id: arrowId, type: "arrow" });
+    };
     
     root.each(node => {
       nodeIds.set(node, this.generateId());
+      familyGroupIds.set(node, this.generateId());
     });
 
     const project = (x: number, y: number) => {
@@ -298,9 +372,23 @@ export class ExcalidrawExporter {
     };
 
     root.links().forEach(link => {
+      const sourceId = nodeIds.get(link.source)!;
+      const targetId = nodeIds.get(link.target)!;
+      const groupId = familyGroupIds.get(link.source)!;
+      const arrowId = this.generateId();
+
       const [sx, sy] = project(link.source.x, link.source.y);
       const [tx, ty] = project(link.target.x, link.target.y);
-      elements.push(this.createArrow(sx, sy, tx, ty, nodeIds.get(link.source)!, nodeIds.get(link.target)!));
+      
+      // Radial Curve: middle control point to follow circular flow
+      const midAngle = (link.source.x + link.target.x) / 2;
+      const midRadius = (link.source.y + link.target.y) / 2;
+      const [mx, my] = project(midAngle, midRadius);
+      const points: [number, number][] = [[sx, sy], [mx, my], [tx, ty]];
+
+      elements.push(this.createArrow(arrowId, points, sourceId, targetId, [groupId], options));
+      addBoundElement(sourceId, arrowId);
+      addBoundElement(targetId, arrowId);
     });
 
     root.each(node => {
@@ -309,32 +397,45 @@ export class ExcalidrawExporter {
       const gen = node.data.generation || 0;
       const bgColor = this.getGenerationColor(gen);
       
-      let displayName = node.data.firstName;
-      if (options.includeDates && node.data.birthDate) {
-        displayName += `\n(${new Date(node.data.birthDate).getFullYear()})`;
-      }
+      const displayName = this.getNodeDisplayName(node, options.includeDates);
+      const nodeWidth = this.getNodeWidth(displayName);
+      const boundElements = boundElementsMap.get(id) || [];
 
-      // calculate angle for text so it reads outwards
-      let textAngle = (node.x * 180 / Math.PI) - 90;
-      // flip text if on the left side to be readable
+      const groups = [familyGroupIds.get(node)!];
+      if (node.parent) groups.push(familyGroupIds.get(node.parent)!);
+
+      // Intelligent Labeling & Geometry
+      let textAngleDegrees = (node.x * 180 / Math.PI) - 90;
       let textAlign = "left";
-      if (textAngle > 90 || textAngle < -90) {
-        textAngle += 180;
+      
+      // Normalize angle to [0, 360)
+      let normalizedAngle = ((textAngleDegrees % 360) + 360) % 360;
+      
+      // If label is in the left hemisphere (90 to 270), flip it 180 so it remains readable
+      if (normalizedAngle > 90 && normalizedAngle < 270) {
+        textAngleDegrees += 180;
         textAlign = "right";
       }
       
-      // if user explicitly sets textAngle we can override or just add
       if (options.textAngle !== 0) {
-         textAngle = options.textAngle; // absolute override if wanted
+         textAngleDegrees = options.textAngle;
          textAlign = "center";
       }
 
       if (options.useRectangles) {
-        elements.push(this.createRectangle(x, y, 100, 40, bgColor, id));
-        elements.push(this.createText(x, y, displayName, textAngle, this.generateId(), 100, textAlign));
+        elements.push(this.createRectangle(x, y, nodeWidth, 40, bgColor, id, groups, boundElements));
+        elements.push(this.createText(x, y - 10, displayName, textAngleDegrees, this.generateId(), nodeWidth, textAlign, groups));
       } else {
-        elements.push(this.createDot(x, y, bgColor, id));
-        elements.push(this.createText(x, y, displayName, textAngle, this.generateId(), 100, textAlign));
+        // No-Rectangle Mode
+        elements.push(this.createDot(x, y, bgColor, id, groups, boundElements));
+        
+        // Offset text slightly in direction of radius
+        const offsetDist = 12;
+        const angleRad = (node.x - Math.PI / 2);
+        const textOffsetX = Math.cos(angleRad) * offsetDist;
+        const textOffsetY = Math.sin(angleRad) * offsetDist;
+
+        elements.push(this.createText(x + textOffsetX, y + textOffsetY - 10, displayName, textAngleDegrees, this.generateId(), nodeWidth, textAlign, groups));
       }
     });
 

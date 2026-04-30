@@ -12,6 +12,8 @@ export function ExcalidrawModal({ person, allPersons }: { person: any, allPerson
     includeDates: true,
     textAngle: 0,
     compactSpacing: false,
+    lineStyle: 'solid',
+    lineSharpness: 'round',
   })
 
   const handleExport = () => {
@@ -75,6 +77,31 @@ export function ExcalidrawModal({ person, allPersons }: { person: any, allPerson
                   <option value={0}>0 (أفقي)</option>
                   <option value={45}>45 درجة</option>
                   <option value={90}>90 درجة (عمودي)</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1" style={{ color: '#6b6560' }}>نمط الخطوط (Line Style)</label>
+                <select 
+                  className="input-field w-full" 
+                  value={options.lineStyle} 
+                  onChange={e => setOptions({...options, lineStyle: e.target.value as any})}
+                >
+                  <option value="solid">متصل (Solid)</option>
+                  <option value="dashed">متقطع (Dashed)</option>
+                  <option value="dotted">منقط (Dotted)</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1" style={{ color: '#6b6560' }}>زوايا الخطوط (Line Sharpness)</label>
+                <select 
+                  className="input-field w-full" 
+                  value={options.lineSharpness} 
+                  onChange={e => setOptions({...options, lineSharpness: e.target.value as any})}
+                >
+                  <option value="round">منحني (Round / Curved)</option>
+                  <option value="sharp">حادة (Sharp)</option>
                 </select>
               </div>
 
