@@ -115,14 +115,27 @@ export class ExcalidrawExporter {
     };
   }
 
-  private static createText(x: number, y: number, text: string, angle: number, id: string, width: number, height: number, groupIds: string[], containerId: string | null) {
+  // Updated to accept dynamic font size and color
+  private static createText(
+    x: number,
+    y: number,
+    text: string,
+    angle: number,
+    id: string,
+    width: number,
+    height: number,
+    groupIds: string[],
+    containerId: string | null,
+    fontSize: number, // Added
+    strokeColor: string // Added
+  ) {
     return {
       type: "text",
       id,
       x: x - width / 2,
       y: y - height / 2,
       text,
-      fontSize: 11,
+      fontSize,
       fontFamily: 1,
       textAlign: "center",
       verticalAlign: "middle",
@@ -130,10 +143,17 @@ export class ExcalidrawExporter {
       angle: (angle * Math.PI) / 180,
       width,
       height,
-      strokeColor: "#000000",
+      strokeColor,
       groupIds,
-      version: 1, versionNonce: Math.random()
+      version: 1,
+      versionNonce: Math.random()
     };
+  }
+
+  // More "Design-forward" color palette for text
+  private static getGenerationTextColor(generation: number) {
+    const colors = ["#1e1e1e", "#364fc7", "#087f5b", "#d9480f", "#5f3dc4", "#c2255c"];
+    return colors[generation % colors.length];
   }
 
   private static createArrow(points: [number, number][], startId: string, endId: string, groupIds: string[], options: ExcalidrawExportOptions) {
@@ -159,66 +179,81 @@ export class ExcalidrawExporter {
   }
 
   private static processNodes(root: HierarchyPointNode<PersonNode>, options: ExcalidrawExportOptions, projectFn: (node: HierarchyPointNode<PersonNode>) => [number, number], arrowFn: (link: HierarchyLink<PersonNode>) => [number, number][]) {
-  const elements: any[] = [];
-  const nodeIds = new Map<HierarchyPointNode<PersonNode>, string>();
-  const boundMap = new Map<string, any[]>();
+    const elements: any[] = [];
+    const nodeIds = new Map<HierarchyPointNode<PersonNode>, string>();
+    const boundMap = new Map<string, any[]>();
 
-  // Pre-generate IDs so arrows can reference them before nodes are created
-  root.each(n => {
-    const id = this.generateId();
-    nodeIds.set(n, id);
-    boundMap.set(id, []);
-  });
+    root.each(n => {
+      const id = this.generateId();
+      nodeIds.set(n, id);
+      boundMap.set(id, []);
+    });
 
-  // Create Arrows
-  root.links().forEach(link => {
-    const points = arrowFn(link);
-    const sourceId = nodeIds.get(link.source as HierarchyPointNode<PersonNode>)!;
-    const targetId = nodeIds.get(link.target as HierarchyPointNode<PersonNode>)!;
-    const arrow = this.createArrow(points, sourceId, targetId, [], options);
-    
-    elements.push(arrow);
-    boundMap.get(sourceId)?.push({ id: arrow.id, type: "arrow" });
-    boundMap.get(targetId)?.push({ id: arrow.id, type: "arrow" });
-  });
+    // 1. Create Arrows with dynamic stroke based on depth
+    root.links().forEach(link => {
+      const points = arrowFn(link);
+      const sourceId = nodeIds.get(link.source as HierarchyPointNode<PersonNode>)!;
+      const targetId = nodeIds.get(link.target as HierarchyPointNode<PersonNode>)!;
 
-  // Create Nodes
-  root.each(node => {
-    const [nx, ny] = projectFn(node);
-    const id = nodeIds.get(node)!; // This ID is what arrows are bound to
-    const group = [this.generateId()];
-    const text = node.data.firstName;
-    const genColor = this.getGenerationColor(node.data.generation || 0);
+      // Thicker lines for inner generations, thinner for outer
+      const depth = link.source.depth;
+      const dynamicStroke = Math.max(1, options.strokeWidth * (1 / (depth + 1)));
+      const dynamicOpacity = Math.max(30, options.linkOpacity - (depth * 15));
 
-    if (options.useRectangles) {
-      const textId = this.generateId();
-      const rectW = 85, rectH = 22;
-      // Arrows bind to the Rectangle
-      elements.push(this.createRectangle(nx, ny, rectW, rectH, genColor, id, group, [...(boundMap.get(id) || []), { id: textId, type: "text" }], options.strokeWidth));
-      elements.push(this.createText(nx, ny, text, 0, textId, rectW, rectH, group, id));
-    } else {
-      // Logic for Text-Only (No Dots)
-      let angle = 0;
-      if (options.layout === 'radial') {
-        const rawAngle = (options.direction === 'rtl' ? -node.x : node.x) - Math.PI / 2;
-        const deg = (rawAngle * 180) / Math.PI;
-        angle = (deg % 360 + 360) % 360;
-        if (angle > 90 && angle < 270) angle += 180;
+      const arrow = this.createArrow(points, sourceId, targetId, [], {
+        ...options,
+        strokeWidth: dynamicStroke,
+        linkOpacity: dynamicOpacity
+      });
+
+      elements.push(arrow);
+      boundMap.get(sourceId)?.push({ id: arrow.id, type: "arrow" });
+      boundMap.get(targetId)?.push({ id: arrow.id, type: "arrow" });
+    });
+
+    // 2. Create Nodes with dynamic Font Size
+    root.each(node => {
+      const [nx, ny] = projectFn(node);
+      const id = nodeIds.get(node)!;
+      const group = [this.generateId()];
+      const text = node.data.firstName;
+      const depth = node.depth;
+
+      // FONT CALCULATION:
+      // Root (depth 0) starts large (e.g., 28pt), 
+      // Children (depth 1) 20pt, etc. Minimum 10pt.
+      const fontSize = Math.max(10, 24 * Math.pow(0.8, depth));
+      const textColor = this.getGenerationTextColor(depth);
+
+      if (options.useRectangles) {
+        const textId = this.generateId();
+        const rectW = fontSize * 5, rectH = fontSize * 1.5;
+        const genColor = this.getGenerationColor(depth);
+
+        elements.push(this.createRectangle(nx, ny, rectW, rectH, genColor, id, group, [...(boundMap.get(id) || []), { id: textId, type: "text" }], options.strokeWidth));
+        elements.push(this.createText(nx, ny, text, 0, textId, rectW, rectH, group, id, fontSize, textColor));
+      } else {
+        let angle = 0;
+        if (options.layout === 'radial') {
+          const rawAngle = (options.direction === 'rtl' ? -node.x : node.x) - Math.PI / 2;
+          let deg = (rawAngle * 180) / Math.PI;
+          angle = (deg % 360 + 360) % 360;
+          if (angle > 90 && angle < 270) angle += 180;
+        }
+
+        // Calculate width/height based on text length and font size for better binding
+        const estimatedWidth = text.length * (fontSize * 0.6);
+        const estimatedHeight = fontSize * 1.2;
+
+        const textElement = this.createText(nx, ny, text, angle, id, estimatedWidth, estimatedHeight, group, null, fontSize, textColor);
+        (textElement as any).boundElements = boundMap.get(id) || [];
+
+        elements.push(textElement);
       }
+    });
 
-      // Arrows bind directly to the Text element because we pass 'id' here
-      // We use boundMap to ensure the text element knows it has arrows attached
-      const textElement = this.createText(nx, ny, text, angle, id, 80, 20, group, null);
-      
-      // Attach the arrow bindings to the text element
-      (textElement as any).boundElements = boundMap.get(id) || [];
-      
-      elements.push(textElement);
-    }
-  });
-
-  return elements;
-}
+    return elements;
+  }
 
   private static drawVerticalLayout(root: HierarchyPointNode<PersonNode>, options: ExcalidrawExportOptions) {
     return this.processNodes(root, options,

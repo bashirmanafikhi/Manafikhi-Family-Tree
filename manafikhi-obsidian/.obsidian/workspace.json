@@ -11,14 +11,17 @@
             "id": "f8603762a1d83b9d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "prompts/رسم شجرة.md",
-                "mode": "source",
-                "source": false
+                "file": "عائشة ام شريف.canvas",
+                "viewState": {
+                  "x": -69.5,
+                  "y": 258,
+                  "zoom": -1.233982638867511
+                }
               },
-              "icon": "lucide-file",
-              "title": "رسم شجرة"
+              "icon": "lucide-layout-dashboard",
+              "title": "عائشة ام شريف"
             }
           }
         ]
@@ -170,10 +173,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "prompts/رسم شجرة.md"
+                "file": "عائشة ام شريف.canvas"
               },
               "icon": "lucide-info",
-              "title": "File properties for رسم شجرة"
+              "title": "File properties for عائشة ام شريف"
             }
           }
         ],
@@ -197,16 +200,16 @@
   "active": "f8603762a1d83b9d",
   "lastOpenFiles": [
     "prompts/excalidraw exporter prompt.md",
-    "بيت ديبو.canvas",
-    "حسن رحمو.canvas",
     "عائشة ام شريف.canvas",
+    "بيت ديبو.canvas",
+    "prompts/رسم شجرة.md",
+    "حسن رحمو.canvas",
     "حج محمود ابو فؤاد.canvas",
     "شجرة الكبار.canvas",
     "prompts/احصائات عدد الأفراد.md",
     "tree.canvas",
     "draft_canvas.canvas",
     "ام شريف.md",
-    "prompts/رسم شجرة.md",
     "People_Base.base",
     "prompts/رسم شجرة مع الأفرع.md",
     "tree copy.json",

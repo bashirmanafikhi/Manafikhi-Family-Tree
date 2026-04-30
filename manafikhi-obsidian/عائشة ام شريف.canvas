@@ -1427,6 +1427,16 @@
 			"width":175,
 			"height":60,
 			"color":"4"
+		},
+		{
+			"id":"0a797d3ac24c46c0",
+			"type":"text",
+			"text":"مواليد ياسين\n25-10-1961",
+			"styleAttributes":{"textAlign":"center"},
+			"x":-1074,
+			"y":459,
+			"width":173,
+			"height":157
 		}
 	],
 	"edges":[
