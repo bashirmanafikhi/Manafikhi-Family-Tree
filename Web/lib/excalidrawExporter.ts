@@ -21,10 +21,11 @@ export interface ExcalidrawExportOptions {
   compactSpacing: boolean;
   lineStyle: 'solid' | 'dashed' | 'dotted';
   lineSharpness: 'round' | 'sharp';
-  direction: 'ltr' | 'rtl';
+  direction: 'rtl' | 'ltr';
   strokeWidth: number;
   linkOpacity: number;
   generationSpacing: number;
+  endArrowhead: 'arrow' | 'triangle' | 'bar' | 'dot' | null;
 }
 
 export class ExcalidrawExporter {
@@ -101,8 +102,8 @@ export class ExcalidrawExporter {
     return {
       type: "ellipse",
       id,
-      x: x - 3, y: y - 3,
-      width: 6, height: 6,
+      x: x - 4, y: y - 4,
+      width: 8, height: 8,
       strokeColor: "#333333",
       backgroundColor: bgColor,
       fillStyle: "solid",
@@ -114,16 +115,16 @@ export class ExcalidrawExporter {
     };
   }
 
-  private static createText(x: number, y: number, text: string, angle: number, id: string, width: number, height: number, textAlign: string, groupIds: string[], containerId: string | null) {
+  private static createText(x: number, y: number, text: string, angle: number, id: string, width: number, height: number, groupIds: string[], containerId: string | null) {
     return {
       type: "text",
       id,
-      x: containerId ? x - width / 2 : x,
+      x: x - width / 2,
       y: y - height / 2,
       text,
       fontSize: 11,
       fontFamily: 1,
-      textAlign,
+      textAlign: "center",
       verticalAlign: "middle",
       containerId,
       angle: (angle * Math.PI) / 180,
@@ -149,6 +150,7 @@ export class ExcalidrawExporter {
       strokeStyle: options.lineStyle,
       strokeSharpness: options.lineSharpness,
       opacity: options.linkOpacity,
+      endArrowhead: options.endArrowhead,
       startBinding: { elementId: startId, focus: 0, gap: 0 },
       endBinding: { elementId: endId, focus: 0, gap: 0 },
       groupIds,
@@ -187,29 +189,22 @@ export class ExcalidrawExporter {
       if (options.useRectangles) {
         const textId = this.generateId();
         const rectW = 85, rectH = 22;
-        // النص يوضع تماماً في المركز (Zero Offset)
         elements.push(this.createRectangle(nx, ny, rectW, rectH, genColor, id, group, [...(boundMap.get(id) || []), { id: textId, type: "text" }], options.strokeWidth));
-        elements.push(this.createText(nx, ny, text, 0, textId, rectW, rectH, "center", group, id));
+        elements.push(this.createText(nx, ny, text, 0, textId, rectW, rectH, group, id));
       } else {
+        // رسم النقطة فقط
         elements.push(this.createDot(nx, ny, genColor, id, group, boundMap.get(id) || [], options.strokeWidth));
 
         let angle = 0;
-        let textAlign: "left" | "right" | "center" = "left";
-
         if (options.layout === 'radial') {
           const rawAngle = (options.direction === 'rtl' ? -node.x : node.x) - Math.PI / 2;
           const deg = (rawAngle * 180) / Math.PI;
-
-          const isLeftHalf = Math.cos(rawAngle) < 0;
-          textAlign = isLeftHalf ? "right" : "left";
-
-          // زاوية النص تتبع الشعاع ليكون موازياً للخطوط
           angle = (deg % 360 + 360) % 360;
           if (angle > 90 && angle < 270) angle += 180;
         }
 
-        // النص يبدأ من (nx, ny) تماماً بدون أي بكسل إضافي
-        elements.push(this.createText(nx, ny, text, angle, this.generateId(), 80, 20, textAlign, group, null));
+        // تم حذف المستطيل الأبيض (الخلفية) وترك النص فقط ممركزاً
+        elements.push(this.createText(nx, ny, text, angle, this.generateId(), 80, 20, group, null));
       }
     });
 

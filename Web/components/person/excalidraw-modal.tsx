@@ -18,6 +18,7 @@ export function ExcalidrawModal({ person, allPersons }: { person: any, allPerson
     strokeWidth: 1,
     linkOpacity: 100,
     generationSpacing: 250,
+    endArrowhead: 'arrow', // القيمة الجديدة للتحكم في الأسهم
   })
 
   const handleExport = () => {
@@ -34,26 +35,39 @@ export function ExcalidrawModal({ person, allPersons }: { person: any, allPerson
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)} className="btn-outline flex items-center gap-2" style={{ borderColor: '#4a9d7c', color: '#4a9d7c' }}>
+      {/* زر التفعيل الرئيسي */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="btn-outline flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors hover:bg-slate-50"
+        style={{ borderColor: '#4a9d7c', color: '#4a9d7c' }}
+      >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
         </svg>
         تصدير لـ Excalidraw
       </button>
 
+      {/* النافذة المنبثقة (Modal) */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          {/* تم تغيير max-w-md إلى max-w-2xl لزيادة العرض */}
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl p-6 overflow-y-auto max-h-[90vh]" dir="rtl">
-            <h2 className="text-xl font-bold mb-6 border-b pb-2" style={{ color: '#2d2926' }}>إعدادات التصدير لـ Excalidraw</h2>
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl p-6 overflow-y-auto max-h-[95vh]" dir="rtl">
 
-            {/* استخدام Grid لتوزيع العناصر على عمودين */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mb-6 text-right">
+            {/* الرأس */}
+            <div className="flex justify-between items-center mb-6 border-b pb-4">
+              <h2 className="text-xl font-bold" style={{ color: '#2d2926' }}>إعدادات التصدير الاحترافية</h2>
+              <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-gray-600">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+              </button>
+            </div>
 
+            {/* شبكة الإعدادات */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5 mb-8 text-right">
+
+              {/* التخطيط */}
               <div>
-                <label className="block text-sm font-medium mb-1" style={{ color: '#6b6560' }}>تخطيط الشجرة</label>
+                <label className="block text-sm font-semibold mb-2 text-gray-700">تخطيط الشجرة</label>
                 <select
-                  className="input-field w-full"
+                  className="w-full p-2 border rounded-md bg-gray-50 focus:ring-2 focus:ring-[#4a9d7c] outline-none"
                   value={options.layout}
                   onChange={e => setOptions({ ...options, layout: e.target.value as any })}
                 >
@@ -63,138 +77,132 @@ export function ExcalidrawModal({ person, allPersons }: { person: any, allPerson
                 </select>
               </div>
 
+              {/* رؤوس الأسهم */}
               <div>
-                <label className="block text-sm font-medium mb-1" style={{ color: '#6b6560' }}>عدد الأجيال</label>
+                <label className="block text-sm font-semibold mb-2 text-gray-700">رأس السهم (Arrowhead)</label>
+                <select
+                  className="w-full p-2 border rounded-md bg-gray-50 focus:ring-2 focus:ring-[#4a9d7c] outline-none"
+                  value={options.endArrowhead || 'none'}
+                  onChange={e => setOptions({ ...options, endArrowhead: e.target.value === 'none' ? null : e.target.value as any })}
+                >
+                  <option value="arrow">سهم كلاسيكي</option>
+                  <option value="triangle">مثلث ممتلئ</option>
+                  <option value="dot">نقطة دائري</option>
+                  <option value="bar">خط عرضي (T-shape)</option>
+                  <option value="none">بدون رأس سهم</option>
+                </select>
+              </div>
+
+              {/* عدد الأجيال */}
+              <div>
+                <label className="block text-sm font-semibold mb-2 text-gray-700">أقصى عدد للأجيال</label>
                 <input
-                  type="number"
-                  className="input-field w-full"
-                  min="1" max="20"
-                  value={options.maxGenerations}
+                  type="number" className="w-full p-2 border rounded-md bg-gray-50"
+                  min="1" max="20" value={options.maxGenerations}
                   onChange={e => setOptions({ ...options, maxGenerations: Number(e.target.value) })}
                 />
               </div>
 
+              {/* المسافة */}
               <div>
-                <label className="block text-sm font-medium mb-1" style={{ color: '#6b6560' }}>زاوية النص</label>
-                <select
-                  className="input-field w-full"
-                  value={options.textAngle}
-                  onChange={e => setOptions({ ...options, textAngle: Number(e.target.value) })}
-                >
-                  <option value={0}>0 (أفقي)</option>
-                  <option value={45}>45 درجة</option>
-                  <option value={90}>90 درجة (عمودي)</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-1" style={{ color: '#6b6560' }}>نمط الخطوط</label>
-                <select
-                  className="input-field w-full"
-                  value={options.lineStyle}
-                  onChange={e => setOptions({ ...options, lineStyle: e.target.value as any })}
-                >
-                  <option value="solid">متصل (Solid)</option>
-                  <option value="dashed">متقطع (Dashed)</option>
-                  <option value="dotted">منقط (Dotted)</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-1" style={{ color: '#6b6560' }}>زوايا الخطوط</label>
-                <select
-                  className="input-field w-full"
-                  value={options.lineSharpness}
-                  onChange={e => setOptions({ ...options, lineSharpness: e.target.value as any })}
-                >
-                  <option value="round">منحني (Round)</option>
-                  <option value="sharp">حادة (Sharp)</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-1" style={{ color: '#6b6560' }}>اتجاه الشجرة</label>
-                <select
-                  className="input-field w-full"
-                  value={options.direction}
-                  onChange={e => setOptions({ ...options, direction: e.target.value as any })}
-                >
-                  <option value="rtl">من اليمين لليسار (RTL)</option>
-                  <option value="ltr">من اليسار لليمين (LTR)</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-1" style={{ color: '#6b6560' }}>المسافة بين الأجيال</label>
+                <label className="block text-sm font-semibold mb-2 text-gray-700">المباعدة بين الأجيال ({options.generationSpacing}px)</label>
                 <input
-                  type="number"
-                  className="input-field w-full"
-                  min="50" max="1000" step="10"
-                  value={options.generationSpacing}
+                  type="range" className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#4a9d7c]"
+                  min="100" max="800" step="50" value={options.generationSpacing}
                   onChange={e => setOptions({ ...options, generationSpacing: Number(e.target.value) })}
                 />
               </div>
 
+              {/* نمط الخطوط */}
               <div>
-                <label className="block text-sm font-medium mb-1" style={{ color: '#6b6560' }}>سماكة الخط ({options.strokeWidth}px)</label>
+                <label className="block text-sm font-semibold mb-2 text-gray-700">نمط الروابط</label>
+                <select
+                  className="w-full p-2 border rounded-md bg-gray-50"
+                  value={options.lineStyle} onChange={e => setOptions({ ...options, lineStyle: e.target.value as any })}
+                >
+                  <option value="solid">خط متصل</option>
+                  <option value="dashed">خط مقطع</option>
+                  <option value="dotted">خط منقط</option>
+                </select>
+              </div>
+
+              {/* زوايا الخطوط */}
+              <div>
+                <label className="block text-sm font-semibold mb-2 text-gray-700">انحناء الزوايا</label>
+                <select
+                  className="w-full p-2 border rounded-md bg-gray-50"
+                  value={options.lineSharpness} onChange={e => setOptions({ ...options, lineSharpness: e.target.value as any })}
+                >
+                  <option value="round">منحني (Round)</option>
+                  <option value="sharp">حاد (Sharp)</option>
+                </select>
+              </div>
+
+              {/* سماكة الخط */}
+              <div>
+                <label className="block text-sm font-semibold mb-2 text-gray-700">سماكة الخط ({options.strokeWidth}px)</label>
                 <input
-                  type="range"
-                  className="w-full h-10"
-                  min="1" max="4" step="1"
-                  value={options.strokeWidth}
+                  type="range" className="w-full h-2 bg-gray-200 rounded-lg appearance-none accent-[#4a9d7c]"
+                  min="1" max="4" step="1" value={options.strokeWidth}
                   onChange={e => setOptions({ ...options, strokeWidth: Number(e.target.value) })}
                 />
               </div>
 
-              <div className="md:col-span-1">
-                <label className="block text-sm font-medium mb-1" style={{ color: '#6b6560' }}>شفافية الروابط ({options.linkOpacity}%)</label>
+              {/* الشفافية */}
+              <div>
+                <label className="block text-sm font-semibold mb-2 text-gray-700">شفافية الروابط ({options.linkOpacity}%)</label>
                 <input
-                  type="range"
-                  className="w-full h-10"
-                  min="10" max="100" step="10"
-                  value={options.linkOpacity}
+                  type="range" className="w-full h-2 bg-gray-200 rounded-lg appearance-none accent-[#4a9d7c]"
+                  min="10" max="100" step="10" value={options.linkOpacity}
                   onChange={e => setOptions({ ...options, linkOpacity: Number(e.target.value) })}
                 />
               </div>
 
-              {/* قسم الخيارات المنطقية (Checkbox) يمتد على العمودين */}
-              <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4 border-t pt-4 mt-2" style={{ borderColor: '#ede8e0' }}>
-                <label className="flex items-center gap-2 cursor-pointer group">
+              {/* خيارات إضافية (Checkboxes) */}
+              <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4 border-t pt-6 mt-2">
+                <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-gray-50 rounded-lg transition-colors">
                   <input
-                    type="checkbox"
-                    checked={options.useRectangles}
+                    type="checkbox" checked={options.useRectangles}
                     onChange={e => setOptions({ ...options, useRectangles: e.target.checked })}
-                    className="w-4 h-4 rounded text-[#0d5c63]"
+                    className="w-5 h-5 rounded border-gray-300 text-[#4a9d7c] focus:ring-[#4a9d7c]"
                   />
-                  <span className="text-sm group-hover:text-black">استخدام المربعات</span>
+                  <span className="text-sm font-medium text-gray-700">استخدام بطاقات الأسماء</span>
                 </label>
-                <label className="flex items-center gap-2 cursor-pointer group">
+
+                <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-gray-50 rounded-lg transition-colors">
                   <input
-                    type="checkbox"
-                    checked={options.includeDates}
+                    type="checkbox" checked={options.includeDates}
                     onChange={e => setOptions({ ...options, includeDates: e.target.checked })}
-                    className="w-4 h-4 rounded text-[#0d5c63]"
+                    className="w-5 h-5 rounded border-gray-300 text-[#4a9d7c] focus:ring-[#4a9d7c]"
                   />
-                  <span className="text-sm group-hover:text-black">تضمين التواريخ</span>
+                  <span className="text-sm font-medium text-gray-700">إظهار التواريخ</span>
                 </label>
-                <label className="flex items-center gap-2 cursor-pointer group">
+
+                <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-gray-50 rounded-lg transition-colors">
                   <input
-                    type="checkbox"
-                    checked={options.compactSpacing}
+                    type="checkbox" checked={options.compactSpacing}
                     onChange={e => setOptions({ ...options, compactSpacing: e.target.checked })}
-                    className="w-4 h-4 rounded text-[#0d5c63]"
+                    className="w-5 h-5 rounded border-gray-300 text-[#4a9d7c] focus:ring-[#4a9d7c]"
                   />
-                  <span className="text-sm group-hover:text-black">تضييق المسافات</span>
+                  <span className="text-sm font-medium text-gray-700">وضع مكثف (Compact)</span>
                 </label>
               </div>
             </div>
 
-            <div className="flex gap-3 justify-end border-t pt-4">
-              <button onClick={() => setIsOpen(false)} className="btn-outline px-6">
+            {/* أزرار التحكم السفلى */}
+            <div className="flex gap-4 justify-end border-t pt-6">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="px-6 py-2.5 rounded-lg border border-gray-300 text-gray-600 font-medium hover:bg-gray-50 transition-all"
+              >
                 إلغاء
               </button>
-              <button onClick={handleExport} className="btn-primary px-8" style={{ backgroundColor: '#4a9d7c', color: 'white', border: 'none' }}>
-                تصدير الملف
+              <button
+                onClick={handleExport}
+                className="px-10 py-2.5 rounded-lg text-white font-bold shadow-lg hover:brightness-110 active:scale-95 transition-all"
+                style={{ backgroundColor: '#4a9d7c' }}
+              >
+                إنشاء الملف وتنزيله
               </button>
             </div>
           </div>
