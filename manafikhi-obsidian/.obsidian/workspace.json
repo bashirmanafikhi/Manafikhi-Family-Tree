@@ -4,24 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "3f2bab953eef2cc6",
+        "id": "cd81d0c7189db835",
         "type": "tabs",
         "children": [
           {
-            "id": "f8603762a1d83b9d",
+            "id": "fad309a411d59fe7",
             "type": "leaf",
             "state": {
-              "type": "canvas",
-              "state": {
-                "file": "حج محمود ابو فؤاد.canvas",
-                "viewState": {
-                  "x": 114.59989994681986,
-                  "y": 197.74405620622093,
-                  "zoom": -0.2503515015114794
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "حج محمود ابو فؤاد"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -173,10 +166,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "حج محمود ابو فؤاد.canvas"
+                "file": "شريف.canvas"
               },
               "icon": "lucide-info",
-              "title": "File properties for حج محمود ابو فؤاد"
+              "title": "File properties for شريف"
             }
           }
         ],
@@ -184,30 +177,34 @@
       }
     ],
     "direction": "horizontal",
-    "width": 333.5
+    "width": 333.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
+      "switcher:Open quick switcher": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
       "bases:Create new base": false
     }
   },
-  "active": "f8603762a1d83b9d",
+  "active": "fad309a411d59fe7",
   "lastOpenFiles": [
     "عائشة ام شريف.canvas",
-    "prompts/excalidraw exporter prompt.md",
-    "بيت ديبو.canvas",
-    "prompts/رسم شجرة.md",
-    "حسن رحمو.canvas",
+    "أمينة بنت ام شريف.canvas",
+    "رقية.canvas",
     "حج محمود ابو فؤاد.canvas",
     "شجرة الكبار.canvas",
-    "prompts/احصائات عدد الأفراد.md",
+    "شريف.canvas",
     "tree.canvas",
+    "prompts/رسم شجرة.md",
+    "prompts/احصائات عدد الأفراد.md",
+    "prompts/excalidraw exporter prompt.md",
+    "بيت ديبو.canvas",
+    "حسن رحمو.canvas",
     "draft_canvas.canvas",
     "ام شريف.md",
     "People_Base.base",
@@ -248,8 +245,6 @@
     "abstract-gradient-blue-light-background-free-vector.jpg",
     "main.js",
     "plugins/manafikhi-linker/main.js",
-    "plugins/manafikhi-linker",
-    "شجرة عائلة المنافيخي 1.canvas",
-    "شجرة عائلة المنافيخي.canvas"
+    "plugins/manafikhi-linker"
   ]
 }
