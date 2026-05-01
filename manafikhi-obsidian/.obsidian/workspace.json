@@ -11,10 +11,14 @@
             "id": "fad309a411d59fe7",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "prompts/احصائات عدد الأفراد.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "احصائات عدد الأفراد"
             }
           }
         ]
@@ -193,6 +197,7 @@
   },
   "active": "fad309a411d59fe7",
   "lastOpenFiles": [
+    "prompts/رسم شجرة مع الأفرع.md",
     "عائشة ام شريف.canvas",
     "أمينة بنت ام شريف.canvas",
     "رقية.canvas",
@@ -208,9 +213,7 @@
     "draft_canvas.canvas",
     "ام شريف.md",
     "People_Base.base",
-    "prompts/رسم شجرة مع الأفرع.md",
     "tree copy.json",
-    "tree copy.canvas",
     "tree.html",
     "Untitled.base",
     "people/0a180d76982ace1b.md",

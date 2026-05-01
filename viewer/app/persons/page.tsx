@@ -19,6 +19,23 @@ async function getPersons(searchParams: {
   const skip = (page - 1) * PAGE_SIZE
 
   let persons = [...allPersons]
+  
+  // Randomize order (stable for pagination within the same day)
+  const dateStr = new Date().toISOString().split('T')[0];
+  const hash = (s: string) => {
+    let h = 0;
+    for (let i = 0; i < s.length; i++) {
+      h = ((h << 5) - h) + s.charCodeAt(i);
+      h |= 0;
+    }
+    return h;
+  };
+
+  // Pre-calculate hashes for performance and stable sort
+  persons = persons
+    .map(p => ({ p, h: hash(p.id + dateStr) }))
+    .sort((a, b) => a.h - b.h)
+    .map(x => x.p);
 
   // Filter by gender
   if (searchParams.gender) {
