@@ -25,14 +25,17 @@
             "id": "5698de44f30f7628",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "مسودة draft.md",
-                "mode": "source",
-                "source": false
+                "file": "شجرة الكبار.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
               },
-              "icon": "lucide-file",
-              "title": "مسودة draft"
+              "icon": "lucide-layout-dashboard",
+              "title": "شجرة الكبار"
             }
           }
         ],
@@ -212,16 +215,16 @@
   },
   "active": "5698de44f30f7628",
   "lastOpenFiles": [
+    "عائشة ام شريف.canvas",
+    "حسن رحمو.canvas",
+    "حج محمود ابو فؤاد.canvas",
     "بيت ديبو.canvas",
     "مسودة draft.md",
     "prompts/رسم شجرة.md",
     "رقية.canvas",
-    "حسن رحمو.canvas",
     "prompts/احصائات عدد الأفراد.md",
     "prompts/رسم شجرة مع الأفرع.md",
-    "عائشة ام شريف.canvas",
     "أمينة بنت ام شريف.canvas",
-    "حج محمود ابو فؤاد.canvas",
     "شجرة الكبار.canvas",
     "شريف.canvas",
     "tree.canvas",

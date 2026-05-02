@@ -347,18 +347,6 @@
 			"height":50
 		},
 		{
-			"id":"76ece84679f642cb",
-			"type":"text",
-			"text":"ديبو",
-			"styleAttributes":{"textAlign":"center","border":"invisible"},
-			"file":"people/459594dc746855da.md",
-			"x":308,
-			"y":-784,
-			"width":120,
-			"height":50,
-			"color":"2"
-		},
-		{
 			"id":"faea468339aa3c98",
 			"type":"text",
 			"text":"فاطمة بنت احمد منافيخي اخواتها بنات",
@@ -477,6 +465,28 @@
 			"y":-420,
 			"width":120,
 			"height":118
+		},
+		{
+			"id":"4401a272c0738d3a",
+			"type":"text",
+			"text":"ولادو \nمحمد\nنجاح\nسمير \nاحمد \nحميدة\nسميرة\nمنى\nزهير \nمحمود \nعمر",
+			"styleAttributes":{"textAlign":"center"},
+			"x":60,
+			"y":-200,
+			"width":120,
+			"height":305
+		},
+		{
+			"id":"76ece84679f642cb",
+			"type":"text",
+			"text":"ديبو",
+			"styleAttributes":{"textAlign":"center","border":"invisible"},
+			"file":"people/459594dc746855da.md",
+			"x":248,
+			"y":-985,
+			"width":120,
+			"height":50,
+			"color":"2"
 		}
 	],
 	"edges":[
@@ -899,6 +909,15 @@
 			"fromNode":"48ef7979d21b71ef",
 			"fromSide":"bottom",
 			"toNode":"faa3eaab19fbf081",
+			"toSide":"top"
+		},
+		{
+			"id":"e3d64c61119fbf74",
+			"styleAttributes":{"pathfindingMethod":"square"},
+			"toFloating":false,
+			"fromNode":"faa3eaab19fbf081",
+			"fromSide":"bottom",
+			"toNode":"4401a272c0738d3a",
 			"toSide":"top"
 		}
 	],
