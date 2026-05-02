@@ -26,11 +26,12 @@ export interface ExcalidrawExportOptions {
   linkOpacity: number;
   generationSpacing: number;
   endArrowhead: 'arrow' | 'triangle' | 'bar' | 'dot' | null;
+  maleOnlyDescendants: boolean;
 }
 
 export class ExcalidrawExporter {
   static generateJson(rootPerson: PersonNode, allPersons: any[], options: ExcalidrawExportOptions) {
-    const rootNode = this.buildHierarchy(rootPerson, allPersons, 0, options.maxGenerations);
+    const rootNode = this.buildHierarchy(rootPerson, allPersons, 0, options.maxGenerations, options);
     const d3Hierarchy = hierarchy(rootNode);
     let elements: any[] = [];
 
@@ -62,11 +63,17 @@ export class ExcalidrawExporter {
     };
   }
 
-  private static buildHierarchy(person: any, allPersons: any[], currentGen: number, maxGen: number): PersonNode {
+  private static buildHierarchy(person: any, allPersons: any[], currentGen: number, maxGen: number, options: ExcalidrawExportOptions): PersonNode {
     const node: PersonNode = { ...person, generation: currentGen };
-    if (currentGen < maxGen) {
+    
+    // Logic for male-only descendants: 
+    // Always show children of the root (gen 0).
+    // For others, only show children if the person is male.
+    const canHaveChildren = !options.maleOnlyDescendants || person.gender?.toLowerCase() === 'male' || currentGen === 0;
+
+    if (currentGen < maxGen && canHaveChildren) {
       const children = allPersons.filter(p => p.fatherId === person.id || p.motherId === person.id);
-      node.children = children.map(c => this.buildHierarchy(c, allPersons, currentGen + 1, maxGen));
+      node.children = children.map(c => this.buildHierarchy(c, allPersons, currentGen + 1, maxGen, options));
     }
     return node;
   }

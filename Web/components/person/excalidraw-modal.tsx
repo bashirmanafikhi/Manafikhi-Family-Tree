@@ -18,7 +18,8 @@ export function ExcalidrawModal({ person, allPersons }: { person: any, allPerson
     strokeWidth: 1,
     linkOpacity: 100,
     generationSpacing: 250,
-    endArrowhead: 'arrow', // القيمة الجديدة للتحكم في الأسهم
+    endArrowhead: 'arrow',
+    maleOnlyDescendants: false,
   })
 
   const handleExport = () => {
@@ -185,6 +186,15 @@ export function ExcalidrawModal({ person, allPersons }: { person: any, allPerson
                     className="w-5 h-5 rounded border-gray-300 text-[#4a9d7c] focus:ring-[#4a9d7c]"
                   />
                   <span className="text-sm font-medium text-gray-700">وضع مكثف (Compact)</span>
+                </label>
+
+                <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-gray-50 rounded-lg transition-colors">
+                  <input
+                    type="checkbox" checked={options.maleOnlyDescendants}
+                    onChange={e => setOptions({ ...options, maleOnlyDescendants: e.target.checked })}
+                    className="w-5 h-5 rounded border-gray-300 text-[#4a9d7c] focus:ring-[#4a9d7c]"
+                  />
+                  <span className="text-sm font-medium text-gray-700">سلالة الذكور فقط (Male Lineage)</span>
                 </label>
               </div>
             </div>
