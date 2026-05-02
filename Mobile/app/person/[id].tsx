@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, Image, TouchableOpacity, ActivityIndicator, useWindowDimensions, Platform } from 'react-native';
+import { View, Text, ScrollView, Image, TouchableOpacity, ActivityIndicator, useWindowDimensions, Platform, Share } from 'react-native';
 import { Ionicons, FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
-import { useLocalSearchParams, useNavigation, router } from 'expo-router';
-import Constants from 'expo-constants';
+import { useLocalSearchParams, useNavigation, router, Stack } from 'expo-router';
 import { useFamily } from '../../src/context/FamilyContext';
 import { useTheme } from '../../src/context/ThemeContext';
 import { Person, PersonWithRelations } from '../../src/types';
@@ -49,6 +48,50 @@ export default function PersonDetailScreen() {
   const [descendantGenerations, setDescendantGenerations] = useState<[number, any[]][]>([]);
   const { persons: allPersons } = useFamily();
 
+  const handleShare = async () => {
+    console.log('Share button pressed');
+    if (!person) {
+      console.log('Person not loaded yet, cannot share');
+      return;
+    }
+
+    const fullName = `${person.firstName} ${person.lastName || ''}`.trim();
+    const isMale = person.gender === 'MALE';
+
+    const message = [
+      `👤 *الاسم:* ${fullName}`,
+      person.nickname ? `🏷️ *الكنية:* ${person.nickname}` : null,
+      `🎂 *الميلاد:* ${formatDate(person.birthDate) || 'غير معروف'}`,
+      `🕊️ *الحالة:* ${person.isAlive ? (isMale ? 'حي' : 'حية') : (isMale ? 'متوفى' : 'متوفاة')}`,
+      !person.isAlive && person.deathDate ? `⚰️ *الوفاة:* ${formatDate(person.deathDate)}` : null,
+      ``,
+      `👨‍👩‍👧‍👦 *الوالدان:*`,
+      `• الأب: ${parents.father ? `${parents.father.firstName} ${parents.father.lastName || ''}`.trim() : 'غير معروف'}`,
+      `• الأم: ${parents.mother ? `${parents.mother.firstName} ${parents.mother.lastName || ''}`.trim() : 'غير معروف'}`,
+      spouses.length > 0 ? `\n💍 *${isMale ? 'الزوجات' : 'الأزواج'}:*` : null,
+      ...spouses.map(s => `• ${s.firstName} ${s.lastName || ''} (${s.isAlive ? (isMale ? 'حية' : 'حي') : (isMale ? 'متوفاة' : 'متوفى')})`),
+      person.children && person.children.length > 0 ? `\n👶 *الأبناء (${person.children.length}):*` : null,
+      ...(person.children || []).map(c => `• ${c.firstName} (${c.gender === 'MALE' ? 'ابن' : 'ابنة'})`),
+      descendantGenerations.length > 0 ? `\n📊 *إحصائيات الذرية:*` : null,
+      ...descendantGenerations.map(([gen, nodes]) => {
+        const labels: Record<number, string> = { 1: 'الأولاد', 2: 'الأحفاد', 3: 'أبناء الأحفاد', 4: 'أحفاد الأحفاد' };
+        return `• ${labels[gen] || `الجيل ${gen}`}: ${nodes.length} عضو`;
+      }),
+      ``,
+      `----------`,
+      `📱 تمت المشاركة من تطبيق عائلة المنافيخي`
+    ].filter(line => line !== null).join('\n');
+
+    try {
+      await Share.share({
+        message,
+        title: `تفاصيل ${fullName}`,
+      });
+    } catch (error) {
+      console.error('Error sharing:', error);
+    }
+  };
+
   useEffect(() => {
     async function loadPerson() {
       if (!id) return;
@@ -62,7 +105,7 @@ export default function PersonDetailScreen() {
           getChildren(decodedId),
           getSiblings(decodedId),
         ]);
-        
+
         setPerson({
           ...found,
           father: parentsData.father,
@@ -71,14 +114,12 @@ export default function PersonDetailScreen() {
           children: childrenData,
           siblings: siblingsData,
         });
-        
+
         setParents(parentsData);
         setSpouses(spousesData);
 
         navigation.setOptions({
           title: `${found.firstName} ${found.lastName || ''}`,
-          headerTransparent: !isLandscape,
-          headerTintColor: !isLandscape ? '#fff' : colors.text,
         });
 
         const allImgPaths = [found.profileImage, ...(found.additionalImages || [])].filter(Boolean) as string[];
@@ -272,122 +313,143 @@ export default function PersonDetailScreen() {
   );
 
   return (
-    <ScrollView
-      className="flex-1 bg-bg-primary dark:bg-bg-dark"
-      showsVerticalScrollIndicator={false}
-      stickyHeaderIndices={isLandscape ? [] : []}
-    >
-      <View>
-        {isLandscape ? (
-          <View className="flex-row">
-            {imageSection}
-            {mainInfo}
+    <View className="flex-1">
+      <Stack.Screen
+        options={{
+          title: person ? `${person.firstName} ${person.lastName || ''}` : 'التفاصيل',
+          headerTransparent: !isLandscape,
+          headerTintColor: !isLandscape ? '#fff' : colors.text,
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={handleShare}
+              className={`mr-4 p-2 rounded-full ${!isLandscape ? 'bg-black/20' : 'bg-primary/10'}`}
+              activeOpacity={0.7}
+            >
+              <Ionicons
+                name="share-social"
+                size={22}
+                color={!isLandscape ? '#fff' : colors.primary}
+              />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <ScrollView
+        className="flex-1 bg-bg-primary dark:bg-bg-dark"
+        showsVerticalScrollIndicator={false}
+      >
+        <View>
+          {isLandscape ? (
+            <View className="flex-row">
+              {imageSection}
+              {mainInfo}
+            </View>
+          ) : (
+            <>
+              {imageSection}
+              {mainInfo}
+            </>
+          )}
+
+          <View className="px-6 pb-12">
+            {!!person.bio && (
+              <View className="mt-8">
+                <Text className="text-xl font-bold mb-4 text-text-primary dark:text-text-dark">السيرة الذاتية</Text>
+                <View className="p-5 rounded-[30px] bg-surface-light dark:bg-surface-dark">
+                  <Text className="text-base leading-7 text-text-secondary dark:text-text-dark-secondary">{person.bio}</Text>
+                </View>
+              </View>
+            )}
+
+            {(!!parents.father || !!parents.mother) && (
+              <View className="mt-10">
+                <View className="flex-row items-center mb-4">
+                  <View className="w-8 h-8 rounded-full bg-primary/10 items-center justify-center mr-3">
+                    <MaterialCommunityIcons name="family-tree" size={18} color={colors.primary} />
+                  </View>
+                  <Text className="text-xl font-bold text-text-primary dark:text-text-dark">الوالدان</Text>
+                </View>
+                <View className="flex-row flex-wrap">
+                  {renderRelationCard(parents.father, 'الأب', 'male')}
+                  {renderRelationCard(parents.mother, 'الأم', 'female')}
+                </View>
+              </View>
+            )}
+
+            {spouses.length > 0 && (
+              <View className="mt-10">
+                <View className="flex-row items-center mb-4">
+                  <View className="w-8 h-8 rounded-full bg-primary/10 items-center justify-center mr-3">
+                    <Ionicons name="heart" size={18} color="#e11d48" />
+                  </View>
+                  <Text className="text-xl font-bold text-text-primary dark:text-text-dark">
+                    {person.gender === MALE ? 'الزوجات' : 'الأزواج'}
+                  </Text>
+                </View>
+                <View className="flex-row flex-wrap">
+                  {spouses.map(spouse => renderRelationCard(spouse, person.gender === MALE ? 'الزوجة' : 'الزوج', spouse.gender === MALE ? 'male' : 'female', spouse.id))}
+                </View>
+              </View>
+            )}
+
+            {!!person.children && person.children.length > 0 && (
+              <View className="mt-10">
+                <View className="flex-row items-center mb-4">
+                  <View className="w-8 h-8 rounded-full bg-primary/10 items-center justify-center mr-3">
+                    <FontAwesome5 name="child" size={18} color={colors.primary} />
+                  </View>
+                  <Text className="text-xl font-bold text-text-primary dark:text-text-dark">الأبناء ({person.children.length})</Text>
+                </View>
+                <View className="flex-row flex-wrap">
+                  {person.children.map(child => renderRelationCard(child, child.gender === MALE ? 'ابن' : 'ابنة', child.gender === MALE ? 'male' : 'female', child.id))}
+                </View>
+              </View>
+            )}
+
+            {!!person.siblings && person.siblings.length > 0 && (
+              <View className="mt-10">
+                <View className="flex-row items-center mb-4">
+                  <View className="w-8 h-8 rounded-full bg-primary/10 items-center justify-center mr-3">
+                    <Ionicons name="people" size={18} color={colors.primary} />
+                  </View>
+                  <Text className="text-xl font-bold text-text-primary dark:text-text-dark">الإخوة ({person.siblings.length})</Text>
+                </View>
+                <View className="flex-row flex-wrap">
+                  {person.siblings.map(sibling => renderRelationCard(sibling, sibling.gender === MALE ? 'أخ' : 'أخت', sibling.gender === MALE ? 'male' : 'female', sibling.id))}
+                </View>
+              </View>
+            )}
+
+            {imageSources.length > 1 && (
+              <View className="mt-10">
+                <Text className="text-xl font-bold mb-4 text-text-primary dark:text-text-dark">معرض الصور</Text>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false} className="flex-row">
+                  {imageSources.map((source: any, idx: number) => (
+                    <TouchableOpacity
+                      key={idx}
+                      className="w-24 h-24 rounded-2xl overflow-hidden mr-3 border border-border/20 dark:border-border-dark/20 shadow-sm"
+                      onPress={() => setCurrentImageIndex(idx)}
+                    >
+                      <Image source={source} className="w-full h-full" resizeMode="cover" />
+                      {currentImageIndex === idx && (
+                        <View className="absolute inset-0 bg-primary/20 items-center justify-center">
+                          <Ionicons name="checkmark-circle" size={24} color="white" />
+                        </View>
+                      )}
+                    </TouchableOpacity>
+                  ))}
+                </ScrollView>
+              </View>
+            )}
+
+            <GenerationStatsTable descendantGenerations={descendantGenerations} />
+
+            {person && (
+              <MiniFamilyTree person={person} allPersons={allPersons} />
+            )}
           </View>
-        ) : (
-          <>
-            {imageSection}
-            {mainInfo}
-          </>
-        )}
-
-        <View className="px-6 pb-12">
-          {!!person.bio && (
-            <View className="mt-8">
-              <Text className="text-xl font-bold mb-4 text-text-primary dark:text-text-dark">السيرة الذاتية</Text>
-              <View className="p-5 rounded-[30px] bg-surface-light dark:bg-surface-dark">
-                <Text className="text-base leading-7 text-text-secondary dark:text-text-dark-secondary">{person.bio}</Text>
-              </View>
-            </View>
-          )}
-
-          {(!!parents.father || !!parents.mother) && (
-            <View className="mt-10">
-              <View className="flex-row items-center mb-4">
-                <View className="w-8 h-8 rounded-full bg-primary/10 items-center justify-center mr-3">
-                  <MaterialCommunityIcons name="family-tree" size={18} color={colors.primary} />
-                </View>
-                <Text className="text-xl font-bold text-text-primary dark:text-text-dark">الوالدان</Text>
-              </View>
-              <View className="flex-row flex-wrap">
-                {renderRelationCard(parents.father, 'الأب', 'male')}
-                {renderRelationCard(parents.mother, 'الأم', 'female')}
-              </View>
-            </View>
-          )}
-
-          {spouses.length > 0 && (
-            <View className="mt-10">
-              <View className="flex-row items-center mb-4">
-                <View className="w-8 h-8 rounded-full bg-primary/10 items-center justify-center mr-3">
-                  <Ionicons name="heart" size={18} color="#e11d48" />
-                </View>
-                <Text className="text-xl font-bold text-text-primary dark:text-text-dark">
-                  {person.gender === MALE ? 'الزوجات' : 'الأزواج'}
-                </Text>
-              </View>
-              <View className="flex-row flex-wrap">
-                {spouses.map(spouse => renderRelationCard(spouse, person.gender === MALE ? 'الزوجة' : 'الزوج', spouse.gender === MALE ? 'male' : 'female', spouse.id))}
-              </View>
-            </View>
-          )}
-
-          {!!person.children && person.children.length > 0 && (
-            <View className="mt-10">
-              <View className="flex-row items-center mb-4">
-                <View className="w-8 h-8 rounded-full bg-primary/10 items-center justify-center mr-3">
-                  <FontAwesome5 name="child" size={18} color={colors.primary} />
-                </View>
-                <Text className="text-xl font-bold text-text-primary dark:text-text-dark">الأبناء ({person.children.length})</Text>
-              </View>
-              <View className="flex-row flex-wrap">
-                {person.children.map(child => renderRelationCard(child, child.gender === MALE ? 'ابن' : 'ابنة', child.gender === MALE ? 'male' : 'female', child.id))}
-              </View>
-            </View>
-          )}
-
-          {!!person.siblings && person.siblings.length > 0 && (
-            <View className="mt-10">
-              <View className="flex-row items-center mb-4">
-                <View className="w-8 h-8 rounded-full bg-primary/10 items-center justify-center mr-3">
-                  <Ionicons name="people" size={18} color={colors.primary} />
-                </View>
-                <Text className="text-xl font-bold text-text-primary dark:text-text-dark">الإخوة ({person.siblings.length})</Text>
-              </View>
-              <View className="flex-row flex-wrap">
-                {person.siblings.map(sibling => renderRelationCard(sibling, sibling.gender === MALE ? 'أخ' : 'أخت', sibling.gender === MALE ? 'male' : 'female', sibling.id))}
-              </View>
-            </View>
-          )}
-
-          {imageSources.length > 1 && (
-            <View className="mt-10">
-              <Text className="text-xl font-bold mb-4 text-text-primary dark:text-text-dark">معرض الصور</Text>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} className="flex-row">
-                {imageSources.map((source: any, idx: number) => (
-                  <TouchableOpacity
-                    key={idx}
-                    className="w-24 h-24 rounded-2xl overflow-hidden mr-3 border border-border/20 dark:border-border-dark/20 shadow-sm"
-                    onPress={() => setCurrentImageIndex(idx)}
-                  >
-                    <Image source={source} className="w-full h-full" resizeMode="cover" />
-                    {currentImageIndex === idx && (
-                      <View className="absolute inset-0 bg-primary/20 items-center justify-center">
-                        <Ionicons name="checkmark-circle" size={24} color="white" />
-                      </View>
-                    )}
-                  </TouchableOpacity>
-                ))}
-              </ScrollView>
-            </View>
-          )}
-
-          <GenerationStatsTable descendantGenerations={descendantGenerations} />
-          
-          {person && (
-            <MiniFamilyTree person={person} allPersons={allPersons} />
-          )}
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
