@@ -1,13 +1,19 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import { View, Text, FlatList, TouchableOpacity, ActivityIndicator, TextInput, RefreshControl } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, ActivityIndicator, TextInput, RefreshControl, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter, Stack } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFamily } from '../src/context/FamilyContext';
 import { useTheme } from '../src/context/ThemeContext';
 import { PersonWithRelations } from '../src/types';
+import { imageMap } from '../src/imageMap';
 
 const PAGE_SIZE = 20;
+
+function resolveImageSource(imagePath: string | undefined): any {
+  if (!imagePath) return null;
+  return imageMap[imagePath] || null;
+}
 
 export default function TreeScreen() {
   const { persons, isLoading, error } = useFamily();
@@ -65,6 +71,7 @@ export default function TreeScreen() {
     const fullName = `${item.firstName} ${item.lastName || ''}`.trim() || '(بدون اسم)';
     const isMale = item.gender === 'MALE';
     const genderColor = isMale ? 'bg-[#5b9]' : 'bg-[#bc6798]';
+    const imageSource = resolveImageSource(item.profileImage);
 
     return (
       <TouchableOpacity
@@ -73,8 +80,12 @@ export default function TreeScreen() {
         activeOpacity={0.7}
       >
         <View className="flex-row items-center mb-3">
-          <View className={`w-10 h-10 rounded-full justify-center items-center ml-3 ${genderColor}`}>
-            <Ionicons name={isMale ? 'male' : 'female'} size={20} color="#fff" />
+          <View className={`w-10 h-10 rounded-full justify-center items-center ml-3 overflow-hidden ${genderColor}`}>
+            {imageSource ? (
+              <Image source={imageSource} className="w-full h-full" />
+            ) : (
+              <Ionicons name={isMale ? 'male' : 'female'} size={20} color="#fff" />
+            )}
           </View>
           <View className="flex-1">
             <Text className="text-lg font-bold text-right text-text-primary dark:text-text-dark" numberOfLines={1}>
