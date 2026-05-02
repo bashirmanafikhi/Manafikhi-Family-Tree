@@ -6,6 +6,8 @@ import Constants from 'expo-constants';
 import { useFamily } from '../../src/context/FamilyContext';
 import { useTheme } from '../../src/context/ThemeContext';
 import { Person, PersonWithRelations } from '../../src/types';
+import GenerationStatsTable from '../../src/components/GenerationStatsTable';
+import MiniFamilyTree from '../../src/components/MiniFamilyTree';
 
 const MALE = 'MALE' as const;
 
@@ -33,7 +35,7 @@ const formatDate = (dateString: string | undefined) => {
 export default function PersonDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const navigation = useNavigation();
-  const { getPersonById, getParents, getSpouses } = useFamily();
+  const { getPersonById, getParents, getSpouses, getChildren, getSiblings } = useFamily();
   const { colors, theme } = useTheme();
   const { width, height } = useWindowDimensions();
   const isLandscape = width > height;
@@ -44,6 +46,8 @@ export default function PersonDetailScreen() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [imageSources, setImageSources] = useState<any[]>([]);
+  const [descendantGenerations, setDescendantGenerations] = useState<[number, any[]][]>([]);
+  const { persons: allPersons } = useFamily();
 
   useEffect(() => {
     async function loadPerson() {
@@ -52,28 +56,80 @@ export default function PersonDetailScreen() {
       const decodedId = decodeURIComponent(id);
       const found = await getPersonById(decodedId);
       if (found) {
-        setPerson(found);
+        const [parentsData, spousesData, childrenData, siblingsData] = await Promise.all([
+          getParents(decodedId),
+          getSpouses(decodedId),
+          getChildren(decodedId),
+          getSiblings(decodedId),
+        ]);
+        
+        setPerson({
+          ...found,
+          father: parentsData.father,
+          mother: parentsData.mother,
+          spouses: spousesData,
+          children: childrenData,
+          siblings: siblingsData,
+        });
+        
+        setParents(parentsData);
+        setSpouses(spousesData);
+
         navigation.setOptions({
           title: `${found.firstName} ${found.lastName || ''}`,
           headerTransparent: !isLandscape,
           headerTintColor: !isLandscape ? '#fff' : colors.text,
         });
 
-        const [parentsData, spousesData] = await Promise.all([
-          getParents(decodedId),
-          getSpouses(decodedId),
-        ]);
-        setParents(parentsData);
-        setSpouses(spousesData);
-
         const allImgPaths = [found.profileImage, ...(found.additionalImages || [])].filter(Boolean) as string[];
         const sources = allImgPaths.map(p => resolveImageSource(p)).filter(Boolean);
         setImageSources(sources);
+
+        // Calculate descendant generations
+        const descendantsSet = new Set<string>();
+        const queue = [decodedId];
+        while (queue.length > 0) {
+          const current = queue.shift()!;
+          const kids = allPersons.filter(p => p.fatherId === current || p.motherId === current);
+          for (const child of kids) {
+            if (!descendantsSet.has(child.id)) {
+              descendantsSet.add(child.id);
+              queue.push(child.id);
+            }
+          }
+        }
+
+        const getChildrenNodes = (parentId: string) =>
+          allPersons.filter(p => {
+            if (p.fatherId === parentId) return true;
+            if (p.motherId === parentId) {
+              if (p.fatherId && (p.fatherId === decodedId || descendantsSet.has(p.fatherId))) {
+                return false;
+              }
+              return true;
+            }
+            return false;
+          });
+
+        const buildGenerations = (personId: string, gen: number, result: Map<number, any[]>): Map<number, any[]> => {
+          if (gen >= 6) return result;
+          const childPersons = getChildrenNodes(personId);
+          const existing = result.get(gen) || [];
+          const unique = childPersons.filter(c => !existing.some(e => e.id === c.id));
+          if (unique.length > 0) {
+            result.set(gen, [...existing, ...unique]);
+          }
+          childPersons.forEach(c => buildGenerations(c.id, gen + 1, result));
+          return result;
+        };
+
+        const map = buildGenerations(decodedId, 1, new Map());
+        setDescendantGenerations(Array.from(map.entries()).sort((a, b) => a[0] - b[0]));
       }
       setIsLoading(false);
     }
     loadPerson();
-  }, [id, colors.text]);
+  }, [id, colors.text, allPersons]);
 
   if (isLoading) {
     return (
@@ -323,6 +379,12 @@ export default function PersonDetailScreen() {
                 ))}
               </ScrollView>
             </View>
+          )}
+
+          <GenerationStatsTable descendantGenerations={descendantGenerations} />
+          
+          {person && (
+            <MiniFamilyTree person={person} allPersons={allPersons} />
           )}
         </View>
       </View>
