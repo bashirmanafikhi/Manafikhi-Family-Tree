@@ -27,8 +27,14 @@ function RootStack() {
         <Stack.Screen
           name="index"
           options={{
-            title: 'شجرة عائلة المنافيخي',
-            headerTitle: 'شجرة عائلة المنافيخي',
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="persons"
+          options={{
+            title: 'أفراد العائلة',
+            headerTitle: 'أفراد العائلة',
           }}
         />
         <Stack.Screen

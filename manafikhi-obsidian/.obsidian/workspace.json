@@ -11,14 +11,17 @@
             "id": "fad309a411d59fe7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "prompts/احصائات عدد الأفراد.md",
-                "mode": "source",
-                "source": false
+                "file": "بيت ديبو.canvas",
+                "viewState": {
+                  "x": 186.79778503016777,
+                  "y": -386.1913781899121,
+                  "zoom": 0.02933396597397575
+                }
               },
-              "icon": "lucide-file",
-              "title": "احصائات عدد الأفراد"
+              "icon": "lucide-layout-dashboard",
+              "title": "بيت ديبو"
             }
           }
         ]
@@ -197,6 +200,7 @@
   },
   "active": "fad309a411d59fe7",
   "lastOpenFiles": [
+    "prompts/احصائات عدد الأفراد.md",
     "prompts/رسم شجرة مع الأفرع.md",
     "عائشة ام شريف.canvas",
     "أمينة بنت ام شريف.canvas",
@@ -206,7 +210,6 @@
     "شريف.canvas",
     "tree.canvas",
     "prompts/رسم شجرة.md",
-    "prompts/احصائات عدد الأفراد.md",
     "prompts/excalidraw exporter prompt.md",
     "بيت ديبو.canvas",
     "حسن رحمو.canvas",

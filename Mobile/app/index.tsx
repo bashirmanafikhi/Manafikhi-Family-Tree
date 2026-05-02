@@ -1,235 +1,118 @@
-import React, { useState, useMemo, useCallback } from 'react';
-import { View, Text, FlatList, TouchableOpacity, ActivityIndicator, TextInput, RefreshControl, Image } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import { View, Text, ScrollView, TouchableOpacity, SafeAreaView, Dimensions } from 'react-native';
+import { Ionicons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 import { useRouter, Stack } from 'expo-router';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useFamily } from '../src/context/FamilyContext';
 import { useTheme } from '../src/context/ThemeContext';
-import { PersonWithRelations } from '../src/types';
-import { imageMap } from '../src/imageMap';
+import { getStats } from '../src/services/dataService';
 
-const PAGE_SIZE = 20;
+const { width } = Dimensions.get('window');
 
-function resolveImageSource(imagePath: string | undefined): any {
-  if (!imagePath) return null;
-  return imageMap[imagePath] || null;
-}
-
-export default function TreeScreen() {
-  const { persons, isLoading, error } = useFamily();
+export default function DashboardScreen() {
   const { colors } = useTheme();
-  const insets = useSafeAreaInsets();
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [page, setPage] = useState(1);
-  const [refreshing, setRefreshing] = useState(false);
+  const stats = getStats();
 
-  const filteredPersons = useMemo(() => {
-    if (!searchQuery.trim()) return persons;
-    const query = searchQuery.trim().toLowerCase();
-    return persons.filter(p => {
-      const fullName = `${p.firstName} ${p.lastName || ''}`.trim().toLowerCase();
-      const father = p.father ? `${p.father.firstName} ${p.father.lastName || ''}`.trim().toLowerCase() : '';
-      const mother = p.mother ? `${p.mother.firstName} ${p.mother.lastName || ''}`.trim().toLowerCase() : '';
-      return fullName.includes(query) || father.includes(query) || mother.includes(query);
-    });
-  }, [persons, searchQuery]);
-
-  const paginatedPersons = useMemo(() => {
-    return filteredPersons.slice(0, page * PAGE_SIZE);
-  }, [filteredPersons, page]);
-
-  const hasMore = page * PAGE_SIZE < filteredPersons.length;
-
-  const loadMore = useCallback(() => {
-    if (hasMore && !isLoading) {
-      setPage(p => p + 1);
-    }
-  }, [hasMore, isLoading]);
-
-  const handleRefresh = useCallback(async () => {
-    setRefreshing(true);
-    setPage(1);
-    setRefreshing(false);
-  }, []);
-
-  const handlePersonPress = (personId: string) => {
-    router.push(`/person/${encodeURIComponent(personId)}`);
-  };
-
-  const getFatherName = (person: PersonWithRelations): string => {
-    if (!person.father) return '-';
-    return `${person.father.firstName} ${person.father.lastName || ''}`.trim();
-  };
-
-  const getMotherName = (person: PersonWithRelations): string => {
-    if (!person.mother) return '-';
-    return `${person.mother.firstName} ${person.mother.lastName || ''}`.trim();
-  };
-
-  const renderPersonCard = ({ item }: { item: PersonWithRelations }) => {
-    const fullName = `${item.firstName} ${item.lastName || ''}`.trim() || '(بدون اسم)';
-    const isMale = item.gender === 'MALE';
-    const genderColor = isMale ? 'bg-[#5b9]' : 'bg-[#bc6798]';
-    const imageSource = resolveImageSource(item.profileImage);
-
-    return (
-      <TouchableOpacity
-        className="rounded-2xl p-4 mb-3 border border-border dark:border-border-dark bg-card dark:bg-card-dark shadow-sm"
-        onPress={() => handlePersonPress(item.id)}
-        activeOpacity={0.7}
-      >
-        <View className="flex-row items-center mb-3">
-          <View className={`w-10 h-10 rounded-full justify-center items-center ml-3 overflow-hidden ${genderColor}`}>
-            {imageSource ? (
-              <Image source={imageSource} className="w-full h-full" />
-            ) : (
-              <Ionicons name={isMale ? 'male' : 'female'} size={20} color="#fff" />
-            )}
-          </View>
-          <View className="flex-1">
-            <Text className="text-lg font-bold text-right text-text-primary dark:text-text-dark" numberOfLines={1}>
-              {fullName}
-            </Text>
-            {!item.isAlive && (
-              <View className="flex-row items-center mt-1 self-end">
-                <Ionicons name="skull" size={12} color="#ef4444" />
-                <Text className="text-[11px] text-red-500 font-semibold ml-1">{isMale ? 'متوفي' : 'متوفاة'}</Text>
-              </View>
-            )}
-          </View>
+  const StatCard = ({ title, value, icon, iconLib: IconLib, color }: any) => (
+    <View 
+      className="bg-card dark:bg-card-dark rounded-3xl p-4 mb-4 border border-border/10 dark:border-border-dark/10 shadow-sm"
+      style={{ width: (width - 48) / 2 }}
+    >
+      <View className="flex-row items-center justify-between mb-2">
+        <View className="p-2 rounded-2xl" style={{ backgroundColor: color + '20' }}>
+          <IconLib name={icon} size={24} color={color} />
         </View>
-
-        <View className="border-t border-black/5 dark:border-white/5 pt-3">
-          <View className="flex-row items-center mb-2">
-            <Ionicons name="man" size={16} color={colors.textSecondary} className="ml-2" />
-            <Text className="flex-1 text-sm text-right text-text-primary dark:text-text-dark" numberOfLines={1}>
-              {getFatherName(item)}
-            </Text>
-          </View>
-          <View className="flex-row items-center">
-            <Ionicons name="woman" size={16} color={colors.textSecondary} className="ml-2" />
-            <Text className="flex-1 text-sm text-right text-text-primary dark:text-text-dark" numberOfLines={1}>
-              {getMotherName(item)}
-            </Text>
-          </View>
-        </View>
-      </TouchableOpacity>
-    );
-  };
-
-  const renderFooter = () => {
-    if (!hasMore) return null;
-    return (
-      <View className="p-4 items-center">
-        <ActivityIndicator size="small" color="#bc6798" />
       </View>
-    );
-  };
-
-  const renderEmpty = () => {
-    if (searchQuery.trim() && filteredPersons.length === 0) {
-      return (
-        <View className="flex-1 justify-center items-center pt-16">
-          <Ionicons name="search" size={48} color={colors.textSecondary} />
-          <Text className="mt-3 text-base text-text-secondary dark:text-text-dark-secondary">
-            لا توجد نتائج
-          </Text>
-        </View>
-      );
-    }
-    return null;
-  };
-
-  if (isLoading && persons.length === 0) {
-    return (
-      <View className="flex-1 justify-center items-center bg-bg-primary dark:bg-bg-dark">
-        <ActivityIndicator size="large" color="#bc6798" />
-        <Text className="mt-4 text-base text-text-secondary dark:text-text-dark-secondary">جاري تحميل الشجرة...</Text>
-      </View>
-    );
-  }
-
-  if (error) {
-    return (
-      <View className="flex-1 justify-center items-center p-5 bg-bg-primary dark:bg-bg-dark">
-        <Ionicons name="alert-circle" size={48} color="#ef4444" />
-        <Text className="mt-3 text-base text-center text-red-500">{error}</Text>
-      </View>
-    );
-  }
+      <Text className="text-2xl font-bold text-text-primary dark:text-text-dark">{value}</Text>
+      <Text className="text-xs text-text-secondary dark:text-text-dark-secondary font-medium">{title}</Text>
+    </View>
+  );
 
   return (
-    <View className="flex-1 bg-bg-primary dark:bg-bg-dark">
+    <SafeAreaView className="flex-1 bg-bg-primary dark:bg-bg-dark">
       <Stack.Screen options={{ headerShown: false }} />
-      
-      <View 
-        style={{ paddingTop: Math.max(insets.top, 16) }}
-        className="px-4 pb-4 border-b border-border dark:border-border-dark bg-surface-light dark:bg-surface-dark"
+      <ScrollView 
+        className="flex-1 px-6"
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 40 }}
       >
-        <View className="flex-row justify-between items-center mb-4">
-          <TouchableOpacity 
-            onPress={() => router.push('/settings')} 
-            className="p-2"
-            activeOpacity={0.7}
-          >
-            <Ionicons name="settings-outline" size={24} color={colors.textSecondary} />
-          </TouchableOpacity>
-          <Text className="text-xl font-bold text-text-primary dark:text-text-dark">
-            شجرة عائلة المنافيخي
+        <View className="py-12 items-center">
+          <View className="w-20 h-20 rounded-full bg-primary/10 items-center justify-center mb-6">
+            <MaterialCommunityIcons name="family-tree" size={48} color={colors.primary} />
+          </View>
+          <Text className="text-4xl font-bold text-center text-text-primary dark:text-text-dark mb-2">
+            شجرة عائلة <Text className="text-primary">المنافيخي</Text>
           </Text>
+          <Text className="text-lg text-text-secondary dark:text-text-dark-secondary text-center mb-10">
+            تصفح شجرة عائلتك العريقة
+          </Text>
+
+          <TouchableOpacity
+            onPress={() => router.push('/persons')}
+            activeOpacity={0.8}
+            className="bg-primary px-10 py-5 rounded-full shadow-lg shadow-primary/30 flex-row items-center"
+          >
+            <Ionicons name="people" size={24} color="white" className="mr-3" />
+            <Text className="text-white text-xl font-bold ml-2">تصفح أفراد العائلة</Text>
+          </TouchableOpacity>
         </View>
 
-        <View className="flex-row items-center">
-          <Ionicons name="search" size={20} color={colors.textSecondary} className="mr-3" />
-          <View className="flex-1 relative">
-            <TextInput
-              className="p-3 pr-10 rounded-xl text-base border border-border dark:border-border-dark bg-card dark:bg-card-dark text-text-primary dark:text-text-dark"
-              placeholder="بحث بالاسم أو اسم الأب أو الأم..."
-              placeholderTextColor="#999"
-              value={searchQuery}
-              onChangeText={(text) => {
-                setSearchQuery(text);
-                setPage(1);
-              }}
-              textAlign="right"
+        <View className="mt-4">
+          <Text className="text-xl font-bold text-text-primary dark:text-text-dark mb-6 text-right">إحصائيات العائلة</Text>
+          
+          <View className="flex-row flex-wrap justify-between">
+            <StatCard 
+              title="إجمالي الأفراد" 
+              value={stats.totalPersons} 
+              icon="people" 
+              iconLib={Ionicons} 
+              color="#0d5c63" 
             />
-            {searchQuery.length > 0 && (
-              <TouchableOpacity
-                onPress={() => {
-                  setSearchQuery('');
-                  setPage(1);
-                }}
-                className="absolute right-3 top-3"
-              >
-                <Ionicons name="close-circle" size={20} color={colors.textSecondary} />
-              </TouchableOpacity>
-            )}
+            <StatCard 
+              title="المنافيخي" 
+              value={stats.manafikhiCount} 
+              icon="crown" 
+              iconLib={FontAwesome5} 
+              color="#b8860b" 
+            />
+            <StatCard 
+              title="أحياء" 
+              value={stats.aliveCount} 
+              icon="heart" 
+              iconLib={Ionicons} 
+              color="#4a9d7c" 
+            />
+            <StatCard 
+              title="المتوفون" 
+              value={stats.deceasedCount} 
+              icon="skull" 
+              iconLib={Ionicons} 
+              color="#6b6560" 
+            />
+            <StatCard 
+              title="ذكور" 
+              value={stats.malesCount} 
+              icon="male" 
+              iconLib={Ionicons} 
+              color="#5b9" 
+            />
+            <StatCard 
+              title="إناث" 
+              value={stats.femalesCount} 
+              icon="female" 
+              iconLib={Ionicons} 
+              color="#bc6798" 
+            />
           </View>
         </View>
-        <Text className="text-[12px] text-left text-text-secondary dark:text-text-dark-secondary mt-2">
-          {filteredPersons.length} عضو
-        </Text>
-      </View>
 
-      <FlatList
-        data={paginatedPersons}
-        renderItem={renderPersonCard}
-        keyExtractor={item => item.id}
-        contentContainerStyle={{ padding: 16, paddingBottom: 100 }}
-        showsVerticalScrollIndicator={false}
-        onEndReached={loadMore}
-        onEndReachedThreshold={0.5}
-        ListFooterComponent={renderFooter}
-        ListEmptyComponent={renderEmpty}
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={handleRefresh}
-            tintColor="#bc6798"
-          />
-        }
-      />
-    </View>
+        <TouchableOpacity 
+          onPress={() => router.push('/settings')}
+          className="mt-8 flex-row items-center justify-center p-4 rounded-3xl bg-surface-light dark:bg-surface-dark border border-border/5"
+        >
+          <Ionicons name="settings-outline" size={20} color={colors.textSecondary} className="mr-2" />
+          <Text className="text-text-secondary dark:text-text-dark-secondary font-bold ml-2">الإعدادات</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeAreaView>
   );
 }

@@ -53,6 +53,17 @@ export async function getAllPersons(): Promise<Person[]> {
   return persons;
 }
 
+export function getStats() {
+  return {
+    totalPersons: persons.length,
+    aliveCount: persons.filter(p => p.isAlive).length,
+    deceasedCount: persons.filter(p => !p.isAlive).length,
+    malesCount: persons.filter(p => p.gender === 'MALE').length,
+    femalesCount: persons.filter(p => p.gender === 'FEMALE').length,
+    manafikhiCount: persons.filter(p => p.lastName === 'منافيخي').length,
+  };
+}
+
 export async function getPersonById(id: string): Promise<Person | null> {
   return personMap.get(id) || null;
 }

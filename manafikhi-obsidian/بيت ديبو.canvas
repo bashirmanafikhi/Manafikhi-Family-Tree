@@ -457,6 +457,16 @@
 			"y":-192,
 			"width":120,
 			"height":50
+		},
+		{
+			"id":"9f43ab7cde0202d6",
+			"type":"text",
+			"text":"هي بتكون نانته لماهر حجارة",
+			"styleAttributes":{"textAlign":"center"},
+			"x":40,
+			"y":-540,
+			"width":164,
+			"height":98
 		}
 	],
 	"edges":[
@@ -862,6 +872,15 @@
 			"fromSide":"left",
 			"toNode":"99872cbe29f63a47",
 			"toSide":"right"
+		},
+		{
+			"id":"6c628299f521e470",
+			"styleAttributes":{"pathfindingMethod":"square"},
+			"toFloating":false,
+			"fromNode":"48ef7979d21b71ef",
+			"fromSide":"bottom",
+			"toNode":"9f43ab7cde0202d6",
+			"toSide":"top"
 		}
 	],
 	"metadata":{
