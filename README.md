@@ -8,25 +8,25 @@ The repository is organized into three main projects:
 
 | Directory | Component | Technology | Role |
 |-----------|-----------|------------|------|
-| [**`Web/`**](./Web) | Admin Dashboard | Next.js + Prisma + SQLite | **Source of Truth**. Used for managing family members, marriages, and relationships. |
-| [**`viewer/`**](./viewer) | Web Viewer | Next.js (Static) | A beautiful, read-only web interface for family members to browse the tree. |
+| [**`web/`**](./web) | Admin Dashboard | Next.js + Prisma + SQLite | **Source of Truth**. Used for managing family members, marriages, and relationships. |
+| [**`viewer/`**](./viewer) | web Viewer | Next.js (Static) | A beautiful, read-only web interface for family members to browse the tree. |
 | [**`Mobile/`**](./Mobile) | Mobile App | React Native (Expo) | A read-only mobile application for on-the-go access. |
 
 ## Data Flow & Synchronization
 
 This project uses a "Single Source of Truth" architecture:
 
-1.  **Editing**: All data changes (adding people, updating details, managing marriages) are performed in the **Web** project.
-2.  **Storage**: The Web project stores data in a SQLite database (`Web/prisma/dev.db`).
+1.  **Editing**: All data changes (adding people, updating details, managing marriages) are performed in the **web** project.
+2.  **Storage**: The web project stores data in a SQLite database (`web/prisma/dev.db`).
 3.  **Synchronization**: To update the Viewer and Mobile apps, you must export the database to JSON format.
 4.  **Consumption**: The Viewer and Mobile apps read from their respective `family.json` files.
 
 ### Critical Sync Command
 
-Whenever you make changes in the Web dashboard, you **must** run the sync command to propagate changes:
+Whenever you make changes in the web dashboard, you **must** run the sync command to propagate changes:
 
 ```bash
-cd Web
+cd web
 npm run db:sync
 ```
 
@@ -42,14 +42,14 @@ This script exports the database to:
 
 ### Running the Projects
 
-**1. Admin Dashboard (Web)**
+**1. Admin Dashboard (web)**
 ```bash
-cd Web
+cd web
 npm install
 npm run dev
 ```
 
-**2. Web Viewer**
+**2. web Viewer**
 ```bash
 cd viewer
 npm install
@@ -63,7 +63,7 @@ npm install
 npm start
 ```
 
-## Maintenance Commands (Web Project)
+## Maintenance Commands (web Project)
 
 - `npm run db:push`: Applies schema changes to the SQLite database.
 - `npm run db:studio`: Opens a GUI to view and edit the database directly.

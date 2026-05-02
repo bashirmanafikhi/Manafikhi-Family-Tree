@@ -28,7 +28,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "manafikhi-family-tree"
+        "projectId": "f6bc7941-021d-474d-a63e-1d28f6c43352"
       }
     },
     "assetBundlePatterns": [
@@ -37,6 +37,7 @@
     "plugins": [
       "expo-asset",
       "expo-font"
-    ]
+    ],
+    "owner": "bashir.manafikhi"
   }
 }

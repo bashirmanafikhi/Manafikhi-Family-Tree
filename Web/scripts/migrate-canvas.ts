@@ -40,7 +40,7 @@ function loadCanvas(): CanvasData {
 
 function loadGenderMap(): Map<string, 'm' | 'f'> {
   const content = fs.readFileSync(
-    'D:/Projects/Manafikhi-Family-Tree/Web/scripts/gender-map.txt',
+    'D:/Projects/Manafikhi-Family-Tree/web/scripts/gender-map.txt',
     'utf-8',
   );
   const map = new Map<string, 'm' | 'f'>();

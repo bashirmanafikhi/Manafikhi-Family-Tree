@@ -12,7 +12,7 @@
 
 ## هيكل الملفات
 
-### Web
+### web
 - تعديل: `components/FamilyTree.tsx` - إضافة إحصائيات الذكور/الإناث
 - تعديل: `app/persons/[id]/page.tsx` - إضافة الجدول الإحصائي
 - جديد: `components/GenerationStatsTable.tsx` - component الجدول
@@ -27,7 +27,7 @@
 ## المهمة 1: إضافة دالة حساب الإحصائيات
 
 **الملفات:**
--modify: `Web/components/FamilyTree.tsx`
+-modify: `web/components/FamilyTree.tsx`
 - Modify: `viewer/components/FamilyTree.tsx`
 
 - [ ] **الخطوة 1: إضافة دالة حساب الذكور والإناث**
@@ -77,12 +77,12 @@ const stats = getGenderStats(nodes);
 ## المهمة 2: إنشاء component الجدول الإحصائي
 
 **الملفات:**
-- Create: `Web/components/GenerationStatsTable.tsx`
+- Create: `web/components/GenerationStatsTable.tsx`
 - Create: `viewer/components/GenerationStatsTable.tsx`
 
 - [ ] **الخطوة 1: كتابة component الجدول**
 
-اكتب الملف `Web/components/GenerationStatsTable.tsx`:
+اكتب الملف `web/components/GenerationStatsTable.tsx`:
 
 ```tsx
 'use client';
@@ -177,10 +177,10 @@ export default function GenerationStatsTable({ descendantGenerations }: Generati
 ## المهمة 3: إضافة الجدول لصفحات التفاصيل
 
 **الملفات:**
-- Modify: `Web/app/persons/[id]/page.tsx`
+- Modify: `web/app/persons/[id]/page.tsx`
 - Modify: `viewer/app/persons/[id]/page.tsx`
 
-- [ ] **الخطوة 1: استيراد الجدول في Web**
+- [ ] **الخطوة 1: استيراد الجدول في web**
 
 أضف الاستيراد في أعلى الملف:
 ```tsx
@@ -207,7 +207,7 @@ import GenerationStatsTable from '@/components/GenerationStatsTable'
 - [ ] **الخطوة 1: تشغيل التطبيق**
 
 ```bash
-cd Web && npm run dev
+cd web && npm run dev
 ```
 
 - [ ] **الخطوة 2: التحقق vizually**

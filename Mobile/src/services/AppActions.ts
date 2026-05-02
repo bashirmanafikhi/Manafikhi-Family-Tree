@@ -16,7 +16,7 @@ export class AppActions {
 
   static async shareApp() {
     try {
-      const message = `جرب تطبيق شجرة عائلة المنافق: \nhttps://play.google.com/store/apps/details?id=${PACKAGE_NAME}`;
+      const message = `جرب تطبيق شجرة عائلة المنافيخي: \nhttps://play.google.com/store/apps/details?id=${PACKAGE_NAME}`;
       await Share.share({ message });
     } catch (e) {
       console.warn('Unable to share app', e);

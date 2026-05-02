@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add image upload in Web admin, compress client-side, sync to viewer/mobile, display images in all three apps.
+**Goal:** Add image upload in web admin, compress client-side, sync to viewer/mobile, display images in all three apps.
 
-**Architecture:** Images stored as JPEG files under `Web/public/images/persons/{id}/`. DB stores portable relative paths (`images/persons/{id}/profile.jpg`). Export script copies images to viewer and mobile. All three apps resolve the same relative path from their own root.
+**Architecture:** Images stored as JPEG files under `web/public/images/persons/{id}/`. DB stores portable relative paths (`images/persons/{id}/profile.jpg`). Export script copies images to viewer and mobile. All three apps resolve the same relative path from their own root.
 
 **Tech Stack:** Browser Canvas API (compression), Next.js API routes (upload), Node.js fs (export), expo-asset (mobile), Next.js Image component (viewer).
 
@@ -13,14 +13,14 @@
 ## File Map
 
 ### New files
-- `Web/app/api/persons/[id]/images/route.ts` — upload + delete endpoints
-- `Web/lib/image-utils.ts` — client-side compression utility
-- `Web/public/images/persons/` — source of truth for images (created at upload)
+- `web/app/api/persons/[id]/images/route.ts` — upload + delete endpoints
+- `web/lib/image-utils.ts` — client-side compression utility
+- `web/public/images/persons/` — source of truth for images (created at upload)
 
 ### Modify existing files
-- `Web/scripts/export-json.ts` — add image copy step
-- `Web/components/person/person-detail.tsx` — add image display + edit section in view and edit modes
-- `Web/components/forms/person-form.tsx` — add image upload fields (for new person, profile image optional)
+- `web/scripts/export-json.ts` — add image copy step
+- `web/components/person/person-detail.tsx` — add image display + edit section in view and edit modes
+- `web/components/forms/person-form.tsx` — add image upload fields (for new person, profile image optional)
 - `viewer/lib/data.ts` — add `additionalImages` to `Person` interface
 - `viewer/app/persons/[id]/page.tsx` — add image display
 - `viewer/app/persons/page.tsx` — add thumbnail avatars in list
@@ -31,13 +31,13 @@
 ## Task 1: Image Compression Utility
 
 **Files:**
-- Create: `Web/lib/image-utils.ts`
+- Create: `web/lib/image-utils.ts`
 - Test: (manual — no test framework configured)
 
 - [ ] **Step 1: Create the compression utility**
 
 ```typescript
-// Web/lib/image-utils.ts
+// web/lib/image-utils.ts
 
 export interface CompressedImage {
   blob: Blob;
@@ -102,13 +102,13 @@ export function blobToFile(blob: Blob, filename: string): File {
 ## Task 2: Image Upload/Delete API
 
 **Files:**
-- Create: `Web/app/api/persons/[id]/images/route.ts`
-- Modify: `Web/app/api/persons/[id]/route.ts:100-138` (add image folder deletion on person delete)
+- Create: `web/app/api/persons/[id]/images/route.ts`
+- Modify: `web/app/api/persons/[id]/route.ts:100-138` (add image folder deletion on person delete)
 
 - [ ] **Step 1: Create the images API route**
 
 ```typescript
-// Web/app/api/persons/[id]/images/route.ts
+// web/app/api/persons/[id]/images/route.ts
 
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
@@ -259,7 +259,7 @@ export async function DELETE(
 
 - [ ] **Step 2: Update person DELETE to also delete images**
 
-In `Web/app/api/persons/[id]/route.ts`, add image folder deletion at the start of the DELETE handler:
+In `web/app/api/persons/[id]/route.ts`, add image folder deletion at the start of the DELETE handler:
 
 ```typescript
 // Add after line 104 (after "const personId = params.id")
@@ -277,7 +277,7 @@ And add `import { existsSync } from 'fs'` and `import path from 'path'` and `imp
 ## Task 3: Update Export Script
 
 **Files:**
-- Modify: `Web/scripts/export-json.ts`
+- Modify: `web/scripts/export-json.ts`
 
 - [ ] **Step 1: Add image copy to export-json.ts**
 
@@ -326,10 +326,10 @@ The export already includes all fields since Prisma returns the full model by de
 
 ---
 
-## Task 4: Web App — Image Display in Person Detail
+## Task 4: web App — Image Display in Person Detail
 
 **Files:**
-- Modify: `Web/components/person/person-detail.tsx`
+- Modify: `web/components/person/person-detail.tsx`
 
 - [ ] **Step 1: Add image display to the view mode**
 
@@ -393,10 +393,10 @@ Note: `person.additionalImages` comes from Prisma as a JSON string, so parse it 
 
 ---
 
-## Task 5: Web App — Image Upload Section in Person Detail (Edit Mode)
+## Task 5: web App — Image Upload Section in Person Detail (Edit Mode)
 
 **Files:**
-- Modify: `Web/components/person/person-detail.tsx`
+- Modify: `web/components/person/person-detail.tsx`
 
 - [ ] **Step 1: Add image upload state variables**
 
@@ -582,10 +582,10 @@ Find the edit mode form's closing section (around line 755, the Actions div with
 
 ---
 
-## Task 6: Web App — Image Upload in New Person Form
+## Task 6: web App — Image Upload in New Person Form
 
 **Files:**
-- Modify: `Web/components/forms/person-form.tsx`
+- Modify: `web/components/forms/person-form.tsx`
 
 - [ ] **Step 1: Add image state and handlers**
 
@@ -671,10 +671,10 @@ const navigateAfterSubmit = (person: any, action: 'continue' | 'addChild' | 'add
 
 - [ ] **Step 3: Update the POST API to accept FormData**
 
-The API at `Web/app/api/persons/route.ts` needs to accept both JSON and FormData. Let me check the current implementation:
+The API at `web/app/api/persons/route.ts` needs to accept both JSON and FormData. Let me check the current implementation:
 
 ```typescript
-// Web/app/api/persons/route.ts - update POST handler
+// web/app/api/persons/route.ts - update POST handler
 export async function POST(request: NextRequest) {
   const contentType = request.headers.get('content-type') || '';
 
@@ -999,11 +999,11 @@ Add `ScrollView` import if not present (it may already be imported as part of th
 
 ## Task 11: Final Verification
 
-- [ ] **Step 1: Test Web image upload**
-Run `cd Web && npm run dev`, open a person detail, click edit, upload a profile image and additional images. Verify images appear in `Web/public/images/persons/{id}/`.
+- [ ] **Step 1: Test web image upload**
+Run `cd web && npm run dev`, open a person detail, click edit, upload a profile image and additional images. Verify images appear in `web/public/images/persons/{id}/`.
 
 - [ ] **Step 2: Test export script**
-Run `npm run db:sync` in the Web directory. Verify images are copied to `viewer/public/images/` and `Mobile/assets/images/`.
+Run `npm run db:sync` in the web directory. Verify images are copied to `viewer/public/images/` and `Mobile/assets/images/`.
 
 - [ ] **Step 3: Test viewer**
 Run `cd viewer && npm run dev`, navigate to a person with images, verify they display correctly.
@@ -1015,7 +1015,7 @@ Run `cd Mobile && npm start`, navigate to a person with images, verify they disp
 
 ## Build Notes
 
-- `Web/public/images/persons/` should be added to git — it's the source of truth
+- `web/public/images/persons/` should be added to git — it's the source of truth
 - `viewer/public/images/` and `Mobile/assets/images/` are populated by `db:sync`
 - If viewer/mobile don't rebuild after `db:sync`, restart their dev servers
 - The viewer exports `additionalImages` as a string (JSON stringified array) from the Prisma field, so it needs `JSON.parse()` in the component before use

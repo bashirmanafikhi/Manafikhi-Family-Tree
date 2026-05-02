@@ -4,7 +4,7 @@
 
 **Goal:** Create a read-only web application for browsing Manafikhi family tree with statistics, search/filter, and person details.
 
-**Architecture:** Next.js 14 with App Router, Prisma with SQLite (read-only), Tailwind CSS. Copy existing dev.db from Web/prisma to viewer/prisma.
+**Architecture:** Next.js 14 with App Router, Prisma with SQLite (read-only), Tailwind CSS. Copy existing dev.db from web/prisma to viewer/prisma.
 
 **Tech Stack:** Next.js 14, Prisma, SQLite, Tailwind CSS
 
@@ -118,9 +118,9 @@ export default nextConfig
 }
 ```
 
-- [ ] **Step 4: Copy schema.prisma from Web**
+- [ ] **Step 4: Copy schema.prisma from web**
 
-Copy `Web/prisma/schema.prisma` to `viewer/prisma/schema.prisma`
+Copy `web/prisma/schema.prisma` to `viewer/prisma/schema.prisma`
 
 - [ ] **Step 5: Create .env**
 
@@ -237,12 +237,12 @@ body {
 ### Task 3: Copy Database
 
 **Files:**
-- Copy: `Web/prisma/dev.db` to `viewer/prisma/dev.db`
+- Copy: `web/prisma/dev.db` to `viewer/prisma/dev.db`
 - Generate Prisma client
 
 - [ ] **Step 1: Copy database file**
 
-Copy the SQLite file from `Web/prisma/dev.db` to `viewer/prisma/dev.db`
+Copy the SQLite file from `web/prisma/dev.db` to `viewer/prisma/dev.db`
 
 - [ ] **Step 2: Generate Prisma client**
 
@@ -1066,4 +1066,4 @@ Follow Vercel deployment instructions with SQLite database
 - All pages use server components for SQLite read-only access
 - Filters component uses client component for URL parameters
 - Pagination uses URL query parameter
-- Same design language as existing Web project
+- Same design language as existing web project

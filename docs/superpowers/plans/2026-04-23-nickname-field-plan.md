@@ -6,14 +6,14 @@
 
 **Architecture:** Add nullable `nickname` field to database schema, update types in both apps, display in detail views and forms
 
-**Tech Stack:** Prisma (SQLite), TypeScript, React Native (Mobile), Next.js (Web)
+**Tech Stack:** Prisma (SQLite), TypeScript, React Native (Mobile), Next.js (web)
 
 ---
 
 ### Task 1: Add nickname field to Prisma schema
 
 **Files:**
-- Modify: `Web/prisma/schema.prisma:10-35`
+- Modify: `web/prisma/schema.prisma:10-35`
 
 - [ ] **Step 1: Add nickname field to Person model in schema**
 
@@ -33,7 +33,7 @@ model Person {
 - [ ] **Step 2: Run Prisma migration**
 
 ```bash
-cd Web
+cd web
 npx prisma migrate dev --name add_nickname_field
 ```
 
@@ -42,7 +42,7 @@ Expected: Migration created and applied successfully
 - [ ] **Step 3: Commit**
 
 ```bash
-git add Web/prisma/schema.prisma
+git add web/prisma/schema.prisma
 git commit -m "feat: add nickname field to Person model"
 ```
 
@@ -108,10 +108,10 @@ git commit -m "feat: display nickname in Mobile person detail"
 
 ---
 
-### Task 4: Display nickname in Web person detail page
+### Task 4: Display nickname in web person detail page
 
 **Files:**
-- Modify: `Web/components/person/person-detail.tsx`
+- Modify: `web/components/person/person-detail.tsx`
 
 - [ ] **Step 1: Add nickname to interface props**
 
@@ -149,16 +149,16 @@ After name display in view mode (around line 271-273):
 - [ ] **Step 3: Commit**
 
 ```bash
-git add Web/components/person/person-detail.tsx
-git commit -m "feat: display nickname in Web person detail"
+git add web/components/person/person-detail.tsx
+git commit -m "feat: display nickname in web person detail"
 ```
 
 ---
 
-### Task 5: Add nickname to Web edit form
+### Task 5: Add nickname to web edit form
 
 **Files:**
-- Modify: `Web/components/person/person-detail.tsx`
+- Modify: `web/components/person/person-detail.tsx`
 
 - [ ] **Step 1: Add nickname to form state**
 
@@ -224,16 +224,16 @@ useEffect(() => {
 - [ ] **Step 5: Commit**
 
 ```bash
-git add Web/components/person/person-detail.tsx
-git commit -m "feat: add nickname field to Web edit form"
+git add web/components/person/person-detail.tsx
+git commit -m "feat: add nickname field to web edit form"
 ```
 
 ---
 
-### Task 6: Add nickname to Web add form (PersonForm)
+### Task 6: Add nickname to web add form (PersonForm)
 
 **Files:**
-- Modify: `Web/components/forms/person-form.tsx`
+- Modify: `web/components/forms/person-form.tsx`
 
 - [ ] **Step 1: Add nickname to formData state**
 
@@ -277,8 +277,8 @@ After lastName field (around line 130-140), add:
 - [ ] **Step 4: Commit**
 
 ```bash
-git add Web/components/forms/person-form.tsx
-git commit -m "feat: add nickname field to Web add person form"
+git add web/components/forms/person-form.tsx
+git commit -m "feat: add nickname field to web add person form"
 ```
 
 ---

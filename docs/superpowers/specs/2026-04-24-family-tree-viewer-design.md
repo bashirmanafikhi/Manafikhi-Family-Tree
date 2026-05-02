@@ -20,7 +20,7 @@ A read-only web application for browsing the Manafikhi family tree. Displays sta
 
 ## Database
 
-- Use a copy of `Web/prisma/dev.db` at `viewer/prisma/dev.db`
+- Use a copy of `web/prisma/dev.db` at `viewer/prisma/dev.db`
 - Read-only access (no write operations)
 
 ---
@@ -40,7 +40,7 @@ A read-only web application for browsing the Manafikhi family tree. Displays sta
   - Females count
 - Large centered button: "تصفح أفراد العائلة" navigates to `/persons`
 
-**Design:** Match current Web project styling and colors
+**Design:** Match current web project styling and colors
 
 ---
 
@@ -92,7 +92,7 @@ A read-only web application for browsing the Manafikhi family tree. Displays sta
 
 ## UI/UX
 
-- Same design language as `Web/` project:
+- Same design language as `web/` project:
   - Colors: `#0d5c63` (primary), `#e07a5f` (accent), `#4a9d7c` (teal), `#d94f4f` (red for deceased)
   - Gradients and cards
   - RTL layout

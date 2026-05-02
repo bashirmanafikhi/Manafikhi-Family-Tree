@@ -9,7 +9,7 @@
 ### 1️⃣ تعديل الشجرة الحالية
 
 **الملفات:**
-- `Web/components/FamilyTree.tsx`
+- `web/components/FamilyTree.tsx`
 - `viewer/components/FamilyTree.tsx`
 
 **التغيير:** تحديث labels الأجيال لعرض إحصائيات الذكور/الإناث بجانب العدد
@@ -36,7 +36,7 @@
 
 **اسم الملف:** `components/GenerationStatsTable.tsx` (في كلا المشروعين)
 
-**الموقع:** `Web/components/GenerationStatsTable.tsx` و `viewer/components/GenerationStatsTable.tsx`
+**الموقع:** `web/components/GenerationStatsTable.tsx` و `viewer/components/GenerationStatsTable.tsx`
 
 **الواجهة:**
 
@@ -74,7 +74,7 @@ interface GenerationStatsTableProps {
 
 ## الملفات المعدلة
 
-### Web
+### web
 
 1. `components/FamilyTree.tsx` - إضافة إحصائيات الذكور/الإناث للأجيال
 2. `app/persons/[id]/page.tsx` - استيراد وإضافة GenerationStatsTable
@@ -86,7 +86,7 @@ interface GenerationStatsTableProps {
 
 ## ملفات جديدة
 
-1. `Web/components/GenerationStatsTable.tsx`
+1. `web/components/GenerationStatsTable.tsx`
 2. `viewer/components/GenerationStatsTable.tsx`
 
 ---
@@ -96,4 +96,4 @@ interface GenerationStatsTableProps {
 - [ ] الشجرة تعرض الأرقام بالتنسيق الصحيح
 - [ ] الجدول يظهر فقط الأجيال النزلية
 - [ ] الأرقام صحيحة (مجموع الذكور + الإناث =总数)
-- [ ] يعمل في كل من Web и viewer
+- [ ] يعمل في كل من web и viewer

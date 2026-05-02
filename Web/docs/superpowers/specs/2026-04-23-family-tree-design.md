@@ -3,7 +3,7 @@
 ## Project Overview
 
 **Project Name:** Manafikhi Family Tree
-**Type:** Web Application (Next.js)
+**Type:** web Application (Next.js)
 **Purpose:** Manage and visualize a large family tree (~5000 persons, 10 generations) with complex relationships (cousin marriage, polygamy, different surnames)
 **Target User:** Developer building for personal data collection
 
