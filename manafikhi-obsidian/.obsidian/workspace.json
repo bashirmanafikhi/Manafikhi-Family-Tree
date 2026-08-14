@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "601f5e0a1296cc07",
+        "id": "7d6063041916b8b1",
         "type": "tabs",
         "children": [
           {
-            "id": "5c4a0c73959d6dd2",
+            "id": "0f86b0a284b9e052",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -191,19 +191,19 @@
       "bases:Create new base": false
     }
   },
-  "active": "5c4a0c73959d6dd2",
+  "active": "0f86b0a284b9e052",
   "lastOpenFiles": [
-    "prompts/نسبة الذكور على الإناث.md",
     "prompts/احصائات عدد الأفراد.md",
     "بيت ديبو.canvas",
-    "مسودة draft.md",
+    "حسن رحمو.canvas",
     "شجرة الكبار.canvas",
     "عائشة ام شريف.canvas",
-    "حسن رحمو.canvas",
-    "حج محمود ابو فؤاد.canvas",
+    "مسودة draft.md",
     "prompts/رسم شجرة.md",
-    "رقية.canvas",
     "prompts/رسم شجرة مع الأفرع.md",
+    "prompts/نسبة الذكور على الإناث.md",
+    "حج محمود ابو فؤاد.canvas",
+    "رقية.canvas",
     "أمينة بنت ام شريف.canvas",
     "شريف.canvas",
     "tree.canvas",
@@ -232,7 +232,6 @@
     "people/59a7c79b9651b845.md",
     "people/15495ea54ab50885.md",
     "people/10c15800b5b2de2e.md",
-    "people/feb6d4c2e242d784.md",
     "people",
     "people/images/2.jpeg",
     "people/images",
