@@ -49,6 +49,54 @@ function transformPerson(raw: RawPerson): Person {
 const persons: Person[] = rawPersons.map(transformPerson);
 const personMap = new Map<string, Person>(persons.map(p => [p.id, p]));
 
+function addToIndex(map: Map<string, Person[]>, key: string, value: Person) {
+  const list = map.get(key);
+  if (list) {
+    list.push(value);
+  } else {
+    map.set(key, [value]);
+  }
+}
+
+const childrenByParent = new Map<string, Person[]>();
+for (const p of persons) {
+  if (p.fatherId) addToIndex(childrenByParent, p.fatherId, p);
+  if (p.motherId) addToIndex(childrenByParent, p.motherId, p);
+}
+
+const spousesByPerson = new Map<string, Person[]>();
+for (const m of rawMarriages) {
+  const p1 = personMap.get(m.person1Id);
+  const p2 = personMap.get(m.person2Id);
+  if (p1 && p2) {
+    addToIndex(spousesByPerson, m.person1Id, p2);
+    addToIndex(spousesByPerson, m.person2Id, p1);
+  }
+}
+
+function computeSiblings(person: Person): Person[] {
+  if (!person.fatherId && !person.motherId) return [];
+  const result: Person[] = [];
+  const seen = new Set<string>([person.id]);
+  if (person.fatherId) {
+    for (const c of childrenByParent.get(person.fatherId) || []) {
+      if (!seen.has(c.id)) {
+        seen.add(c.id);
+        result.push(c);
+      }
+    }
+  }
+  if (person.motherId) {
+    for (const c of childrenByParent.get(person.motherId) || []) {
+      if (!seen.has(c.id)) {
+        seen.add(c.id);
+        result.push(c);
+      }
+    }
+  }
+  return result;
+}
+
 export async function getAllPersons(): Promise<Person[]> {
   return persons;
 }
@@ -69,7 +117,7 @@ export async function getPersonById(id: string): Promise<Person | null> {
 }
 
 export async function getChildren(parentId: string): Promise<Person[]> {
-  return persons.filter(p => p.fatherId === parentId || p.motherId === parentId);
+  return childrenByParent.get(parentId) || [];
 }
 
 export async function getParents(personId: string): Promise<{ father?: Person; mother?: Person }> {
@@ -83,30 +131,13 @@ export async function getParents(personId: string): Promise<{ father?: Person; m
 }
 
 export async function getSpouses(personId: string): Promise<Person[]> {
-  const spouseIds = rawMarriages
-    .filter(m => m.person1Id === personId || m.person2Id === personId)
-    .map(m => m.person1Id === personId ? m.person2Id : m.person1Id);
-
-  return spouseIds
-    .map(id => personMap.get(id))
-    .filter((p): p is Person => p !== undefined);
+  return spousesByPerson.get(personId) || [];
 }
 
 export async function getSiblings(personId: string): Promise<Person[]> {
   const person = personMap.get(personId);
   if (!person) return [];
-
-  const fatherId = person.fatherId;
-  const motherId = person.motherId;
-
-  if (!fatherId && !motherId) return [];
-
-  return persons.filter(p => {
-    if (p.id === personId) return false;
-    if (fatherId && p.fatherId === fatherId) return true;
-    if (motherId && p.motherId === motherId) return true;
-    return false;
-  });
+  return computeSiblings(person);
 }
 
 export async function getRootPersons(): Promise<Person[]> {
@@ -117,19 +148,13 @@ export async function getFamilyTree(): Promise<FamilyTree> {
   const treeMap = new Map<string, PersonWithRelations>();
 
   for (const person of persons) {
-    const [children, spouses, parents, siblings] = await Promise.all([
-      getChildren(person.id),
-      getSpouses(person.id),
-      getParents(person.id),
-      getSiblings(person.id),
-    ]);
-
     treeMap.set(person.id, {
       ...person,
-      ...parents,
-      children,
-      spouses,
-      siblings,
+      father: person.fatherId ? personMap.get(person.fatherId) : undefined,
+      mother: person.motherId ? personMap.get(person.motherId) : undefined,
+      children: childrenByParent.get(person.id) || [],
+      spouses: spousesByPerson.get(person.id) || [],
+      siblings: computeSiblings(person),
     });
   }
 

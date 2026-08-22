@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Switch, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, Switch, ScrollView, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../src/context/ThemeContext';
 import { AppActions } from '../src/services/AppActions';
@@ -48,6 +48,11 @@ export default function SettingsScreen() {
       </View>
 
       <View className="mx-4 mt-4 rounded-xl overflow-hidden">
+        <SettingRow
+          title="قناة العائلة على واتساب"
+          onPress={() => Linking.openURL('https://whatsapp.com/channel/0029Va7mhyl3gvWbelrMdB1n')}
+          rightElement={<Ionicons name="logo-whatsapp" size={22} color="#25D366" />}
+        />
         <SettingRow
           title="تقييم التطبيق"
           onPress={() => AppActions.rateApp()}

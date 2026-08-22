@@ -205,7 +205,7 @@ export default function PersonDetailScreen() {
         <View className="flex-row items-center mb-2">
           <View className="w-10 h-10 rounded-full overflow-hidden bg-surface-light dark:bg-surface-dark items-center justify-center mr-3">
             {relImageSource ? (
-              <Image source={relImageSource} className="w-full h-full" />
+              <Image source={relImageSource} style={{ width: '100%', height: '100%' } as any} />
             ) : (
               <Ionicons name={relPerson.gender === MALE ? 'male' : 'female'} size={20} color={relPerson.gender === MALE ? '#5b9' : '#bc6798'} />
             )}
@@ -430,7 +430,7 @@ export default function PersonDetailScreen() {
                       className="w-24 h-24 rounded-2xl overflow-hidden mr-3 border border-border/20 dark:border-border-dark/20 shadow-sm"
                       onPress={() => setCurrentImageIndex(idx)}
                     >
-                      <Image source={source} className="w-full h-full" resizeMode="cover" />
+                      <Image source={source} style={{ width: '100%', height: '100%' } as any} resizeMode="cover" />
                       {currentImageIndex === idx && (
                         <View className="absolute inset-0 bg-primary/20 items-center justify-center">
                           <Ionicons name="checkmark-circle" size={24} color="white" />

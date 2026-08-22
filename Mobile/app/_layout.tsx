@@ -38,6 +38,20 @@ function RootStack() {
           }}
         />
         <Stack.Screen
+          name="family-tree"
+          options={{
+            title: 'شجرة العائلة',
+            headerTitle: 'شجرة العائلة',
+          }}
+        />
+        <Stack.Screen
+          name="kinship"
+          options={{
+            title: 'شو بيقربني؟',
+            headerTitle: 'شو بيقربني؟',
+          }}
+        />
+        <Stack.Screen
           name="person/[id]"
           options={{
             title: 'التفاصيل',

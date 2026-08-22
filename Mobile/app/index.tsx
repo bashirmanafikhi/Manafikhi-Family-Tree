@@ -12,19 +12,21 @@ export default function DashboardScreen() {
   const router = useRouter();
   const stats = getStats();
 
-  const StatCard = ({ title, value, icon, iconLib: IconLib, color }: any) => (
-    <View 
-      className="bg-card dark:bg-card-dark rounded-3xl p-4 mb-4 border border-border/10 dark:border-border-dark/10 shadow-sm"
-      style={{ width: (width - 48) / 2 }}
+  const StatCard = ({ title, value, icon, iconLib: IconLib, color, filterParams }: any) => (
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={() => router.push({ pathname: '/persons', params: filterParams || {} })}
+      className="bg-card dark:bg-card-dark rounded-2xl p-3 mb-3 border border-border/10 dark:border-border-dark/10 shadow-sm"
+      style={{ width: (width - 60) / 2 }}
     >
       <View className="flex-row items-center justify-between mb-2">
         <View className="p-2 rounded-2xl" style={{ backgroundColor: color + '20' }}>
           <IconLib name={icon} size={24} color={color} />
         </View>
       </View>
-      <Text className="text-2xl font-bold text-text-primary dark:text-text-dark">{value}</Text>
+      <Text className="text-xl font-bold text-text-primary dark:text-text-dark">{value}</Text>
       <Text className="text-xs text-text-secondary dark:text-text-dark-secondary font-medium">{title}</Text>
-    </View>
+    </TouchableOpacity>
   );
 
   return (
@@ -35,79 +37,103 @@ export default function DashboardScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 40 }}
       >
-        <View className="py-12 items-center">
+        <View className="py-8 items-center">
           <View className="w-20 h-20 rounded-full bg-primary/10 items-center justify-center mb-6">
             <MaterialCommunityIcons name="family-tree" size={48} color={colors.primary} />
           </View>
           <Text className="text-4xl font-bold text-center text-text-primary dark:text-text-dark mb-2">
-            شجرة عائلة <Text className="text-primary">المنافيخي</Text>
+            <Text className="text-primary">المنافيخي</Text>
           </Text>
-          <Text className="text-lg text-text-secondary dark:text-text-dark-secondary text-center mb-10">
+          <Text className="text-lg text-text-secondary dark:text-text-dark-secondary text-center mb-6">
             تصفح شجرة عائلتك العريقة
           </Text>
 
           <TouchableOpacity
+            onPress={() => router.push('/family-tree')}
+            activeOpacity={0.8}
+            className="bg-primary px-8 py-4 rounded-full shadow-lg shadow-primary/30 flex-row items-center"
+          >
+            <MaterialCommunityIcons name="family-tree" size={22} color="white" className="mr-3" />
+            <Text className="text-white text-lg font-bold ml-2">استكشف شجرة العائلة</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
             onPress={() => router.push('/persons')}
             activeOpacity={0.8}
-            className="bg-primary px-10 py-5 rounded-full shadow-lg shadow-primary/30 flex-row items-center"
+            className="mt-3 bg-primary/10 border-2 border-primary px-8 py-3.5 rounded-full flex-row items-center"
           >
-            <Ionicons name="people" size={24} color="white" className="mr-3" />
-            <Text className="text-white text-xl font-bold ml-2">تصفح أفراد العائلة</Text>
+            <Ionicons name="people" size={22} color={colors.primary} className="mr-3" />
+            <Text className="text-primary text-base font-bold ml-2">تصفح جميع أفراد العائلة</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => router.push('/kinship')}
+            activeOpacity={0.8}
+            className="mt-3 bg-amber-500/10 border-2 border-amber-500 px-8 py-3.5 rounded-full flex-row items-center"
+          >
+            <Ionicons name="help-circle" size={22} color="#d97706" className="mr-3" />
+            <Text className="text-amber-600 dark:text-amber-400 text-base font-bold ml-2">شو بيقربني؟</Text>
           </TouchableOpacity>
         </View>
 
-        <View className="mt-4">
-          <Text className="text-xl font-bold text-text-primary dark:text-text-dark mb-6 text-right">إحصائيات العائلة</Text>
+        <View className="mt-2">
+          <Text className="text-lg font-bold text-text-primary dark:text-text-dark mb-4 text-right">إحصائيات العائلة</Text>
           
-          <View className="flex-row flex-wrap justify-between">
+          <View className="flex-row flex-wrap justify-between gap-3">
             <StatCard 
               title="إجمالي الأفراد" 
               value={stats.totalPersons} 
               icon="people" 
               iconLib={Ionicons} 
-              color="#0d5c63" 
+              color="#0d5c63"
+              filterParams={{}}
             />
             <StatCard 
               title="المنافيخي" 
               value={stats.manafikhiCount} 
               icon="crown" 
               iconLib={FontAwesome5} 
-              color="#b8860b" 
+              color="#b8860b"
+              filterParams={{ filterLastName: 'منافيخي' }}
             />
             <StatCard 
               title="أحياء" 
               value={stats.aliveCount} 
               icon="heart" 
               iconLib={Ionicons} 
-              color="#4a9d7c" 
+              color="#4a9d7c"
+              filterParams={{ filterAlive: 'ALIVE' }}
             />
             <StatCard 
               title="المتوفون" 
               value={stats.deceasedCount} 
               icon="skull" 
               iconLib={Ionicons} 
-              color="#6b6560" 
+              color="#6b6560"
+              filterParams={{ filterAlive: 'DEAD' }}
             />
             <StatCard 
               title="ذكور" 
               value={stats.malesCount} 
               icon="male" 
               iconLib={Ionicons} 
-              color="#5b9" 
+              color="#55bb99"
+              filterParams={{ filterGender: 'MALE' }}
             />
             <StatCard 
               title="إناث" 
               value={stats.femalesCount} 
               icon="female" 
               iconLib={Ionicons} 
-              color="#bc6798" 
+              color="#bc6798"
+              filterParams={{ filterGender: 'FEMALE' }}
             />
           </View>
         </View>
 
         <TouchableOpacity 
           onPress={() => router.push('/settings')}
-          className="mt-8 flex-row items-center justify-center p-4 rounded-3xl bg-surface-light dark:bg-surface-dark border border-border/5"
+          className="mt-4 flex-row items-center justify-center p-3 rounded-2xl bg-surface-light dark:bg-surface-dark border border-border/5"
         >
           <Ionicons name="settings-outline" size={20} color={colors.textSecondary} className="mr-2" />
           <Text className="text-text-secondary dark:text-text-dark-secondary font-bold ml-2">الإعدادات</Text>
