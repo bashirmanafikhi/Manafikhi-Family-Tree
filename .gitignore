@@ -88,3 +88,14 @@ next-env.d.ts
 # Worktrees
 .worktrees/
 worktrees/
+
+# Logs
+*.log
+
+# Database backups
+web/prisma/*.backup-*.db
+prisma/*.backup-*.db
+
+# Secrets / service account keys
+*service-account*.json
+bashir-project-*.json
