@@ -97,7 +97,11 @@ export default function FamilyTreeScreen() {
       if (mother && mother.spouses.length > 0 && !unmariedIds.has(mother.id)) return true;
       return false;
     });
-    return sortPersons([...unmariedRoots, ...orphaned]);
+    return sortPersons(
+      [...unmariedRoots, ...orphaned].filter(
+        r => (r.lastName || '').trim() === 'منافيخي'
+      )
+    );
   }, [persons, nodeMap]);
 
   useEffect(() => {
