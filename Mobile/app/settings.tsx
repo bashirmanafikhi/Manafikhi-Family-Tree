@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Switch, ScrollView, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import { useTheme } from '../src/context/ThemeContext';
 import { AppActions } from '../src/services/AppActions';
 
 export default function SettingsScreen() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, colors } = useTheme();
 
   const SettingRow = ({ 
     title, 
@@ -48,6 +49,11 @@ export default function SettingsScreen() {
       </View>
 
       <View className="mx-4 mt-4 rounded-xl overflow-hidden">
+        <SettingRow
+          title="طلب إضافة فرد جديد للعائلة"
+          onPress={() => router.push('/request/add-member')}
+          rightElement={<Ionicons name="person-add" size={22} color={colors.primary} />}
+        />
         <SettingRow
           title="قناة العائلة على واتساب"
           onPress={() => Linking.openURL('https://whatsapp.com/channel/0029Va7mhyl3gvWbelrMdB1n')}

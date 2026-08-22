@@ -447,6 +447,25 @@ export default function PersonDetailScreen() {
             {person && (
               <MiniFamilyTree person={person} allPersons={allPersons} />
             )}
+
+            <TouchableOpacity
+              className="mt-10 flex-row items-center justify-center py-4 rounded-full bg-primary/10 dark:bg-primary/20 border border-primary/20"
+              onPress={() =>
+                router.push({
+                  pathname: '/request/edit-person',
+                  params: {
+                    id: person.id,
+                    name: `${person.firstName} ${person.lastName || ''}`.trim(),
+                  },
+                })
+              }
+              activeOpacity={0.8}
+            >
+              <Ionicons name="create-outline" size={18} color={colors.primary} />
+              <Text className="text-base font-bold text-primary mr-2">
+                طلب تعديل معلومات هذا الشخص
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>

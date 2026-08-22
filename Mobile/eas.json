@@ -16,6 +16,17 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "android": {
+        "serviceAccountKeyPath": "./bashir-project-487810-0d96b2bc73df.json",
+        "track": "internal"
+      }
+    },
+    "preview": {
+      "android": {
+        "serviceAccountKeyPath": "./bashir-project-487810-0d96b2bc73df.json",
+        "track": "internal"
+      }
+    }
   }
 }

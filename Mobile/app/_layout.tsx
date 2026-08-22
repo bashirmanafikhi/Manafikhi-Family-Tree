@@ -66,6 +66,20 @@ function RootStack() {
             presentation: 'modal',
           }}
         />
+        <Stack.Screen
+          name="request/edit-person"
+          options={{
+            title: 'طلب تعديل معلومات',
+            headerTitle: 'طلب تعديل معلومات',
+          }}
+        />
+        <Stack.Screen
+          name="request/add-member"
+          options={{
+            title: 'طلب إضافة فرد',
+            headerTitle: 'طلب إضافة فرد',
+          }}
+        />
       </Stack>
     </>
   );
